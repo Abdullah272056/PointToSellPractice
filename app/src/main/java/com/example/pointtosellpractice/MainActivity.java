@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         businessTypeSpinner=findViewById(R.id.businessTypeSpinnerId);
         signInTextView=findViewById(R.id.signInTextViewId);
 
-        
+
 
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
