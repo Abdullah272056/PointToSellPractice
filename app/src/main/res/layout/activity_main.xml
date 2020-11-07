@@ -7,7 +7,108 @@
     android:orientation="vertical"
     android:padding="10dp"
     tools:context=".MainActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
+            <EditText
+                android:id="@+id/signUpCompanyNameEditTextId"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:hint="Company Name*"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/signUpCompanyOwnerEditTextId"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:hint="Company Owner*"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+            <EditText
+                android:id="@+id/signUpEmailEditTextId"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:hint="Email address*"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+
+            <EditText
+                android:id="@+id/signUpPhoneEditTextId"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:hint="Phone*"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+            <EditText
+                android:id="@+id/signUpAddressEditTextId"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:hint="Address*"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Spinner
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:entries="@array/business_type"
+                android:id="@+id/businessTypeSpinnerId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/signUpAboutCompanyEditTextId"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:hint="Type SomeThing About your Company*"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/signUpPasswordEditTextId"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:inputType="textPassword"
+                android:hint="password*"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/signUpConfirmPasswordEditTextId"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:inputType="textPassword"
+                android:hint="confirm password*"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/signUpButtonId"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:text="Sign Up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/signInTextViewId"
+                android:textSize="10sp"
+                android:layout_marginTop="20dp"
+                android:text="AlreadyHave an account? Sign In"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </ScrollView>
 
 
 
