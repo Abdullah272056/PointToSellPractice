@@ -3,6 +3,7 @@ package com.example.pointtosellpractice;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -32,6 +33,15 @@ public class MainActivity extends AppCompatActivity {
         signUpButton=findViewById(R.id.signUpButtonId);
         businessTypeSpinner=findViewById(R.id.businessTypeSpinnerId);
         signInTextView=findViewById(R.id.signInTextViewId);
+
+        
+
+        signUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
 
 
