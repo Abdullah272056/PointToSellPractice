@@ -18,7 +18,9 @@ public interface ApiInterface {
     @POST("api/auth/register/")
     Call<RegistrationData>postData(@Body RegistrationData registrationData);
 
- 
+    //signIn
+    @POST("api/auth/login/")
+    Call<LogInData>logInData(@Body LogInData logInData);
 
 
 //    @PUT("api/user/{id}")
