@@ -105,12 +105,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onResponse(Call<LogInResponse> call, Response<LogInResponse> response) {
                 if (response.isSuccessful()){
+                    // receive response body
+                    LogInResponse logInResponse=response.body();
+                    
+                    Toast.makeText(LoginActivity.this, "success", Toast.LENGTH_SHORT).show();
+                    Log.e("TAG", "success");
 
+                    Log.e("res",logInResponse.getToken().toString());
 
-
-
-
-//
                 }
             }
 
