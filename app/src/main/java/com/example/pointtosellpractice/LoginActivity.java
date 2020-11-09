@@ -2,6 +2,7 @@ package com.example.pointtosellpractice;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -30,12 +31,24 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         progressBar=findViewById(R.id.signInProgressBarId);
 
 
-
+        // listener set
+        signInButton.setOnClickListener(this);
+        signUpTextView.setOnClickListener(this);
+        resetPasswordTextView.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.signInButtonId:
+//                signIn();
+                break;
+            case R.id.signUpTextViewId:
+
+                break;
+
+    }
 
     }
 }
