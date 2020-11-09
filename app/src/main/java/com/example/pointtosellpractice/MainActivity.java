@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.pointtosellpractice.model_class.RegistrationData;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
+import com.google.gson.JsonObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -84,6 +85,11 @@ public class MainActivity extends AppCompatActivity {
                         if (response.isSuccessful()){
                             Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
                             Log.e("TAG", "success" );
+
+                            String post=response.body().toString();
+
+                            // JsonObject post = new JsonObject().get(response.body().toString()).getAsJsonObject();
+                            Log.e("res",post.toString());
                         }
 
                     }

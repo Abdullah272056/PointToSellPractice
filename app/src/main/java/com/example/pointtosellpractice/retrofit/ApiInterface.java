@@ -2,6 +2,7 @@ package com.example.pointtosellpractice.retrofit;
 
 
 
+import com.example.pointtosellpractice.model_class.LogInResponse;
 import com.example.pointtosellpractice.model_class.RegistrationData;
 import com.example.pointtosellpractice.model_class.LogInData;
 
@@ -20,7 +21,13 @@ public interface ApiInterface {
 
     //signIn
     @POST("api/auth/login/")
-    Call<LogInData>logInData(@Body LogInData logInData);
+    Call<LogInResponse>logInData(@Body LogInData logInData);
+
+
+
+    //Call<jetaReponsePaboSetarModelClass>logInData(@Body jetaPathaboSetarModelClass variableName);
+
+
 
 
 //    @PUT("api/user/{id}")

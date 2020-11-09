@@ -15,9 +15,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pointtosellpractice.model_class.LogInData;
+import com.example.pointtosellpractice.model_class.LogInResponse;
 import com.example.pointtosellpractice.model_class.RegistrationData;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
+import com.google.gson.JsonObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -99,22 +101,27 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         LogInData logInData       =new LogInData(signInEmail,signInPassword);
 
-        apiInterface.logInData(logInData).enqueue(new Callback<LogInData>() {
+        apiInterface.logInData(logInData).enqueue(new Callback<LogInResponse>() {
             @Override
-            public void onResponse(Call<LogInData> call, Response<LogInData> response) {
+            public void onResponse(Call<LogInResponse> call, Response<LogInResponse> response) {
                 if (response.isSuccessful()){
-                    Toast.makeText(LoginActivity.this, "success", Toast.LENGTH_SHORT).show();
-                    Log.e("TAG", "success");
+
+
+
+
+
+//
                 }
             }
 
             @Override
-            public void onFailure(Call<LogInData> call, Throwable t) {
-                Log.e("wwe",t.getMessage().toString());
-                Toast.makeText(LoginActivity.this, "fail", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<LogInResponse> call, Throwable t) {
+
             }
         });
 
+
+//
 
     }
 }
