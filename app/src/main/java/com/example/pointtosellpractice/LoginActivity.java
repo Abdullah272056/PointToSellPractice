@@ -3,12 +3,13 @@ package com.example.pointtosellpractice;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     EditText signInEmailEditText,signInPasswordEditText;
     Button signInButton;
@@ -30,6 +31,11 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
+
+    }
+
+    @Override
+    public void onClick(View v) {
 
     }
 }
