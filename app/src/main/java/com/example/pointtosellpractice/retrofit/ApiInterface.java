@@ -2,7 +2,8 @@ package com.example.pointtosellpractice.retrofit;
 
 
 
-import com.example.pointtosellpractice.model_class.OurDataSet;
+import com.example.pointtosellpractice.model_class.RegistrationData;
+import com.example.pointtosellpractice.model_class.LogInData;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -13,9 +14,11 @@ public interface ApiInterface {
 //    @GET("api/user/")
 //    Call<AddresResponse> getAddress();
 
-
+  //registration
     @POST("api/auth/register/")
-    Call<OurDataSet>postData(@Body OurDataSet ourDataSet);
+    Call<RegistrationData>postData(@Body RegistrationData registrationData);
+
+ 
 
 
 //    @PUT("api/user/{id}")

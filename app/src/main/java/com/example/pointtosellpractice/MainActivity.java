@@ -11,7 +11,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.pointtosellpractice.model_class.OurDataSet;
+import com.example.pointtosellpractice.model_class.RegistrationData;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 
@@ -71,16 +71,19 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                OurDataSet ourDataSet       =new OurDataSet(companyName,companyOwner,email,companyType,
+                RegistrationData ourDataSet       =new RegistrationData(companyName,companyOwner,email,companyType,
                         aboutCompany,password,address,phone);
-                apiInterface.postData(ourDataSet).enqueue(new Callback<OurDataSet>(){
+                apiInterface.postData(ourDataSet).enqueue(new Callback<RegistrationData>(){
                     @Override
-                    public void onResponse(Call<OurDataSet> call, Response<OurDataSet> response) {
+                    public void onResponse(Call<RegistrationData> call, Response<RegistrationData> response) {
+                        if (response.isSuccessful()){
+                            Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
+                            Log.e("TAG", "success" );
+                        }
 
-                        Toast.makeText(MainActivity.this, "create success", Toast.LENGTH_SHORT).show();
                     }
                     @Override
-                    public void onFailure(Call<OurDataSet> call, Throwable t){
+                    public void onFailure(Call<RegistrationData> call, Throwable t){
                         Log.e("wwe",t.getMessage().toString());
                         Toast.makeText(MainActivity.this, "fail", Toast.LENGTH_SHORT).show();
                     }

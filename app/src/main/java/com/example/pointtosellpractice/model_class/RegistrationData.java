@@ -1,9 +1,8 @@
 package com.example.pointtosellpractice.model_class;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 
-public class OurDataSet {
+
+public class RegistrationData {
 
    String companyName;
     String companyOwner;
@@ -14,10 +13,10 @@ public class OurDataSet {
     String address;
    String phone;
 
-    public OurDataSet() {
+    public RegistrationData() {
     }
 
-    public OurDataSet(String companyName, String companyOwner, String email, String companyType, String description, String password, String address, String phone) {
+    public RegistrationData(String companyName, String companyOwner, String email, String companyType, String description, String password, String address, String phone) {
         this.companyName = companyName;
         this.companyOwner = companyOwner;
         this.email = email;
