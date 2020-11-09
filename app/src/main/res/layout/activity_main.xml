@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
+    android:background="@drawable/download1"
     tools:context=".MainActivity">
     <ScrollView
         android:layout_width="match_parent"
@@ -16,6 +17,8 @@
             android:layout_height="match_parent">
 
             <EditText
+                android:padding="10dp"
+                android:background="#DAD3D3"
                 android:id="@+id/signUpCompanyNameEditTextId"
                 android:textSize="20sp"
                 android:layout_marginTop="20dp"
@@ -24,6 +27,8 @@
                 android:layout_height="wrap_content"/>
 
             <EditText
+                android:padding="10dp"
+                android:background="#DAD3D3"
                 android:id="@+id/signUpCompanyOwnerEditTextId"
                 android:textSize="20sp"
                 android:layout_marginTop="20dp"
@@ -33,6 +38,8 @@
 
 
             <EditText
+                android:padding="10dp"
+                android:background="#DAD3D3"
                 android:id="@+id/signUpEmailEditTextId"
                 android:textSize="20sp"
                 android:layout_marginTop="20dp"
@@ -43,6 +50,8 @@
 
 
             <EditText
+                android:padding="10dp"
+                android:background="#DAD3D3"
                 android:id="@+id/signUpPhoneEditTextId"
                 android:textSize="20sp"
                 android:layout_marginTop="20dp"
@@ -52,21 +61,32 @@
 
 
             <EditText
+                android:padding="10dp"
+                android:background="#DAD3D3"
                 android:id="@+id/signUpAddressEditTextId"
                 android:textSize="20sp"
                 android:layout_marginTop="20dp"
                 android:hint="Address*"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
-            <Spinner
-                android:textSize="20sp"
+            <LinearLayout
                 android:layout_marginTop="20dp"
-                android:entries="@array/business_type"
-                android:id="@+id/businessTypeSpinnerId"
+                android:background="#DAD3D3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content">
+                <Spinner
+                   android:padding="10dp"
+                    android:textSize="20sp"
+                    android:entries="@array/business_type"
+                    android:id="@+id/businessTypeSpinnerId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
 
             <EditText
+                android:padding="10dp"
+                android:background="#DAD3D3"
                 android:id="@+id/signUpAboutCompanyEditTextId"
                 android:textSize="20sp"
                 android:layout_marginTop="20dp"
@@ -75,6 +95,8 @@
                 android:layout_height="wrap_content"/>
 
             <EditText
+                android:padding="10dp"
+                android:background="#DAD3D3"
                 android:id="@+id/signUpPasswordEditTextId"
                 android:textSize="20sp"
                 android:layout_marginTop="20dp"
@@ -84,6 +106,8 @@
                 android:layout_height="wrap_content"/>
 
             <EditText
+                android:padding="10dp"
+                android:background="#DAD3D3"
                 android:id="@+id/signUpConfirmPasswordEditTextId"
                 android:textSize="20sp"
                 android:layout_marginTop="20dp"
@@ -93,20 +117,24 @@
                 android:layout_height="wrap_content"/>
 
             <Button
+                android:background="#2196F3"
+                android:padding="10dp"
                 android:id="@+id/signUpButtonId"
-                android:textSize="20sp"
+                android:textSize="25sp"
                 android:layout_marginTop="20dp"
                 android:text="Sign Up"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
+                android:textColor="#ffffff"
+                android:layout_marginRight="30dp"
                 android:layout_marginBottom="30dp"
                 android:layout_gravity="right"
                 android:id="@+id/signInTextViewId"
                 android:textSize="20sp"
                 android:layout_marginTop="20dp"
-                android:text="AlreadyHave an account? Sign In"
-                android:layout_width="match_parent"
+                android:text="already Have an account? Sign In"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
         </LinearLayout>
