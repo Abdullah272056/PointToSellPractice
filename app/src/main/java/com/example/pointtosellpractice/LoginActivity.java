@@ -56,6 +56,28 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void signIn() {
-      
+        String signInEmail= signInEmailEditText.getText().toString().trim();
+        String signInPassword= signInPasswordEditText.getText().toString().trim();
+        if (TextUtils.isEmpty(signInEmail)){
+            signInEmailEditText.setError("Enter your email");
+            signInEmailEditText.requestFocus();
+            return;
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(signInEmail).matches()){
+            signInEmailEditText.setError("Enter a valid  email address");
+            signInEmailEditText.requestFocus();
+            return;
+        }
+        if (TextUtils.isEmpty(signInPassword)){
+            signInPasswordEditText.setError("Enter  password");
+            signInPasswordEditText.requestFocus();
+            return;
+        }
+        if (signInPassword.length()<6){
+            signInPasswordEditText.setError("Minimum length of a password should be 6");
+            signInPasswordEditText.requestFocus();
+            return;
+        }
     }
 }
