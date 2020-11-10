@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pointtosellpractice.model_class.RegistrationData;
+import com.example.pointtosellpractice.model_class.RegistrationResponse;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 import com.google.gson.JsonObject;
@@ -77,9 +78,30 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                RegistrationData ourDataSet       =new RegistrationData(companyName,companyOwner,email,companyType,
+                final RegistrationData registrationData       =new RegistrationData(companyName,companyOwner,email,companyType,
                         aboutCompany,password,address,phone);
-               
+                apiInterface.registrationData(registrationData).enqueue(new Callback<RegistrationResponse>() {
+                    @Override
+                    public void onResponse(Call<RegistrationResponse> call, Response<RegistrationResponse> response) {
+                        if (response.isSuccessful()){
+                            RegistrationResponse registrationResponse=response.body();
+
+                            assert registrationResponse != null;
+                            if (registrationResponse.getSuccess()==true){
+                                Toast.makeText(MainActivity.this,registrationResponse.getData() , Toast.LENGTH_SHORT).show();
+                            }
+                            Log.e("TAG", "success" );
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<RegistrationResponse> call, Throwable t) {
+                        Log.e("wwe",t.getMessage().toString());
+                        Toast.makeText(MainActivity.this, "fail", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
             }
         });
 
