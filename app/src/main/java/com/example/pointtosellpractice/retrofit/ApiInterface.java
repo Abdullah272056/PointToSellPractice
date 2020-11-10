@@ -5,6 +5,7 @@ package com.example.pointtosellpractice.retrofit;
 import com.example.pointtosellpractice.model_class.LogInResponse;
 import com.example.pointtosellpractice.model_class.RegistrationData;
 import com.example.pointtosellpractice.model_class.LogInData;
+import com.example.pointtosellpractice.model_class.RegistrationResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -17,7 +18,7 @@ public interface ApiInterface {
 
   //registration
     @POST("api/auth/register/")
-    Call<RegistrationData>postData(@Body RegistrationData registrationData);
+    Call<RegistrationResponse>postData(@Body RegistrationData registrationData);
 
     //signIn
     @POST("api/auth/login/")
