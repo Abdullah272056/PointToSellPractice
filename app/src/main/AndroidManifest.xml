@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".HomePage"></activity>
+        <activity android:name=".HomePage"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            ></activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
