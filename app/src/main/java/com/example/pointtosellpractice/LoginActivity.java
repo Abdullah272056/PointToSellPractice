@@ -69,9 +69,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.signUpTextViewId:
 
                 break;
-
     }
-
     }
 
     private void signIn() {
@@ -107,7 +105,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if (response.isSuccessful()){
                     // receive response body
                     LogInResponse logInResponse=response.body();
-                    
+
                     Toast.makeText(LoginActivity.this, "success", Toast.LENGTH_SHORT).show();
                     Log.e("TAG", "success");
 
