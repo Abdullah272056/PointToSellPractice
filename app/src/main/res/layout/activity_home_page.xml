@@ -6,5 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".HomePage">
 
+    <LinearLayout
+        android:id="@+id/mainLayoutId"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/my_toolbar"
+            android:id="@+id/toolbarId"
+            />
+      <LinearLayout
+          android:gravity="center"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+
+          <TextView
+              android:textSize="40sp"
+              android:text="This is Home page"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"/>
+
+      </LinearLayout>
+
+
+    </LinearLayout>
+    <com.google.android.material.navigation.NavigationView
+        app:itemIconTint="#0B0B0B"
+        app:itemTextColor="#040303"
+        android:id="@+id/myNavigationViewId"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/navigation_header"
+        app:menu="@menu/my_menu" />
+
 
 </androidx.drawerlayout.widget.DrawerLayout>
