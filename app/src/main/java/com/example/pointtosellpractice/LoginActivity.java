@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     TextView signUpTextView,resetPasswordTextView;
     ProgressBar progressBar;
 
-    ApiInterface apiInterface,apiInterface1;
+    ApiInterface apiInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +67,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
               
                 break;
             case R.id.signUpTextViewId:
+                Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+                startActivity(intent);
+                finish();
+
+                break;
+            case R.id.resetPasswordTextViewId:
 
                 break;
     }
