@@ -122,7 +122,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Log.e("res",logInResponse.getToken());
 
                 }
-               
+                else {
+                    Toast.makeText(LoginActivity.this, "password can not match", Toast.LENGTH_SHORT).show();
+                    signInPasswordEditText.setError("password can not match");
+                    signInPasswordEditText.requestFocus();
+                }
 
             }
 
