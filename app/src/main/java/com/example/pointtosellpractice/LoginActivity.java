@@ -122,10 +122,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Log.e("res",logInResponse.getToken());
 
                 }
+               
+
             }
 
             @Override
             public void onFailure(Call<LogInResponse> call, Throwable t) {
+                Toast.makeText(LoginActivity.this, "fail", Toast.LENGTH_SHORT).show();
 
             }
         });
