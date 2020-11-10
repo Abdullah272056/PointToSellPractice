@@ -79,26 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
                 RegistrationData ourDataSet       =new RegistrationData(companyName,companyOwner,email,companyType,
                         aboutCompany,password,address,phone);
-                apiInterface.postData(ourDataSet).enqueue(new Callback<RegistrationData>(){
-                    @Override
-                    public void onResponse(Call<RegistrationData> call, Response<RegistrationData> response) {
-                        if (response.isSuccessful()){
-                            Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
-                            Log.e("TAG", "success" );
-
-                            String post=response.body().toString();
-
-                            // JsonObject post = new JsonObject().get(response.body().toString()).getAsJsonObject();
-                            Log.e("res",post.toString());
-                        }
-
-                    }
-                    @Override
-                    public void onFailure(Call<RegistrationData> call, Throwable t){
-                        Log.e("wwe",t.getMessage().toString());
-                        Toast.makeText(MainActivity.this, "fail", Toast.LENGTH_SHORT).show();
-                    }
-                });
+               
             }
         });
 
