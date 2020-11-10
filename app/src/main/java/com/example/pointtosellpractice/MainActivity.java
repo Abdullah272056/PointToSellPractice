@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,11 +27,11 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
     EditText companyNameEditText,companyOwnerEditText,emailEditText,phoneEditText,
     addressEditText,aboutCompanyEditText,passwordEditText,confirmPasswordEditText;
-    Spinner businessTypeSpinner;
+    Spinner companyTypeSpinner;
     Button signUpButton;
     TextView signInTextView;
 
-    ApiInterface apiInterface,apiInterface1;
+    ApiInterface apiInterface;
 
 
     @Override
@@ -46,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         passwordEditText=findViewById(R.id.signUpPasswordEditTextId);
         confirmPasswordEditText=findViewById(R.id.signUpConfirmPasswordEditTextId);
         signUpButton=findViewById(R.id.signUpButtonId);
-        businessTypeSpinner=findViewById(R.id.businessTypeSpinnerId);
+        companyTypeSpinner=findViewById(R.id.businessTypeSpinnerId);
         signInTextView=findViewById(R.id.signInTextViewId);
 
         //initialize apiInterface
@@ -71,8 +73,65 @@ public class MainActivity extends AppCompatActivity {
               String  aboutCompany=aboutCompanyEditText.getText().toString().trim();
               String  password=passwordEditText.getText().toString().trim();
               String  confirmPassword=confirmPasswordEditText.getText().toString().trim();
-              String companyType=businessTypeSpinner.getSelectedItem().toString();
-             // String  password=passwordEditText.getText().toString().trim();
+              String companyType=companyTypeSpinner.getSelectedItem().toString();
+
+
+                if (TextUtils.isEmpty(companyName)){
+                    companyNameEditText.setError("Enter your company name");
+                    companyNameEditText.requestFocus();
+                    return;
+                }
+                if (TextUtils.isEmpty(companyOwner)){
+                    companyOwnerEditText.setError("Enter your company owner name");
+                    companyOwnerEditText.requestFocus();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(email)){
+                    emailEditText.setError("Enter your email");
+                    emailEditText.requestFocus();
+                    return;
+                }
+                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                    emailEditText.setError("Enter a valid  email address");
+                    emailEditText.requestFocus();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(phone)){
+                    phoneEditText.setError("Enter your phone number");
+                    phoneEditText.requestFocus();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(address)){
+                    addressEditText.setError("Enter your address");
+                    addressEditText.requestFocus();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(aboutCompany)){
+                    aboutCompanyEditText.setError("Enter about company");
+                    aboutCompanyEditText.requestFocus();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(password)){
+                    passwordEditText.setError("Enter your password");
+                    passwordEditText.requestFocus();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(confirmPassword)){
+                    confirmPasswordEditText.setError("Enter your confirm password");
+                    confirmPasswordEditText.requestFocus();
+                    return;
+                }
+                if (password!=confirmPassword){
+                    confirmPasswordEditText.setError("can not matching confirm password");
+                    confirmPasswordEditText.requestFocus();
+                    return;
+                }
 
 
 
@@ -88,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
 
                             assert registrationResponse != null;
                             if (registrationResponse.getSuccess()==true){
-                                Toast.makeText(MainActivity.this,registrationResponse.getData() , Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this,registrationResponse.getData() , Toast.LENGTH_LONG).show();
                             }
                             Log.e("TAG", "success" );
 
