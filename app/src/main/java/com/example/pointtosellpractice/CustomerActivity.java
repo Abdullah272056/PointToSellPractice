@@ -63,7 +63,11 @@ public class CustomerActivity extends AppCompatActivity {
             }
         });
 
+        getAllCustomer();
 
+    }
+
+    private void getAllCustomer() {
         apiInterface.getAllCustomerInformation("Bearer "+token).enqueue(new Callback<CustomerInformationDataResponse>() {
             @Override
             public void onResponse(Call<CustomerInformationDataResponse> call, Response<CustomerInformationDataResponse> response) {
@@ -103,15 +107,7 @@ public class CustomerActivity extends AppCompatActivity {
         });
 
 
-
-
     }
-
-
-
-
-
-
 
 
     private void addCustomerInformation(){
@@ -184,6 +180,7 @@ public class CustomerActivity extends AppCompatActivity {
                             public void onResponse(Call<AddCustomerResponse> call, Response<AddCustomerResponse> response) {
                                 Toast.makeText(CustomerActivity.this, "success", Toast.LENGTH_SHORT).show();
                                 Log.e("ss", "ssss");
+                                getAllCustomer();
                             }
                             @Override
                             public void onFailure(Call<AddCustomerResponse> call, Throwable t) {
