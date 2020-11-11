@@ -114,10 +114,12 @@ public class HomePage extends AppCompatActivity {
                     public void onResponse(Call<CustomerInformationDataResponse> call, Response<CustomerInformationDataResponse> response) {
                         Toast.makeText(HomePage.this, "Success", Toast.LENGTH_SHORT).show();
 
-                        customerInformationDataList=new ArrayList<>();
+
                         CustomerInformationDataResponse customerInformationDataResponse=response.body();
                         customerInformationDataList.addAll(response.body().getCustomerInformation());
                         if (customerInformationDataResponse.getSuccess()==true){
+                            customerInformationDataList=new ArrayList<>();
+                            customerInformationDataList.addAll(response.body().getCustomerInformation());
                             if (TextUtils.isEmpty(customerInformationDataList.get(0).getEmail()) ||
                                     customerInformationDataList.get(0).getEmail()==null)  {
                                 Log.e("namec","No Due");

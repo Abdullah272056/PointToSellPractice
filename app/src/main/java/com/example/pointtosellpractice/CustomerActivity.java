@@ -2,6 +2,7 @@ package com.example.pointtosellpractice;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -15,11 +16,17 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.pointtosellpractice.customer.CustomerCustomAdapter;
 import com.example.pointtosellpractice.customer.CustomerData;
 import com.example.pointtosellpractice.customer.AddCustomerResponse;
+import com.example.pointtosellpractice.customer.CustomerInformationData;
+import com.example.pointtosellpractice.customer.CustomerInformationDataResponse;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,7 +36,8 @@ public class CustomerActivity extends AppCompatActivity {
     RecyclerView customerRecyclerView;
     FloatingActionButton addCustomerButton;
 
-
+   // List<CustomerInformationData> customerInformationDataList;
+    List<CustomerInformationData> customerInformationList;
     String token;
 
     ApiInterface apiInterface;
@@ -37,6 +45,7 @@ public class CustomerActivity extends AppCompatActivity {
     Button addCustomerDataButton,cancelCustomerButton;
     CustomerData customerData;
     ProgressBar progressBar;
+    CustomerCustomAdapter customerCustomAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +62,46 @@ public class CustomerActivity extends AppCompatActivity {
                 addCustomerInformation();
             }
         });
+
+
+        apiInterface.getAllCustomerInformation("Bearer "+token).enqueue(new Callback<CustomerInformationDataResponse>() {
+            @Override
+            public void onResponse(Call<CustomerInformationDataResponse> call, Response<CustomerInformationDataResponse> response) {
+                Toast.makeText(CustomerActivity.this, "Success", Toast.LENGTH_SHORT).show();
+
+
+                CustomerInformationDataResponse customerInformationDataResponse=response.body();
+//
+                if (customerInformationDataResponse.getSuccess()==true){
+                    customerInformationList=new ArrayList<>();
+                    customerInformationList.addAll(response.body().getCustomerInformation());
+                    if (customerInformationList.size ()>0){
+                        customerCustomAdapter = new CustomerCustomAdapter(CustomerActivity.this,customerInformationList);
+                        customerRecyclerView.setLayoutManager(new LinearLayoutManager(CustomerActivity.this));
+                        customerRecyclerView.setAdapter(customerCustomAdapter);
+                    }
+
+
+//                    if (TextUtils.isEmpty(customerInformationDataList.get(0).getEmail()) ||
+//                            customerInformationDataList.get(0).getEmail()==null)  {
+//                        Log.e("namec","No Email");
+//                        Toast.makeText(CustomerActivity.this, "Ssss", Toast.LENGTH_SHORT).show();
+//
+//                    }else {
+//                        Log.e("namec",customerInformationDataList.get(2).getEmail().toString());
+//                        Toast.makeText(CustomerActivity.this, "Ssss", Toast.LENGTH_SHORT).show();
+//                    }
+
+                }
+            }
+            @Override
+            public void onFailure(Call<CustomerInformationDataResponse> call, Throwable t) {
+                Toast.makeText(CustomerActivity.this, "fail:  "+t.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                Log.e("namec","error: "+t.getMessage().toString());
+
+            }
+        });
+
 
 
 

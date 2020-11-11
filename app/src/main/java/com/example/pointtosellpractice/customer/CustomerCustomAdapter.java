@@ -1,42 +1,56 @@
 package com.example.pointtosellpractice.customer;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.pointtosellpractice.R;
+
 import java.util.List;
 
 public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAdapter.MyViewHolder> {
-  List<CustomerInformationDataResponse> customerInformationDataResponseList;
-    Context context;
+ // List<CustomerInformationData> customerInformationList;
 
-    public CustomerCustomAdapter(List<CustomerInformationDataResponse> customerInformationDataResponseList, Context context) {
-        this.customerInformationDataResponseList = customerInformationDataResponseList;
+    Context context;
+    List<CustomerInformationData> customerInformationList;
+
+    public CustomerCustomAdapter(Context context, List<CustomerInformationData> customerInformationList) {
         this.context = context;
+        this.customerInformationList = customerInformationList;
     }
+
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View view = LayoutInflater.from(context).inflate(R.layout.customer_recyclerview_item,parent,false);
+        return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
+        holder.customerNameTextView.setText(customerInformationList.get(position).getName());
+        holder.customerPhoneTextView.setText(customerInformationList.get(position).getPhone());
+
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return customerInformationList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView customerNameTextView,customerPhoneTextView;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            customerNameTextView=itemView.findViewById(R.id.customerNameTextViewId);
+            customerPhoneTextView=itemView.findViewById(R.id.customerPhoneTextViewId);
         }
     }
 }
