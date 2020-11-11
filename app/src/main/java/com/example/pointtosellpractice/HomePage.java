@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,9 +32,10 @@ public class HomePage extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     ApiInterface apiInterface;
-    TextView tokenText;
+
 
     String token;
+    Button userInFormationButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,13 +47,38 @@ public class HomePage extends AppCompatActivity {
         if (toolbar!=null){
             setSupportActionBar (toolbar);
         }
-        tokenText=findViewById(R.id.tokenTextId);
 
 
+
+        userInFormationButton=findViewById(R.id.userAllDataButtonId);
+
+
+        //receive user token
         token= getIntent().getStringExtra("token");
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
 
-      
+        userInFormationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                apiInterface.getUserAllInformation("Bearer "+token).enqueue(new Callback<UserDataWithResponse>() {
+                    @Override
+                    public void onResponse(Call<UserDataWithResponse> call, Response<UserDataWithResponse> response) {
+
+                        UserDataWithResponse userDataWithResponse=response.body();
+                        Toast.makeText(HomePage.this, "success", Toast.LENGTH_SHORT).show();
+                        Log.e("gt", userDataWithResponse.getData().getEmail().toString());
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<UserDataWithResponse> call, Throwable t) {
+                        Toast.makeText(HomePage.this, "fail", Toast.LENGTH_SHORT).show();
+                        Log.e("gt", "ff");
+                    }
+                });
+            }
+        });
+
 
 
         drawerLayout=findViewById (R.id.drawerLayoutId);
