@@ -40,16 +40,10 @@ public class HomePage extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     ApiInterface apiInterface;
-    List<CustomerInformationData> customerInformationDataList;
 
     String token;
-    Button userInFormationButton, addCustomer,allCustomerButton;
+    Button userInFormationButton, addCustomer;
 
-
-    EditText customerNameEditText,customerEmailEditText,customerPhoneEditText,customerAddressEditText;
-    Button addCustomerDataButton,cancelCustomerButton;
-    CustomerData customerData;
-    Spinner spinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,8 +60,6 @@ public class HomePage extends AppCompatActivity {
 
         userInFormationButton=findViewById(R.id.userAllDataButtonId);
         addCustomer=findViewById(R.id.addCustomerId);
-        allCustomerButton=findViewById(R.id.allCustomerButtonId);
-
 
         //receive user token
         token= getIntent().getStringExtra("token");
@@ -105,49 +97,6 @@ public class HomePage extends AppCompatActivity {
                 });
             }
         });
-// all cu
-        allCustomerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                apiInterface.getAllCustomerInformation("Bearer "+token).enqueue(new Callback<CustomerInformationDataResponse>() {
-                    @Override
-                    public void onResponse(Call<CustomerInformationDataResponse> call, Response<CustomerInformationDataResponse> response) {
-                        Toast.makeText(HomePage.this, "Success", Toast.LENGTH_SHORT).show();
-
-
-                        CustomerInformationDataResponse customerInformationDataResponse=response.body();
-                        customerInformationDataList.addAll(response.body().getCustomerInformation());
-                        if (customerInformationDataResponse.getSuccess()==true){
-                            customerInformationDataList=new ArrayList<>();
-                            customerInformationDataList.addAll(response.body().getCustomerInformation());
-                            if (TextUtils.isEmpty(customerInformationDataList.get(0).getEmail()) ||
-                                    customerInformationDataList.get(0).getEmail()==null)  {
-                                Log.e("namec","No Due");
-                                Toast.makeText(HomePage.this, "Ssss", Toast.LENGTH_SHORT).show();
-
-                            }else {
-                                Log.e("namec",customerInformationDataList.get(2).getEmail().toString());
-                                Toast.makeText(HomePage.this, "Ssss", Toast.LENGTH_SHORT).show();
-                            }
-
-
-
-
-                          //  customerInformationDataList.get(0).getEmail().toString();
-                        }
-                    }
-                    @Override
-                    public void onFailure(Call<CustomerInformationDataResponse> call, Throwable t) {
-                        Toast.makeText(HomePage.this, "fail:  "+t.getMessage().toString(), Toast.LENGTH_SHORT).show();
-                        Log.e("namec","error: "+t.getMessage().toString());
-
-                    }
-                });
-            }
-        });
-
-
-
         drawerLayout=findViewById (R.id.drawerLayoutId);
         navigationView=findViewById (R.id.myNavigationViewId);
         ActionBarDrawerToggle actionBarDrawerToggle=new ActionBarDrawerToggle(
