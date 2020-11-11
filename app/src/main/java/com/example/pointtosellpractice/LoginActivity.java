@@ -114,6 +114,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     if (logInResponse.getSuccess()==true){
 
                         Intent intent=new Intent(LoginActivity.this,HomePage.class);
+                        intent.putExtra("token",logInResponse.getToken());
                         startActivity(intent);
                     }
 
@@ -137,8 +138,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
-
-//
 
     }
 }

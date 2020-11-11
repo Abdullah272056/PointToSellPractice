@@ -19,13 +19,22 @@
             android:id="@+id/toolbarId"
             />
       <LinearLayout
+          android:orientation="vertical"
           android:gravity="center"
           android:layout_width="match_parent"
           android:layout_height="match_parent">
 
           <TextView
+              android:id="@+id/tokenTextId"
               android:textSize="40sp"
               android:text="This is Home page"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"/>
+          <Button
+              android:layout_marginTop="50dp"
+              android:id="@+id/userAllDataButtonId"
+              android:textSize="30sp"
+              android:text="User all Data"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"/>
 

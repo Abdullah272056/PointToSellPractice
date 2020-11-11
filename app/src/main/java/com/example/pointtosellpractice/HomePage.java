@@ -5,30 +5,54 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.pointtosellpractice.model_class.LogInResponse;
+import com.example.pointtosellpractice.retrofit.ApiInterface;
+import com.example.pointtosellpractice.retrofit.RetrofitClient;
+import com.example.pointtosellpractice.user_all_information.UserDataWithResponse;
 import com.google.android.material.navigation.NavigationView;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomePage extends AppCompatActivity {
     Toolbar toolbar;
     LinearLayout linearLayout;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+    ApiInterface apiInterface;
+    TextView tokenText;
+
+    String token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
         linearLayout=findViewById(R.id.mainLayoutId);
+
         toolbar=findViewById (R.id.toolbarId);
         if (toolbar!=null){
             setSupportActionBar (toolbar);
         }
+        tokenText=findViewById(R.id.tokenTextId);
+
+
+        token= getIntent().getStringExtra("token");
+        apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
+
+      
+
 
         drawerLayout=findViewById (R.id.drawerLayoutId);
         navigationView=findViewById (R.id.myNavigationViewId);
