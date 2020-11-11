@@ -32,8 +32,9 @@ public interface ApiInterface {
     //Call<jetaReponsePaboSetarModelClass>logInData(@Body jetaPathaboSetarModelClass variableName);
 
 
-
-
+    //user all information
+    @GET("api/auth/me")
+    Call<UserDataWithResponse> getUserAllInformation(@Header("Authorization") String authorization);
 
 
 //    @PUT("api/user/{id}")
