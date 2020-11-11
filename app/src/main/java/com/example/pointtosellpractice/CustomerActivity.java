@@ -122,6 +122,7 @@ public class CustomerActivity extends AppCompatActivity {
         customerPhoneEditText=view.findViewById(R.id.customerPhoneEditTextId);
         customerEmailEditText=view.findViewById(R.id.customerEmailEditTextId);
         customerAddressEditText=view.findViewById(R.id.customerAddressEditTextId);
+        progressBar=view.findViewById(R.id.newCustomerProgressBarId);
 
         addCustomerDataButton=view.findViewById(R.id.saveCustomerDataButtonId);
         cancelCustomerButton=view.findViewById(R.id.cancelCustomerDataButtonId);
@@ -173,18 +174,22 @@ public class CustomerActivity extends AppCompatActivity {
                         customerData=new CustomerData(customerName,customerPhone,customerEmail,customerAddress);
                     }
                 }
-
+                    progressBar.setVisibility(View.VISIBLE);
                 apiInterface.addCustomerInformation("Bearer "+token,customerData).enqueue(
                         new Callback<AddCustomerResponse>() {
                             @Override
                             public void onResponse(Call<AddCustomerResponse> call, Response<AddCustomerResponse> response) {
                                 Toast.makeText(CustomerActivity.this, "success", Toast.LENGTH_SHORT).show();
                                 Log.e("ss", "ssss");
+                                alertDialog.dismiss();
+                                progressBar.setVisibility(View.GONE);
                                 getAllCustomer();
+
                             }
                             @Override
                             public void onFailure(Call<AddCustomerResponse> call, Throwable t) {
                                 Log.e("ffuo", t.getMessage().toString());
+                                progressBar.setVisibility(View.GONE);
 
                             }
                         }
@@ -195,6 +200,7 @@ public class CustomerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 alertDialog.dismiss();
+                progressBar.setVisibility(View.GONE);
             }
         });
         alertDialog.show();
