@@ -44,13 +44,17 @@ public class CustomerActivity extends AppCompatActivity {
     EditText customerNameEditText,customerEmailEditText,customerPhoneEditText,customerAddressEditText;
     Button addCustomerDataButton,cancelCustomerButton;
     CustomerData customerData;
-    ProgressBar progressBar;
+    ProgressBar progressBar,mainProgressBar;
     CustomerCustomAdapter customerCustomAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer);
+        mainProgressBar=findViewById(R.id.customerProgressBarId);
+        mainProgressBar.setVisibility(View.VISIBLE);
+
+
         customerRecyclerView=findViewById(R.id.customerRecyclerViewId);
         addCustomerButton=findViewById(R.id.addCustomerButtonId);
         token= getIntent().getStringExtra("token1");
@@ -64,7 +68,7 @@ public class CustomerActivity extends AppCompatActivity {
         });
 
         getAllCustomer();
-
+        //mainProgressBar.setVisibility(View.GONE);
     }
 
     private void getAllCustomer() {
@@ -95,6 +99,7 @@ public class CustomerActivity extends AppCompatActivity {
 //                        Log.e("namec",customerInformationDataList.get(2).getEmail().toString());
 //                        Toast.makeText(CustomerActivity.this, "Ssss", Toast.LENGTH_SHORT).show();
 //                    }
+                    mainProgressBar.setVisibility(View.GONE);
 
                 }
             }
@@ -102,7 +107,7 @@ public class CustomerActivity extends AppCompatActivity {
             public void onFailure(Call<CustomerInformationDataResponse> call, Throwable t) {
                 Toast.makeText(CustomerActivity.this, "fail:  "+t.getMessage().toString(), Toast.LENGTH_SHORT).show();
                 Log.e("namec","error: "+t.getMessage().toString());
-
+                mainProgressBar.setVisibility(View.GONE);
             }
         });
 
