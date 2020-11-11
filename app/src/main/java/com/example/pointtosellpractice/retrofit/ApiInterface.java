@@ -46,8 +46,8 @@ public interface ApiInterface {
   Call<CustomerInformationDataResponse> addCustomerInformation(@Header("Authorization") String authorization, @Body CustomerData customerData);
 
   // get allCustomer data
-@GET("api/customer")
-Call<CustomerInformationDataResponse> getAllCustomerInformation(@Header("Authorization") String authorization);
+    @GET("api/customer")
+    Call<CustomerInformationDataResponse> getAllCustomerInformation(@Header("Authorization") String authorization);
 
 
 

@@ -45,6 +45,13 @@
               android:text="add Customer"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"/>
+          <Button
+              android:layout_marginTop="50dp"
+              android:id="@+id/allCustomerButtonId"
+              android:textSize="30sp"
+              android:text="All Customer"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"/>
 
       </LinearLayout>
 
