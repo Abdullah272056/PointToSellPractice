@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     EditText signInEmailEditText,signInPasswordEditText;
     Button signInButton;
     TextView signUpTextView,resetPasswordTextView;
-    ProgressBar progressBar;
+    ProgressBar logInProgressBar;
 
     ApiInterface apiInterface;
 
@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         signInButton=findViewById(R.id.signInButtonId);
         signUpTextView=findViewById(R.id.signUpTextViewId);
         resetPasswordTextView=findViewById(R.id.resetPasswordTextViewId);
-        progressBar=findViewById(R.id.signInProgressBarId);
+        logInProgressBar=findViewById(R.id.signInProgressBarId);
 
 
         // listener set
@@ -104,6 +104,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
 
         LogInData logInData       =new LogInData(signInEmail,signInPassword);
+        logInProgressBar.setVisibility(View.VISIBLE);
 
         apiInterface.logInData(logInData).enqueue(new Callback<LogInResponse>() {
             @Override
@@ -116,6 +117,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         Intent intent=new Intent(LoginActivity.this,HomePage.class);
                         intent.putExtra("token",logInResponse.getToken());
                         startActivity(intent);
+                        logInProgressBar.setVisibility(View.GONE);
                     }
 
                     Toast.makeText(LoginActivity.this, "success", Toast.LENGTH_SHORT).show();
@@ -127,6 +129,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Toast.makeText(LoginActivity.this, "password can not match", Toast.LENGTH_SHORT).show();
                     signInPasswordEditText.setError("password can not match");
                     signInPasswordEditText.requestFocus();
+                    logInProgressBar.setVisibility(View.GONE);
+
                 }
 
             }
@@ -134,6 +138,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onFailure(Call<LogInResponse> call, Throwable t) {
                 Toast.makeText(LoginActivity.this, "fail", Toast.LENGTH_SHORT).show();
+                logInProgressBar.setVisibility(View.GONE);
 
             }
         });
