@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -85,8 +86,18 @@ public class CustomerActivity extends AppCompatActivity {
                     customerNameEditText.requestFocus();
                     return;
                 }
+                if (customerName.length()<4){
+                    customerNameEditText.setError("don't smaller than 4 character");
+                    customerNameEditText.requestFocus();
+                    return;
+                }
                 if (TextUtils.isEmpty(customerPhone)|| customerPhone==null){
                     customerPhoneEditText.setError("Enter customer phone");
+                    customerPhoneEditText.requestFocus();
+                    return;
+                }
+                if (customerPhone.length()<8){
+                    customerPhoneEditText.setError("don't smaller than 8 character");
                     customerPhoneEditText.requestFocus();
                     return;
                 }
@@ -101,7 +112,13 @@ public class CustomerActivity extends AppCompatActivity {
                     customerData=new CustomerData(customerName,customerPhone,customerAddress);
 
                 }if (!TextUtils.isEmpty(customerEmail ) && customerEmail!=null){
-                    customerData=new CustomerData(customerName,customerPhone,customerEmail,customerAddress);
+                    if (!Patterns.EMAIL_ADDRESS.matcher(customerEmail).matches()){
+                        customerEmailEditText.setError("Enter a valid  email address");
+                        customerEmailEditText.requestFocus();
+                        return;
+                    }else {
+                        customerData=new CustomerData(customerName,customerPhone,customerEmail,customerAddress);
+                    }
                 }
 
                 apiInterface.addCustomerInformation("Bearer "+token,customerData).enqueue(
