@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -76,10 +77,10 @@ public class HomePage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                addCustomerInformation();
-//               Intent intent=new Intent(HomePage.this,CustomerActivity.class);
-//               intent.putExtra("token1",token);
-//               startActivity(intent);
+
+               Intent intent=new Intent(HomePage.this,CustomerActivity.class);
+               intent.putExtra("token1",token);
+               startActivity(intent);
             }
         });
 
@@ -167,79 +168,5 @@ public class HomePage extends AppCompatActivity {
 
     }
 
-    private void addCustomerInformation() {
-
-        AlertDialog.Builder builder     =new AlertDialog.Builder(HomePage.this);
-        LayoutInflater layoutInflater   =LayoutInflater.from(HomePage.this);
-        View view                       =layoutInflater.inflate(R.layout.add_customer_data,null);
-        builder.setView(view);
-        final AlertDialog alertDialog   = builder.create();
-
-        customerNameEditText=view.findViewById(R.id.customerNameEditTextId);
-        customerPhoneEditText=view.findViewById(R.id.customerPhoneEditTextId);
-        customerEmailEditText=view.findViewById(R.id.customerEmailEditTextId);
-        customerAddressEditText=view.findViewById(R.id.customerAddressEditTextId);
-
-        addCustomerDataButton=view.findViewById(R.id.saveCustomerDataButtonId);
-        cancelCustomerButton=view.findViewById(R.id.cancelCustomerDataButtonId);
-        addCustomerDataButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String customerName=customerNameEditText.getText().toString();
-                String customerPhone=customerPhoneEditText.getText().toString();
-                String customerEmail=customerEmailEditText.getText().toString();
-                String customerAddress=customerAddressEditText.getText().toString();
-
-                if (TextUtils.isEmpty(customerName) || customerAddress==null){
-                    customerNameEditText.setError("Enter customer name");
-                    customerNameEditText.requestFocus();
-                    return;
-                }
-                if (TextUtils.isEmpty(customerPhone)|| customerPhone==null){
-                    customerPhoneEditText.setError("Enter customer phone");
-                    customerPhoneEditText.requestFocus();
-                    return;
-                }
-
-                if (TextUtils.isEmpty(customerAddress) ||customerAddress==null){
-                    customerAddressEditText.setError("Enter customer name");
-                    customerAddressEditText.requestFocus();
-                    return;
-                }
-
-                if (TextUtils.isEmpty(customerEmail)|| customerEmail==null){
-                   customerData=new CustomerData(customerName,customerPhone,customerAddress);
-
-                }if (!TextUtils.isEmpty(customerEmail ) && customerEmail!=null){
-                    customerData=new CustomerData(customerName,customerPhone,customerEmail,customerAddress);
-
-                }
-
-                apiInterface.addCustomerInformation("Bearer "+token,customerData).enqueue(
-                        new Callback<AddCustomerResponse>() {
-                            @Override
-                            public void onResponse(Call<AddCustomerResponse> call, Response<AddCustomerResponse> response) {
-                                Toast.makeText(HomePage.this, "success", Toast.LENGTH_SHORT).show();
-                                Log.e("ss", "ssss");
-                            }
-
-                            @Override
-                            public void onFailure(Call<AddCustomerResponse> call, Throwable t) {
-                                Log.e("ffuo", t.getMessage().toString());
-
-                            }
-                        }
-                );
-            }
-        });
-        cancelCustomerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.dismiss();
-            }
-        });
-
-alertDialog.show();
-
-    }
+   
 }
