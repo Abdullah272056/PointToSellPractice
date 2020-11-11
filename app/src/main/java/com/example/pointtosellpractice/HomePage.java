@@ -6,24 +6,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.pointtosellpractice.customer.CustomerData;
 import com.example.pointtosellpractice.customer.CustomerInformationData;
 import com.example.pointtosellpractice.customer.CustomerInformationDataResponse;
-import com.example.pointtosellpractice.model_class.LogInResponse;
+import com.example.pointtosellpractice.customer.AddCustomerResponse;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 import com.example.pointtosellpractice.user_all_information.UserDataWithResponse;
@@ -51,6 +48,7 @@ public class HomePage extends AppCompatActivity {
     EditText customerNameEditText,customerEmailEditText,customerPhoneEditText,customerAddressEditText;
     Button addCustomerDataButton,cancelCustomerButton;
     CustomerData customerData;
+    Spinner spinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,7 +75,11 @@ public class HomePage extends AppCompatActivity {
         addCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 addCustomerInformation();
+//               Intent intent=new Intent(HomePage.this,CustomerActivity.class);
+//               intent.putExtra("token1",token);
+//               startActivity(intent);
             }
         });
 
@@ -188,50 +190,46 @@ public class HomePage extends AppCompatActivity {
                 String customerEmail=customerEmailEditText.getText().toString();
                 String customerAddress=customerAddressEditText.getText().toString();
 
-                if (TextUtils.isEmpty(customerName)){
+                if (TextUtils.isEmpty(customerName) || customerAddress==null){
                     customerNameEditText.setError("Enter customer name");
                     customerNameEditText.requestFocus();
                     return;
                 }
-                if (TextUtils.isEmpty(customerPhone)){
+                if (TextUtils.isEmpty(customerPhone)|| customerPhone==null){
                     customerPhoneEditText.setError("Enter customer phone");
                     customerPhoneEditText.requestFocus();
                     return;
                 }
 
-                if (TextUtils.isEmpty(customerAddress)){
+                if (TextUtils.isEmpty(customerAddress) ||customerAddress==null){
                     customerAddressEditText.setError("Enter customer name");
                     customerAddressEditText.requestFocus();
                     return;
                 }
 
-                if (TextUtils.isEmpty(customerEmail)){
+                if (TextUtils.isEmpty(customerEmail)|| customerEmail==null){
                    customerData=new CustomerData(customerName,customerPhone,customerAddress);
 
-                }if (!TextUtils.isEmpty(customerEmail)){
+                }if (!TextUtils.isEmpty(customerEmail ) && customerEmail!=null){
                     customerData=new CustomerData(customerName,customerPhone,customerEmail,customerAddress);
+
                 }
 
-                apiInterface.addCustomerInformation("Bearer "+token,customerData)
-                        .enqueue(new Callback<CustomerInformationDataResponse>() {
+                apiInterface.addCustomerInformation("Bearer "+token,customerData).enqueue(
+                        new Callback<AddCustomerResponse>() {
                             @Override
-                            public void onResponse(Call<CustomerInformationDataResponse> call, Response<CustomerInformationDataResponse> response) {
+                            public void onResponse(Call<AddCustomerResponse> call, Response<AddCustomerResponse> response) {
                                 Toast.makeText(HomePage.this, "success", Toast.LENGTH_SHORT).show();
                                 Log.e("ss", "ssss");
-
-                                customerNameEditText.setText("");
-                               customerPhoneEditText.setText("");
-                                customerEmailEditText.setText("");
-                                customerAddressEditText.setText("");
-
                             }
 
                             @Override
-                            public void onFailure(Call<CustomerInformationDataResponse> call, Throwable t) {
-                                Log.e("ff", "ffff");
+                            public void onFailure(Call<AddCustomerResponse> call, Throwable t) {
+                                Log.e("ffuo", t.getMessage().toString());
 
                             }
-                        });
+                        }
+                );
             }
         });
         cancelCustomerButton.setOnClickListener(new View.OnClickListener() {

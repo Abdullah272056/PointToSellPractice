@@ -3,8 +3,8 @@ package com.example.pointtosellpractice.retrofit;
 
 
 import com.example.pointtosellpractice.customer.CustomerData;
-import com.example.pointtosellpractice.customer.CustomerInformationData;
 import com.example.pointtosellpractice.customer.CustomerInformationDataResponse;
+import com.example.pointtosellpractice.customer.AddCustomerResponse;
 import com.example.pointtosellpractice.model_class.LogInResponse;
 import com.example.pointtosellpractice.model_class.RegistrationData;
 import com.example.pointtosellpractice.model_class.LogInData;
@@ -15,7 +15,6 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
-import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 public interface ApiInterface {
@@ -43,11 +42,11 @@ public interface ApiInterface {
     //customer
    //add customer
   @POST("api/customer")
-  Call<CustomerInformationDataResponse> addCustomerInformation(@Header("Authorization") String authorization, @Body CustomerData customerData);
+  Call<AddCustomerResponse> addCustomerInformation(@Header("Authorization") String authorization, @Body CustomerData customerData);
 
   // get allCustomer data
     @GET("api/customer")
-    Call<CustomerInformationDataResponse> getAllCustomerInformation(@Header("Authorization") String authorization);
+    Call<CustomerInformationDataResponse> getAllCustomerInformation(@Header("Authorization") String authorization1);
 
 
 

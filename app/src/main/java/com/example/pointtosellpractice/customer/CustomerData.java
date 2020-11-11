@@ -11,7 +11,11 @@ public class CustomerData {
 
     public CustomerData() {
     }
-
+    public CustomerData(String name, String phone, String address) {
+        this.name = name;
+        this.phone = phone;
+        this.address = address;
+    }
     public CustomerData(String name, String phone, String email, String address) {
         this.name = name;
         this.phone = phone;
@@ -19,11 +23,7 @@ public class CustomerData {
         this.address = address;
     }
 
-    public CustomerData(String name, String phone, String address) {
-        this.name = name;
-        this.phone = phone;
-        this.address = address;
-    }
+
 
     public String getName() {
         return name;
