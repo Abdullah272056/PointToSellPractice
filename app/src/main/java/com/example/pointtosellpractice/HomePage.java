@@ -35,7 +35,7 @@ public class HomePage extends AppCompatActivity {
 
 
     String token;
-    Button userInFormationButton;
+    Button userInFormationButton, addCustomer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +51,7 @@ public class HomePage extends AppCompatActivity {
 
 
         userInFormationButton=findViewById(R.id.userAllDataButtonId);
+        addCustomer=findViewById(R.id.addCustomerId);
 
 
         //receive user token
