@@ -73,7 +73,7 @@ public class HomePage extends AppCompatActivity {
         addCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //addCustomerInformation();
+                addCustomerInformation();
             }
         });
 
@@ -123,5 +123,83 @@ public class HomePage extends AppCompatActivity {
 
     }
 
+    private void addCustomerInformation() {
 
+        AlertDialog.Builder builder     =new AlertDialog.Builder(HomePage.this);
+        LayoutInflater layoutInflater   =LayoutInflater.from(HomePage.this);
+        View view                       =layoutInflater.inflate(R.layout.add_customer_data,null);
+        builder.setView(view);
+        final AlertDialog alertDialog   = builder.create();
+
+        customerNameEditText=view.findViewById(R.id.customerNameEditTextId);
+        customerPhoneEditText=view.findViewById(R.id.customerPhoneEditTextId);
+        customerEmailEditText=view.findViewById(R.id.customerEmailEditTextId);
+        customerAddressEditText=view.findViewById(R.id.customerAddressEditTextId);
+
+        addCustomerDataButton=view.findViewById(R.id.saveCustomerDataButtonId);
+        cancelCustomerButton=view.findViewById(R.id.cancelCustomerDataButtonId);
+        addCustomerDataButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String customerName=customerNameEditText.getText().toString();
+                String customerPhone=customerPhoneEditText.getText().toString();
+                String customerEmail=customerEmailEditText.getText().toString();
+                String customerAddress=customerAddressEditText.getText().toString();
+
+                if (TextUtils.isEmpty(customerName)){
+                    customerNameEditText.setError("Enter customer name");
+                    customerNameEditText.requestFocus();
+                    return;
+                }
+                if (TextUtils.isEmpty(customerPhone)){
+                    customerPhoneEditText.setError("Enter customer phone");
+                    customerPhoneEditText.requestFocus();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(customerAddress)){
+                    customerAddressEditText.setError("Enter customer name");
+                    customerAddressEditText.requestFocus();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(customerEmail)){
+                   customerData=new CustomerData(customerName,customerPhone,customerAddress);
+
+                }if (!TextUtils.isEmpty(customerEmail)){
+                    customerData=new CustomerData(customerName,customerPhone,customerEmail,customerAddress);
+                }
+
+                apiInterface.addCustomerInformation("Bearer "+token,customerData)
+                        .enqueue(new Callback<CustomerInformationDataResponse>() {
+                            @Override
+                            public void onResponse(Call<CustomerInformationDataResponse> call, Response<CustomerInformationDataResponse> response) {
+                                Toast.makeText(HomePage.this, "success", Toast.LENGTH_SHORT).show();
+                                Log.e("ss", "ssss");
+
+                                customerNameEditText.setText("");
+                               customerPhoneEditText.setText("");
+                                customerEmailEditText.setText("");
+                                customerAddressEditText.setText("");
+
+                            }
+
+                            @Override
+                            public void onFailure(Call<CustomerInformationDataResponse> call, Throwable t) {
+                                Log.e("ff", "ffff");
+
+                            }
+                        });
+            }
+        });
+        cancelCustomerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
+alertDialog.show();
+
+    }
 }
