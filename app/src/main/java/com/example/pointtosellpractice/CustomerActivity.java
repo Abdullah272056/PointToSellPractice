@@ -31,7 +31,6 @@ public class CustomerActivity extends AppCompatActivity {
 
 
     String token;
-    Button userInFormationButton, addCustomer,allCustomerButton;
 
     ApiInterface apiInterface;
     EditText customerNameEditText,customerEmailEditText,customerPhoneEditText,customerAddressEditText;
@@ -54,7 +53,15 @@ public class CustomerActivity extends AppCompatActivity {
                 addCustomerInformation();
             }
         });
+
+
+
     }
+
+
+
+
+
 
 
 
@@ -111,7 +118,8 @@ public class CustomerActivity extends AppCompatActivity {
                 if (TextUtils.isEmpty(customerEmail)|| customerEmail==null){
                     customerData=new CustomerData(customerName,customerPhone,customerAddress);
 
-                }if (!TextUtils.isEmpty(customerEmail ) && customerEmail!=null){
+                }
+                if (!TextUtils.isEmpty(customerEmail ) && customerEmail!=null){
                     if (!Patterns.EMAIL_ADDRESS.matcher(customerEmail).matches()){
                         customerEmailEditText.setError("Enter a valid  email address");
                         customerEmailEditText.requestFocus();
