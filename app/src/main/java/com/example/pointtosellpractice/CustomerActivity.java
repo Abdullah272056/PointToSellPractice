@@ -57,7 +57,7 @@ public class CustomerActivity extends AppCompatActivity {
 
 
 
-    private void addCustomerInformation() {
+    private void addCustomerInformation(){
 
         AlertDialog.Builder builder     =new AlertDialog.Builder(CustomerActivity.this);
         LayoutInflater layoutInflater   =LayoutInflater.from(CustomerActivity.this);
@@ -102,7 +102,6 @@ public class CustomerActivity extends AppCompatActivity {
 
                 }if (!TextUtils.isEmpty(customerEmail ) && customerEmail!=null){
                     customerData=new CustomerData(customerName,customerPhone,customerEmail,customerAddress);
-
                 }
 
                 apiInterface.addCustomerInformation("Bearer "+token,customerData).enqueue(
@@ -119,7 +118,6 @@ public class CustomerActivity extends AppCompatActivity {
                             }
                         }
                 );
-
             }
         });
         cancelCustomerButton.setOnClickListener(new View.OnClickListener() {
@@ -128,7 +126,6 @@ public class CustomerActivity extends AppCompatActivity {
                 alertDialog.dismiss();
             }
         });
-
         alertDialog.show();
 
     }
