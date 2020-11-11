@@ -2,6 +2,7 @@ package com.example.pointtosellpractice.retrofit;
 
 
 
+import com.example.pointtosellpractice.customer.CustomerData;
 import com.example.pointtosellpractice.customer.CustomerInformationData;
 import com.example.pointtosellpractice.customer.CustomerInformationDataResponse;
 import com.example.pointtosellpractice.model_class.LogInResponse;
@@ -42,7 +43,7 @@ public interface ApiInterface {
     //customer
    //add customer
   @POST("api/customer")
-  Call<CustomerInformationDataResponse> addCustomerInformation(@Header("Authorization") String authorization, @Body CustomerInformationData customerInformationData);
+  Call<CustomerInformationDataResponse> addCustomerInformation(@Header("Authorization") String authorization, @Body CustomerData customerData);
 
 
 
