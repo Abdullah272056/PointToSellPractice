@@ -58,6 +58,13 @@ public class HomePage extends AppCompatActivity {
         token= getIntent().getStringExtra("token");
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
 
+        addCustomer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
+
         userInFormationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
