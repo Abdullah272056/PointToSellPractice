@@ -42,11 +42,17 @@ public class CustomerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer);
-        customerRecyclerView = findViewById(R.id.customerRecyclerViewId);
-        addCustomerButton = findViewById(R.id.addCustomerButtonId);
-        token = getIntent().getStringExtra("token1");
+        customerRecyclerView=findViewById(R.id.customerRecyclerViewId);
+        addCustomerButton=findViewById(R.id.addCustomerButtonId);
+        token= getIntent().getStringExtra("token1");
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
 
+        addCustomerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
 
