@@ -18,13 +18,12 @@ import com.example.pointtosellpractice.model_class.RegistrationData;
 import com.example.pointtosellpractice.model_class.RegistrationResponse;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
-import com.google.gson.JsonObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class RegistrationActivity extends AppCompatActivity {
     EditText companyNameEditText,companyOwnerEditText,emailEditText,phoneEditText,
     addressEditText,aboutCompanyEditText,passwordEditText,confirmPasswordEditText;
     Spinner companyTypeSpinner;
@@ -37,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_registration);
         // view finding
         companyNameEditText=findViewById(R.id.signUpCompanyNameEditTextId);
         companyOwnerEditText=findViewById(R.id.signUpCompanyOwnerEditTextId);
@@ -57,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         signInTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(MainActivity.this,LoginActivity.class);
+                Intent intent =new Intent(RegistrationActivity.this,LoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -147,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
 
                             assert registrationResponse != null;
                             if (registrationResponse.getSuccess()==true){
-                                Toast.makeText(MainActivity.this,registrationResponse.getData() , Toast.LENGTH_LONG).show();
+                                Toast.makeText(RegistrationActivity.this,registrationResponse.getData() , Toast.LENGTH_LONG).show();
                             }
                             Log.e("TAG", "success" );
 
@@ -157,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<RegistrationResponse> call, Throwable t) {
                         Log.e("wwe",t.getMessage().toString());
-                        Toast.makeText(MainActivity.this, "fail", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegistrationActivity.this, "fail", Toast.LENGTH_SHORT).show();
                     }
                 });
 

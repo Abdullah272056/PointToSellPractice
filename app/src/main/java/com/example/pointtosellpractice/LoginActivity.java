@@ -16,10 +16,8 @@ import android.widget.Toast;
 
 import com.example.pointtosellpractice.model_class.LogInData;
 import com.example.pointtosellpractice.model_class.LogInResponse;
-import com.example.pointtosellpractice.model_class.RegistrationData;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
-import com.google.gson.JsonObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -67,7 +65,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
               
                 break;
             case R.id.signUpTextViewId:
-                Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+                Intent intent=new Intent(LoginActivity.this, RegistrationActivity.class);
                 startActivity(intent);
                 finish();
 
