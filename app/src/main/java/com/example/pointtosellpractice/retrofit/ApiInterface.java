@@ -3,6 +3,7 @@ package com.example.pointtosellpractice.retrofit;
 
 
 import com.example.pointtosellpractice.customer.CustomerData;
+import com.example.pointtosellpractice.customer.CustomerDeleteResponse;
 import com.example.pointtosellpractice.customer.CustomerInformationDataResponse;
 import com.example.pointtosellpractice.customer.AddCustomerResponse;
 import com.example.pointtosellpractice.model_class.LogInResponse;
@@ -56,7 +57,8 @@ public interface ApiInterface {
     Call<AddCustomerResponse> updateCustomerData(@Header("Authorization") String authorization2,@Path("id") String id, @Body CustomerData customerData);
 
     //delete customer
-//   
+      @DELETE("api/customer/{id}")
+    Call<CustomerDeleteResponse> deleteCustomer(@Header("Authorization") String authorization,@Path("id") String id);
 
 
 
