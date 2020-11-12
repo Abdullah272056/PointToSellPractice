@@ -1,6 +1,7 @@
 package com.example.pointtosellpractice.customer;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,11 +34,12 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
 
         holder.customerNameTextView.setText(customerInformationList.get(position).getName());
         holder.customerPhoneTextView.setText(customerInformationList.get(position).getPhone());
 
+      
     }
 
     @Override

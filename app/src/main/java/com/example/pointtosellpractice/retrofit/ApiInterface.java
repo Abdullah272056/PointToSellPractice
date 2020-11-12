@@ -16,6 +16,8 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
 public interface ApiInterface {
 
@@ -48,7 +50,9 @@ public interface ApiInterface {
     @GET("api/customer")
     Call<CustomerInformationDataResponse> getAllCustomerInformation(@Header("Authorization") String authorization1);
 
-
+    //customer Data Edit
+    @PUT("api/customer/{id}")
+    Call<CustomerInformationDataResponse> updateCustomerData(@Header("Authorization") String authorization2,@Path("id") String id, @Body CustomerData customerData);
 
 
 

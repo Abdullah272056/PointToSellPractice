@@ -138,6 +138,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onFailure(Call<LogInResponse> call, Throwable t) {
                 Toast.makeText(LoginActivity.this, "fail", Toast.LENGTH_SHORT).show();
+                Log.e("lee",t.getMessage());
                 logInProgressBar.setVisibility(View.GONE);
 
             }
