@@ -45,7 +45,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         resetPasswordTextView=findViewById(R.id.resetPasswordTextViewId);
         logInProgressBar=findViewById(R.id.signInProgressBarId);
 
-
         // listener set
         signInButton.setOnClickListener(this);
         signUpTextView.setOnClickListener(this);
@@ -67,7 +66,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.signUpTextViewId:
                 Intent intent=new Intent(LoginActivity.this, RegistrationActivity.class);
                 startActivity(intent);
-                finish();
+
 
                 break;
             case R.id.resetPasswordTextViewId:
@@ -111,7 +110,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     // receive response body
                     LogInResponse logInResponse=response.body();
                     if (logInResponse.getSuccess()==true){
-
                         Intent intent=new Intent(LoginActivity.this,HomePage.class);
                         intent.putExtra("token",logInResponse.getToken());
                         startActivity(intent);
