@@ -13,6 +13,7 @@ import com.example.pointtosellpractice.user_all_information.UserDataWithResponse
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
@@ -53,6 +54,9 @@ public interface ApiInterface {
     //customer Data Edit
     @PUT("api/customer/{id}")
     Call<AddCustomerResponse> updateCustomerData(@Header("Authorization") String authorization2,@Path("id") String id, @Body CustomerData customerData);
+
+    //delete customer
+//   
 
 
 

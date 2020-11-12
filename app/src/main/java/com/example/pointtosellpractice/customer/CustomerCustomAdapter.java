@@ -127,7 +127,7 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
         }
 
 
-        addCustomerDataButton.setOnClickListener(new View.OnClickListener() {
+        addCustomerDataButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 String customerName=customerNameEditText.getText().toString();
@@ -164,7 +164,6 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
 
                 if (TextUtils.isEmpty(customerEmail)|| customerEmail==null){
                     customerData=new CustomerData(customerName,customerPhone,customerAddress);
-
                 }
                 if (!TextUtils.isEmpty(customerEmail ) && customerEmail!=null){
                     if (!Patterns.EMAIL_ADDRESS.matcher(customerEmail).matches()){
@@ -178,7 +177,7 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
                 progressBar.setVisibility(View.VISIBLE);
 
                 apiInterface.updateCustomerData("Bearer "+token,customerInformationList.get(position1).getId().toString(),customerData)
-                        .enqueue(new Callback<AddCustomerResponse>() {
+                        .enqueue(new Callback<AddCustomerResponse>(){
                             @Override
                             public void onResponse(Call<AddCustomerResponse> call, Response<AddCustomerResponse> response) {
                               Toast.makeText(context, "success", Toast.LENGTH_SHORT).show();
@@ -186,7 +185,6 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
                                 ((CustomerActivity)context).getAllCustomer();
                                 progressBar.setVisibility(View.GONE);
                             }
-
                             @Override
                             public void onFailure(Call<AddCustomerResponse> call, Throwable t) {
                                 Log.e("aq",t.getMessage());
