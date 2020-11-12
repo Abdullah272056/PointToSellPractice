@@ -39,7 +39,12 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
         holder.customerNameTextView.setText(customerInformationList.get(position).getName());
         holder.customerPhoneTextView.setText(customerInformationList.get(position).getPhone());
 
-      
+        holder.customerNameTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("idid",customerInformationList.get(position).getId());
+            }
+        });
     }
 
     @Override
