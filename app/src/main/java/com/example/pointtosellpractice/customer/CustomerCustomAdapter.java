@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,7 +40,14 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
         holder.customerNameTextView.setText(customerInformationList.get(position).getName());
         holder.customerPhoneTextView.setText(customerInformationList.get(position).getPhone());
 
-        holder.customerNameTextView.setOnClickListener(new View.OnClickListener() {
+        holder.editImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("idid",customerInformationList.get(position).getId());
+            }
+        });
+        
+        holder.deleteImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.e("idid",customerInformationList.get(position).getId());
@@ -54,10 +62,13 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView customerNameTextView,customerPhoneTextView;
+        ImageView editImageView,deleteImageView;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             customerNameTextView=itemView.findViewById(R.id.customerNameTextViewId);
             customerPhoneTextView=itemView.findViewById(R.id.customerPhoneTextViewId);
+            editImageView=itemView.findViewById(R.id.editImageViewId);
+            deleteImageView=itemView.findViewById(R.id.deleteImageViewId);
         }
     }
 }
