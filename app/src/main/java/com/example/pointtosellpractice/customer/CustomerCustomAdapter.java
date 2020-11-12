@@ -1,6 +1,7 @@
 package com.example.pointtosellpractice.customer;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
@@ -19,6 +20,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pointtosellpractice.CustomerActivity;
+import com.example.pointtosellpractice.MainActivity;
 import com.example.pointtosellpractice.R;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
@@ -102,21 +104,38 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
 
 private  void  deleteCustomer(final int position){
 
-apiInterface.deleteCustomer("Bearer "+token,customerInformationList.get(position).getId().toString())
-        .enqueue(new Callback<CustomerDeleteResponse>() {
-            @Override
-            public void onResponse(Call<CustomerDeleteResponse> call, Response<CustomerDeleteResponse> response) {
-                Toast.makeText(context, "success delete", Toast.LENGTH_SHORT).show();
-                ((CustomerActivity)context).getAllCustomer();
-            }
+    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+    builder.setCancelable(false);
+    builder.setMessage("Do you want to Delete?");
 
-            @Override
-            public void onFailure(Call<CustomerDeleteResponse> call, Throwable t) {
-                Toast.makeText(context, "fail delete", Toast.LENGTH_SHORT).show();
+    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            apiInterface.deleteCustomer("Bearer "+token,customerInformationList.get(position).getId().toString())
+                    .enqueue(new Callback<CustomerDeleteResponse>() {
+                        @Override
+                        public void onResponse(Call<CustomerDeleteResponse> call, Response<CustomerDeleteResponse> response) {
+                            Toast.makeText(context, "success delete", Toast.LENGTH_SHORT).show();
+                            ((CustomerActivity)context).getAllCustomer();
+                        }
 
-            }
-        });
+                        @Override
+                        public void onFailure(Call<CustomerDeleteResponse> call, Throwable t) {
+                            Toast.makeText(context, "fail delete", Toast.LENGTH_SHORT).show();
 
+                        }
+                    });
+
+        }
+    });
+    builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            dialog.cancel();
+        }
+    });
+    AlertDialog alert = builder.create();
+    alert.show();
 }
 
     private void addCustomerInformation(final int position1){
