@@ -71,7 +71,7 @@ public class CustomerActivity extends AppCompatActivity {
         //mainProgressBar.setVisibility(View.GONE);
     }
 
-    private void getAllCustomer() {
+    public void getAllCustomer() {
         apiInterface.getAllCustomerInformation("Bearer "+token).enqueue(new Callback<CustomerInformationDataResponse>() {
             @Override
             public void onResponse(Call<CustomerInformationDataResponse> call, Response<CustomerInformationDataResponse> response) {

@@ -31,7 +31,7 @@ import retrofit2.Response;
 
 public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAdapter.MyViewHolder> {
  // List<CustomerInformationData> customerInformationList;
-        int pos;
+
     Context context;
     String token;
     List<CustomerInformationData> customerInformationList;
@@ -117,6 +117,16 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
 
         addCustomerDataButton=view.findViewById(R.id.saveCustomerDataButtonId);
         cancelCustomerButton=view.findViewById(R.id.cancelCustomerDataButtonId);
+
+
+        customerNameEditText.setText(customerInformationList.get(position1).getName());
+        customerAddressEditText.setText(customerInformationList.get(position1).getAddress());
+        customerPhoneEditText.setText(customerInformationList.get(position1).getPhone());
+        if (customerInformationList.get(position1).getEmail()!=null || TextUtils.isEmpty(customerInformationList.get(position1).getEmail())){
+            customerEmailEditText.setText(customerInformationList.get(position1).getEmail());
+        }
+
+
         addCustomerDataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -166,22 +176,24 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
                     }
                 }
                 progressBar.setVisibility(View.VISIBLE);
-                pos=position1;
-                apiInterface.updateCustomerData("Bearer "+token,customerInformationList.get(pos).getId().toString(),customerData)
+
+                apiInterface.updateCustomerData("Bearer "+token,customerInformationList.get(position1).getId().toString(),customerData)
                         .enqueue(new Callback<AddCustomerResponse>() {
                             @Override
                             public void onResponse(Call<AddCustomerResponse> call, Response<AddCustomerResponse> response) {
                               Toast.makeText(context, "success", Toast.LENGTH_SHORT).show();
-
+                                alertDialog.dismiss();
+                                ((CustomerActivity)context).getAllCustomer();
+                                progressBar.setVisibility(View.GONE);
                             }
 
                             @Override
                             public void onFailure(Call<AddCustomerResponse> call, Throwable t) {
                                 Log.e("aq",t.getMessage());
+                                progressBar.setVisibility(View.GONE);
                                 Toast.makeText(context, "fail", Toast.LENGTH_SHORT).show();
                             }
                         });
-                
             }
         });
         cancelCustomerButton.setOnClickListener(new View.OnClickListener() {
