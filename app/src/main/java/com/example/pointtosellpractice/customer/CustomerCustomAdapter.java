@@ -76,6 +76,8 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
         holder.deleteImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                deleteCustomer(position);
                 Log.e("idid",customerInformationList.get(position).getId());
             }
         });
@@ -98,7 +100,24 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
         }
     }
 
+private  void  deleteCustomer(final int position){
 
+apiInterface.deleteCustomer("Bearer "+token,customerInformationList.get(position).getId().toString())
+        .enqueue(new Callback<CustomerDeleteResponse>() {
+            @Override
+            public void onResponse(Call<CustomerDeleteResponse> call, Response<CustomerDeleteResponse> response) {
+                Toast.makeText(context, "success delete", Toast.LENGTH_SHORT).show();
+                ((CustomerActivity)context).getAllCustomer();
+            }
+
+            @Override
+            public void onFailure(Call<CustomerDeleteResponse> call, Throwable t) {
+                Toast.makeText(context, "fail delete", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+}
 
     private void addCustomerInformation(final int position1){
 

@@ -58,7 +58,7 @@ public interface ApiInterface {
 
     //delete customer
       @DELETE("api/customer/{id}")
-    Call<CustomerDeleteResponse> deleteCustomer(@Header("Authorization") String authorization,@Path("id") String id);
+      Call<CustomerDeleteResponse> deleteCustomer(@Header("Authorization") String authorization,@Path("id") String id);
 
 
 
