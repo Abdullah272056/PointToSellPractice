@@ -1,31 +1,51 @@
 package com.example.pointtosellpractice.customer;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.pointtosellpractice.CustomerActivity;
 import com.example.pointtosellpractice.R;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAdapter.MyViewHolder> {
  // List<CustomerInformationData> customerInformationList;
 
     Context context;
+    String token;
     List<CustomerInformationData> customerInformationList;
 
-    public CustomerCustomAdapter(Context context, List<CustomerInformationData> customerInformationList) {
+
+
+    EditText customerNameEditText,customerEmailEditText,customerPhoneEditText,customerAddressEditText;
+    Button addCustomerDataButton,cancelCustomerButton;
+    CustomerData customerData;
+    ProgressBar progressBar;
+
+    public CustomerCustomAdapter(Context context, String token, List<CustomerInformationData> customerInformationList) {
         this.context = context;
+        this.token = token;
         this.customerInformationList = customerInformationList;
     }
-
 
     @NonNull
     @Override
@@ -43,10 +63,10 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
         holder.editImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("idid",customerInformationList.get(position).getId());
+
+
             }
         });
-        
         holder.deleteImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,4 +91,8 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
             deleteImageView=itemView.findViewById(R.id.deleteImageViewId);
         }
     }
+
+
+
+   
 }

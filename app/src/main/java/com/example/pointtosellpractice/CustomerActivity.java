@@ -84,7 +84,7 @@ public class CustomerActivity extends AppCompatActivity {
                     customerInformationList=new ArrayList<>();
                     customerInformationList.addAll(response.body().getCustomerInformation());
                     if (customerInformationList.size ()>0){
-                        customerCustomAdapter = new CustomerCustomAdapter(CustomerActivity.this,customerInformationList);
+                        customerCustomAdapter = new CustomerCustomAdapter(CustomerActivity.this,token,customerInformationList);
                         customerRecyclerView.setLayoutManager(new LinearLayoutManager(CustomerActivity.this));
                         customerRecyclerView.setAdapter(customerCustomAdapter);
                     }
