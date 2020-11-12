@@ -20,6 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pointtosellpractice.CustomerActivity;
 import com.example.pointtosellpractice.R;
+import com.example.pointtosellpractice.retrofit.ApiInterface;
+import com.example.pointtosellpractice.retrofit.RetrofitClient;
 
 import java.util.List;
 
@@ -29,7 +31,7 @@ import retrofit2.Response;
 
 public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAdapter.MyViewHolder> {
  // List<CustomerInformationData> customerInformationList;
-
+        int pos;
     Context context;
     String token;
     List<CustomerInformationData> customerInformationList;
@@ -41,10 +43,14 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
     CustomerData customerData;
     ProgressBar progressBar;
 
+    ApiInterface apiInterface;
+
     public CustomerCustomAdapter(Context context, String token, List<CustomerInformationData> customerInformationList) {
         this.context = context;
         this.token = token;
         this.customerInformationList = customerInformationList;
+        apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
+
     }
 
     @NonNull
@@ -63,7 +69,7 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
         holder.editImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                addCustomerInformation(position);
 
             }
         });
@@ -94,5 +100,98 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
 
 
 
-   
+    private void addCustomerInformation(final int position1){
+
+        AlertDialog.Builder builder     =new AlertDialog.Builder(context);
+        LayoutInflater layoutInflater   =LayoutInflater.from(context);
+        View view                       =layoutInflater.inflate(R.layout.add_customer_data,null);
+        builder.setView(view);
+        final AlertDialog alertDialog   = builder.create();
+
+
+        customerNameEditText=view.findViewById(R.id.customerNameEditTextId);
+        customerPhoneEditText=view.findViewById(R.id.customerPhoneEditTextId);
+        customerEmailEditText=view.findViewById(R.id.customerEmailEditTextId);
+        customerAddressEditText=view.findViewById(R.id.customerAddressEditTextId);
+        progressBar=view.findViewById(R.id.newCustomerProgressBarId);
+
+        addCustomerDataButton=view.findViewById(R.id.saveCustomerDataButtonId);
+        cancelCustomerButton=view.findViewById(R.id.cancelCustomerDataButtonId);
+        addCustomerDataButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String customerName=customerNameEditText.getText().toString();
+                String customerPhone=customerPhoneEditText.getText().toString();
+                String customerEmail=customerEmailEditText.getText().toString();
+                String customerAddress=customerAddressEditText.getText().toString();
+
+                if (TextUtils.isEmpty(customerName) || customerAddress==null){
+                    customerNameEditText.setError("Enter customer name");
+                    customerNameEditText.requestFocus();
+                    return;
+                }
+                if (customerName.length()<4){
+                    customerNameEditText.setError("don't smaller than 4 character");
+                    customerNameEditText.requestFocus();
+                    return;
+                }
+                if (TextUtils.isEmpty(customerPhone)|| customerPhone==null){
+                    customerPhoneEditText.setError("Enter customer phone");
+                    customerPhoneEditText.requestFocus();
+                    return;
+                }
+                if (customerPhone.length()<8){
+                    customerPhoneEditText.setError("don't smaller than 8 character");
+                    customerPhoneEditText.requestFocus();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(customerAddress) ||customerAddress==null){
+                    customerAddressEditText.setError("Enter customer name");
+                    customerAddressEditText.requestFocus();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(customerEmail)|| customerEmail==null){
+                    customerData=new CustomerData(customerName,customerPhone,customerAddress);
+
+                }
+                if (!TextUtils.isEmpty(customerEmail ) && customerEmail!=null){
+                    if (!Patterns.EMAIL_ADDRESS.matcher(customerEmail).matches()){
+                        customerEmailEditText.setError("Enter a valid  email address");
+                        customerEmailEditText.requestFocus();
+                        return;
+                    }else {
+                        customerData=new CustomerData(customerName,customerPhone,customerEmail,customerAddress);
+                    }
+                }
+                progressBar.setVisibility(View.VISIBLE);
+                pos=position1;
+                apiInterface.updateCustomerData("Bearer "+token,customerInformationList.get(pos).getId().toString(),customerData)
+                        .enqueue(new Callback<AddCustomerResponse>() {
+                            @Override
+                            public void onResponse(Call<AddCustomerResponse> call, Response<AddCustomerResponse> response) {
+                              Toast.makeText(context, "success", Toast.LENGTH_SHORT).show();
+
+                            }
+
+                            @Override
+                            public void onFailure(Call<AddCustomerResponse> call, Throwable t) {
+                                Log.e("aq",t.getMessage());
+                                Toast.makeText(context, "fail", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                
+            }
+        });
+        cancelCustomerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+                progressBar.setVisibility(View.GONE);
+            }
+        });
+        alertDialog.show();
+
+    }
 }

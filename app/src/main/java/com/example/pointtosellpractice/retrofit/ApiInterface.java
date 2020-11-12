@@ -52,7 +52,7 @@ public interface ApiInterface {
 
     //customer Data Edit
     @PUT("api/customer/{id}")
-    Call<CustomerInformationDataResponse> updateCustomerData(@Header("Authorization") String authorization2,@Path("id") String id, @Body CustomerData customerData);
+    Call<AddCustomerResponse> updateCustomerData(@Header("Authorization") String authorization2,@Path("id") String id, @Body CustomerData customerData);
 
 
 
