@@ -10,6 +10,7 @@
     tools:context=".HomePage">
 
     <LinearLayout
+
         android:id="@+id/mainLayoutId"
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -18,6 +19,81 @@
         <include layout="@layout/my_toolbar"
             android:id="@+id/toolbarId"
             />
+       sdfghjk
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+
+                <LinearLayout
+                    android:layout_margin="10dp"
+                    android:background="@drawable/backgraound"
+                    android:orientation="vertical"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:gravity="center"
+                        android:textColor="#000000"
+                        android:textAlignment="center"
+                        android:textSize="25sp"
+                        android:text="Total Customer"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"/>
+                    <TextView
+                        android:id="@+id/customerCountId"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textSize="25sp"
+                        android:text="4"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_margin="10dp"
+                    android:background="@drawable/backgraound"
+                    android:orientation="vertical"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent">
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_margin="10dp"
+                    android:background="@drawable/backgraound"
+                    android:orientation="vertical"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent">
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_margin="10dp"
+                    android:background="@drawable/backgraound"
+                    android:orientation="vertical"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent">
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_margin="10dp"
+                    android:background="@drawable/backgraound"
+                    android:orientation="vertical"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent">
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+
+
 
 
       <LinearLayout
