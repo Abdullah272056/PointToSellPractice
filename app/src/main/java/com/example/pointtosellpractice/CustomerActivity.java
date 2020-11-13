@@ -48,7 +48,7 @@ public class CustomerActivity extends AppCompatActivity {
     CustomerCustomAdapter customerCustomAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer);
         mainProgressBar=findViewById(R.id.customerProgressBarId);
@@ -79,7 +79,7 @@ public class CustomerActivity extends AppCompatActivity {
 
 
                 CustomerInformationDataResponse customerInformationDataResponse=response.body();
-//
+
                 if (customerInformationDataResponse.getSuccess()==true){
                     customerInformationList=new ArrayList<>();
                     customerInformationList.addAll(response.body().getCustomerInformation());
