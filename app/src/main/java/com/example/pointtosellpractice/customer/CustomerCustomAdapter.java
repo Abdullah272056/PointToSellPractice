@@ -79,7 +79,7 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
                 intent.putExtra("cEmail",customerInformationList.get(position).getEmail());
                 intent.putExtra("cAddress",customerInformationList.get(position).getAddress());
 
-                intent.putExtra("cDue",customerInformationList.get(position).getDue());
+                intent.putExtra("cDue",customerInformationList.get(position).getDue().toString());
                 intent.putExtra("cCreatedAt",customerInformationList.get(position).getCreatedAt());
                 intent.putExtra("cId",customerInformationList.get(position).getId());
                 context.startActivity(intent);

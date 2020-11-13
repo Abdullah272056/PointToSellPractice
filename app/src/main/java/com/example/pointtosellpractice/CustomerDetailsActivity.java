@@ -30,17 +30,26 @@ public class CustomerDetailsActivity extends AppCompatActivity {
     TextView cNameTextView,cPhoneTextView,cEmailTextView,cAddressTextView;
     TextView dueTextView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_details);
-        
+
 //        view finding
         cNameTextView=findViewById(R.id.customerNameTextViewId);
         cPhoneTextView=findViewById(R.id.customerPhoneTextViewId);
         cEmailTextView=findViewById(R.id.customerEmailTextViewId);
         cAddressTextView=findViewById(R.id.customerAddressTextViewId);
         dueTextView=findViewById(R.id.dueTextViewId);
+
+        //token= getIntent().getStringExtra("token1");
+        cNameTextView.setText("Name :  "+getIntent().getStringExtra("cName"));
+        cPhoneTextView.setText("Phone :  "+getIntent().getStringExtra("cPhone"));
+        cEmailTextView.setText("Email :  "+getIntent().getStringExtra("cEmail"));
+        cAddressTextView.setText("Address :  "+getIntent().getStringExtra("cAddress"));
+        dueTextView.setText("Due :  "+getIntent().getStringExtra("cDue"));
+
 
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
 
