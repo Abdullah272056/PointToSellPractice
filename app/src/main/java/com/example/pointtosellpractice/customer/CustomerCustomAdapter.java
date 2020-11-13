@@ -2,6 +2,7 @@ package com.example.pointtosellpractice.customer;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
@@ -20,6 +21,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pointtosellpractice.CustomerActivity;
+import com.example.pointtosellpractice.CustomerDetailsActivity;
 import com.example.pointtosellpractice.R;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
@@ -66,6 +68,8 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
 
         holder.customerNameTextView.setText(customerInformationList.get(position).getName());
         holder.customerPhoneTextView.setText(customerInformationList.get(position).getPhone());
+
+
 
         holder.editImageView.setOnClickListener(new View.OnClickListener() {
             @Override
