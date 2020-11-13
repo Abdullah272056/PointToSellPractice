@@ -80,8 +80,12 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
+
+        // call getCustomerCount for getting total customer count
       getCustomerCount();
-        navigationDrawer();
+
+       // call navigationDrawer for getting navigation drawer
+      navigationDrawer();
 
 
 

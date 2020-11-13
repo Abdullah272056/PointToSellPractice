@@ -13,15 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CustomerActivity">
-
-        </activity>
+        <activity android:name=".CustomerDetailsActivity"></activity>
+        <activity android:name=".CustomerActivity"></activity>
         <activity
             android:name=".HomePage"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
         <activity android:name=".RegistrationActivity" />
-
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
