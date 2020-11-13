@@ -18,6 +18,8 @@
         <include layout="@layout/my_toolbar"
             android:id="@+id/toolbarId"
             />
+
+
       <LinearLayout
           android:orientation="vertical"
           android:gravity="center"
