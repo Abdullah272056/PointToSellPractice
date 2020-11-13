@@ -1,9 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".CustomerDetailsActivity">
+    <LinearLayout
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/background"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/customerNameTextViewId"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:text="Name :  Abdullah"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/customerPhoneTextViewId"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:text="Phone : 01994215664"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/customerEmailTextViewId"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:text="Email : abdullah272056@gmail.com"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:lineHeight="35sp"
+            android:id="@+id/customerAddressTextViewId"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:text="Address : Ruly, Vairabha, Maheshpur, Jhenaidah"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/background"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/allTimeSellTextViewId"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:text="All Time Sell : 300 Taka"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+
+            android:id="@+id/dueTextViewId"
+            android:textColor="#F42525"
+            android:textSize="20sp"
+            android:text="Due : 250 Taka"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:autofillHints="#000000"
+            android:background="#FFFEFE"
+            android:layout_marginTop="20dp"
+            android:id="@+id/payAmountId"
+            android:textColor="#000000"
+            android:textSize="20sp"
+           android:hint="Pay amount* "
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/payDueButtonId"
+            android:text="Pay Due"
+            android:layout_marginTop="40dp"
+            android:layout_gravity="center"
+            android:textColor="#000000"
+            android:textSize="25sp"
+            android:padding="15dp"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>
