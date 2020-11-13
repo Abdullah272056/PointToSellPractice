@@ -61,6 +61,10 @@ public interface ApiInterface {
       Call<CustomerDeleteResponse> deleteCustomer(@Header("Authorization") String authorization,@Path("id") String id);
 
 
+     
+
+
+
 
 //    @PUT("api/user/{id}")
 //    Call<OurDataSet> updateUser(@Path("id") String id, @Body OurDataSet ourDataSet);
