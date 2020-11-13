@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pointtosellpractice.customer.CustomerData;
@@ -35,6 +36,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HomePage extends AppCompatActivity {
+
     Toolbar toolbar;
     LinearLayout linearLayout;
     DrawerLayout drawerLayout;
@@ -44,12 +46,15 @@ public class HomePage extends AppCompatActivity {
     String token;
     Button userInFormationButton, addCustomer;
 
+    TextView customerCountId;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
         linearLayout=findViewById(R.id.mainLayoutId);
+        customerCountId=findViewById(R.id.customerCountId);
 
         toolbar=findViewById (R.id.toolbarId);
         if (toolbar!=null){
@@ -68,8 +73,6 @@ public class HomePage extends AppCompatActivity {
         addCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                Intent intent=new Intent(HomePage.this,CustomerActivity.class);
                intent.putExtra("token1",token);
                startActivity(intent);
