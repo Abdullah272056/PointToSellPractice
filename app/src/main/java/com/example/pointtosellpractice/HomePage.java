@@ -19,6 +19,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.pointtosellpractice.customer.CustomerCountResponse;
 import com.example.pointtosellpractice.customer.CustomerData;
 import com.example.pointtosellpractice.customer.CustomerInformationData;
 import com.example.pointtosellpractice.customer.CustomerInformationDataResponse;
@@ -46,28 +47,28 @@ public class HomePage extends AppCompatActivity {
     String token;
     Button userInFormationButton, addCustomer;
 
-    TextView customerCountId;
+    TextView customerCountTextView;
+    String customerCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-
         linearLayout=findViewById(R.id.mainLayoutId);
-        customerCountId=findViewById(R.id.customerCountId);
-
+        customerCountTextView=findViewById(R.id.customerCountId);
+        userInFormationButton=findViewById(R.id.userAllDataButtonId);
+        addCustomer=findViewById(R.id.addCustomerId);
         toolbar=findViewById (R.id.toolbarId);
+        drawerLayout=findViewById (R.id.drawerLayoutId);
+        navigationView=findViewById (R.id.myNavigationViewId);
+        //receive user token
+        token= getIntent().getStringExtra("token");
+
         if (toolbar!=null){
             setSupportActionBar (toolbar);
         }
 
 
-
-        userInFormationButton=findViewById(R.id.userAllDataButtonId);
-        addCustomer=findViewById(R.id.addCustomerId);
-
-        //receive user token
-        token= getIntent().getStringExtra("token");
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
 
         addCustomer.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +80,12 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
-        userInFormationButton.setOnClickListener(new View.OnClickListener() {
+      getCustomerCount();
+        navigationDrawer();
+
+
+
+        userInFormationButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 apiInterface.getUserAllInformation("Bearer "+token).enqueue(new Callback<UserDataWithResponse>() {
@@ -100,8 +106,20 @@ public class HomePage extends AppCompatActivity {
                 });
             }
         });
-        drawerLayout=findViewById (R.id.drawerLayoutId);
-        navigationView=findViewById (R.id.myNavigationViewId);
+
+
+
+
+    }
+
+
+
+
+
+
+    // create for drawerLayout
+    private void navigationDrawer() {
+
         ActionBarDrawerToggle actionBarDrawerToggle=new ActionBarDrawerToggle(
                 HomePage.this,drawerLayout,toolbar,R.string.open,R.string.closed){
             @Override
@@ -116,10 +134,28 @@ public class HomePage extends AppCompatActivity {
 
             }
         };
-
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
+    }
 
+
+    // getting total customer count
+    private void getCustomerCount() {
+        apiInterface.getCustomerCount("Bearer "+token).enqueue(new Callback<CustomerCountResponse>() {
+            @Override
+            public void onResponse(Call<CustomerCountResponse> call, Response<CustomerCountResponse> response) {
+                Log.e("count","success");
+
+                CustomerCountResponse customerCountResponse=response.body();
+                customerCount=customerCountResponse.getCustomerCount().toString();
+                customerCountTextView.setText(customerCount);
+            }
+
+            @Override
+            public void onFailure(Call<CustomerCountResponse> call, Throwable t) {
+                Log.e("count","success");
+            }
+        });
     }
 
 
