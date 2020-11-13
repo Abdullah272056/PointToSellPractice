@@ -2,6 +2,7 @@ package com.example.pointtosellpractice.retrofit;
 
 
 
+import com.example.pointtosellpractice.customer.CustomerCountResponse;
 import com.example.pointtosellpractice.customer.CustomerData;
 import com.example.pointtosellpractice.customer.CustomerDeleteResponse;
 import com.example.pointtosellpractice.customer.CustomerInformationDataResponse;
@@ -61,7 +62,11 @@ public interface ApiInterface {
       Call<CustomerDeleteResponse> deleteCustomer(@Header("Authorization") String authorization,@Path("id") String id);
 
 
-     
+      // get customer Count
+      @GET("api/customer/count")
+      Call<CustomerCountResponse> getCustomerCount(@Header("Authorization") String authorization);
+
+
 
 
 
