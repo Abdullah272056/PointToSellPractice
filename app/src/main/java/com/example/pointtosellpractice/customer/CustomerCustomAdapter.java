@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -69,7 +70,14 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
         holder.customerNameTextView.setText(customerInformationList.get(position).getName());
         holder.customerPhoneTextView.setText(customerInformationList.get(position).getPhone());
 
+        holder.customerItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context, CustomerDetailsActivity.class);
+                context.startActivity(intent);
 
+            }
+        });
 
         holder.editImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,12 +104,15 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView customerNameTextView,customerPhoneTextView;
         ImageView editImageView,deleteImageView;
+        LinearLayout customerItem;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             customerNameTextView=itemView.findViewById(R.id.customerNameTextViewId);
             customerPhoneTextView=itemView.findViewById(R.id.customerPhoneTextViewId);
             editImageView=itemView.findViewById(R.id.editImageViewId);
             deleteImageView=itemView.findViewById(R.id.deleteImageViewId);
+
+            customerItem=itemView.findViewById(R.id.customerItemId);
         }
     }
 
