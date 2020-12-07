@@ -69,21 +69,6 @@ public interface ApiInterface {
       @GET("api/customer/count")
       Call<CustomerCountResponse> getCustomerCount(@Header("Authorization") String authorization);
 
-
-
-      // product
-//      @FormUrlEncoded
-//  @POST("api/product")
-//  Call<CustomerCountResponse> postProduct(@Header("Authorization") String authorization,
-//                                          @Field(""));
-
-
-
-  @FormUrlEncoded
-  @POST("api link")
-  void getData(@Field("code") String code,
-               @Field("month") String month);
-
   // invoice
   @GET("api/invoice/sale-info")
   Call<GetAllSellInfoResponse> getAllSellInfo(@Header("Authorization") String authorization, @Body LogInData logInData);
