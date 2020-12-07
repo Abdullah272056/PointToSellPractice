@@ -12,6 +12,7 @@ import com.example.pointtosellpractice.model_class.RegistrationData;
 import com.example.pointtosellpractice.model_class.LogInData;
 import com.example.pointtosellpractice.model_class.RegistrationResponse;
 import com.example.pointtosellpractice.model_class.invoice.GetAllSellInfoResponse;
+import com.example.pointtosellpractice.model_class.invoice.get_all_invoice.InVoiceResponse;
 import com.example.pointtosellpractice.user_all_information.UserDataWithResponse;
 
 import retrofit2.Call;
@@ -73,8 +74,14 @@ public interface ApiInterface {
 
 
   // invoice
+
+  //GetAllSellInfoResponse
   @GET("api/invoice/sale-info")
   Call<GetAllSellInfoResponse> getAllSellInfo(@Header("Authorization") String authorization);
+
+  //get all invoice
+@GET("api/invoice")
+Call<InVoiceResponse> getInvoice(@Header("Authorization") String authorization);
 
 
 
