@@ -16,6 +16,8 @@ import com.example.pointtosellpractice.user_all_information.UserDataWithResponse
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
@@ -68,7 +70,19 @@ public interface ApiInterface {
 
 
 
+      // product
+//      @FormUrlEncoded
+//  @POST("api/product")
+//  Call<CustomerCountResponse> postProduct(@Header("Authorization") String authorization,
+//                                          @Field(""));
 
+
+
+  @FormUrlEncoded
+  @POST("api link")
+  void getData(@Field("code") String code,
+               @Field("month") String month);
+  
 
 
 //    @PUT("api/user/{id}")
@@ -77,6 +91,9 @@ public interface ApiInterface {
 
 //    @DELETE("api/user/{id}")
 //    Call<OurDataSet> deleteUser(@Path("id") String id);
+
+
+
 
 
 }
