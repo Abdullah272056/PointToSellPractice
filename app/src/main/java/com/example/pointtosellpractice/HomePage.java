@@ -86,8 +86,8 @@ public class HomePage extends AppCompatActivity {
 
         // call getCustomerCount for getting total customer count
       getCustomerCount();
-       
-
+        // call GetAllSellInfo for getting total customer count
+        getAllSellInfo();
 
        // call navigationDrawer for getting navigation drawer
       navigationDrawer();
@@ -170,7 +170,24 @@ public class HomePage extends AppCompatActivity {
 
     // getting  Get all sale info
 
+    private void getAllSellInfo() {
+        apiInterface.getAllSellInfo("Bearer "+token).enqueue(new Callback<GetAllSellInfoResponse>() {
+            @Override
+            public void onResponse(Call<GetAllSellInfoResponse> call, Response<GetAllSellInfoResponse> response) {
+                GetAllSellInfoResponse getAllSellInfoResponse=response.body();
+                assert getAllSellInfoResponse != null;
+                Log.e("totalSaleAmount",getAllSellInfoResponse.getGetAllSellInfoData().getTotalSaleAmount().toString());
 
+            }
+
+            @Override
+            public void onFailure(Call<GetAllSellInfoResponse> call, Throwable t) {
+                Log.e("ts","success");
+
+            }
+        });
+
+    }
 
 
 
