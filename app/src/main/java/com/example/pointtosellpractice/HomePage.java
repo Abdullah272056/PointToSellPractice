@@ -60,7 +60,7 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         linearLayout=findViewById(R.id.mainLayoutId);
-        
+
         //finding textView
         customerCountTextView=findViewById(R.id.customerCountId);
         totalSaleAmountTextView=findViewById(R.id.totalSaleAmountTextViewId);
@@ -188,7 +188,13 @@ public class HomePage extends AppCompatActivity {
                 GetAllSellInfoResponse getAllSellInfoResponse=response.body();
                 assert getAllSellInfoResponse != null;
                 Log.e("totalSaleAmount",getAllSellInfoResponse.getGetAllSellInfoData().getTotalSaleAmount().toString());
-
+//                TextView totalSaleAmountTextView,totalSoldProductQuantityTextView,totalSoldInvoiceTextView,
+//                        totalDueAmountTextView,totalProfitTextView;
+                totalSaleAmountTextView.setText(getAllSellInfoResponse.getGetAllSellInfoData().getTotalSaleAmount().toString());
+                totalSoldProductQuantityTextView.setText("Total product sale "+getAllSellInfoResponse.getGetAllSellInfoData().getTotalSoldProductQuantity().toString());
+                totalSoldInvoiceTextView.setText("Total invoice "+getAllSellInfoResponse.getGetAllSellInfoData().getTotalSoldInvoice().toString());
+                totalDueAmountTextView.setText(getAllSellInfoResponse.getGetAllSellInfoData().getTotalDueAmount().toString());
+                totalProfitTextView.setText(getAllSellInfoResponse.getGetAllSellInfoData().getTotalProfit().toString());
             }
 
             @Override

@@ -13,8 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CustomerDetailsActivity"></activity>
-        <activity android:name=".CustomerActivity"></activity>
+        <activity android:name=".CustomerDetailsActivity" />
+        <activity android:name=".CustomerActivity" />
         <activity
             android:name=".HomePage"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
