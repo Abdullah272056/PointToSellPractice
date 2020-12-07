@@ -1,5 +1,6 @@
 package com.example.pointtosellpractice;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +11,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -130,7 +133,39 @@ public class HomePage extends AppCompatActivity {
 
 
 
+navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId ()){
+            case R.id.reportItemIdId:
+                Intent intent=new Intent(HomePage.this,UpComingFeature.class);
+                startActivity(intent);
+                break;
+            case R.id.eCommerceItemIdId:
+                Intent intent1=new Intent(HomePage.this,UpComingFeature.class);
+                startActivity(intent1);
+                break;
+            case R.id.currentMonthItemIdId:
+                Intent intent2=new Intent(HomePage.this,UpComingFeature.class);
+                startActivity(intent2);
+                break;
+            case R.id.lastQuarterItemIdId:
+                Intent intent3=new Intent(HomePage.this,UpComingFeature.class);
+                startActivity(intent3);
+                break;
+            case R.id.yearEndSaleItemId:
+                Intent intent4=new Intent(HomePage.this,UpComingFeature.class);
+                startActivity(intent4);
+                break;
+                case R.id.calculatorItemIdId:
+                Intent intent5=new Intent(HomePage.this,UpComingFeature.class);
+                startActivity(intent5);
+                break;
 
+        }
+        return false;
+    }
+});
     }
 
 
@@ -149,10 +184,9 @@ public class HomePage extends AppCompatActivity {
                 Toast.makeText (HomePage.this, "Open", Toast.LENGTH_SHORT).show ();
             }
             @Override
-            public void onDrawerClosed(View drawerView) {
+            public void onDrawerClosed(View drawerView){
                 super.onDrawerClosed(drawerView);
                 Toast.makeText (HomePage.this, "Closed", Toast.LENGTH_SHORT).show ();
-
             }
         };
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
@@ -166,7 +200,6 @@ public class HomePage extends AppCompatActivity {
             @Override
             public void onResponse(Call<CustomerCountResponse> call, Response<CustomerCountResponse> response) {
                 Log.e("count","success");
-
                 CustomerCountResponse customerCountResponse=response.body();
                 customerCount=customerCountResponse.getCustomerCount().toString();
                 customerCountTextView.setText(customerCount);
@@ -188,8 +221,6 @@ public class HomePage extends AppCompatActivity {
                 GetAllSellInfoResponse getAllSellInfoResponse=response.body();
                 assert getAllSellInfoResponse != null;
                 Log.e("totalSaleAmount",getAllSellInfoResponse.getGetAllSellInfoData().getTotalSaleAmount().toString());
-//                TextView totalSaleAmountTextView,totalSoldProductQuantityTextView,totalSoldInvoiceTextView,
-//                        totalDueAmountTextView,totalProfitTextView;
                 totalSaleAmountTextView.setText(getAllSellInfoResponse.getGetAllSellInfoData().getTotalSaleAmount().toString());
                 totalSoldProductQuantityTextView.setText("Total product sale "+getAllSellInfoResponse.getGetAllSellInfoData().getTotalSoldProductQuantity().toString());
                 totalSoldInvoiceTextView.setText("Total invoice "+getAllSellInfoResponse.getGetAllSellInfoData().getTotalSoldInvoice().toString());
@@ -205,8 +236,6 @@ public class HomePage extends AppCompatActivity {
         });
 
     }
-
-
-
+   
 
 }
