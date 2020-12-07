@@ -69,6 +69,9 @@ public interface ApiInterface {
       @GET("api/customer/count")
       Call<CustomerCountResponse> getCustomerCount(@Header("Authorization") String authorization);
 
+
+
+
   // invoice
   @GET("api/invoice/sale-info")
   Call<GetAllSellInfoResponse> getAllSellInfo(@Header("Authorization") String authorization, @Body LogInData logInData);

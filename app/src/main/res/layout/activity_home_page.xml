@@ -38,7 +38,7 @@
                         android:gravity="center"
                         android:textColor="#000000"
                         android:textAlignment="center"
-                        android:textSize="25sp"
+                        android:textSize="20sp"
                         android:text="Total Customer"
                         android:layout_width="match_parent"
                         android:layout_height="70dp"/>
@@ -52,11 +52,43 @@
                         android:layout_height="60dp"/>
                 </LinearLayout>
                 <LinearLayout
+                    android:weightSum="5"
                     android:layout_margin="10dp"
                     android:background="@drawable/background"
                     android:orientation="vertical"
                     android:layout_width="200dp"
                     android:layout_height="match_parent">
+                    <TextView
+                        android:gravity="center"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textAlignment="center"
+                        android:text="Total Sell Amount"
+                        android:layout_weight="1.5"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"/>
+                    <TextView
+                        android:text="00 Taka"
+                        android:gravity="center"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:id="@+id/totalSaleAmountTextViewId"
+                        android:layout_weight="1.5"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"/>
+                    <TextView
+                        android:textSize="12sp"
+                        android:id="@+id/totalSoldProductQuantityTextViewId"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"/>
+                    <TextView
+                        android:textSize="12sp"
+                        android:id="@+id/totalSoldInvoiceTextViewId"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"/>
+
 
                 </LinearLayout>
 
