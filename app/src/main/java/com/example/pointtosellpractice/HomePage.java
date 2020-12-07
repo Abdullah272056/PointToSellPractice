@@ -236,6 +236,13 @@ navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigation
         });
 
     }
-   
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(Gravity.LEFT)){
+            drawerLayout.closeDrawers();
+        }else {
+            HomePage.super.onBackPressed();
+        }
+    }
 
 }
