@@ -169,7 +169,6 @@ public class HomePage extends AppCompatActivity {
 
 
     // getting  Get all sale info
-
     private void getAllSellInfo() {
         apiInterface.getAllSellInfo("Bearer "+token).enqueue(new Callback<GetAllSellInfoResponse>() {
             @Override
