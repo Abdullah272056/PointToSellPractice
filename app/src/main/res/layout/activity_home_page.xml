@@ -101,6 +101,7 @@
                         android:layout_height="0dp"/>
                 </LinearLayout>
 
+
                 <LinearLayout
                     android:weightSum="5"
                     android:layout_margin="10dp"
@@ -120,7 +121,7 @@
                     <TextView
                         android:text="00 Taka"
                         android:gravity="center"
-                        android:textColor="#F30000"
+                        android:textColor="#AF0000"
                         android:textSize="30sp"
                         android:id="@+id/totalDueAmountTextViewId"
                         android:layout_weight="1.5"
