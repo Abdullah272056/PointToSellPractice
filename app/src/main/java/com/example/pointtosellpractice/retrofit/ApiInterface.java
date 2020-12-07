@@ -74,7 +74,7 @@ public interface ApiInterface {
 
   // invoice
   @GET("api/invoice/sale-info")
-  Call<GetAllSellInfoResponse> getAllSellInfo(@Header("Authorization") String authorization, @Body LogInData logInData);
+  Call<GetAllSellInfoResponse> getAllSellInfo(@Header("Authorization") String authorization);
 
 
 

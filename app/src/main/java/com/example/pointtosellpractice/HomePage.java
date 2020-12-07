@@ -24,6 +24,8 @@ import com.example.pointtosellpractice.customer.CustomerData;
 import com.example.pointtosellpractice.customer.CustomerInformationData;
 import com.example.pointtosellpractice.customer.CustomerInformationDataResponse;
 import com.example.pointtosellpractice.customer.AddCustomerResponse;
+import com.example.pointtosellpractice.model_class.LogInData;
+import com.example.pointtosellpractice.model_class.invoice.GetAllSellInfoResponse;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 import com.example.pointtosellpractice.user_all_information.UserDataWithResponse;
@@ -42,7 +44,7 @@ public class HomePage extends AppCompatActivity {
     LinearLayout linearLayout;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
-    ApiInterface apiInterface;
+    ApiInterface apiInterface,apiInterface1;
 
     String token;
     Button userInFormationButton, addCustomer;
@@ -70,6 +72,7 @@ public class HomePage extends AppCompatActivity {
 
 
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
+      //  apiInterface1 = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
 
         addCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +86,8 @@ public class HomePage extends AppCompatActivity {
 
         // call getCustomerCount for getting total customer count
       getCustomerCount();
+       
+
 
        // call navigationDrawer for getting navigation drawer
       navigationDrawer();
@@ -161,6 +166,13 @@ public class HomePage extends AppCompatActivity {
             }
         });
     }
+
+
+    // getting  Get all sale info
+
+
+
+
 
 
 }
