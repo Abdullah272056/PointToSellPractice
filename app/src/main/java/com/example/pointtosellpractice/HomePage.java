@@ -161,6 +161,11 @@ navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigation
                 Intent intent5=new Intent(HomePage.this,UpComingFeature.class);
                 startActivity(intent5);
                 break;
+            case R.id.invoiceItemId:
+                Intent intent6=new Intent(HomePage.this,InVoice.class);
+                intent6.putExtra("token",token);
+                startActivity(intent6);
+                break;
 
         }
         return false;
