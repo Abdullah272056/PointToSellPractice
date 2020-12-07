@@ -52,12 +52,24 @@ public class HomePage extends AppCompatActivity {
     TextView customerCountTextView;
     String customerCount;
 
+    TextView totalSaleAmountTextView,totalSoldProductQuantityTextView,totalSoldInvoiceTextView,
+            totalDueAmountTextView,totalProfitTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         linearLayout=findViewById(R.id.mainLayoutId);
+        
+        //finding textView
         customerCountTextView=findViewById(R.id.customerCountId);
+        totalSaleAmountTextView=findViewById(R.id.totalSaleAmountTextViewId);
+        totalSoldProductQuantityTextView=findViewById(R.id.totalSoldProductQuantityTextViewId);
+        totalSoldInvoiceTextView=findViewById(R.id.totalSoldInvoiceTextViewId);
+        totalDueAmountTextView=findViewById(R.id.totalDueAmountTextViewId);
+        totalProfitTextView=findViewById(R.id.totalProfitTextViewId);
+
+
         userInFormationButton=findViewById(R.id.userAllDataButtonId);
         addCustomer=findViewById(R.id.addCustomerId);
         toolbar=findViewById (R.id.toolbarId);
