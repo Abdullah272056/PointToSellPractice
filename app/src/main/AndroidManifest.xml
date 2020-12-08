@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".InVoice"></activity>
+        <activity android:name=".InVoiceDetails"></activity>
+        <activity android:name=".InVoice" />
         <activity android:name=".UpComingFeature" />
         <activity android:name=".CustomerDetailsActivity" />
         <activity android:name=".CustomerActivity" />
