@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_margin="5dp"
+    android:background="#FFBF9E"
     >
 
     <LinearLayout
@@ -18,6 +19,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content">
             <TextView
+                android:id="@+id/invoiceItemCustomerNameTextViewId"
                 android:textColor="#090909"
                 android:padding="5dp"
                 android:text="Abdullah"
@@ -25,6 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
+                android:id="@+id/invoiceItemDateTextViewId"
                 android:padding="5dp"
                 android:text="November 13 2020"
                 android:textSize="20sp"
@@ -33,6 +36,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/invoiceItemPayAmountTextViewId"
             android:padding="5dp"
             android:text="00"
             android:textColor="#38711A"

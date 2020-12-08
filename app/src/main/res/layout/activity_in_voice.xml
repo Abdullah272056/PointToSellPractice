@@ -5,5 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InVoice">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/invoiceRecyclerViewId"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ProgressBar
+        android:layout_marginTop="50dp"
+        android:layout_margin="10dp"
+        android:visibility="visible"
+        android:id="@+id/invoiceProgressBarId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:src="@drawable/ic_baseline_add_24"
+        android:id="@+id/addInvoiceButtonId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
