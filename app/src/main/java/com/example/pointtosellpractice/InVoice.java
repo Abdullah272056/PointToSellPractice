@@ -1,11 +1,14 @@
 package com.example.pointtosellpractice;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.pointtosellpractice.invoice.InvoiceCustomAdapter;
 import com.example.pointtosellpractice.model_class.invoice.get_all_invoice.InVoiceResponse;
 import com.example.pointtosellpractice.model_class.invoice.get_all_invoice.Invoice;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
@@ -22,11 +25,14 @@ public class InVoice extends AppCompatActivity {
     ApiInterface apiInterface;
     String token;
     List<Invoice> invoiceList;
+  
+    RecyclerView invoiceRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_in_voice);
+        invoiceRecyclerView=findViewById(R.id.invoiceRecyclerViewId);
         token= getIntent().getStringExtra("token");
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
         getAllSellInfo();
@@ -49,9 +55,6 @@ public class InVoice extends AppCompatActivity {
                         Toast.makeText(InVoice.this, String.valueOf(invoiceList.size()), Toast.LENGTH_SHORT).show();
                         Log.e("se",String.valueOf(invoiceList.get(0).getCustomer().getName()));
 
-//                        customerCustomAdapter = new CustomerCustomAdapter(CustomerActivity.this,token,customerInformationList);
-//                        customerRecyclerView.setLayoutManager(new LinearLayoutManager(CustomerActivity.this));
-//                        customerRecyclerView.setAdapter(customerCustomAdapter);
                     }
 
                 }
