@@ -25,7 +25,7 @@ public class InVoice extends AppCompatActivity {
     ApiInterface apiInterface;
     String token;
     List<Invoice> invoiceList;
-  
+    InvoiceCustomAdapter invoiceCustomAdapter;
     RecyclerView invoiceRecyclerView;
 
     @Override
@@ -55,6 +55,9 @@ public class InVoice extends AppCompatActivity {
                         Toast.makeText(InVoice.this, String.valueOf(invoiceList.size()), Toast.LENGTH_SHORT).show();
                         Log.e("se",String.valueOf(invoiceList.get(0).getCustomer().getName()));
 
+                        invoiceCustomAdapter = new InvoiceCustomAdapter(InVoice.this,token,invoiceList);
+                        invoiceRecyclerView.setLayoutManager(new LinearLayoutManager(InVoice.this));
+                        invoiceRecyclerView.setAdapter(invoiceCustomAdapter);
                     }
 
                 }
