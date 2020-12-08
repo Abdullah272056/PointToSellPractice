@@ -93,7 +93,7 @@ public class HomePage extends AppCompatActivity {
 
        // call navigationDrawer for getting navigation drawer
       navigationDrawer();
-      
+
 
 navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
     @Override
