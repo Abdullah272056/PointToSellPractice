@@ -34,7 +34,7 @@ public class HomePage extends AppCompatActivity {
     LinearLayout linearLayout;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
-    ApiInterface apiInterface,apiInterface1;
+    ApiInterface apiInterface;
 
     String token;
     Button userInFormationButton, addCustomer;

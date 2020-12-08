@@ -8,6 +8,7 @@
     >
 
     <LinearLayout
+        android:id="@+id/inVoiceItemId"
         android:orientation="horizontal"
         android:weightSum="1"
         android:layout_width="match_parent"
