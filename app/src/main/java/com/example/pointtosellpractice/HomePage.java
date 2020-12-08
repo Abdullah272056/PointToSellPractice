@@ -37,7 +37,7 @@ public class HomePage extends AppCompatActivity {
     ApiInterface apiInterface;
 
     String token;
-    Button userInFormationButton, addCustomer;
+    Button addCustomer;
 
     TextView customerCountTextView;
     String customerCount;
@@ -60,7 +60,7 @@ public class HomePage extends AppCompatActivity {
         totalProfitTextView=findViewById(R.id.totalProfitTextViewId);
 
 
-        userInFormationButton=findViewById(R.id.userAllDataButtonId);
+
         addCustomer=findViewById(R.id.addCustomerId);
         toolbar=findViewById (R.id.toolbarId);
         drawerLayout=findViewById (R.id.drawerLayoutId);
@@ -93,32 +93,7 @@ public class HomePage extends AppCompatActivity {
 
        // call navigationDrawer for getting navigation drawer
       navigationDrawer();
-
-
-
-        userInFormationButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                apiInterface.getUserAllInformation("Bearer "+token).enqueue(new Callback<OwnerDataWithResponse>() {
-                    @Override
-                    public void onResponse(Call<OwnerDataWithResponse> call, Response<OwnerDataWithResponse> response) {
-
-                        OwnerDataWithResponse userDataWithResponse=response.body();
-                        Toast.makeText(HomePage.this, "success", Toast.LENGTH_SHORT).show();
-                        Log.e("gt", userDataWithResponse.getData().getEmail().toString());
-
-                    }
-
-                    @Override
-                    public void onFailure(Call<OwnerDataWithResponse> call, Throwable t) {
-                        Toast.makeText(HomePage.this, "fail", Toast.LENGTH_SHORT).show();
-                        Log.e("gt", "ff");
-                    }
-                });
-            }
-        });
-
-
+      
 
 navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
     @Override
