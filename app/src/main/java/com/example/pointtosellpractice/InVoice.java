@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.pointtosellpractice.invoice.InvoiceCustomAdapter;
@@ -27,12 +29,14 @@ public class InVoice extends AppCompatActivity {
     List<Invoice> invoiceList;
     InvoiceCustomAdapter invoiceCustomAdapter;
     RecyclerView invoiceRecyclerView;
+    ProgressBar invoiceProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_in_voice);
         invoiceRecyclerView=findViewById(R.id.invoiceRecyclerViewId);
+        invoiceProgressBar=findViewById(R.id.invoiceProgressBarId);
         token= getIntent().getStringExtra("token");
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
         getAllSellInfo();
@@ -51,23 +55,22 @@ public class InVoice extends AppCompatActivity {
                     invoiceList.addAll(response.body().getInvoices());
 
                     if (invoiceList.size ()>0){
-
                         Toast.makeText(InVoice.this, String.valueOf(invoiceList.size()), Toast.LENGTH_SHORT).show();
                         Log.e("se",String.valueOf(invoiceList.get(0).getCustomer().getName()));
-
                         invoiceCustomAdapter = new InvoiceCustomAdapter(InVoice.this,token,invoiceList);
                         invoiceRecyclerView.setLayoutManager(new LinearLayoutManager(InVoice.this));
                         invoiceRecyclerView.setAdapter(invoiceCustomAdapter);
                     }
-
+                    invoiceProgressBar.setVisibility(View.GONE);
                 }
+
 
             }
 
             @Override
             public void onFailure(Call<InVoiceResponse> call, Throwable t) {
                 Toast.makeText(InVoice.this, "fail", Toast.LENGTH_SHORT).show();
-
+                invoiceProgressBar.setVisibility(View.GONE);
             }
         });
 
