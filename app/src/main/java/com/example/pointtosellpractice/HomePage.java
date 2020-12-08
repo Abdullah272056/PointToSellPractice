@@ -61,7 +61,7 @@ public class HomePage extends AppCompatActivity {
 
 
 
-        addCustomer=findViewById(R.id.addCustomerId);
+        addCustomer=findViewById(R.id.customerId);
         toolbar=findViewById (R.id.toolbarId);
         drawerLayout=findViewById (R.id.drawerLayoutId);
         navigationView=findViewById (R.id.myNavigationViewId);

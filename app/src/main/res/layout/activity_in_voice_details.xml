@@ -14,6 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
+            android:textColor="#050505"
+            android:textStyle="bold"
             android:padding="5dp"
             android:textAlignment="center"
             android:text="From"
@@ -21,43 +23,53 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <TextView
+            android:textColor="#050505"
             android:id="@+id/companyNameTextViewId"
-            android:padding="5dp"
-            android:textAlignment="center"
+            android:paddingTop="3dp"
+            android:paddingLeft="10dp"
+            android:paddingBottom="3dp"
             android:text="CompanyName"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <TextView
+            android:textColor="#050505"
             android:id="@+id/ownerNameTextViewId"
-            android:padding="5dp"
-            android:textAlignment="center"
+            android:paddingTop="3dp"
+            android:paddingLeft="10dp"
+            android:paddingBottom="3dp"
             android:text="Owner Name"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <TextView
+            android:textColor="#050505"
             android:id="@+id/ownerAddressTextViewId"
-            android:padding="5dp"
-            android:textAlignment="center"
+            android:paddingTop="3dp"
+            android:paddingLeft="10dp"
+            android:paddingBottom="3dp"
             android:text="Owner Address"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <TextView
+            android:textColor="#050505"
             android:id="@+id/ownerEmailTextViewId"
-            android:padding="5dp"
-            android:textAlignment="center"
+            android:paddingTop="3dp"
+            android:paddingLeft="10dp"
+            android:paddingBottom="3dp"
             android:text="Owner Email"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <TextView
+            android:textColor="#050505"
             android:id="@+id/ownerPhoneTextViewId"
-            android:padding="5dp"
-            android:textAlignment="center"
+            android:paddingTop="3dp"
+            android:paddingLeft="10dp"
+            android:paddingBottom="3dp"
             android:text="Owner Phone"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

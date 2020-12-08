@@ -187,7 +187,7 @@
 
           <Button
               android:layout_marginTop="50dp"
-              android:id="@+id/addCustomerId"
+              android:id="@+id/customerId"
               android:textSize="30sp"
               android:text="Customer Data"
               android:layout_width="wrap_content"
