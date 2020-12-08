@@ -2,40 +2,27 @@ package com.example.pointtosellpractice;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pointtosellpractice.customer.CustomerCountResponse;
-import com.example.pointtosellpractice.customer.CustomerData;
-import com.example.pointtosellpractice.customer.CustomerInformationData;
-import com.example.pointtosellpractice.customer.CustomerInformationDataResponse;
-import com.example.pointtosellpractice.customer.AddCustomerResponse;
-import com.example.pointtosellpractice.model_class.LogInData;
 import com.example.pointtosellpractice.model_class.invoice.GetAllSellInfoResponse;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
-import com.example.pointtosellpractice.user_all_information.UserDataWithResponse;
+import com.example.pointtosellpractice.model_class.owner_all_information.OwnerDataWithResponse;
 import com.google.android.material.navigation.NavigationView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -112,18 +99,18 @@ public class HomePage extends AppCompatActivity {
         userInFormationButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                apiInterface.getUserAllInformation("Bearer "+token).enqueue(new Callback<UserDataWithResponse>() {
+                apiInterface.getUserAllInformation("Bearer "+token).enqueue(new Callback<OwnerDataWithResponse>() {
                     @Override
-                    public void onResponse(Call<UserDataWithResponse> call, Response<UserDataWithResponse> response) {
+                    public void onResponse(Call<OwnerDataWithResponse> call, Response<OwnerDataWithResponse> response) {
 
-                        UserDataWithResponse userDataWithResponse=response.body();
+                        OwnerDataWithResponse userDataWithResponse=response.body();
                         Toast.makeText(HomePage.this, "success", Toast.LENGTH_SHORT).show();
                         Log.e("gt", userDataWithResponse.getData().getEmail().toString());
 
                     }
 
                     @Override
-                    public void onFailure(Call<UserDataWithResponse> call, Throwable t) {
+                    public void onFailure(Call<OwnerDataWithResponse> call, Throwable t) {
                         Toast.makeText(HomePage.this, "fail", Toast.LENGTH_SHORT).show();
                         Log.e("gt", "ff");
                     }

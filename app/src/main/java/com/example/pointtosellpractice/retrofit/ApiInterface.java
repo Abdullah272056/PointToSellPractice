@@ -13,13 +13,11 @@ import com.example.pointtosellpractice.model_class.LogInData;
 import com.example.pointtosellpractice.model_class.RegistrationResponse;
 import com.example.pointtosellpractice.model_class.invoice.GetAllSellInfoResponse;
 import com.example.pointtosellpractice.model_class.invoice.get_all_invoice.InVoiceResponse;
-import com.example.pointtosellpractice.user_all_information.UserDataWithResponse;
+import com.example.pointtosellpractice.model_class.owner_all_information.OwnerDataWithResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
@@ -31,6 +29,8 @@ public interface ApiInterface {
 //    @GET("api/user/")
 //    Call<AddresResponse> getAddress();
 
+
+//Authorization
   //registration
     @POST("api/auth/register/")
     Call<RegistrationResponse>registrationData(@Body RegistrationData registrationData);
@@ -44,7 +44,7 @@ public interface ApiInterface {
 
     //user all information
     @GET("api/auth/me")
-    Call<UserDataWithResponse> getUserAllInformation(@Header("Authorization") String authorization);
+    Call<OwnerDataWithResponse> getUserAllInformation(@Header("Authorization") String authorization);
 
 
 

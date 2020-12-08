@@ -1,9 +1,9 @@
-package com.example.pointtosellpractice.user_all_information;
+package com.example.pointtosellpractice.model_class.owner_all_information;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class UserData {
+public class OwnerData {
     @SerializedName("companyLogo")
     @Expose
     private String companyLogo;

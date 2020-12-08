@@ -1,15 +1,15 @@
-package com.example.pointtosellpractice.user_all_information;
+package com.example.pointtosellpractice.model_class.owner_all_information;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class UserDataWithResponse {
+public class OwnerDataWithResponse {
     @SerializedName("success")
     @Expose
     private Boolean success;
     @SerializedName("data")
     @Expose
-    private UserData data;
+    private OwnerData data;
 
     public Boolean getSuccess() {
         return success;
@@ -19,11 +19,11 @@ public class UserDataWithResponse {
         this.success = success;
     }
 
-    public UserData getData() {
+    public OwnerData getData() {
         return data;
     }
 
-    public void setData(UserData data) {
+    public void setData(OwnerData data) {
         this.data = data;
     }
 }
