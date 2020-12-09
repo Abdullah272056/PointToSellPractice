@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.pointtosellpractice.customer.CustomerCustomAdapter;
@@ -31,6 +32,7 @@ public class Product extends AppCompatActivity {
     ApiInterface apiInterface;
     ProductCustomAdapter productCustomAdapter;
     RecyclerView productRecyclerView;
+    ProgressBar productProgressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,9 +40,9 @@ public class Product extends AppCompatActivity {
         token= getIntent().getStringExtra("token");
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
         productRecyclerView=findViewById(R.id.productRecyclerViewId);
+        productProgressBar=findViewById(R.id.productProgressBarId);
 
         getAllProduct();
-
 
     }
 
@@ -60,6 +62,7 @@ public class Product extends AppCompatActivity {
                         productRecyclerView.setAdapter(productCustomAdapter);
                     }
             }
+                productProgressBar.setVisibility(View.GONE);
             }
 
             @Override
