@@ -8,8 +8,14 @@
     android:background="@drawable/download1"
     android:padding="10dp"
     tools:context=".LoginActivity">
+    <ProgressBar
+        android:visibility="invisible"
+        android:id="@+id/signInProgressBarId"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"/>
     <EditText
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:background="#DAD3D3"
         android:hint="enter your email"
         android:textSize="20sp"
@@ -60,12 +66,6 @@
 
 
 
-    <ProgressBar
-        android:visibility="gone"
-        android:layout_marginTop="50dp"
-        android:id="@+id/signInProgressBarId"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+
 
 </LinearLayout>

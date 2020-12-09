@@ -11,8 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.pointtosellpractice.CustomerActivity;
 import com.example.pointtosellpractice.R;
 import com.example.pointtosellpractice.model_class.product.GetProductData;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
@@ -52,6 +54,8 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show();
+
+                addCustomerInformation();
             }
         });
     }
@@ -74,4 +78,20 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
             productRecyclerViewItem=itemView.findViewById(R.id.productRecyclerViewItemId);
         }
     }
+
+
+    private void addCustomerInformation(){
+
+        AlertDialog.Builder builder     =new AlertDialog.Builder(context);
+        LayoutInflater layoutInflater   =LayoutInflater.from(context);
+        View view                       =layoutInflater.inflate(R.layout.product_details,null);
+        builder.setView(view);
+        final AlertDialog alertDialog   = builder.create();
+
+        alertDialog.show();
+    }
+
+
+
+
 }
