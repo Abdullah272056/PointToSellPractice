@@ -6,7 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,9 +45,15 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
         holder.productNameTextView.setText(String.valueOf(productDataList.get(position).getName()));
         holder.productSellingPriceTextView.setText(String.valueOf(productDataList.get(position).getSellingPrice()));
         holder.productStockTextView.setText(String.valueOf(productDataList.get(position).getStock()));
-
        //image Load
         Picasso.with(context).load(Uri.parse(String.valueOf(productDataList.get(position).getImage()))).into(holder.productImageView);
+
+        holder.productRecyclerViewItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -56,12 +64,14 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView productNameTextView,productSellingPriceTextView,productStockTextView;
         ImageView productImageView;
+        LinearLayout productRecyclerViewItem;
         public MyViewHolder(@NonNull View itemView){
             super(itemView);
             productNameTextView=itemView.findViewById(R.id.productNameTextViewId);
             productSellingPriceTextView=itemView.findViewById(R.id.productSellingPriceTextViewId);
             productStockTextView=itemView.findViewById(R.id.productStockTextViewId);
             productImageView=itemView.findViewById(R.id.productImageViewId);
+            productRecyclerViewItem=itemView.findViewById(R.id.productRecyclerViewItemId);
         }
     }
 }
