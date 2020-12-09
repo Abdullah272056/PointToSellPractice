@@ -1,6 +1,9 @@
 package com.example.pointtosellpractice.product;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +19,11 @@ import com.example.pointtosellpractice.model_class.invoice.get_all_invoice.Invoi
 import com.example.pointtosellpractice.model_class.product.GetProductData;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
+import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdapter.MyViewHolder> {
@@ -44,6 +51,8 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
         holder.productSellingPriceTextView.setText(String.valueOf(productDataList.get(position).getSellingPrice()));
         holder.productStockTextView.setText(String.valueOf(productDataList.get(position).getStock()));
 
+       //image Load
+        Picasso.with(context).load(Uri.parse(String.valueOf(productDataList.get(position).getImage()))).into(holder.productImageView);
     }
 
     @Override
