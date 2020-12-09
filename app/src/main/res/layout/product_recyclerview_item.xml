@@ -5,6 +5,7 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
+        android:layout_margin="5dp"
         android:id="@+id/productRecyclerViewItemId"
         android:background="@drawable/background"
         android:layout_width="match_parent"
@@ -15,7 +16,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="1.9"
             android:orientation="vertical">
 
             <TextView
@@ -48,13 +49,26 @@
                 android:text="Product Stock"
                 android:textAppearance="?android:textAppearanceMedium" />
         </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:layout_weight=".2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <View
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:background="#0929DA"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight=".9">
 
             <ImageView
+                android:padding="5dp"
                 android:id="@+id/productImageViewId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
