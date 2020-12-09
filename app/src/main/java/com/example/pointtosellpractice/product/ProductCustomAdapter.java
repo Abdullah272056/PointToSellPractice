@@ -116,6 +116,7 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
         productDescriptionTextView.setText(String.valueOf(productDataList.get(position).getDescription()));
         productAddDateTextView.setText(String.valueOf(productDataList.get(position).getCreatedAt()));
         productUpdateDateTextView.setText(String.valueOf(productDataList.get(position).getUpdatedAt()));
+        productUnitTextView.setText(String.valueOf(productDataList.get(position).getUnit()));
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
