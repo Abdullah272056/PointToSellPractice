@@ -91,7 +91,7 @@ public interface ApiInterface {
 
     // get al product
     @GET("api/product")
-    Call<GetProductDataResponse> GetAllProduct(@Header("Authorization") String authorization);
+    Call<GetProductDataResponse> getAllProduct(@Header("Authorization") String authorization);
 
 
 //    @PUT("api/user/{id}")

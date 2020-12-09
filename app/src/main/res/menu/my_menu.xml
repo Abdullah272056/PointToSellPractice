@@ -5,7 +5,7 @@
     android:icon="@drawable/ic_baseline_dashboard_24"/>
 
     <item android:id="@+id/productItemIdId"
-        android:title="Theme"
+        android:title="Product"
         android:icon="@drawable/ic_baseline_shopping_cart_24"/>
     <item android:id="@+id/customerItemIdId"
         android:title="Customer"
