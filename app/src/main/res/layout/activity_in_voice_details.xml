@@ -22,6 +22,10 @@
             android:textSize="25sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+        <View
+            android:background="#814C4C4C"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
         <TextView
             android:textColor="#050505"
             android:id="@+id/companyNameTextViewId"

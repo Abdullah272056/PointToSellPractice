@@ -80,8 +80,8 @@ public interface ApiInterface {
   Call<GetAllSellInfoResponse> getAllSellInfo(@Header("Authorization") String authorization);
 
   //get all invoice
-@GET("api/invoice")
-Call<InVoiceResponse> getInvoice(@Header("Authorization") String authorization);
+    @GET("api/invoice")
+    Call<InVoiceResponse> getInvoice(@Header("Authorization") String authorization);
 
 
 
