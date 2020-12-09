@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -28,6 +29,7 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
            productStockTextView,productUnitTextView,productDescriptionTextView,
            productAddDateTextView,productUpdateDateTextView;
    ImageView productIDetailsImageView;
+   Button okButton;
 
     Context context;
     String token;
@@ -104,6 +106,8 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
         productUpdateDateTextView=view.findViewById(R.id.productUpdateDateTextViewId);
         productIDetailsImageView=view.findViewById(R.id.productImageViewId);
 
+        okButton=view.findViewById(R.id.okButtonId);
+
 
         productNameTextView.setText(String.valueOf(productDataList.get(position).getName()));
         productRegularPriceTextView.setText(String.valueOf(productDataList.get(position).getPrice()));
@@ -112,6 +116,12 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
         productDescriptionTextView.setText(String.valueOf(productDataList.get(position).getDescription()));
         productAddDateTextView.setText(String.valueOf(productDataList.get(position).getCreatedAt()));
         productUpdateDateTextView.setText(String.valueOf(productDataList.get(position).getUpdatedAt()));
+        okButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
 
         Picasso.with(context).load(Uri.parse(String.valueOf(productDataList.get(position).getImage()))).into(productIDetailsImageView);
 
