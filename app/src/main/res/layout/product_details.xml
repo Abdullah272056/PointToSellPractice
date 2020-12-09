@@ -21,6 +21,7 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
+                android:textColor="#00B100"
                 android:id="@+id/productNameTextViewId"
                 android:layout_marginTop="10dp"
                 android:paddingLeft="10dp"
@@ -31,6 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <ImageView
+                android:layout_marginTop="5dp"
                 android:id="@+id/productImageViewId"
                 android:layout_marginBottom="20sp"
                 android:layout_width="match_parent"
@@ -114,6 +116,13 @@
                 android:paddingTop="2dp"
                 android:text="Product Name"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:text="Ok"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 

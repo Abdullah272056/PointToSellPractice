@@ -24,6 +24,11 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdapter.MyViewHolder> {
+   TextView productNameTextView,productRegularPriceTextView,productSellingPriceTextView,
+           productStockTextView,productUnitTextView,productDescriptionTextView,
+           productAddDateTextView,productUpdateDateTextView;
+   ImageView productIDetailsImageView;
+
     Context context;
     String token;
     List<GetProductData> productDataList;
@@ -43,11 +48,12 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         holder.productNameTextView.setText(String.valueOf(productDataList.get(position).getName()));
         holder.productSellingPriceTextView.setText(String.valueOf(productDataList.get(position).getSellingPrice()));
         holder.productStockTextView.setText(String.valueOf(productDataList.get(position).getStock()));
-       //image Load
+
+        //image Load
         Picasso.with(context).load(Uri.parse(String.valueOf(productDataList.get(position).getImage()))).into(holder.productImageView);
 
         holder.productRecyclerViewItem.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +61,7 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
             public void onClick(View v) {
                 Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show();
 
-                addCustomerInformation();
+                addCustomerInformation(position);
             }
         });
     }
@@ -71,6 +77,7 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
         LinearLayout productRecyclerViewItem;
         public MyViewHolder(@NonNull View itemView){
             super(itemView);
+
             productNameTextView=itemView.findViewById(R.id.productNameTextViewId);
             productSellingPriceTextView=itemView.findViewById(R.id.productSellingPriceTextViewId);
             productStockTextView=itemView.findViewById(R.id.productStockTextViewId);
@@ -80,13 +87,33 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
     }
 
 
-    private void addCustomerInformation(){
-
+    private void addCustomerInformation(int position){
         AlertDialog.Builder builder     =new AlertDialog.Builder(context);
         LayoutInflater layoutInflater   =LayoutInflater.from(context);
         View view                       =layoutInflater.inflate(R.layout.product_details,null);
         builder.setView(view);
         final AlertDialog alertDialog   = builder.create();
+
+        productNameTextView=view.findViewById(R.id.productNameTextViewId);
+        productRegularPriceTextView=view.findViewById(R.id.productRegularPriceTextViewId);
+        productSellingPriceTextView=view.findViewById(R.id.productSellingPriceTextViewId);
+        productStockTextView=view.findViewById(R.id.productStockTextViewId);
+        productUnitTextView=view.findViewById(R.id.productUnitTextViewId);
+        productDescriptionTextView=view.findViewById(R.id.productDescriptionTextViewId);
+        productAddDateTextView=view.findViewById(R.id.productAddDateTextViewId);
+        productUpdateDateTextView=view.findViewById(R.id.productUpdateDateTextViewId);
+        productIDetailsImageView=view.findViewById(R.id.productImageViewId);
+
+
+        productNameTextView.setText(String.valueOf(productDataList.get(position).getName()));
+        productRegularPriceTextView.setText(String.valueOf(productDataList.get(position).getPrice()));
+        productSellingPriceTextView.setText(String.valueOf(productDataList.get(position).getSellingPrice()));
+        productStockTextView.setText(String.valueOf(productDataList.get(position).getStock()));
+        productDescriptionTextView.setText(String.valueOf(productDataList.get(position).getDescription()));
+        productAddDateTextView.setText(String.valueOf(productDataList.get(position).getCreatedAt()));
+        productUpdateDateTextView.setText(String.valueOf(productDataList.get(position).getUpdatedAt()));
+
+        Picasso.with(context).load(Uri.parse(String.valueOf(productDataList.get(position).getImage()))).into(productIDetailsImageView);
 
         alertDialog.show();
     }
