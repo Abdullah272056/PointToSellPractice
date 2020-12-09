@@ -128,6 +128,11 @@ navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigation
                 intent6.putExtra("token",token);
                 startActivity(intent6);
                 break;
+            case R.id.productItemIdId:
+                Intent intent7=new Intent(HomePage.this,Product.class);
+                intent7.putExtra("token",token);
+                startActivity(intent7);
+                break;
 
         }
         return false;
