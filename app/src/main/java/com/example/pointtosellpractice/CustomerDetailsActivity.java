@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,20 +32,30 @@ public class CustomerDetailsActivity extends AppCompatActivity {
     TextView cNameTextView,cPhoneTextView,cEmailTextView,cAddressTextView;
     TextView dueTextView;
 
+    EditText duePayAmountEditText;
+    Button payDueButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_details);
 
-//        view finding
+        // textView finding
         cNameTextView=findViewById(R.id.customerNameTextViewId);
         cPhoneTextView=findViewById(R.id.customerPhoneTextViewId);
         cEmailTextView=findViewById(R.id.customerEmailTextViewId);
         cAddressTextView=findViewById(R.id.customerAddressTextViewId);
         dueTextView=findViewById(R.id.dueTextViewId);
+        //button finding
+        payDueButton=findViewById(R.id.payDueButtonId);
+        //editText finding
+        duePayAmountEditText=findViewById(R.id.duePayAmountEditTextId);
 
-        //token= getIntent().getStringExtra("token1");
+
+        //token= getIntent().getStringExtra("token");
+
+        // textView set Text
         cNameTextView.setText("Name :  "+getIntent().getStringExtra("cName"));
         cPhoneTextView.setText("Phone :  "+getIntent().getStringExtra("cPhone"));
         cEmailTextView.setText("Email :  "+getIntent().getStringExtra("cEmail"));

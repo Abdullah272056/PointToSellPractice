@@ -77,10 +77,11 @@
             android:layout_height="wrap_content"/>
 
         <EditText
+
             android:autofillHints="#000000"
             android:background="#FFFEFE"
             android:layout_marginTop="20dp"
-            android:id="@+id/payAmountId"
+            android:id="@+id/duePayAmountEditTextId"
             android:textColor="#000000"
             android:textSize="20sp"
            android:hint="Pay amount* "
