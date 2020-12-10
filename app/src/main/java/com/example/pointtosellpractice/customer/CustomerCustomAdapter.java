@@ -124,7 +124,7 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
         }
     }
 
-private  void  deleteCustomer(final int position){
+    private  void  deleteCustomer(final int position){
 
     AlertDialog.Builder builder = new AlertDialog.Builder(context);
     builder.setCancelable(false);

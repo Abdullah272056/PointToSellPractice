@@ -1,7 +1,9 @@
 package com.example.pointtosellpractice.product;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +18,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pointtosellpractice.CustomerActivity;
+import com.example.pointtosellpractice.Product;
 import com.example.pointtosellpractice.R;
+import com.example.pointtosellpractice.customer.CustomerDeleteResponse;
+import com.example.pointtosellpractice.model_class.product.DeleteProductDataResponse;
 import com.example.pointtosellpractice.model_class.product.GetProductData;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
@@ -24,11 +29,19 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdapter.MyViewHolder> {
-   TextView productNameTextView,productRegularPriceTextView,productSellingPriceTextView,
+    String idd;
+
+
+    TextView productNameTextView,productRegularPriceTextView,productSellingPriceTextView,
            productStockTextView,productUnitTextView,productDescriptionTextView,
            productAddDateTextView,productUpdateDateTextView;
    ImageView productIDetailsImageView;
+
    Button okButton;
 
     Context context;
@@ -62,10 +75,11 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show();
-
-                addCustomerInformation(position);
+                addProductInformation(position);
             }
         });
+
+
     }
 
     @Override
@@ -77,6 +91,7 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
         TextView productNameTextView,productSellingPriceTextView,productStockTextView;
         ImageView productImageView;
         LinearLayout productRecyclerViewItem;
+        ImageView editProductImageView,deleteProductImageView;
         public MyViewHolder(@NonNull View itemView){
             super(itemView);
 
@@ -85,11 +100,14 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
             productStockTextView=itemView.findViewById(R.id.productStockTextViewId);
             productImageView=itemView.findViewById(R.id.productImageViewId);
             productRecyclerViewItem=itemView.findViewById(R.id.productRecyclerViewItemId);
+
+            editProductImageView=itemView.findViewById(R.id.editProductImageViewId);
+            deleteProductImageView=itemView.findViewById(R.id.deleteProductImageViewId);
         }
     }
 
 
-    private void addCustomerInformation(int position){
+    private void addProductInformation(int position){
         AlertDialog.Builder builder     =new AlertDialog.Builder(context);
         LayoutInflater layoutInflater   =LayoutInflater.from(context);
         View view                       =layoutInflater.inflate(R.layout.product_details,null);
@@ -117,12 +135,15 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
         productAddDateTextView.setText(String.valueOf(productDataList.get(position).getCreatedAt()));
         productUpdateDateTextView.setText(String.valueOf(productDataList.get(position).getUpdatedAt()));
         productUnitTextView.setText(String.valueOf(productDataList.get(position).getUnit()));
+
+
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 alertDialog.dismiss();
             }
         });
+
 
         Picasso.with(context).load(Uri.parse(String.valueOf(productDataList.get(position).getImage()))).into(productIDetailsImageView);
 
