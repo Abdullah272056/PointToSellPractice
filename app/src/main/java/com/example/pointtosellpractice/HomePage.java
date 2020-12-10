@@ -98,7 +98,8 @@ public class HomePage extends AppCompatActivity {
         // call GetAllSellInfo for getting total customer count
         getAllSellInfo();
 
-
+        // Get all product info
+        getAllProductInfo();
 
        // call navigationDrawer for getting navigation drawer
       navigationDrawer();
@@ -217,7 +218,22 @@ public class HomePage extends AppCompatActivity {
 
 
     // Get all product info
-   
+    private void getAllProductInfo(){
+        apiInterface.getAllProductInfo("Bearer "+token).enqueue(new Callback<GetAllProductInfoDataResponse>() {
+            @Override
+            public void onResponse(Call<GetAllProductInfoDataResponse> call, Response<GetAllProductInfoDataResponse> response) {
+
+                GetAllProductInfoDataResponse getAllProductInfoDataResponse=response.body();
+                totalProductCostTextView.setText(getAllProductInfoDataResponse.getGetAllProductInfoData().getTotalProductCost().toString());
+                totalProductStockTextView.setText("Total product in stock "+getAllProductInfoDataResponse.getGetAllProductInfoData().getTotalProduct().toString());
+                totalProductTypeTextView.setText("Product type"+getAllProductInfoDataResponse.getGetAllProductInfoData().getTotalProductType().toString());
+            }
+            @Override
+            public void onFailure(Call<GetAllProductInfoDataResponse> call, Throwable t) {
+
+            }
+        });
+    }
 
 
 
