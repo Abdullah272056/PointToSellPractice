@@ -225,8 +225,8 @@ public class HomePage extends AppCompatActivity {
 
                 GetAllProductInfoDataResponse getAllProductInfoDataResponse=response.body();
                 totalProductCostTextView.setText(getAllProductInfoDataResponse.getGetAllProductInfoData().getTotalProductCost().toString());
-                totalProductStockTextView.setText("Total product in stock "+getAllProductInfoDataResponse.getGetAllProductInfoData().getTotalProduct().toString());
-                totalProductTypeTextView.setText("Product type"+getAllProductInfoDataResponse.getGetAllProductInfoData().getTotalProductType().toString());
+                totalProductStockTextView.setText("Total product stock "+getAllProductInfoDataResponse.getGetAllProductInfoData().getTotalProduct().toString());
+                totalProductTypeTextView.setText("Product type "+getAllProductInfoDataResponse.getGetAllProductInfoData().getTotalProductType().toString());
             }
             @Override
             public void onFailure(Call<GetAllProductInfoDataResponse> call, Throwable t) {

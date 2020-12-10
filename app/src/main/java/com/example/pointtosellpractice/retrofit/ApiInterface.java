@@ -44,7 +44,7 @@ public interface ApiInterface {
 
     //Call<jetaReponsePaboSetarModelClass>logInData(@Body jetaPathaboSetarModelClass variableName);
 
-    //user all information
+    //Get Me
     @GET("api/auth/me")
     Call<OwnerDataWithResponse> getUserAllInformation(@Header("Authorization") String authorization);
 
@@ -84,6 +84,8 @@ public interface ApiInterface {
   //get all invoice
     @GET("api/invoice")
     Call<InVoiceResponse> getInvoice(@Header("Authorization") String authorization);
+
+
 
 
 
