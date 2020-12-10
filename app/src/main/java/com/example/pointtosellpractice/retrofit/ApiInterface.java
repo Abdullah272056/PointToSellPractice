@@ -33,7 +33,7 @@ public interface ApiInterface {
 //    Call<AddresResponse> getAddress();
 
 
-//Authorization
+/////Authorization////
   //registration
     @POST("api/auth/register/")
     Call<RegistrationResponse>registrationData(@Body RegistrationData registrationData);
@@ -44,14 +44,14 @@ public interface ApiInterface {
 
     //Call<jetaReponsePaboSetarModelClass>logInData(@Body jetaPathaboSetarModelClass variableName);
 
-
     //user all information
     @GET("api/auth/me")
     Call<OwnerDataWithResponse> getUserAllInformation(@Header("Authorization") String authorization);
 
 
 
-    //customer
+    ////customer/////
+
    //add customer
   @POST("api/customer")
   Call<AddCustomerResponse> addCustomerInformation(@Header("Authorization") String authorization, @Body CustomerData customerData);
@@ -68,7 +68,6 @@ public interface ApiInterface {
       @DELETE("api/customer/{id}")
       Call<CustomerDeleteResponse> deleteCustomer(@Header("Authorization") String authorization,@Path("id") String id);
 
-
       // get customer Count
       @GET("api/customer/count")
       Call<CustomerCountResponse> getCustomerCount(@Header("Authorization") String authorization);
@@ -76,7 +75,7 @@ public interface ApiInterface {
 
 
 
-  // invoice
+  ///// invoice/////
 
   //GetAllSellInfoResponse
   @GET("api/invoice/sale-info")
@@ -89,8 +88,7 @@ public interface ApiInterface {
 
 
 
-    /// product
-
+    ////// product//////
     // get al product
     @GET("api/product")
     Call<GetProductDataResponse> getAllProduct(@Header("Authorization") String authorization);

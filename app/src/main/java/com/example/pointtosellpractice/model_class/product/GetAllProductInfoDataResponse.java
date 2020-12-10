@@ -8,7 +8,7 @@ public class GetAllProductInfoDataResponse {
     private Boolean success;
     @SerializedName("productInfo")
     @Expose
-    private GetProductData getProductData;
+    private GetAllProductInfoData getAllProductInfoData;
     @SerializedName("msg")
     @Expose
     private String msg;
@@ -21,12 +21,12 @@ public class GetAllProductInfoDataResponse {
         this.success = success;
     }
 
-    public GetProductData getGetProductData(){
-        return getProductData;
+    public GetAllProductInfoData getGetAllProductInfoData() {
+        return getAllProductInfoData;
     }
 
-    public void setGetProductData(GetProductData getProductData){
-        this.getProductData = getProductData;
+    public void setGetAllProductInfoData(GetAllProductInfoData getAllProductInfoData) {
+        this.getAllProductInfoData = getAllProductInfoData;
     }
 
     public String getMsg(){

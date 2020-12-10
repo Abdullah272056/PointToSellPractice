@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.pointtosellpractice.customer.CustomerCountResponse;
 import com.example.pointtosellpractice.model_class.invoice.GetAllSellInfoResponse;
+import com.example.pointtosellpractice.model_class.product.GetAllProductInfoDataResponse;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 import com.example.pointtosellpractice.model_class.owner_all_information.OwnerDataWithResponse;
@@ -97,11 +98,14 @@ public class HomePage extends AppCompatActivity {
         // call GetAllSellInfo for getting total customer count
         getAllSellInfo();
 
+
+
        // call navigationDrawer for getting navigation drawer
       navigationDrawer();
 
 
-navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
+    navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId ()){
@@ -145,10 +149,6 @@ navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigation
     }
 });
     }
-
-
-
-
 
 
     // create for drawerLayout
@@ -214,6 +214,14 @@ navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigation
         });
 
     }
+
+
+    // Get all product info
+   
+
+
+
+
     @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(Gravity.LEFT)){
