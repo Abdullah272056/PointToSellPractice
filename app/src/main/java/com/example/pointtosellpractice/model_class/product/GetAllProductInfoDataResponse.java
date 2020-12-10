@@ -2,7 +2,7 @@ package com.example.pointtosellpractice.model_class.product;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class GetProductInfoDataResponse{
+public class GetAllProductInfoDataResponse {
     @SerializedName("success")
     @Expose
     private Boolean success;

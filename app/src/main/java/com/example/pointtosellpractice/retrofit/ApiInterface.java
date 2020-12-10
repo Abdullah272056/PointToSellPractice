@@ -15,6 +15,7 @@ import com.example.pointtosellpractice.model_class.invoice.GetAllSellInfoRespons
 import com.example.pointtosellpractice.model_class.invoice.get_all_invoice.InVoiceResponse;
 import com.example.pointtosellpractice.model_class.owner_all_information.OwnerDataWithResponse;
 import com.example.pointtosellpractice.model_class.product.DeleteProductDataResponse;
+import com.example.pointtosellpractice.model_class.product.GetAllProductInfoDataResponse;
 import com.example.pointtosellpractice.model_class.product.GetProductDataResponse;
 
 import retrofit2.Call;
@@ -98,6 +99,9 @@ public interface ApiInterface {
     @DELETE("api/product/{id}")
     Call<DeleteProductDataResponse> deleteProduct(@Header("Authorization") String authorization, @Path("id") String id);
 
+    // Get all product info
+    @GET("api/product/info")
+    Call<GetAllProductInfoDataResponse> getAllProductInfo(@Header("Authorization") String authorization);
 
 
 //    @PUT("api/user/{id}")
