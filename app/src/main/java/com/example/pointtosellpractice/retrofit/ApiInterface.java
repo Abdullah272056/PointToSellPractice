@@ -7,6 +7,8 @@ import com.example.pointtosellpractice.customer.CustomerData;
 import com.example.pointtosellpractice.customer.CustomerDeleteResponse;
 import com.example.pointtosellpractice.customer.CustomerInformationDataResponse;
 import com.example.pointtosellpractice.customer.AddCustomerResponse;
+import com.example.pointtosellpractice.customer.pay_due.DuePayDataResponse;
+import com.example.pointtosellpractice.customer.pay_due.PayData;
 import com.example.pointtosellpractice.model_class.LogInResponse;
 import com.example.pointtosellpractice.model_class.RegistrationData;
 import com.example.pointtosellpractice.model_class.LogInData;
@@ -71,6 +73,10 @@ public interface ApiInterface {
       // get customer Count
       @GET("api/customer/count")
       Call<CustomerCountResponse> getCustomerCount(@Header("Authorization") String authorization);
+
+      //Pay Due
+    @PUT("api/customer/due/pay")
+    Call<DuePayDataResponse> payDue(@Header("Authorization") String authorization,@Body PayData payData);
 
 
 
