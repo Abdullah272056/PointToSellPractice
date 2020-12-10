@@ -79,7 +79,7 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
             }
         });
 
-
+       
     }
 
     @Override

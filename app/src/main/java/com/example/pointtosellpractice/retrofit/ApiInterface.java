@@ -94,6 +94,9 @@ public interface ApiInterface {
     @GET("api/product")
     Call<GetProductDataResponse> getAllProduct(@Header("Authorization") String authorization);
 
+    //delete product
+    @DELETE("api/product/{id}")
+    Call<DeleteProductDataResponse> deleteProduct(@Header("Authorization") String authorization, @Path("id") String id);
 
 
 
