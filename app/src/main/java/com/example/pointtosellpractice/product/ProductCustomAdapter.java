@@ -79,7 +79,7 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
             }
         });
 
-       
+      
     }
 
     @Override
@@ -151,6 +151,42 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
     }
 
 
+private  void deleteProduct(final int position){
+    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+    builder.setCancelable(false);
+    builder.setMessage("Do you want to Delete?");
 
+    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+
+            apiInterface.deleteProduct("Bearer "+token,productDataList.get(position).getId())
+                    .enqueue(new Callback<DeleteProductDataResponse>() {
+                        @Override
+                        public void onResponse(Call<DeleteProductDataResponse> call, Response<DeleteProductDataResponse> response) {
+                            Toast.makeText(context, "success delete", Toast.LENGTH_SHORT).show();
+                            ((Product)context).getAllProduct();
+                        }
+
+                        @Override
+                        public void onFailure(Call<DeleteProductDataResponse> call, Throwable t) {
+                            Toast.makeText(context, "fail delete", Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+
+        }
+    });
+    builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            dialog.cancel();
+        }
+    });
+    AlertDialog alert = builder.create();
+    alert.show();
+
+
+}
 
 }
