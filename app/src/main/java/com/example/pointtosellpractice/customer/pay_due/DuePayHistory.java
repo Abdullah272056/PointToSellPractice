@@ -3,7 +3,7 @@ package com.example.pointtosellpractice.customer.pay_due;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class PayDueHistory {
+public class DuePayHistory {
     @SerializedName("payAmount")
     @Expose
     private Integer payAmount;
