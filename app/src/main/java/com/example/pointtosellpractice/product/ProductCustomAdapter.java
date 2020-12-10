@@ -79,7 +79,13 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
             }
         });
 
-      
+        // delete button clicked
+        holder.deleteProductImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteProduct(position);
+            }
+        });
     }
 
     @Override
