@@ -1,5 +1,4 @@
 package com.example.pointtosellpractice.model_class.product;
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -18,23 +17,23 @@ public class GetProductInfoDataResponse{
         return success;
     }
 
-    public void setSuccess(Boolean success) {
+    public void setSuccess(Boolean success){
         this.success = success;
     }
 
-    public GetProductData getGetProductData() {
+    public GetProductData getGetProductData(){
         return getProductData;
     }
 
-    public void setGetProductData(GetProductData getProductData) {
+    public void setGetProductData(GetProductData getProductData){
         this.getProductData = getProductData;
     }
 
-    public String getMsg() {
+    public String getMsg(){
         return msg;
     }
 
-    public void setMsg(String msg) {
+    public void setMsg(String msg){
         this.msg = msg;
     }
 
