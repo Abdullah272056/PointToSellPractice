@@ -45,6 +45,8 @@ public class HomePage extends AppCompatActivity {
     TextView totalSaleAmountTextView,totalSoldProductQuantityTextView,totalSoldInvoiceTextView,
             totalDueAmountTextView,totalProfitTextView;
 
+    TextView totalProductCostTextView,totalProductStockTextView,totalProductTypeTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -58,6 +60,10 @@ public class HomePage extends AppCompatActivity {
         totalSoldInvoiceTextView=findViewById(R.id.totalSoldInvoiceTextViewId);
         totalDueAmountTextView=findViewById(R.id.totalDueAmountTextViewId);
         totalProfitTextView=findViewById(R.id.totalProfitTextViewId);
+
+        totalProductCostTextView=findViewById(R.id.totalProductCostTextViewId);
+        totalProductStockTextView=findViewById(R.id.totalProductStockTextViewId);
+        totalProductTypeTextView=findViewById(R.id.totalProductTypeTextViewId);
 
 
 
