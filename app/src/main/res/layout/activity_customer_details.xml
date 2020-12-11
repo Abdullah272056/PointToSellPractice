@@ -77,7 +77,7 @@
             android:layout_height="wrap_content"/>
 
         <EditText
-
+            android:inputType="number"
             android:autofillHints="#000000"
             android:background="#FFFEFE"
             android:layout_marginTop="20dp"
