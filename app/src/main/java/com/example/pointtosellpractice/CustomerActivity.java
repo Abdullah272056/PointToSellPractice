@@ -57,7 +57,7 @@ public class CustomerActivity extends AppCompatActivity {
 
         customerRecyclerView=findViewById(R.id.customerRecyclerViewId);
         addCustomerButton=findViewById(R.id.addCustomerButtonId);
-        token= getIntent().getStringExtra("token1");
+        token= getIntent().getStringExtra("token");
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
 
         addCustomerButton.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +71,7 @@ public class CustomerActivity extends AppCompatActivity {
         //mainProgressBar.setVisibility(View.GONE);
     }
 
-    public void getAllCustomer() {
+    public void getAllCustomer(){
         apiInterface.getAllCustomerInformation("Bearer "+token).enqueue(new Callback<CustomerInformationDataResponse>() {
             @Override
             public void onResponse(Call<CustomerInformationDataResponse> call, Response<CustomerInformationDataResponse> response) {

@@ -82,6 +82,8 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
                 intent.putExtra("cDue",customerInformationList.get(position).getDue().toString());
                 intent.putExtra("cCreatedAt",customerInformationList.get(position).getCreatedAt());
                 intent.putExtra("cId",customerInformationList.get(position).getId());
+                intent.putExtra("token",token);
+
                 context.startActivity(intent);
 
             }
@@ -160,7 +162,7 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
     alert.show();
 }
 
-    private void addCustomerInformation(final int position1){
+    private void addCustomerInformation(final int position){
 
         AlertDialog.Builder builder     =new AlertDialog.Builder(context);
         LayoutInflater layoutInflater   =LayoutInflater.from(context);
@@ -179,11 +181,11 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
         cancelCustomerButton=view.findViewById(R.id.cancelCustomerDataButtonId);
 
 
-        customerNameEditText.setText(customerInformationList.get(position1).getName());
-        customerAddressEditText.setText(customerInformationList.get(position1).getAddress());
-        customerPhoneEditText.setText(customerInformationList.get(position1).getPhone());
-        if (customerInformationList.get(position1).getEmail()!=null || TextUtils.isEmpty(customerInformationList.get(position1).getEmail())){
-            customerEmailEditText.setText(customerInformationList.get(position1).getEmail());
+        customerNameEditText.setText(customerInformationList.get(position).getName());
+        customerAddressEditText.setText(customerInformationList.get(position).getAddress());
+        customerPhoneEditText.setText(customerInformationList.get(position).getPhone());
+        if (customerInformationList.get(position).getEmail()!=null || TextUtils.isEmpty(customerInformationList.get(position).getEmail())){
+            customerEmailEditText.setText(customerInformationList.get(position).getEmail());
         }
 
 
@@ -236,7 +238,7 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
                 }
                 progressBar.setVisibility(View.VISIBLE);
 
-                apiInterface.updateCustomerData("Bearer "+token,customerInformationList.get(position1).getId().toString(),customerData)
+                apiInterface.updateCustomerData("Bearer "+token,customerInformationList.get(position).getId().toString(),customerData)
                         .enqueue(new Callback<AddCustomerResponse>(){
                             @Override
                             public void onResponse(Call<AddCustomerResponse> call, Response<AddCustomerResponse> response) {

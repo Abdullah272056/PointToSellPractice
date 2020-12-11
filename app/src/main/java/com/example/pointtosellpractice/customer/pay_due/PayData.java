@@ -26,4 +26,12 @@ public class PayData {
     public void setPayAmount(Integer payAmount) {
         this.payAmount = payAmount;
     }
+
+    public PayData(String id, Integer payAmount) {
+        this.id = id;
+        this.payAmount = payAmount;
+    }
+
+    public PayData() {
+    }
 }

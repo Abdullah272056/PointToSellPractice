@@ -87,7 +87,7 @@ public class HomePage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                Intent intent=new Intent(HomePage.this,CustomerActivity.class);
-               intent.putExtra("token1",token);
+               intent.putExtra("token",token);
                startActivity(intent);
             }
         });

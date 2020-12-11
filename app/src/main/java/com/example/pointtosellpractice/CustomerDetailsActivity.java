@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +15,9 @@ import android.widget.Toast;
 import com.example.pointtosellpractice.customer.CustomerCustomAdapter;
 import com.example.pointtosellpractice.customer.CustomerInformationData;
 import com.example.pointtosellpractice.customer.CustomerInformationDataResponse;
+import com.example.pointtosellpractice.customer.pay_due.DuePayDataResponse;
+import com.example.pointtosellpractice.customer.pay_due.PayData;
+import com.example.pointtosellpractice.model_class.LogInData;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 
@@ -34,6 +38,7 @@ public class CustomerDetailsActivity extends AppCompatActivity {
 
     EditText duePayAmountEditText;
     Button payDueButton;
+    String customer_id,token;
 
 
     @Override
@@ -53,7 +58,8 @@ public class CustomerDetailsActivity extends AppCompatActivity {
         duePayAmountEditText=findViewById(R.id.duePayAmountEditTextId);
 
 
-        //token= getIntent().getStringExtra("token");
+        token= getIntent().getStringExtra("token");
+
 
         // textView set Text
         cNameTextView.setText("Name :  "+getIntent().getStringExtra("cName"));
@@ -61,9 +67,10 @@ public class CustomerDetailsActivity extends AppCompatActivity {
         cEmailTextView.setText("Email :  "+getIntent().getStringExtra("cEmail"));
         cAddressTextView.setText("Address :  "+getIntent().getStringExtra("cAddress"));
         dueTextView.setText("Due :  "+getIntent().getStringExtra("cDue"));
-
+        customer_id=getIntent().getStringExtra("cId");
 
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
+
 
 
 
