@@ -70,6 +70,11 @@ public interface ApiInterface {
       @GET("api/customer/count")
       Call<CustomerCountResponse> getCustomerCount(@Header("Authorization") String authorization);
 
+      //Pay Due
+    @PUT("api/customer/due/pay")
+    Call<DuePayDataResponse> payDue(@Header("Authorization") String authorization,@Body PayData payData);
+
+
 
 
   ///// invoice/////

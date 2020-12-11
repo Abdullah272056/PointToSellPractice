@@ -40,7 +40,7 @@ public class CustomerDetailsActivity extends AppCompatActivity {
     Button payDueButton;
     String customer_id,token;
 
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
