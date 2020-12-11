@@ -92,6 +92,10 @@ public class CustomerDetailsActivity extends AppCompatActivity {
             duePayAmountEditText.setError("Enter  password");
             duePayAmountEditText.requestFocus();
             return;
+        }if(Integer.parseInt(duePayAmount)>Integer.parseInt(getIntent().getStringExtra("cDue"))){
+            duePayAmountEditText.setError("You send more amount than due");
+            duePayAmountEditText.requestFocus();
+            return;
         }
 
         payData=new PayData(customer_id,Integer.parseInt(duePayAmount));
