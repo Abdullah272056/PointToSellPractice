@@ -67,8 +67,9 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
 
-        holder.customerNameTextView.setText(customerInformationList.get(position).getName());
-        holder.customerPhoneTextView.setText(customerInformationList.get(position).getPhone());
+        holder.customerNameTextView.setText(String.valueOf(customerInformationList.get(position).getName()));
+        holder.customerPhoneTextView.setText(String.valueOf(customerInformationList.get(position).getPhone()));
+        holder.customerDueTextView.setText(String.valueOf(customerInformationList.get(position).getDue()));
 
         holder.customerItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,13 +113,14 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView customerNameTextView,customerPhoneTextView;
+        TextView customerNameTextView,customerPhoneTextView,customerDueTextView;
         ImageView editImageView,deleteImageView;
         LinearLayout customerItem;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             customerNameTextView=itemView.findViewById(R.id.customerNameTextViewId);
             customerPhoneTextView=itemView.findViewById(R.id.customerPhoneTextViewId);
+            customerDueTextView=itemView.findViewById(R.id.customerDueTextViewId);
             editImageView=itemView.findViewById(R.id.editImageViewId);
             deleteImageView=itemView.findViewById(R.id.deleteImageViewId);
 
