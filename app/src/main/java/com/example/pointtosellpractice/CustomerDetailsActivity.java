@@ -32,7 +32,7 @@ import retrofit2.Response;
 public class CustomerDetailsActivity extends AppCompatActivity {
     List<CustomerInformationData> customerInformationList;
     ApiInterface apiInterface;
-
+ProgressBar pauDueProgressBar;
 
     TextView cNameTextView,cPhoneTextView,cEmailTextView,cAddressTextView;
     TextView dueTextView;
@@ -60,8 +60,7 @@ public class CustomerDetailsActivity extends AppCompatActivity {
         //editText finding
         duePayAmountEditText=findViewById(R.id.duePayAmountEditTextId);
 
-
-
+        pauDueProgressBar=findViewById(R.id.pauDueProgressBarId);
 
 
         token= getIntent().getStringExtra("token");
@@ -101,9 +100,10 @@ public class CustomerDetailsActivity extends AppCompatActivity {
             duePayAmountEditText.requestFocus();
             return;
         }
-        
-        payData=new PayData(customer_id,Integer.parseInt(duePayAmount));
-        apiInterface.payDue("Bearer "+token,payData)
+        payDueButton.setVisibility(View.INVISIBLE);
+            pauDueProgressBar.setVisibility(View.VISIBLE);
+            payData=new PayData(customer_id,Integer.parseInt(duePayAmount));
+            apiInterface.payDue("Bearer "+token,payData)
                 .enqueue(new Callback<DuePayDataResponse>() {
                     @Override
                     public void onResponse(Call<DuePayDataResponse> call, Response<DuePayDataResponse> response) {
@@ -111,12 +111,16 @@ public class CustomerDetailsActivity extends AppCompatActivity {
                         Toast.makeText(CustomerDetailsActivity.this, "sasasa", Toast.LENGTH_SHORT).show();
 //                                    assert duePayDataResponse != null;
                         Log.e("payq",String.valueOf(duePayDataResponse.getDuePayData().getDue()));
+                       pauDueProgressBar.setVisibility(View.INVISIBLE);
+                        payDueButton.setVisibility(View.VISIBLE);
+
 
                     }
 
                     @Override
                     public void onFailure(Call<DuePayDataResponse> call, Throwable t) {
-
+                      pauDueProgressBar.setVisibility(View.INVISIBLE);
+                        payDueButton.setVisibility(View.VISIBLE);
                     }
                 });
 
