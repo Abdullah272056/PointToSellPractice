@@ -51,56 +51,82 @@
 
 
     </LinearLayout>
-    <LinearLayout
-        android:padding="10dp"
-        android:layout_margin="10dp"
-        android:background="@drawable/background"
-        android:orientation="vertical"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/allTimeSellTextViewId"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            android:text="All Time Sell : 300 Taka"
-            android:padding="10dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        >
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-
-            android:id="@+id/dueTextViewId"
-            android:textColor="#F42525"
-            android:textSize="20sp"
-            android:text="Due : 250 Taka"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/background"
+            android:orientation="vertical"
             android:padding="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="-9dp"
+            tools:layout_editor_absoluteY="0dp">
 
-        <EditText
-            android:inputType="number"
-            android:autofillHints="#000000"
-            android:background="#FFFEFE"
-            android:layout_marginTop="20dp"
-            android:id="@+id/duePayAmountEditTextId"
-            android:textColor="#000000"
-            android:textSize="20sp"
-           android:hint="Pay amount* "
-            android:padding="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/allTimeSellTextViewId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="All Time Sell : 300 Taka"
+                android:textColor="#000000"
+                android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/payDueButtonId"
-            android:text="Pay Due"
-            android:layout_marginTop="40dp"
-            android:layout_gravity="center"
-            android:textColor="#000000"
-            android:textSize="25sp"
-            android:padding="15dp"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/dueTextViewId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Due : 250 Taka"
+                android:textColor="#F42525"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/duePayAmountEditTextId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:autofillHints="#000000"
+                android:background="#FFFEFE"
+                android:hint="Pay amount* "
+                android:inputType="number"
+                android:padding="10dp"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/payDueButtonId"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="40dp"
+                android:padding="15dp"
+                android:text="Pay Due"
+                android:textColor="#000000"
+                android:textSize="25sp" />
 
 
-    </LinearLayout>
+        </LinearLayout>
+
+        <ProgressBar
+            android:layout_marginBottom="120dp"
+            android:id="@+id/pauDueProgressBarId"
+            android:layout_width="59dp"
+            android:layout_height="67dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </LinearLayout>

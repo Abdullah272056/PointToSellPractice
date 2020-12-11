@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -60,6 +61,9 @@ public class CustomerDetailsActivity extends AppCompatActivity {
         duePayAmountEditText=findViewById(R.id.duePayAmountEditTextId);
 
 
+
+
+
         token= getIntent().getStringExtra("token");
 
 
@@ -97,7 +101,7 @@ public class CustomerDetailsActivity extends AppCompatActivity {
             duePayAmountEditText.requestFocus();
             return;
         }
-
+        
         payData=new PayData(customer_id,Integer.parseInt(duePayAmount));
         apiInterface.payDue("Bearer "+token,payData)
                 .enqueue(new Callback<DuePayDataResponse>() {
@@ -107,6 +111,7 @@ public class CustomerDetailsActivity extends AppCompatActivity {
                         Toast.makeText(CustomerDetailsActivity.this, "sasasa", Toast.LENGTH_SHORT).show();
 //                                    assert duePayDataResponse != null;
                         Log.e("payq",String.valueOf(duePayDataResponse.getDuePayData().getDue()));
+
                     }
 
                     @Override
