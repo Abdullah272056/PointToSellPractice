@@ -40,7 +40,9 @@ public class CustomerDetailsActivity extends AppCompatActivity {
     Button payDueButton;
     String customer_id,token;
 
-    
+    String duePayAmount;
+    PayData payData;
+    DuePayDataResponse duePayDataResponse;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +72,44 @@ public class CustomerDetailsActivity extends AppCompatActivity {
         customer_id=getIntent().getStringExtra("cId");
 
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
+
+        payDueButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                payDue();
+
+                }
+        });
+
+
+    }
+
+
+    public void payDue(){
+        duePayAmount = duePayAmountEditText.getText().toString();
+        if (TextUtils.isEmpty(duePayAmount)){
+            duePayAmountEditText.setError("Enter  password");
+            duePayAmountEditText.requestFocus();
+            return;
+        }
+
+        payData=new PayData(customer_id,Integer.parseInt(duePayAmount));
+        apiInterface.payDue("Bearer "+token,payData)
+                .enqueue(new Callback<DuePayDataResponse>() {
+                    @Override
+                    public void onResponse(Call<DuePayDataResponse> call, Response<DuePayDataResponse> response) {
+                        duePayDataResponse=response.body();
+                        Toast.makeText(CustomerDetailsActivity.this, "sasasa", Toast.LENGTH_SHORT).show();
+//                                    assert duePayDataResponse != null;
+                        Log.e("payq",String.valueOf(duePayDataResponse.getDuePayData().getDue()));
+                    }
+
+                    @Override
+                    public void onFailure(Call<DuePayDataResponse> call, Throwable t) {
+
+                    }
+                });
 
 
 
