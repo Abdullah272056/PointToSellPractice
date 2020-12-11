@@ -7,11 +7,12 @@
     android:background="#95CAF4"
     android:layout_margin="10dp"
 
+    android:gravity="center"
     >
 
     <LinearLayout
         android:id="@+id/customerItemId"
-        android:layout_weight="5"
+        android:layout_weight="3"
         android:gravity="center"
         android:orientation="vertical"
         android:layout_width="0dp"
@@ -32,6 +33,22 @@
             android:text="01994215664"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center"
+        android:layout_weight="2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/customerDueTextViewId"
+            android:textAlignment="center"
+            android:textColor="#E40202"
+            android:textSize="25sp"
+            android:text="00"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
     </LinearLayout>
 
