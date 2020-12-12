@@ -2,6 +2,7 @@ package com.example.pointtosellpractice;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -18,6 +19,7 @@ import com.example.pointtosellpractice.customer.CustomerInformationData;
 import com.example.pointtosellpractice.customer.CustomerInformationDataResponse;
 import com.example.pointtosellpractice.customer.pay_due.DuePayDataResponse;
 import com.example.pointtosellpractice.customer.pay_due.PayData;
+import com.example.pointtosellpractice.customer.single_customer.SingleCustomerDuePayCustomAdapter;
 import com.example.pointtosellpractice.customer.single_customer.SingleCustomerDuePayHistory;
 import com.example.pointtosellpractice.customer.single_customer.SingleCustomerGetResponse;
 import com.example.pointtosellpractice.model_class.LogInData;
@@ -32,11 +34,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CustomerDetailsActivity extends AppCompatActivity {
+
+    SingleCustomerDuePayCustomAdapter singleCustomerDuePayCustomAdapter;
+    RecyclerView duePayHistoryRecyclerView;
+
     List<CustomerInformationData> customerInformationList;
     List<SingleCustomerDuePayHistory> singleCustomerDuePayHistoryList;
     ApiInterface apiInterface;
     ProgressBar pauDueProgressBar;
-
 
     TextView cNameTextView,cPhoneTextView,cEmailTextView,cAddressTextView;
     TextView dueTextView;
@@ -65,6 +70,8 @@ public class CustomerDetailsActivity extends AppCompatActivity {
         duePayAmountEditText=findViewById(R.id.duePayAmountEditTextId);
 
         pauDueProgressBar=findViewById(R.id.pauDueProgressBarId);
+        //recycler view finding
+        duePayHistoryRecyclerView=findViewById(R.id.duePayHistoryRecyclerViewId);
 
 
         token= getIntent().getStringExtra("token");
@@ -152,6 +159,12 @@ public class CustomerDetailsActivity extends AppCompatActivity {
                         if (singleCustomerGetResponse.getSuccess()==true){
                             singleCustomerDuePayHistoryList=new ArrayList<>();
                             singleCustomerDuePayHistoryList.addAll(response.body().getSingleCustomerInformation().getDuePayHistory());
+                            if (singleCustomerDuePayHistoryList.size()>0){
+                                singleCustomerDuePayCustomAdapter = new SingleCustomerDuePayCustomAdapter(CustomerDetailsActivity.this,token,singleCustomerDuePayHistoryList);
+                                duePayHistoryRecyclerView.setLayoutManager(new LinearLayoutManager(CustomerDetailsActivity.this));
+                                duePayHistoryRecyclerView.setAdapter(singleCustomerDuePayCustomAdapter);
+                            }
+
                             Log.e("asas",String.valueOf(singleCustomerDuePayHistoryList.size()));
                         }
                         Toast.makeText(CustomerDetailsActivity.this, "qqqq", Toast.LENGTH_SHORT).show();
