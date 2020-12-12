@@ -126,6 +126,15 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/duePayHistoryButtonId"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:padding="15dp"
+        android:textAlignment="center"
+        android:text="Due pay all history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
     <LinearLayout
         android:background="#CEDDCE"
         android:orientation="vertical"

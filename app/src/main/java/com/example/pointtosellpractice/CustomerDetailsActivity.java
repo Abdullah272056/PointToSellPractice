@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import com.example.pointtosellpractice.customer.CustomerCustomAdapter;
 import com.example.pointtosellpractice.customer.CustomerInformationData;
 import com.example.pointtosellpractice.customer.CustomerInformationDataResponse;
+import com.example.pointtosellpractice.customer.pay_due.DuePayData;
 import com.example.pointtosellpractice.customer.pay_due.DuePayDataResponse;
 import com.example.pointtosellpractice.customer.pay_due.PayData;
 import com.example.pointtosellpractice.customer.single_customer.SingleCustomerDuePayCustomAdapter;
@@ -34,6 +36,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CustomerDetailsActivity extends AppCompatActivity {
+    Button duePayHistoryButton;
 
     SingleCustomerDuePayCustomAdapter singleCustomerDuePayCustomAdapter;
     RecyclerView duePayHistoryRecyclerView;
@@ -66,6 +69,7 @@ public class CustomerDetailsActivity extends AppCompatActivity {
         dueTextView=findViewById(R.id.dueTextViewId);
         //button finding
         payDueButton=findViewById(R.id.payDueButtonId);
+        duePayHistoryButton=findViewById(R.id.duePayHistoryButtonId);
         //editText finding
         duePayAmountEditText=findViewById(R.id.duePayAmountEditTextId);
 
@@ -91,7 +95,13 @@ public class CustomerDetailsActivity extends AppCompatActivity {
 
         singleCustomerInformation();
 
-
+        duePayHistoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(CustomerDetailsActivity.this, DuePayHistory.class);
+                startActivity(intent);
+            }
+        });
 
         payDueButton.setOnClickListener(new View.OnClickListener() {
             @Override
