@@ -92,10 +92,7 @@ public class CustomerDetailsActivity extends AppCompatActivity {
         token= getIntent().getStringExtra("token");
 
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
-
-
-
-        singleCustomerInformation();
+        
 
         duePayHistoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,34 +161,7 @@ public class CustomerDetailsActivity extends AppCompatActivity {
 
     }
 
-    public void singleCustomerInformation(){
-        apiInterface.getSingleCustomerInformation("Bearer "+token,customer_id)
-                .enqueue(new Callback<SingleCustomerGetResponse>() {
-                    @Override
-                    public void onResponse(Call<SingleCustomerGetResponse> call, Response<SingleCustomerGetResponse> response) {
-                        SingleCustomerGetResponse singleCustomerGetResponse=response.body();
 
-                        if (singleCustomerGetResponse.getSuccess()==true){
-                            singleCustomerDuePayHistoryList=new ArrayList<>();
-                            singleCustomerDuePayHistoryList.addAll(response.body().getSingleCustomerInformation().getDuePayHistory());
-                            if (singleCustomerDuePayHistoryList.size()>0){
-                                singleCustomerDuePayCustomAdapter = new SingleCustomerDuePayCustomAdapter(CustomerDetailsActivity.this,token,singleCustomerDuePayHistoryList);
-                                duePayHistoryRecyclerView.setLayoutManager(new LinearLayoutManager(CustomerDetailsActivity.this));
-                                duePayHistoryRecyclerView.setAdapter(singleCustomerDuePayCustomAdapter);
-                            }
-
-                            Log.e("asas",String.valueOf(singleCustomerDuePayHistoryList.size()));
-                        }
-                        Toast.makeText(CustomerDetailsActivity.this, "qqqq", Toast.LENGTH_SHORT).show();
-                        Toast.makeText(CustomerDetailsActivity.this, singleCustomerGetResponse.getMsg().toString(), Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onFailure(Call<SingleCustomerGetResponse> call, Throwable t) {
-
-                    }
-                });
-    }
 
 
 }
