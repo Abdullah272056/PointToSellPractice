@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"/>
 
         <TextView
-            android:textColor="#000000"
+            android:textColor="#29D103"
             android:textAlignment="center"
             android:padding="5dp"
             android:text="1000"
