@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.pointtosellpractice.customer.single_customer.SingleCustomerDuePayCustomAdapter;
@@ -29,6 +31,7 @@ public class DuePayHistory extends AppCompatActivity {
 
     RecyclerView duePayHistoryRecyclerView;
     ApiInterface apiInterface;
+    ProgressBar pauDueHistoryProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,8 @@ public class DuePayHistory extends AppCompatActivity {
 
         //recycler view finding
         duePayHistoryRecyclerView=findViewById(R.id.duePayHistoryRecyclerViewId);
+        //ProgressBar finding
+        pauDueHistoryProgressBar=findViewById(R.id.pauDueHistoryProgressBarId);
 
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
         singleCustomerInformation();
@@ -54,6 +59,7 @@ public class DuePayHistory extends AppCompatActivity {
                         SingleCustomerGetResponse singleCustomerGetResponse=response.body();
 
                         if (singleCustomerGetResponse.getSuccess()==true){
+                            pauDueHistoryProgressBar.setVisibility(View.INVISIBLE);
                             singleCustomerDuePayHistoryList=new ArrayList<>();
                             singleCustomerDuePayHistoryList.addAll(response.body().getSingleCustomerInformation().getDuePayHistory());
                             // reverse list inserting
@@ -72,7 +78,7 @@ public class DuePayHistory extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<SingleCustomerGetResponse> call, Throwable t) {
-
+                        pauDueHistoryProgressBar.setVisibility(View.INVISIBLE);
                     }
                 });
     }

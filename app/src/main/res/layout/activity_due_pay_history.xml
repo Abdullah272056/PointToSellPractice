@@ -34,7 +34,7 @@
         android:id="@+id/pauDueHistoryProgressBarId"
         android:layout_width="59dp"
         android:layout_height="67dp"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
