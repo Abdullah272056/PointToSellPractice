@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".CustomerDetailsActivity">
     <LinearLayout
-        android:padding="10dp"
+        android:padding="7dp"
         android:layout_margin="10dp"
         android:background="@drawable/background"
         android:orientation="vertical"
@@ -18,7 +18,7 @@
             android:textColor="#000000"
             android:textSize="20sp"
             android:text="Name :  Abdullah"
-            android:padding="5dp"
+            android:padding="3dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <TextView
@@ -26,7 +26,7 @@
             android:textColor="#000000"
             android:textSize="20sp"
             android:text="Phone : 01994215664"
-            android:padding="5dp"
+            android:padding="3dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -35,7 +35,7 @@
             android:textColor="#000000"
             android:textSize="20sp"
             android:text="Email : abdullah272056@gmail.com"
-            android:padding="5dp"
+            android:padding="3dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -45,7 +45,7 @@
             android:textColor="#000000"
             android:textSize="20sp"
             android:text="Address : Ruly, Vairabha, Maheshpur, Jhenaidah"
-            android:padding="5dp"
+            android:padding="3dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -67,14 +67,13 @@
             android:orientation="vertical"
             android:padding="10dp"
             tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="-9dp"
-            tools:layout_editor_absoluteY="0dp">
+         >
 
             <TextView
                 android:id="@+id/allTimeSellTextViewId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
+                android:padding="5dp"
                 android:text="All Time Sell : 300 Taka"
                 android:textColor="#000000"
                 android:textSize="20sp" />
@@ -83,7 +82,7 @@
                 android:id="@+id/dueTextViewId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
+                android:padding="5dp"
                 android:text="Due : 250 Taka"
                 android:textColor="#F42525"
                 android:textSize="20sp" />
@@ -92,7 +91,7 @@
                 android:id="@+id/duePayAmountEditTextId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 android:autofillHints="#000000"
                 android:background="#FFFEFE"
                 android:hint="Pay amount* "
@@ -106,8 +105,8 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="40dp"
-                android:padding="15dp"
+                android:layout_marginTop="30dp"
+                android:padding="12dp"
                 android:text="Pay Due"
                 android:textColor="#000000"
                 android:textSize="25sp" />
@@ -127,6 +126,26 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:background="#CEDDCE"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:padding="5dp"
+            android:textAlignment="center"
+            android:text="Due pay all history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="10dp"
+            android:id="@+id/duePayHistoryRecyclerViewId"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
 
 
 </LinearLayout>

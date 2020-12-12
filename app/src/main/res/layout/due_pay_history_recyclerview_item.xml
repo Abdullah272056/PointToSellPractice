@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
+            android:id="@+id/duePayHistoryDateTextViewId"
             android:textColor="#000000"
             android:padding="5dp"
             android:text="12/12/2020"
@@ -23,6 +24,7 @@
             android:layout_height="wrap_content"/>
 
         <TextView
+            android:id="@+id/duePayHistoryPayAmountTextViewId"
             android:textColor="#29D103"
             android:textAlignment="center"
             android:padding="5dp"
