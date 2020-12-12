@@ -35,7 +35,7 @@ public class CustomerDetailsActivity extends AppCompatActivity {
     List<CustomerInformationData> customerInformationList;
     List<SingleCustomerDuePayHistory> singleCustomerDuePayHistoryList;
     ApiInterface apiInterface;
-ProgressBar pauDueProgressBar;
+    ProgressBar pauDueProgressBar;
 
 
     TextView cNameTextView,cPhoneTextView,cEmailTextView,cAddressTextView;
