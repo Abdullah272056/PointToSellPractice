@@ -18,6 +18,7 @@ import com.example.pointtosellpractice.customer.CustomerInformationData;
 import com.example.pointtosellpractice.customer.CustomerInformationDataResponse;
 import com.example.pointtosellpractice.customer.pay_due.DuePayDataResponse;
 import com.example.pointtosellpractice.customer.pay_due.PayData;
+import com.example.pointtosellpractice.customer.single_customer.SingleCustomerGetResponse;
 import com.example.pointtosellpractice.model_class.LogInData;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
@@ -76,6 +77,12 @@ ProgressBar pauDueProgressBar;
 
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
 
+
+
+        singleCustomerInformation();
+
+
+
         payDueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,9 +137,23 @@ ProgressBar pauDueProgressBar;
                     }
                 });
 
+    }
 
+    public void singleCustomerInformation(){
+        apiInterface.getSingleCustomerInformation("Bearer "+token,customer_id)
+                .enqueue(new Callback<SingleCustomerGetResponse>() {
+                    @Override
+                    public void onResponse(Call<SingleCustomerGetResponse> call, Response<SingleCustomerGetResponse> response) {
+                       SingleCustomerGetResponse singleCustomerGetResponse=response.body();
+                        Toast.makeText(CustomerDetailsActivity.this, "qqqq", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CustomerDetailsActivity.this, singleCustomerGetResponse.getMsg().toString(), Toast.LENGTH_SHORT).show();
+                    }
 
+                    @Override
+                    public void onFailure(Call<SingleCustomerGetResponse> call, Throwable t) {
 
+                    }
+                });
     }
 
 
