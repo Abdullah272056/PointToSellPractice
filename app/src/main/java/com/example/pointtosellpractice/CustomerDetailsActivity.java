@@ -37,12 +37,6 @@ import retrofit2.Response;
 
 public class CustomerDetailsActivity extends AppCompatActivity {
     Button duePayHistoryButton;
-
-    SingleCustomerDuePayCustomAdapter singleCustomerDuePayCustomAdapter;
-    RecyclerView duePayHistoryRecyclerView;
-
-    List<CustomerInformationData> customerInformationList;
-    List<SingleCustomerDuePayHistory> singleCustomerDuePayHistoryList;
     ApiInterface apiInterface;
     ProgressBar pauDueProgressBar;
 
@@ -74,11 +68,6 @@ public class CustomerDetailsActivity extends AppCompatActivity {
         duePayAmountEditText=findViewById(R.id.duePayAmountEditTextId);
 
         pauDueProgressBar=findViewById(R.id.pauDueProgressBarId);
-        //recycler view finding
-        duePayHistoryRecyclerView=findViewById(R.id.duePayHistoryRecyclerViewId);
-
-
-
 
 
         // textView set Text
@@ -92,7 +81,7 @@ public class CustomerDetailsActivity extends AppCompatActivity {
         token= getIntent().getStringExtra("token");
 
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
-        
+
 
         duePayHistoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
