@@ -78,7 +78,7 @@ public class CustomerDetailsActivity extends AppCompatActivity {
         duePayHistoryRecyclerView=findViewById(R.id.duePayHistoryRecyclerViewId);
 
 
-        token= getIntent().getStringExtra("token");
+
 
 
         // textView set Text
@@ -88,6 +88,8 @@ public class CustomerDetailsActivity extends AppCompatActivity {
         cAddressTextView.setText("Address :  "+getIntent().getStringExtra("cAddress"));
         dueTextView.setText("Due :  "+getIntent().getStringExtra("cDue"));
         customer_id=getIntent().getStringExtra("cId");
+
+        token= getIntent().getStringExtra("token");
 
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
 
@@ -99,6 +101,9 @@ public class CustomerDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(CustomerDetailsActivity.this, DuePayHistory.class);
+                intent.putExtra("token",token);
+                intent.putExtra("customerId",customer_id);
+
                 startActivity(intent);
             }
         });
