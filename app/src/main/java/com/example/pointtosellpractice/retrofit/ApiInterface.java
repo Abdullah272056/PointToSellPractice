@@ -9,6 +9,7 @@ import com.example.pointtosellpractice.customer.CustomerInformationDataResponse;
 import com.example.pointtosellpractice.customer.AddCustomerResponse;
 import com.example.pointtosellpractice.customer.pay_due.DuePayDataResponse;
 import com.example.pointtosellpractice.customer.pay_due.PayData;
+import com.example.pointtosellpractice.customer.single_customer.SingleCustomerGetResponse;
 import com.example.pointtosellpractice.model_class.LogInResponse;
 import com.example.pointtosellpractice.model_class.RegistrationData;
 import com.example.pointtosellpractice.model_class.LogInData;
@@ -74,6 +75,11 @@ public interface ApiInterface {
     @PUT("api/customer/due/pay")
     Call<DuePayDataResponse> payDue(@Header("Authorization") String authorization,@Body PayData payData);
 
+
+    // http://mern-pos.herokuapp.com/api/customer/details/5fabf8a2bb2709001736251c
+    //get single customer information
+    @GET("api/customer/details/{id}")
+    Call<SingleCustomerGetResponse> getSingleCustomerInformation(@Header("Authorization") String authorization,@Path("id") String id);
 
 
 
