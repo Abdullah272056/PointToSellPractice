@@ -108,12 +108,19 @@ ProgressBar pauDueProgressBar;
                 .enqueue(new Callback<DuePayDataResponse>() {
                     @Override
                     public void onResponse(Call<DuePayDataResponse> call, Response<DuePayDataResponse> response) {
-                        duePayDataResponse=response.body();
-                        Toast.makeText(CustomerDetailsActivity.this, "sasasa", Toast.LENGTH_SHORT).show();
-                        //assert duePayDataResponse != null;
-                        Log.e("payq",String.valueOf(duePayDataResponse.getDuePayData().getDue()));
-                       pauDueProgressBar.setVisibility(View.INVISIBLE);
-                        payDueButton.setVisibility(View.VISIBLE);
+                        assert response.body() != null;
+                        if (response.body().getSuccess()){
+
+                            Toast.makeText(CustomerDetailsActivity.this,response.body().getMsg() , Toast.LENGTH_SHORT).show();
+                            duePayDataResponse=response.body();
+                            //assert duePayDataResponse != null;
+                            pauDueProgressBar.setVisibility(View.INVISIBLE);
+                            payDueButton.setVisibility(View.VISIBLE);
+                        }else {
+                            Toast.makeText(CustomerDetailsActivity.this,response.body().getMsg() , Toast.LENGTH_SHORT).show();
+
+                        }
+
 
                     }
                     @Override
