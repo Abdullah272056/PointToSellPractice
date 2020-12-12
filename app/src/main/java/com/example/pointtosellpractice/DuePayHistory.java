@@ -15,6 +15,7 @@ import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import retrofit2.Call;
@@ -55,6 +56,8 @@ public class DuePayHistory extends AppCompatActivity {
                         if (singleCustomerGetResponse.getSuccess()==true){
                             singleCustomerDuePayHistoryList=new ArrayList<>();
                             singleCustomerDuePayHistoryList.addAll(response.body().getSingleCustomerInformation().getDuePayHistory());
+                            // reverse list inserting
+                            Collections.reverse(singleCustomerDuePayHistoryList);
                             if (singleCustomerDuePayHistoryList.size()>0){
                                 singleCustomerDuePayCustomAdapter = new SingleCustomerDuePayCustomAdapter(DuePayHistory.this,token,singleCustomerDuePayHistoryList);
                                 duePayHistoryRecyclerView.setLayoutManager(new LinearLayoutManager(DuePayHistory.this));
