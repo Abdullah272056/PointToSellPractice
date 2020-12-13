@@ -58,7 +58,7 @@ public class SellDetailsActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<SingleCustomerGetResponse> call, Response<SingleCustomerGetResponse> response) {
                         SingleCustomerGetResponse singleCustomerGetResponse=response.body();
-
+                        sellDetailsRecyclerView.setVisibility(View.INVISIBLE);
                         if (singleCustomerGetResponse.getSuccess()==true){
                             singleCustomerTotalSellList=new ArrayList<>();
                             singleCustomerProducts=new ArrayList<>();
@@ -76,6 +76,8 @@ public class SellDetailsActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<SingleCustomerGetResponse> call, Throwable t) {
+                        sellDetailsRecyclerView.setVisibility(View.INVISIBLE);
+
                     }
                 });
     }
