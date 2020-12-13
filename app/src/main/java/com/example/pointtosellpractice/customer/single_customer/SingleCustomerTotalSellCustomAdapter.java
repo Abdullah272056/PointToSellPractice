@@ -1,16 +1,19 @@
 package com.example.pointtosellpractice.customer.single_customer;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pointtosellpractice.R;
+import com.example.pointtosellpractice.SellDetailsActivity;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 
@@ -38,7 +41,7 @@ public class SingleCustomerTotalSellCustomAdapter extends RecyclerView.Adapter<S
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
 //        TextView dateTextView,totalSellAmountTextView,totalPayAmountTextView,totalDueAmountTextView;
 
         holder.dateTextView.setText(String.valueOf(singleCustomerTotalSellList.get(position).getCreatedAt()));
@@ -46,7 +49,16 @@ public class SingleCustomerTotalSellCustomAdapter extends RecyclerView.Adapter<S
         holder.totalPayAmountTextView.setText(String.valueOf(singleCustomerTotalSellList.get(position).getPayAmount()));
         holder.totalDueAmountTextView.setText(String.valueOf(singleCustomerTotalSellList.get(position).getDue()));
         holder.totalDueAmountTextView.setText(String.valueOf(singleCustomerTotalSellList.get(position).getDue()));
-     //   holder.dateTextView.setText(singleCustomerTotalSellList.get(position).getCreatedAt());
+
+        holder.singleCustomerItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(context, SellDetailsActivity.class);
+                intent.putExtra("position",position);
+                context.startActivity(intent);
+            }
+        });
+        //   holder.dateTextView.setText(singleCustomerTotalSellList.get(position).getCreatedAt());
 
     }
 
@@ -58,6 +70,7 @@ public class SingleCustomerTotalSellCustomAdapter extends RecyclerView.Adapter<S
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView dateTextView,totalSellAmountTextView,totalPayAmountTextView,totalDueAmountTextView;
         ImageView editImageView,deleteImageView;
+        LinearLayout singleCustomerItem;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             dateTextView= itemView.findViewById(R.id.dateTextViewId);
@@ -67,6 +80,7 @@ public class SingleCustomerTotalSellCustomAdapter extends RecyclerView.Adapter<S
 
             editImageView= itemView.findViewById(R.id.editImageViewId);
             deleteImageView= itemView.findViewById(R.id.deleteImageViewId);
+            singleCustomerItem= itemView.findViewById(R.id.singleCustomerItemId);
 
 
         }
