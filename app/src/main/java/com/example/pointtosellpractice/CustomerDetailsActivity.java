@@ -85,6 +85,8 @@ public class CustomerDetailsActivity extends AppCompatActivity {
         singleCustomerTotalSellButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent=new Intent(CustomerDetailsActivity.this,SingleCustomerTotalSellActivity.class);
+                startActivity(intent);
                 // add code
 
                 }
