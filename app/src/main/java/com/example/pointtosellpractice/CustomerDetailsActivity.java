@@ -86,6 +86,8 @@ public class CustomerDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(CustomerDetailsActivity.this,SingleCustomerTotalSellActivity.class);
+                intent.putExtra("token",token);
+                intent.putExtra("customerId",customer_id);
                 startActivity(intent);
                 // add code
 
