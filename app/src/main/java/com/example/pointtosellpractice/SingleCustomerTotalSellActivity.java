@@ -61,9 +61,8 @@ public class SingleCustomerTotalSellActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<SingleCustomerGetResponse> call, Response<SingleCustomerGetResponse> response) {
                         SingleCustomerGetResponse singleCustomerGetResponse=response.body();
-
+                        singleCustomerTotalSellProgressBar.setVisibility(View.INVISIBLE);
                         if (singleCustomerGetResponse.getSuccess()==true){
-
                             singleCustomerTotalSellList=new ArrayList<>();
                             singleCustomerTotalSellList.addAll(response.body().getSingleCustomerInformation().getTotalSell());
                             // reverse list inserting
@@ -80,7 +79,7 @@ public class SingleCustomerTotalSellActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<SingleCustomerGetResponse> call, Throwable t) {
-
+                        singleCustomerTotalSellProgressBar.setVisibility(View.INVISIBLE);
                     }
                 });
     }
