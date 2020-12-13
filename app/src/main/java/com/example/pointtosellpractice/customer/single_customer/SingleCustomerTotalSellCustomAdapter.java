@@ -45,6 +45,7 @@ public class SingleCustomerTotalSellCustomAdapter extends RecyclerView.Adapter<S
         holder.totalSellAmountTextView.setText(String.valueOf(singleCustomerTotalSellList.get(position).getTotalAmountAfterDiscount()));
         holder.totalPayAmountTextView.setText(String.valueOf(singleCustomerTotalSellList.get(position).getPayAmount()));
         holder.totalDueAmountTextView.setText(String.valueOf(singleCustomerTotalSellList.get(position).getDue()));
+        holder.totalDueAmountTextView.setText(String.valueOf(singleCustomerTotalSellList.get(position).getDue()));
      //   holder.dateTextView.setText(singleCustomerTotalSellList.get(position).getCreatedAt());
 
     }
