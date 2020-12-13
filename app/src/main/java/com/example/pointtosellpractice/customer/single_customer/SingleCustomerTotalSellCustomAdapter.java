@@ -55,6 +55,8 @@ public class SingleCustomerTotalSellCustomAdapter extends RecyclerView.Adapter<S
             public void onClick(View v) {
                 Intent intent =new Intent(context, SellDetailsActivity.class);
                 intent.putExtra("position",position);
+                intent.putExtra("token",token);
+                intent.putExtra("customerId",String.valueOf(singleCustomerTotalSellList.get(position).getCustomer()));
                 context.startActivity(intent);
             }
         });
