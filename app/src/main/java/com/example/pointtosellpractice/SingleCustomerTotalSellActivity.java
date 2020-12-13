@@ -66,7 +66,7 @@ public class SingleCustomerTotalSellActivity extends AppCompatActivity {
                             singleCustomerTotalSellList=new ArrayList<>();
                             singleCustomerTotalSellList.addAll(response.body().getSingleCustomerInformation().getTotalSell());
                             // reverse list inserting
-                            Collections.reverse(singleCustomerTotalSellList);
+                            //Collections.reverse(singleCustomerTotalSellList);
                             if (singleCustomerTotalSellList.size()>0){
                                 singleCustomerTotalSellCustomAdapter = new SingleCustomerTotalSellCustomAdapter(SingleCustomerTotalSellActivity.this,token,singleCustomerTotalSellList);
                                 singleCustomerTotalSellRecyclerView.setLayoutManager(new LinearLayoutManager(SingleCustomerTotalSellActivity.this));

@@ -18,13 +18,13 @@ import java.util.List;
 public class SingleCustomerSellsDetailsCustomAdapter extends RecyclerView.Adapter<SingleCustomerSellsDetailsCustomAdapter.MyViewHolder> {
     Context context;
     String token;
-    List<SingleCustomerTotalSell> singleCustomerTotalSellList;
+    List<SingleCustomerProduct> singleCustomerProductList;
     int position1;
 
-    public SingleCustomerSellsDetailsCustomAdapter(Context context, String token, List<SingleCustomerTotalSell> singleCustomerTotalSellList, int position1) {
+    public SingleCustomerSellsDetailsCustomAdapter(Context context, String token, List<SingleCustomerProduct> singleCustomerProductList, int position1) {
         this.context = context;
         this.token = token;
-        this.singleCustomerTotalSellList = singleCustomerTotalSellList;
+        this.singleCustomerProductList = singleCustomerProductList;
         this.position1 = position1;
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
 
@@ -44,16 +44,16 @@ public class SingleCustomerSellsDetailsCustomAdapter extends RecyclerView.Adapte
        // TextView productNameTextView,productPriceTextView,
         // productQuantityTexView,productTotalPriceTextView;
 
-        holder.productNameTextView.setText(String.valueOf(singleCustomerTotalSellList.get(position1).getProducts().get(position).getName()));
-        holder.productPriceTextView.setText(String.valueOf(singleCustomerTotalSellList.get(position1).getProducts().get(position).getSellingPrice()));
-        holder.productQuantityTexView.setText(String.valueOf(singleCustomerTotalSellList.get(position1).getProducts().get(position).getQuantity()));
-        holder.productTotalPriceTextView.setText(String.valueOf(singleCustomerTotalSellList.get(position1).getProducts().get(position).getSellingPrice()*singleCustomerTotalSellList.get(position1).getProducts().get(position).getQuantity()));
+        holder.productNameTextView.setText(String.valueOf(singleCustomerProductList.get(position).getName()));
+        holder.productPriceTextView.setText(String.valueOf(singleCustomerProductList.get(position).getSellingPrice()));
+        holder.productQuantityTexView.setText(String.valueOf(singleCustomerProductList.get(position).getQuantity()));
+        holder.productTotalPriceTextView.setText(String.valueOf(singleCustomerProductList.get(position).getSellingPrice()*singleCustomerProductList.get(position).getQuantity()));
 
     }
 
     @Override
     public int getItemCount() {
-        return singleCustomerTotalSellList.size();
+        return singleCustomerProductList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
