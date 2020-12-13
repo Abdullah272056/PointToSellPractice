@@ -18,7 +18,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CustomerDetailsActivity extends AppCompatActivity {
-    Button duePayHistoryButton;
+    Button duePayHistoryButton,singleCustomerTotalSellButton;
     ApiInterface apiInterface;
     ProgressBar pauDueProgressBar;
 
@@ -46,6 +46,7 @@ public class CustomerDetailsActivity extends AppCompatActivity {
         //button finding
         payDueButton=findViewById(R.id.payDueButtonId);
         duePayHistoryButton=findViewById(R.id.duePayHistoryButtonId);
+        singleCustomerTotalSellButton=findViewById(R.id.singleCustomerTotalSellButtonId);
         //editText finding
         duePayAmountEditText=findViewById(R.id.duePayAmountEditTextId);
 
@@ -71,7 +72,6 @@ public class CustomerDetailsActivity extends AppCompatActivity {
                 Intent intent=new Intent(CustomerDetailsActivity.this, DuePayHistory.class);
                 intent.putExtra("token",token);
                 intent.putExtra("customerId",customer_id);
-
                 startActivity(intent);
             }
         });
@@ -79,8 +79,13 @@ public class CustomerDetailsActivity extends AppCompatActivity {
         payDueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 payDue();
+                }
+        });
+        singleCustomerTotalSellButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // add code
 
                 }
         });
