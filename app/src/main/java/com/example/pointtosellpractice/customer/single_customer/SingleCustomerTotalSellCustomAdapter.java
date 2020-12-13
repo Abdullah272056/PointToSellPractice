@@ -41,17 +41,17 @@ public class SingleCustomerTotalSellCustomAdapter extends RecyclerView.Adapter<S
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 //        TextView dateTextView,totalSellAmountTextView,totalPayAmountTextView,totalDueAmountTextView;
 
-        holder.dateTextView.setText(singleCustomerTotalSellList.get(position).getCreatedAt());
-        holder.totalSellAmountTextView.setText(singleCustomerTotalSellList.get(position).getTotalAmountAfterDiscount());
-        holder.totalPayAmountTextView.setText(singleCustomerTotalSellList.get(position).getPayAmount());
-        holder.totalDueAmountTextView.setText(singleCustomerTotalSellList.get(position).getDue());
+        holder.dateTextView.setText(String.valueOf(singleCustomerTotalSellList.get(position).getCreatedAt()));
+        holder.totalSellAmountTextView.setText(String.valueOf(singleCustomerTotalSellList.get(position).getTotalAmountAfterDiscount()));
+        holder.totalPayAmountTextView.setText(String.valueOf(singleCustomerTotalSellList.get(position).getPayAmount()));
+        holder.totalDueAmountTextView.setText(String.valueOf(singleCustomerTotalSellList.get(position).getDue()));
      //   holder.dateTextView.setText(singleCustomerTotalSellList.get(position).getCreatedAt());
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return singleCustomerTotalSellList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
