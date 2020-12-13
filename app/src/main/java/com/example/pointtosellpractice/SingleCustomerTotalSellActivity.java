@@ -34,6 +34,7 @@ public class SingleCustomerTotalSellActivity extends AppCompatActivity {
 
     RecyclerView singleCustomerTotalSellRecyclerView;
     ApiInterface apiInterface;
+    ProgressBar singleCustomerTotalSellProgressBar;
 
 
     @Override
@@ -46,6 +47,8 @@ public class SingleCustomerTotalSellActivity extends AppCompatActivity {
         token=getIntent().getStringExtra("token");
         //recycler view finding
         singleCustomerTotalSellRecyclerView=findViewById(R.id.singleCustomerTotalSellRecyclerViewId);
+        //progressbar finding
+        singleCustomerTotalSellProgressBar=findViewById(R.id.singleCustomerTotalSellProgressBarId);
 
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
         singleCustomerTotalSell();
