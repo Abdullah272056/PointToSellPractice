@@ -135,7 +135,15 @@
         android:text="Due pay all history"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-
+    <Button
+        android:id="@+id/singleCustomerTotalSellButtonId"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:padding="15dp"
+        android:textAlignment="center"
+        android:text="Total Sell"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 
 </LinearLayout>
