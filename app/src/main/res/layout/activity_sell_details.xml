@@ -75,7 +75,7 @@
                         android:paddingTop="1dp"
                         android:paddingRight="30dp"
                         android:paddingBottom="1dp"
-                        android:text="82648"
+                        android:text="00"
                         android:textAlignment="viewEnd"
                         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
                 </LinearLayout>
@@ -103,7 +103,7 @@
                         android:paddingTop="1dp"
                         android:paddingRight="30dp"
                         android:paddingBottom="1dp"
-                        android:text="10001"
+                        android:text="00"
                         android:textAlignment="viewEnd"
                         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
                 </LinearLayout>
@@ -129,7 +129,7 @@
                         android:paddingTop="1dp"
                         android:paddingRight="30dp"
                         android:paddingBottom="1dp"
-                        android:text="72647"
+                        android:text="00"
                         android:textAlignment="viewEnd"
                         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
                 </LinearLayout>
