@@ -16,6 +16,7 @@ import com.example.pointtosellpractice.model_class.LogInData;
 import com.example.pointtosellpractice.model_class.RegistrationResponse;
 import com.example.pointtosellpractice.model_class.invoice.GetAllSellInfoResponse;
 import com.example.pointtosellpractice.model_class.invoice.get_all_invoice.InVoiceResponse;
+import com.example.pointtosellpractice.model_class.invoice.single_invoice.SingleInvoiceGetResponse;
 import com.example.pointtosellpractice.model_class.owner_all_information.OwnerDataWithResponse;
 import com.example.pointtosellpractice.model_class.product.DeleteProductDataResponse;
 import com.example.pointtosellpractice.model_class.product.GetAllProductInfoDataResponse;
@@ -91,6 +92,10 @@ public interface ApiInterface {
   //get all invoice
     @GET("api/invoice")
     Call<InVoiceResponse> getInvoice(@Header("Authorization") String authorization);
+
+    //get single invoice information
+    @GET("api/invoice/{id}")
+    Call<SingleInvoiceGetResponse> getSingleInvoiceInformation(@Header("Authorization") String authorization, @Path("id") String id);
 
 
 

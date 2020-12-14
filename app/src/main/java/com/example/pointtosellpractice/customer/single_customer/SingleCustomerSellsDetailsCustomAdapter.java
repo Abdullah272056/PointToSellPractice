@@ -20,7 +20,7 @@ public class SingleCustomerSellsDetailsCustomAdapter extends RecyclerView.Adapte
     String token;
     List<SingleCustomerProduct> singleCustomerProductList;
     int position1;
-
+    ApiInterface apiInterface;
     public SingleCustomerSellsDetailsCustomAdapter(Context context, String token, List<SingleCustomerProduct> singleCustomerProductList, int position1) {
         this.context = context;
         this.token = token;
@@ -30,7 +30,7 @@ public class SingleCustomerSellsDetailsCustomAdapter extends RecyclerView.Adapte
 
     }
 
-    ApiInterface apiInterface;
+
 
     @NonNull
     @Override
