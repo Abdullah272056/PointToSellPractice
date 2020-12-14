@@ -36,7 +36,7 @@ public class SellDetailsActivity extends AppCompatActivity {
     SingleCustomerSellsDetailsCustomAdapter singleCustomerSellsDetailsCustomAdapter;
     List<SingleCustomerTotalSell> singleCustomerTotalSellList;
     List<SingleCustomerProduct> singleCustomerProductList;
-    TextView productPriceTextView,totalAmountAfterDiscountTextView,
+    TextView productTotalPriceTextView,totalAmountAfterDiscountTextView,
             payAmountTextView, dueTextView,discountTextView;
     RecyclerView sellDetailsRecyclerView;
     ProgressBar sellDetailsProgressBar;
@@ -48,7 +48,7 @@ public class SellDetailsActivity extends AppCompatActivity {
         position=getIntent().getIntExtra("position",10);
 
         //textView finding
-        productPriceTextView=findViewById(R.id.productPriceTextViewId);
+        productTotalPriceTextView=findViewById(R.id.productTotalPriceTextViewId);
         totalAmountAfterDiscountTextView=findViewById(R.id.totalAmountAfterDiscountTextViewId);
         payAmountTextView=findViewById(R.id.payAmountTextViewId);
         dueTextView=findViewById(R.id.dueTextViewId);
@@ -82,7 +82,13 @@ public class SellDetailsActivity extends AppCompatActivity {
                                 singleCustomerSellsDetailsCustomAdapter = new SingleCustomerSellsDetailsCustomAdapter(SellDetailsActivity.this,token,singleCustomerProductList,position);
                                 sellDetailsRecyclerView.setLayoutManager(new LinearLayoutManager(SellDetailsActivity.this));
                                 sellDetailsRecyclerView.setAdapter(singleCustomerSellsDetailsCustomAdapter);
-                                Log.e("sazx",String.valueOf(singleCustomerProductList.size()));
+//
+
+                                totalAmountAfterDiscountTextView.setText(String.valueOf(singleCustomerTotalSellList.get(position).getTotalAmountAfterDiscount()));
+                                payAmountTextView.setText(String.valueOf(singleCustomerTotalSellList.get(position).getPayAmount()));
+                                dueTextView.setText(String.valueOf(singleCustomerTotalSellList.get(position).getDue()));
+                                discountTextView.setText("after "+String.valueOf(singleCustomerTotalSellList.get(position).getDiscount())+"% discount : ");
+                               // productTotalPriceTextView.setText(String.valueOf(singleCustomerTotalSellList.get(position).getTotalAmountAfterDiscount()+(singleCustomerTotalSellList.get(position).getTotalAmountAfterDiscount()*(singleCustomerTotalSellList.get(position).getDiscount()/100))));
 
                             }
 
