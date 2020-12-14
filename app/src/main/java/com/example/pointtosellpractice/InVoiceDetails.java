@@ -30,6 +30,8 @@ public class InVoiceDetails extends AppCompatActivity {
     List<SingleInvoiceProductData> singleInvoiceProductDataList;
     SingleInvoiceCustomAdapter singleInvoiceCustomAdapter;
     RecyclerView inVoiceDetailsRecyclerView;
+    TextView productTotalPriceTextView,totalAmountAfterDiscountTextView,
+            payAmountTextView, dueTextView,discountTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +41,12 @@ public class InVoiceDetails extends AppCompatActivity {
         //receive token
         token= getIntent().getStringExtra("token");
         invoice_id= getIntent().getStringExtra("invoice_id");
-
+        //textView finding
+        productTotalPriceTextView=findViewById(R.id.productTotalPriceTextViewId);
+        totalAmountAfterDiscountTextView=findViewById(R.id.totalAmountAfterDiscountTextViewId);
+        payAmountTextView=findViewById(R.id.payAmountTextViewId);
+        dueTextView=findViewById(R.id.dueTextViewId);
+        discountTextView=findViewById(R.id.discountTextViewId);
         //recyclerview finding
         inVoiceDetailsRecyclerView=findViewById(R.id.inVoiceDetailsRecyclerViewId);
 
@@ -83,6 +90,7 @@ public class InVoiceDetails extends AppCompatActivity {
                         inVoiceDetailsRecyclerView.setLayoutManager(new LinearLayoutManager(InVoiceDetails.this));
                         inVoiceDetailsRecyclerView.setAdapter(singleInvoiceCustomAdapter);
 //
+
 
                     }
 
