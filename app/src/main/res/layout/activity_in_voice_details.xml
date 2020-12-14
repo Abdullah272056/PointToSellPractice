@@ -12,16 +12,25 @@
         android:layout_height="match_parent"
         tools:ignore="MissingConstraints">
         <LinearLayout
-            android:background="#CEDDCE"
+            android:background="#F0F1F0"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginBottom="20dp"
                 android:layout_marginTop="10dp"
                 android:id="@+id/inVoiceDetailsRecyclerViewId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+            <View
+                android:layout_marginBottom="20dp"
+                android:background="#111"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"/>
             <LinearLayout
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:paddingBottom="30dp"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -32,8 +41,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
-                        android:textAlignment="viewEnd"
-                        android:paddingRight="5dp"
+                        android:paddingLeft="5dp"
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
                         android:text="Sub total :"
@@ -59,14 +67,14 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:textAlignment="viewEnd"
+
                         android:id="@+id/discountTextViewId"
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
-                        android:paddingRight="5dp"
+                        android:paddingLeft="5dp"
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
-                        android:text="after 4% discount : "
+                        android:text="After 4% discount : "
                         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
                     <TextView
@@ -88,10 +96,9 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:textAlignment="viewEnd"
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
-                        android:paddingRight="5dp"
+                        android:paddingLeft="5dp"
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
                         android:text="Paid :"
@@ -115,8 +122,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
-                        android:textAlignment="viewEnd"
-                        android:paddingRight="5dp"
+
+                        android:paddingLeft="5dp"
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
                         android:text="Due :"
