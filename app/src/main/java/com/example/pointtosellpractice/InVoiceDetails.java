@@ -1,16 +1,24 @@
 package com.example.pointtosellpractice;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.pointtosellpractice.model_class.invoice.get_all_invoice.Invoice;
+import com.example.pointtosellpractice.model_class.invoice.single_invoice.SingleInvoiceCustomAdapter;
 import com.example.pointtosellpractice.model_class.invoice.single_invoice.SingleInvoiceGetResponse;
+import com.example.pointtosellpractice.model_class.invoice.single_invoice.SingleInvoiceProductData;
 import com.example.pointtosellpractice.model_class.owner_all_information.OwnerDataWithResponse;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,6 +27,9 @@ import retrofit2.Response;
 public class InVoiceDetails extends AppCompatActivity {
     ApiInterface apiInterface;
     String token,invoice_id;
+    List<SingleInvoiceProductData> singleInvoiceProductDataList;
+    SingleInvoiceCustomAdapter singleInvoiceCustomAdapter;
+    RecyclerView inVoiceDetailsRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +40,8 @@ public class InVoiceDetails extends AppCompatActivity {
         token= getIntent().getStringExtra("token");
         invoice_id= getIntent().getStringExtra("invoice_id");
 
+        //recyclerview finding
+        inVoiceDetailsRecyclerView=findViewById(R.id.inVoiceDetailsRecyclerViewId);
 
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
         singleInvoiceDetails();
@@ -63,7 +76,16 @@ public class InVoiceDetails extends AppCompatActivity {
             public void onResponse(Call<SingleInvoiceGetResponse> call, Response<SingleInvoiceGetResponse> response) {
                 SingleInvoiceGetResponse singleInvoiceGetResponse=response.body();
                 if (singleInvoiceGetResponse.getSuccess()==true){
-                    Toast.makeText(InVoiceDetails.this, "ibd ss", Toast.LENGTH_SHORT).show();
+                    singleInvoiceProductDataList=new ArrayList<>();
+                    singleInvoiceProductDataList.addAll(response.body().getSingleInvoiceData().getSingleInvoiceProductDataList());
+                    if (singleInvoiceProductDataList.size()>0){
+                        singleInvoiceCustomAdapter=new SingleInvoiceCustomAdapter(InVoiceDetails.this,token,singleInvoiceProductDataList);
+                        inVoiceDetailsRecyclerView.setLayoutManager(new LinearLayoutManager(InVoiceDetails.this));
+                        inVoiceDetailsRecyclerView.setAdapter(singleInvoiceCustomAdapter);
+//
+
+                    }
+
                 }
             }
 
