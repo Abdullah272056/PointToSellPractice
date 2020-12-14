@@ -46,7 +46,7 @@
                         android:paddingTop="1dp"
                         android:paddingRight="30dp"
                         android:paddingBottom="1dp"
-                        android:text="86092"
+                        android:text="00"
                         android:textAlignment="viewEnd"
                         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
                 </LinearLayout>

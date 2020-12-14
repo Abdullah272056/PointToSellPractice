@@ -41,6 +41,7 @@ public class SellDetailsActivity extends AppCompatActivity {
     RecyclerView sellDetailsRecyclerView;
     ProgressBar sellDetailsProgressBar;
     ApiInterface apiInterface;
+    int sub=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,7 +89,14 @@ public class SellDetailsActivity extends AppCompatActivity {
                                 payAmountTextView.setText(String.valueOf(singleCustomerTotalSellList.get(position).getPayAmount()));
                                 dueTextView.setText(String.valueOf(singleCustomerTotalSellList.get(position).getDue()));
                                 discountTextView.setText("after "+String.valueOf(singleCustomerTotalSellList.get(position).getDiscount())+"% discount : ");
-                               // productTotalPriceTextView.setText(String.valueOf(singleCustomerTotalSellList.get(position).getTotalAmountAfterDiscount()+(singleCustomerTotalSellList.get(position).getTotalAmountAfterDiscount()*(singleCustomerTotalSellList.get(position).getDiscount()/100))));
+
+                                int size=singleCustomerProductList.size();
+                                for ( int i=size-1; i>=0;i--){
+                                    Log.e(String.valueOf(i),String.valueOf(singleCustomerProductList.get(i).getSellingPrice()));
+                                    sub=sub+(singleCustomerProductList.get(i).getSellingPrice()*singleCustomerProductList.get(i).getQuantity());
+                                    Log.e("svs",String.valueOf(sub));
+                                }
+                                 productTotalPriceTextView.setText(String.valueOf(sub));
 
                             }
 
