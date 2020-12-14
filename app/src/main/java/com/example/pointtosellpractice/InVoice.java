@@ -23,7 +23,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class InVoice extends AppCompatActivity {
+public class InVoice extends AppCompatActivity{
     ApiInterface apiInterface;
     String token;
     List<Invoice> invoiceList;

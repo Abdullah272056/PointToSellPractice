@@ -10,9 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pointtosellpractice.R;
-import com.example.pointtosellpractice.customer.single_customer.SingleCustomerProduct;
-import com.example.pointtosellpractice.customer.single_customer.SingleCustomerSellsDetailsCustomAdapter;
-
 import java.util.List;
 
 public class SingleInvoiceCustomAdapter extends RecyclerView.Adapter<SingleInvoiceCustomAdapter.MyViewHolder> {

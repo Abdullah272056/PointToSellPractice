@@ -24,12 +24,7 @@ public class InVoiceDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_in_voice_details);
-        // textView finding
-        companyNameTextView=findViewById(R.id.companyNameTextViewId);
-        ownerNameTextView=findViewById(R.id.ownerNameTextViewId);
-        ownerAddressTextView=findViewById(R.id.ownerAddressTextViewId);
-        ownerEmailTextView=findViewById(R.id.ownerEmailTextViewId);
-        ownerPhoneTextView=findViewById(R.id.ownerPhoneTextViewId);
+
         //receive token
         token= getIntent().getStringExtra("token");
 

@@ -1,127 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".InVoiceDetails">
+  
 
-    <LinearLayout
-        android:layout_margin="5dp"
-        android:background="@drawable/background"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:textColor="#050505"
-            android:textStyle="bold"
-            android:padding="5dp"
-            android:textAlignment="center"
-            android:text="From"
-            android:textSize="25sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <View
-            android:background="#814C4C4C"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"/>
-        <TextView
-            android:textColor="#050505"
-            android:id="@+id/companyNameTextViewId"
-            android:paddingTop="3dp"
-            android:paddingLeft="10dp"
-            android:paddingBottom="3dp"
-            android:text="CompanyName"
-            android:textSize="20sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:textColor="#050505"
-            android:id="@+id/ownerNameTextViewId"
-            android:paddingTop="3dp"
-            android:paddingLeft="10dp"
-            android:paddingBottom="3dp"
-            android:text="Owner Name"
-            android:textSize="20sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:textColor="#050505"
-            android:id="@+id/ownerAddressTextViewId"
-            android:paddingTop="3dp"
-            android:paddingLeft="10dp"
-            android:paddingBottom="3dp"
-            android:text="Owner Address"
-            android:textSize="20sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:textColor="#050505"
-            android:id="@+id/ownerEmailTextViewId"
-            android:paddingTop="3dp"
-            android:paddingLeft="10dp"
-            android:paddingBottom="3dp"
-            android:text="Owner Email"
-            android:textSize="20sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:textColor="#050505"
-            android:id="@+id/ownerPhoneTextViewId"
-            android:paddingTop="3dp"
-            android:paddingLeft="10dp"
-            android:paddingBottom="3dp"
-            android:text="Owner Phone"
-            android:textSize="20sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_margin="5dp"
-        android:background="@drawable/background"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:text="To"
-            android:textAlignment="center"
-            android:textSize="25sp" />
-
-        
-        <TextView
-            android:padding="5dp"
-            android:textAlignment="center"
-            android:text="Customer Name"
-            android:textSize="25sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:padding="5dp"
-            android:textAlignment="center"
-            android:text="Customer Address"
-            android:textSize="25sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:padding="5dp"
-            android:textAlignment="center"
-            android:text="Customer Email"
-            android:textSize="25sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:padding="5dp"
-            android:textAlignment="center"
-            android:text="Customer Phone"
-            android:textSize="25sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
