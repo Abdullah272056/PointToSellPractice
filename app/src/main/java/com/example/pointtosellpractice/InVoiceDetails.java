@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.pointtosellpractice.model_class.invoice.get_all_invoice.Invoice;
 import com.example.pointtosellpractice.model_class.invoice.single_invoice.SingleInvoiceCustomAdapter;
+import com.example.pointtosellpractice.model_class.invoice.single_invoice.SingleInvoiceData;
 import com.example.pointtosellpractice.model_class.invoice.single_invoice.SingleInvoiceGetResponse;
 import com.example.pointtosellpractice.model_class.invoice.single_invoice.SingleInvoiceProductData;
 import com.example.pointtosellpractice.model_class.owner_all_information.OwnerDataWithResponse;
@@ -27,11 +28,15 @@ import retrofit2.Response;
 public class InVoiceDetails extends AppCompatActivity {
     ApiInterface apiInterface;
     String token,invoice_id;
+
     List<SingleInvoiceProductData> singleInvoiceProductDataList;
+    SingleInvoiceData singleInvoiceData;
+
     SingleInvoiceCustomAdapter singleInvoiceCustomAdapter;
     RecyclerView inVoiceDetailsRecyclerView;
     TextView productTotalPriceTextView,totalAmountAfterDiscountTextView,
             payAmountTextView, dueTextView,discountTextView;
+    int sub=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,12 +89,27 @@ public class InVoiceDetails extends AppCompatActivity {
                 SingleInvoiceGetResponse singleInvoiceGetResponse=response.body();
                 if (singleInvoiceGetResponse.getSuccess()==true){
                     singleInvoiceProductDataList=new ArrayList<>();
+                     singleInvoiceData=response.body().getSingleInvoiceData();
                     singleInvoiceProductDataList.addAll(response.body().getSingleInvoiceData().getSingleInvoiceProductDataList());
                     if (singleInvoiceProductDataList.size()>0){
                         singleInvoiceCustomAdapter=new SingleInvoiceCustomAdapter(InVoiceDetails.this,token,singleInvoiceProductDataList);
                         inVoiceDetailsRecyclerView.setLayoutManager(new LinearLayoutManager(InVoiceDetails.this));
                         inVoiceDetailsRecyclerView.setAdapter(singleInvoiceCustomAdapter);
 //
+
+                        totalAmountAfterDiscountTextView.setText(String.valueOf( singleInvoiceData.getTotalAmountAfterDiscount()));
+                        payAmountTextView.setText(String.valueOf(singleInvoiceData.getPayAmount()));
+                        dueTextView.setText(String.valueOf(singleInvoiceData.getDue()));
+                        discountTextView.setText("after "+String.valueOf(singleInvoiceData.getDiscount())+"% discount : ");
+
+
+                        int size=singleInvoiceProductDataList.size();
+                        for ( int i=size-1; i>=0;i--){
+                            Log.e(String.valueOf(i),String.valueOf(singleInvoiceProductDataList.get(i).getSellingPrice()));
+                            sub=sub+(singleInvoiceProductDataList.get(i).getSellingPrice()*singleInvoiceProductDataList.get(i).getQuantity());
+                            Log.e("svs",String.valueOf(sub));
+                        }
+                        productTotalPriceTextView.setText(String.valueOf(sub));
 
 
                     }
