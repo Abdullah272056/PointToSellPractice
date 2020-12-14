@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pointtosellpractice.customer.single_customer.SingleCustomerGetResponse;
@@ -35,7 +36,8 @@ public class SellDetailsActivity extends AppCompatActivity {
     SingleCustomerSellsDetailsCustomAdapter singleCustomerSellsDetailsCustomAdapter;
     List<SingleCustomerTotalSell> singleCustomerTotalSellList;
     List<SingleCustomerProduct> singleCustomerProductList;
-
+    TextView productPriceTextView,totalAmountAfterDiscountTextView,
+            payAmountTextView, dueTextView,discountTextView;
     RecyclerView sellDetailsRecyclerView;
     ProgressBar sellDetailsProgressBar;
     ApiInterface apiInterface;
@@ -44,6 +46,13 @@ public class SellDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sell_details);
         position=getIntent().getIntExtra("position",10);
+
+        //textView finding
+        productPriceTextView=findViewById(R.id.productPriceTextViewId);
+        totalAmountAfterDiscountTextView=findViewById(R.id.totalAmountAfterDiscountTextViewId);
+        payAmountTextView=findViewById(R.id.payAmountTextViewId);
+        dueTextView=findViewById(R.id.dueTextViewId);
+        discountTextView=findViewById(R.id.discountTextViewId);
 
         //recycler view finding
         sellDetailsRecyclerView=findViewById(R.id.sellDetailsRecyclerViewId);
