@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +39,7 @@ public class InVoiceDetails extends AppCompatActivity {
     TextView productTotalPriceTextView,totalAmountAfterDiscountTextView,
             payAmountTextView, dueTextView,discountTextView;
     int sub=0;
+    ProgressBar invoiceDetailsProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,8 @@ public class InVoiceDetails extends AppCompatActivity {
         discountTextView=findViewById(R.id.discountTextViewId);
         //recyclerview finding
         inVoiceDetailsRecyclerView=findViewById(R.id.inVoiceDetailsRecyclerViewId);
+        //progressbar finding
+        invoiceDetailsProgressBar=findViewById(R.id.invoiceDetailsProgressBarId);
 
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
         singleInvoiceDetails();
@@ -87,6 +92,7 @@ public class InVoiceDetails extends AppCompatActivity {
             @Override
             public void onResponse(Call<SingleInvoiceGetResponse> call, Response<SingleInvoiceGetResponse> response) {
                 SingleInvoiceGetResponse singleInvoiceGetResponse=response.body();
+                invoiceDetailsProgressBar.setVisibility(View.INVISIBLE);
                 if (singleInvoiceGetResponse.getSuccess()==true){
                     singleInvoiceProductDataList=new ArrayList<>();
                      singleInvoiceData=response.body().getSingleInvoiceData();
@@ -119,8 +125,8 @@ public class InVoiceDetails extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<SingleInvoiceGetResponse> call, Throwable t) {
-                Toast.makeText(InVoiceDetails.this, "ibd ff", Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(InVoiceDetails.this, "failed", Toast.LENGTH_SHORT).show();
+                invoiceDetailsProgressBar.setVisibility(View.INVISIBLE);
             }
         });
 

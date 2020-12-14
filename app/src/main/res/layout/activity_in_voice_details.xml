@@ -69,7 +69,7 @@
                     <TextView
 
                         android:id="@+id/discountTextViewId"
-                        android:layout_width="200dp"
+                        android:layout_width="208dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:paddingTop="5dp"
@@ -150,7 +150,7 @@
 
     <ProgressBar
         android:layout_marginBottom="120dp"
-        android:id="@+id/sellDetailsProgressBarId"
+        android:id="@+id/invoiceDetailsProgressBarId"
         android:layout_width="59dp"
         android:layout_height="67dp"
         android:visibility="visible"
