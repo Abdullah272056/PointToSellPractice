@@ -43,7 +43,7 @@ public class InVoice extends AppCompatActivity{
     }
 
     // getting  Get all invoice
-    private void getAllSellInfo() {
+    private void getAllSellInfo(){
 
         apiInterface.getInvoice("Bearer "+token).enqueue(new Callback<InVoiceResponse>() {
             @Override

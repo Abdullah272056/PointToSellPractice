@@ -34,11 +34,6 @@ public class InvoiceCustomAdapter extends RecyclerView.Adapter<InvoiceCustomAdap
 
 
 
-    EditText customerNameEditText,customerEmailEditText,customerPhoneEditText,customerAddressEditText;
-    Button addCustomerDataButton,cancelCustomerButton;
-    CustomerData customerData;
-    ProgressBar progressBar;
-
     ApiInterface apiInterface;
     public InvoiceCustomAdapter(Context context, String token, List<Invoice> invoiceList) {
         this.context = context;
@@ -55,7 +50,7 @@ public class InvoiceCustomAdapter extends RecyclerView.Adapter<InvoiceCustomAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolderInvoice holder, int position){
+    public void onBindViewHolder(@NonNull MyViewHolderInvoice holder, final int position){
         holder.invoiceItemCustomerNameTextView.setText(invoiceList.get(position).getCustomer().getName());
         holder.invoiceItemDateTextView.setText(String.valueOf(invoiceList.get(position).getCreatedAt()));
         holder.invoiceItemPayAmountTextView.setText(String.valueOf(invoiceList.get(position).getPayAmount()));
@@ -64,6 +59,7 @@ public class InvoiceCustomAdapter extends RecyclerView.Adapter<InvoiceCustomAdap
             public void onClick(View v) {
                 Intent intent =new Intent(context, InVoiceDetails.class);
                 intent.putExtra("token",token);
+                intent.putExtra("invoice_id",String.valueOf(invoiceList.get(position).getId()));
                 context.startActivity(intent);
             }
         });
