@@ -69,7 +69,7 @@
                     <TextView
 
                         android:id="@+id/discountTextViewId"
-                        android:layout_width="208dp"
+                        android:layout_width="210dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:paddingTop="5dp"

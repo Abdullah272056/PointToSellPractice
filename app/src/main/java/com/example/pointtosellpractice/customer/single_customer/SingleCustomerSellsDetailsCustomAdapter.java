@@ -45,6 +45,7 @@ public class SingleCustomerSellsDetailsCustomAdapter extends RecyclerView.Adapte
         holder.productPriceTextView.setText(String.valueOf(singleCustomerProductList.get(position).getSellingPrice()));
         holder.productQuantityTexView.setText(String.valueOf(singleCustomerProductList.get(position).getQuantity())+String.valueOf(singleCustomerProductList.get(position).getUnit()));
         holder.productTotalPriceTextView.setText(String.valueOf(singleCustomerProductList.get(position).getSellingPrice()*singleCustomerProductList.get(position).getQuantity()));
+        holder.serialTextView.setText(String.valueOf(position+1));
 
     }
 
@@ -54,13 +55,15 @@ public class SingleCustomerSellsDetailsCustomAdapter extends RecyclerView.Adapte
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView productNameTextView,productPriceTextView,productQuantityTexView,productTotalPriceTextView;
+        TextView productNameTextView,productPriceTextView,productQuantityTexView,
+                productTotalPriceTextView,serialTextView;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             productNameTextView=itemView.findViewById(R.id.productNameTextViewId);
             productPriceTextView=itemView.findViewById(R.id.productPriceTextViewId);
             productQuantityTexView=itemView.findViewById(R.id.productQuantityTexViewId);
             productTotalPriceTextView=itemView.findViewById(R.id.productTotalPriceTextViewId);
+            serialTextView=itemView.findViewById(R.id.serialTextViewId);
         }
     }
 }

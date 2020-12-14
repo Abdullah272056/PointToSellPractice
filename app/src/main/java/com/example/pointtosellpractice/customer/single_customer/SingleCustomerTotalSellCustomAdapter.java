@@ -42,7 +42,6 @@ public class SingleCustomerTotalSellCustomAdapter extends RecyclerView.Adapter<S
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
-//        TextView dateTextView,totalSellAmountTextView,totalPayAmountTextView,totalDueAmountTextView;
 
         holder.dateTextView.setText(String.valueOf(singleCustomerTotalSellList.get(position).getCreatedAt()));
         holder.totalSellAmountTextView.setText(String.valueOf(singleCustomerTotalSellList.get(position).getTotalAmountAfterDiscount()));
@@ -60,7 +59,7 @@ public class SingleCustomerTotalSellCustomAdapter extends RecyclerView.Adapter<S
                 context.startActivity(intent);
             }
         });
-        //   holder.dateTextView.setText(singleCustomerTotalSellList.get(position).getCreatedAt());
+
 
     }
 
