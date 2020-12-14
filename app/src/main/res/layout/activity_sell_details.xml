@@ -44,7 +44,7 @@
                         android:paddingBottom="5dp"
                         android:text="Sub total :"
                         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                        android:layout_width="200dp"
+                        android:layout_width="210dp"
                         android:layout_height="wrap_content"/>
                     <TextView
                         android:id="@+id/productTotalPriceTextViewId"
@@ -67,7 +67,7 @@
                     <TextView
 
                         android:id="@+id/discountTextViewId"
-                        android:layout_width="208dp"
+                        android:layout_width="210dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:paddingTop="5dp"
@@ -94,7 +94,7 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:layout_width="200dp"
+                        android:layout_width="210dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:paddingTop="5dp"
@@ -126,7 +126,7 @@
                         android:paddingBottom="5dp"
                         android:text="Due :"
                         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                        android:layout_width="200dp"
+                        android:layout_width="210dp"
                         android:layout_height="wrap_content"/>
                     <TextView
                         android:id="@+id/dueTextViewId"
