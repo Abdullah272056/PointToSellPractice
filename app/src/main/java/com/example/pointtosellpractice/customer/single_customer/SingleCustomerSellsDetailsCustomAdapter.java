@@ -41,12 +41,9 @@ public class SingleCustomerSellsDetailsCustomAdapter extends RecyclerView.Adapte
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-       // TextView productNameTextView,productPriceTextView,
-        // productQuantityTexView,productTotalPriceTextView;
-
         holder.productNameTextView.setText(String.valueOf(singleCustomerProductList.get(position).getName()));
         holder.productPriceTextView.setText(String.valueOf(singleCustomerProductList.get(position).getSellingPrice()));
-        holder.productQuantityTexView.setText(String.valueOf(singleCustomerProductList.get(position).getQuantity()));
+        holder.productQuantityTexView.setText(String.valueOf(singleCustomerProductList.get(position).getQuantity())+String.valueOf(singleCustomerProductList.get(position).getUnit()));
         holder.productTotalPriceTextView.setText(String.valueOf(singleCustomerProductList.get(position).getSellingPrice()*singleCustomerProductList.get(position).getQuantity()));
 
     }
