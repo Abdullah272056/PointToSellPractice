@@ -31,7 +31,7 @@ public class InVoiceDetails extends AppCompatActivity {
 
 
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
-     
+        singleInvoiceDetails();
 //        apiInterface.getUserAllInformation("Bearer "+token).
 //                enqueue(new Callback<OwnerDataWithResponse>() {
 //            @Override
@@ -57,5 +57,23 @@ public class InVoiceDetails extends AppCompatActivity {
 //        });
     }
 
+    public void singleInvoiceDetails(){
+        apiInterface.getSingleInvoiceInformation("Bearer "+token,invoice_id).enqueue(new Callback<SingleInvoiceGetResponse>() {
+            @Override
+            public void onResponse(Call<SingleInvoiceGetResponse> call, Response<SingleInvoiceGetResponse> response) {
+                SingleInvoiceGetResponse singleInvoiceGetResponse=response.body();
+                if (singleInvoiceGetResponse.getSuccess()==true){
+                    Toast.makeText(InVoiceDetails.this, "ibd ss", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SingleInvoiceGetResponse> call, Throwable t) {
+                Toast.makeText(InVoiceDetails.this, "ibd ff", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+    }
 
 }
