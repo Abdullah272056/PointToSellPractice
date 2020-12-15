@@ -35,9 +35,10 @@ public class HomePage extends AppCompatActivity {
     ApiInterface apiInterface;
 
     String token;
-    TextView customerTextView,productTextView,invoiceTextView;
+
     TextView customerCountTextView;
     String customerCount;
+    TextView customerTextView,productTextView,invoiceTextView;
     TextView totalSaleAmountTextView,totalSoldProductQuantityTextView,totalSoldInvoiceTextView,
             totalDueAmountTextView,totalProfitTextView;
     TextView totalProductCostTextView,totalProductStockTextView,totalProductTypeTextView,extraInfoTextView;
