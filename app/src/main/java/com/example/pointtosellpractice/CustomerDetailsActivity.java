@@ -54,13 +54,12 @@ public class CustomerDetailsActivity extends AppCompatActivity {
 
 
         // textView set Text
-        cNameTextView.setText("Name :  "+getIntent().getStringExtra("cName"));
-        cPhoneTextView.setText("Phone :  "+getIntent().getStringExtra("cPhone"));
-        cEmailTextView.setText("Email :  "+getIntent().getStringExtra("cEmail"));
-        cAddressTextView.setText("Address :  "+getIntent().getStringExtra("cAddress"));
+//        cNameTextView.setText("Name :  "+getIntent().getStringExtra("cName"));
+//        cPhoneTextView.setText("Phone :  "+getIntent().getStringExtra("cPhone"));
+//        cEmailTextView.setText("Email :  "+getIntent().getStringExtra("cEmail"));
+//        cAddressTextView.setText("Address :  "+getIntent().getStringExtra("cAddress"));
         dueTextView.setText("Due :  "+getIntent().getStringExtra("cDue"));
-        customer_id=getIntent().getStringExtra("cId");
-
+        customer_id=getIntent().getStringExtra("customerId");
         token= getIntent().getStringExtra("token");
 
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);

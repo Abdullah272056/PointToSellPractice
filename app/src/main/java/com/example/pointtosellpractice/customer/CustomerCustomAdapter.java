@@ -22,6 +22,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pointtosellpractice.CustomerActivity;
+import com.example.pointtosellpractice.CustomerAllInfoActivity;
 import com.example.pointtosellpractice.CustomerDetailsActivity;
 import com.example.pointtosellpractice.R;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
@@ -75,7 +76,9 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
         holder.customerItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(context, CustomerDetailsActivity.class);
+
+                Intent intent1=new Intent(context, CustomerDetailsActivity.class);
+                Intent intent=new Intent(context, CustomerAllInfoActivity.class);
                 intent.putExtra("cName",customerInformationList.get(position).getName());
                 intent.putExtra("cPhone",customerInformationList.get(position).getPhone());
                 intent.putExtra("cEmail",customerInformationList.get(position).getEmail());
