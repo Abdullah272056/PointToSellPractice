@@ -217,7 +217,7 @@
             android:layout_height="0dp">
 
             <TextView
-                android:id="@+id/customerId"
+                android:id="@+id/customerTextViewId"
                 android:background="@drawable/background"
                 android:gravity="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"

@@ -38,7 +38,7 @@ public class HomePage extends AppCompatActivity {
     ApiInterface apiInterface;
 
     String token;
-    TextView addCustomer;
+    TextView customerTextView,productTextView,invoiceTextView;
 
     TextView customerCountTextView;
     String customerCount;
@@ -61,14 +61,15 @@ public class HomePage extends AppCompatActivity {
         totalSoldInvoiceTextView=findViewById(R.id.totalSoldInvoiceTextViewId);
         totalDueAmountTextView=findViewById(R.id.totalDueAmountTextViewId);
         totalProfitTextView=findViewById(R.id.totalProfitTextViewId);
-
         totalProductCostTextView=findViewById(R.id.totalProductCostTextViewId);
         totalProductStockTextView=findViewById(R.id.totalProductStockTextViewId);
         totalProductTypeTextView=findViewById(R.id.totalProductTypeTextViewId);
 
+        customerTextView=findViewById(R.id.customerTextViewId);
+        productTextView=findViewById(R.id.productTextViewId);
+        invoiceTextView=findViewById(R.id.invoiceTextViewId);
 
 
-        addCustomer=findViewById(R.id.customerId);
         toolbar=findViewById (R.id.toolbarId);
         drawerLayout=findViewById (R.id.drawerLayoutId);
         navigationView=findViewById (R.id.myNavigationViewId);
@@ -83,7 +84,7 @@ public class HomePage extends AppCompatActivity {
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
       //  apiInterface1 = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
 
-        addCustomer.setOnClickListener(new View.OnClickListener() {
+        customerTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                Intent intent=new Intent(HomePage.this,CustomerActivity.class);
