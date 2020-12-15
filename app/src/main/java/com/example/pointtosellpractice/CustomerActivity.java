@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +17,7 @@ import android.widget.Toast;
 
 import com.example.pointtosellpractice.customer.CustomerCustomAdapter;
 import com.example.pointtosellpractice.customer.CustomerData;
-import com.example.pointtosellpractice.customer.AddCustomerResponse;
+import com.example.pointtosellpractice.customer.AddCustomerData;
 import com.example.pointtosellpractice.customer.CustomerInformationData;
 import com.example.pointtosellpractice.customer.CustomerInformationDataResponse;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
@@ -85,8 +84,6 @@ public class CustomerActivity extends AppCompatActivity {
                         customerRecyclerView.setLayoutManager(new LinearLayoutManager(CustomerActivity.this));
                         customerRecyclerView.setAdapter(customerCustomAdapter);
                     }
-
-
 //                    if (TextUtils.isEmpty(customerInformationDataList.get(0).getEmail()) ||
 //                            customerInformationDataList.get(0).getEmail()==null)  {
 //                        Log.e("namec","No Email");
@@ -103,7 +100,6 @@ public class CustomerActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<CustomerInformationDataResponse> call, Throwable t) {
                 Toast.makeText(CustomerActivity.this, "fail:  "+t.getMessage().toString(), Toast.LENGTH_SHORT).show();
-                Log.e("namec","error: "+t.getMessage().toString());
                 mainProgressBar.setVisibility(View.GONE);
             }
         });
@@ -178,19 +174,20 @@ public class CustomerActivity extends AppCompatActivity {
                 }
                     progressBar.setVisibility(View.VISIBLE);
                 apiInterface.addCustomerInformation("Bearer "+token,customerData).enqueue(
-                        new Callback<AddCustomerResponse>() {
+                        new Callback<AddCustomerData>() {
                             @Override
-                            public void onResponse(Call<AddCustomerResponse> call, Response<AddCustomerResponse> response) {
-                                Toast.makeText(CustomerActivity.this, "success", Toast.LENGTH_SHORT).show();
-                                Log.e("ss", "ssss");
+                            public void onResponse(Call<AddCustomerData> call, Response<AddCustomerData> response) {
+                                AddCustomerData addCustomerResponse=response.body();
+
+                                    Toast.makeText(CustomerActivity.this, "success", Toast.LENGTH_SHORT).show();
                                 alertDialog.dismiss();
                                 progressBar.setVisibility(View.GONE);
                                 getAllCustomer();
 
                             }
                             @Override
-                            public void onFailure(Call<AddCustomerResponse> call, Throwable t) {
-                                Log.e("ffuo", t.getMessage().toString());
+                            public void onFailure(Call<AddCustomerData> call, Throwable t) {
+                                Toast.makeText(CustomerActivity.this, "fail:  "+t.getMessage().toString(), Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.GONE);
 
                             }

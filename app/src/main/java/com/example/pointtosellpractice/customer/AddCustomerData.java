@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class AddCustomerResponse {
+public class AddCustomerData {
     @SerializedName("due")
     @Expose
     private Integer due;

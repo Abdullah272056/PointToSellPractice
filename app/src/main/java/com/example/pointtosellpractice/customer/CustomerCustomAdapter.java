@@ -23,7 +23,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pointtosellpractice.CustomerActivity;
 import com.example.pointtosellpractice.CustomerAllInfoActivity;
-import com.example.pointtosellpractice.CustomerDetailsActivity;
 import com.example.pointtosellpractice.R;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
@@ -249,16 +248,16 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
                 progressBar.setVisibility(View.VISIBLE);
 
                 apiInterface.updateCustomerData("Bearer "+token,customerInformationList.get(position).getId().toString(),customerData)
-                        .enqueue(new Callback<AddCustomerResponse>(){
+                        .enqueue(new Callback<AddCustomerData>(){
                             @Override
-                            public void onResponse(Call<AddCustomerResponse> call, Response<AddCustomerResponse> response) {
+                            public void onResponse(Call<AddCustomerData> call, Response<AddCustomerData> response) {
                               Toast.makeText(context, "success", Toast.LENGTH_SHORT).show();
                                 alertDialog.dismiss();
                                 ((CustomerActivity)context).getAllCustomer();
                                 progressBar.setVisibility(View.GONE);
                             }
                             @Override
-                            public void onFailure(Call<AddCustomerResponse> call, Throwable t) {
+                            public void onFailure(Call<AddCustomerData> call, Throwable t) {
                                 Log.e("aq",t.getMessage());
                                 progressBar.setVisibility(View.GONE);
                                 Toast.makeText(context, "fail", Toast.LENGTH_SHORT).show();
