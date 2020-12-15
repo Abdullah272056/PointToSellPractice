@@ -38,24 +38,24 @@
                 android:textColor="#090909"
                 android:padding="5dp"
                 android:text="Abdullah"
-                android:textSize="25sp"
+              android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
                 android:id="@+id/invoiceItemDateTextViewId"
                 android:padding="5dp"
                 android:text="November 13 2020"
-                android:textSize="20sp"
+               android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
 
         <TextView
-            android:id="@+id/invoiceItemPayAmountTextViewId"
+            android:id="@+id/invoiceItemTotalAmountTextViewId"
             android:padding="5dp"
             android:text="00"
             android:textColor="#38711A"
-            android:textSize="28sp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:layout_weight="2"
             android:layout_gravity="center"
             android:gravity="center"
