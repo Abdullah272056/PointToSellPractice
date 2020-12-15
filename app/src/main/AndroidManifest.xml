@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CustomerAllInfoActivity"></activity>
+        <activity android:name=".OthersInformation"></activity>
+        <activity android:name=".CustomerAllInfoActivity" />
         <activity android:name=".SellDetailsActivity" />
         <activity android:name=".SingleCustomerTotalSellActivity" />
         <activity android:name=".DuePayHistory" />

@@ -40,7 +40,7 @@ public class HomePage extends AppCompatActivity {
     String customerCount;
     TextView totalSaleAmountTextView,totalSoldProductQuantityTextView,totalSoldInvoiceTextView,
             totalDueAmountTextView,totalProfitTextView;
-    TextView totalProductCostTextView,totalProductStockTextView,totalProductTypeTextView;
+    TextView totalProductCostTextView,totalProductStockTextView,totalProductTypeTextView,extraInfoTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -62,6 +62,7 @@ public class HomePage extends AppCompatActivity {
         customerTextView=findViewById(R.id.customerTextViewId);
         productTextView=findViewById(R.id.productTextViewId);
         invoiceTextView=findViewById(R.id.invoiceTextViewId);
+        extraInfoTextView=findViewById(R.id.extraInfoTextViewId);
 
         toolbar=findViewById (R.id.toolbarId);
         drawerLayout=findViewById (R.id.drawerLayoutId);
@@ -97,6 +98,15 @@ public class HomePage extends AppCompatActivity {
                 Intent intent=new Intent(HomePage.this, InVoiceActivity.class);
                 intent.putExtra("token",token);
                 startActivity(intent);
+            }
+        });
+
+        extraInfoTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intent=new Intent(HomePage.this, InVoiceActivity.class);
+//                intent.putExtra("token",token);
+//                startActivity(intent);
             }
         });
 
