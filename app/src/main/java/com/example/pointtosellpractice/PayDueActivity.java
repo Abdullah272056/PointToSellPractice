@@ -1,7 +1,6 @@
 package com.example.pointtosellpractice;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -21,7 +20,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CustomerDetailsActivity extends AppCompatActivity {
+public class PayDueActivity extends AppCompatActivity {
     ApiInterface apiInterface;
     ProgressBar pauDueProgressBar;
 
@@ -38,7 +37,7 @@ public class CustomerDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer_details);
+        setContentView(R.layout.activity_pay_due);
 
         // textView finding
         cNameTextView=findViewById(R.id.customerNameTextViewId);
@@ -92,14 +91,14 @@ public class CustomerDetailsActivity extends AppCompatActivity {
                     public void onResponse(Call<DuePayDataResponse> call, Response<DuePayDataResponse> response) {
                         assert response.body() != null;
                         if (response.body().getSuccess()){
-                            Toast.makeText(CustomerDetailsActivity.this,response.body().getMsg() , Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PayDueActivity.this,response.body().getMsg() , Toast.LENGTH_SHORT).show();
                             duePayDataResponse=response.body();
                             //assert duePayDataResponse != null;
                             pauDueProgressBar.setVisibility(View.INVISIBLE);
                             payDueButton.setVisibility(View.VISIBLE);
                             customerInformation();
                         }else {
-                            Toast.makeText(CustomerDetailsActivity.this,response.body().getMsg() , Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PayDueActivity.this,response.body().getMsg() , Toast.LENGTH_SHORT).show();
 
                         }
 

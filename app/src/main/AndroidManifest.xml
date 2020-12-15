@@ -21,7 +21,7 @@
         <activity android:name=".InVoiceDetails" />
         <activity android:name=".InVoice" />
         <activity android:name=".UpComingFeature" />
-        <activity android:name=".CustomerDetailsActivity" />
+        <activity android:name=".PayDueActivity" />
         <activity android:name=".CustomerActivity" />
         <activity
             android:name=".HomePage"

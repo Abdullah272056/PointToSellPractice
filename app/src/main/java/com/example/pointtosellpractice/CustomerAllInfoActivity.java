@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 public class CustomerAllInfoActivity extends AppCompatActivity {
         TextView customerNameTextView,customerDataTextView,customerPayDueTextView,
                 customerDuePayHistoryTextView,customerTotalSellTextView;
@@ -42,7 +40,7 @@ public class CustomerAllInfoActivity extends AppCompatActivity {
         customerPayDueTextView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(CustomerAllInfoActivity.this, CustomerDetailsActivity.class);
+                Intent intent=new Intent(CustomerAllInfoActivity.this, PayDueActivity.class);
                 intent.putExtra("token",token);
                 intent.putExtra("customerId",customer_id);
                 intent.putExtra("cDue",cDue);
