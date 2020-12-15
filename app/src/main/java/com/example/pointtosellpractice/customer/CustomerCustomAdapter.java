@@ -70,6 +70,7 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
         holder.customerNameTextView.setText(String.valueOf(customerInformationList.get(position).getName()));
         holder.customerPhoneTextView.setText(String.valueOf(customerInformationList.get(position).getPhone()));
         holder.customerDueTextView.setText(String.valueOf(customerInformationList.get(position).getDue()));
+        holder.customerSerialTextView.setText(String.valueOf(position+1));
 
         holder.customerItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,7 +114,7 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView customerNameTextView,customerPhoneTextView,customerDueTextView;
+        TextView customerNameTextView,customerPhoneTextView,customerDueTextView,customerSerialTextView;
         ImageView editImageView,deleteImageView;
         LinearLayout customerItem;
         public MyViewHolder(@NonNull View itemView) {
@@ -121,6 +122,7 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
             customerNameTextView=itemView.findViewById(R.id.customerNameTextViewId);
             customerPhoneTextView=itemView.findViewById(R.id.customerPhoneTextViewId);
             customerDueTextView=itemView.findViewById(R.id.customerDueTextViewId);
+            customerSerialTextView=itemView.findViewById(R.id.customerSerialTextViewId);
             editImageView=itemView.findViewById(R.id.editImageViewId);
             deleteImageView=itemView.findViewById(R.id.deleteImageViewId);
 
