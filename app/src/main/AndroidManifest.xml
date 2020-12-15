@@ -19,7 +19,7 @@
         <activity android:name=".DuePayHistory" />
         <activity android:name=".Product" />
         <activity android:name=".InVoiceDetails" />
-        <activity android:name=".InVoice" />
+        <activity android:name=".InVoiceActivity" />
         <activity android:name=".UpComingFeature" />
         <activity android:name=".PayDueActivity" />
         <activity android:name=".CustomerActivity" />

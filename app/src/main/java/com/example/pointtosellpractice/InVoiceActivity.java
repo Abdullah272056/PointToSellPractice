@@ -23,7 +23,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class InVoice extends AppCompatActivity{
+public class InVoiceActivity extends AppCompatActivity{
     ApiInterface apiInterface;
     String token;
     List<Invoice> invoiceList;
@@ -48,17 +48,17 @@ public class InVoice extends AppCompatActivity{
         apiInterface.getInvoice("Bearer "+token).enqueue(new Callback<InVoiceResponse>() {
             @Override
             public void onResponse(Call<InVoiceResponse> call, Response<InVoiceResponse> response) {
-                Toast.makeText(InVoice.this, "success", Toast.LENGTH_SHORT).show();
+                Toast.makeText(InVoiceActivity.this, "success", Toast.LENGTH_SHORT).show();
                 InVoiceResponse inVoiceResponse=response.body();
                 if (inVoiceResponse.getSuccess()==true){
                     invoiceList=new ArrayList<>();
                     invoiceList.addAll(response.body().getInvoices());
 
                     if (invoiceList.size ()>0){
-                        Toast.makeText(InVoice.this, String.valueOf(invoiceList.size()), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(InVoiceActivity.this, String.valueOf(invoiceList.size()), Toast.LENGTH_SHORT).show();
                         Log.e("se",String.valueOf(invoiceList.get(0).getCustomer().getName()));
-                        invoiceCustomAdapter = new InvoiceCustomAdapter(InVoice.this,token,invoiceList);
-                        invoiceRecyclerView.setLayoutManager(new LinearLayoutManager(InVoice.this));
+                        invoiceCustomAdapter = new InvoiceCustomAdapter(InVoiceActivity.this,token,invoiceList);
+                        invoiceRecyclerView.setLayoutManager(new LinearLayoutManager(InVoiceActivity.this));
                         invoiceRecyclerView.setAdapter(invoiceCustomAdapter);
                     }
                     invoiceProgressBar.setVisibility(View.GONE);
@@ -69,7 +69,7 @@ public class InVoice extends AppCompatActivity{
 
             @Override
             public void onFailure(Call<InVoiceResponse> call, Throwable t) {
-                Toast.makeText(InVoice.this, "fail", Toast.LENGTH_SHORT).show();
+                Toast.makeText(InVoiceActivity.this, "fail", Toast.LENGTH_SHORT).show();
                 invoiceProgressBar.setVisibility(View.GONE);
             }
         });

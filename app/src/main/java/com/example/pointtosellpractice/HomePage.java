@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,7 +21,6 @@ import com.example.pointtosellpractice.model_class.invoice.GetAllSellInfoRespons
 import com.example.pointtosellpractice.model_class.product.GetAllProductInfoDataResponse;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
-import com.example.pointtosellpractice.model_class.owner_all_information.OwnerDataWithResponse;
 import com.google.android.material.navigation.NavigationView;
 
 import retrofit2.Call;
@@ -30,7 +28,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HomePage extends AppCompatActivity {
-
     Toolbar toolbar;
     LinearLayout linearLayout;
     DrawerLayout drawerLayout;
@@ -39,13 +36,10 @@ public class HomePage extends AppCompatActivity {
 
     String token;
     TextView customerTextView,productTextView,invoiceTextView;
-
     TextView customerCountTextView;
     String customerCount;
-
     TextView totalSaleAmountTextView,totalSoldProductQuantityTextView,totalSoldInvoiceTextView,
             totalDueAmountTextView,totalProfitTextView;
-
     TextView totalProductCostTextView,totalProductStockTextView,totalProductTypeTextView;
 
     @Override
@@ -69,7 +63,6 @@ public class HomePage extends AppCompatActivity {
         productTextView=findViewById(R.id.productTextViewId);
         invoiceTextView=findViewById(R.id.invoiceTextViewId);
 
-
         toolbar=findViewById (R.id.toolbarId);
         drawerLayout=findViewById (R.id.drawerLayoutId);
         navigationView=findViewById (R.id.myNavigationViewId);
@@ -80,9 +73,7 @@ public class HomePage extends AppCompatActivity {
             setSupportActionBar (toolbar);
         }
 
-
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
-      //  apiInterface1 = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
 
         customerTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,6 +81,22 @@ public class HomePage extends AppCompatActivity {
                Intent intent=new Intent(HomePage.this,CustomerActivity.class);
                intent.putExtra("token",token);
                startActivity(intent);
+            }
+        });
+        productTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(HomePage.this,Product.class);
+                intent.putExtra("token",token);
+                startActivity(intent);
+            }
+        });
+        invoiceTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(HomePage.this, InVoiceActivity.class);
+                intent.putExtra("token",token);
+                startActivity(intent);
             }
         });
 
@@ -136,7 +143,7 @@ public class HomePage extends AppCompatActivity {
                 startActivity(intent5);
                 break;
             case R.id.invoiceItemId:
-                Intent intent6=new Intent(HomePage.this,InVoice.class);
+                Intent intent6=new Intent(HomePage.this, InVoiceActivity.class);
                 intent6.putExtra("token",token);
                 startActivity(intent6);
                 break;

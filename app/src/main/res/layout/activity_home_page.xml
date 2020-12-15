@@ -204,6 +204,7 @@
 
 
       <LinearLayout
+          android:layout_margin="5dp"
           android:weightSum="2"
           android:orientation="vertical"
           android:gravity="center"
@@ -255,6 +256,7 @@
                   android:layout_width="0dp"
                   android:layout_height="match_parent"/>
               <TextView
+                  android:id="@+id/extraInfoTextViewId"
                   android:background="@drawable/background"
                   android:gravity="center"
                   android:textAppearance="@style/TextAppearance.AppCompat.Large"
