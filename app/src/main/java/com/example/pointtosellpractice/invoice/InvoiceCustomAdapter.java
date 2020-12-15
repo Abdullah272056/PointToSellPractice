@@ -54,6 +54,7 @@ public class InvoiceCustomAdapter extends RecyclerView.Adapter<InvoiceCustomAdap
         holder.invoiceItemCustomerNameTextView.setText(invoiceList.get(position).getCustomer().getName());
         holder.invoiceItemDateTextView.setText(String.valueOf(invoiceList.get(position).getCreatedAt()));
         holder.invoiceItemPayAmountTextView.setText(String.valueOf(invoiceList.get(position).getPayAmount()));
+       holder.invoiceItemSerialTextView.setText(String.valueOf(position+1));
         holder.inVoiceItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,13 +74,14 @@ public class InvoiceCustomAdapter extends RecyclerView.Adapter<InvoiceCustomAdap
 
     public class MyViewHolderInvoice extends RecyclerView.ViewHolder {
         TextView invoiceItemCustomerNameTextView,invoiceItemDateTextView,
-                invoiceItemPayAmountTextView;
+                invoiceItemPayAmountTextView,invoiceItemSerialTextView;
         LinearLayout inVoiceItem;
         public MyViewHolderInvoice(@NonNull View itemView) {
             super(itemView);
             invoiceItemCustomerNameTextView=itemView.findViewById(R.id.invoiceItemCustomerNameTextViewId);
             invoiceItemDateTextView=itemView.findViewById(R.id.invoiceItemDateTextViewId);
             invoiceItemPayAmountTextView=itemView.findViewById(R.id.invoiceItemPayAmountTextViewId);
+            invoiceItemSerialTextView=itemView.findViewById(R.id.invoiceItemSerialTextViewId);
             inVoiceItem=itemView.findViewById(R.id.inVoiceItemId);
 
         }

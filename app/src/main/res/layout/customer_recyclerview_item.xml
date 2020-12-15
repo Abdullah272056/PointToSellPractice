@@ -7,6 +7,7 @@
     android:background="@drawable/background"
     android:layout_margin="5dp"
     android:gravity="center"
+    android:id="@+id/customerItemId"
     >
     <TextView
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -26,7 +27,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content">
         <LinearLayout
-            android:id="@+id/customerItemId"
+
             android:layout_weight="5"
             android:weightSum="5"
             android:layout_width="0dp"
