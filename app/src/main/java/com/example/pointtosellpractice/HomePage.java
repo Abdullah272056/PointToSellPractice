@@ -38,7 +38,7 @@ public class HomePage extends AppCompatActivity {
     ApiInterface apiInterface;
 
     String token;
-    Button addCustomer;
+    TextView addCustomer;
 
     TextView customerCountTextView;
     String customerCount;
