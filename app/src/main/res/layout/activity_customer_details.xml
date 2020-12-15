@@ -16,7 +16,7 @@
             android:layout_height="wrap_content">
 
     <LinearLayout
-        android:padding="7dp"
+        android:padding="10dp"
         android:layout_margin="10dp"
         android:background="@drawable/background"
         android:orientation="vertical"
@@ -26,7 +26,7 @@
             android:id="@+id/customerNameTextViewId"
             android:textColor="#000000"
             android:textSize="20sp"
-            android:text="Name :  Abdullah"
+            android:text="Name :  "
             android:padding="3dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -34,7 +34,7 @@
             android:id="@+id/customerPhoneTextViewId"
             android:textColor="#000000"
             android:textSize="20sp"
-            android:text="Phone : 01994215664"
+            android:text="Phone : "
             android:padding="3dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -43,7 +43,7 @@
             android:id="@+id/customerEmailTextViewId"
             android:textColor="#000000"
             android:textSize="20sp"
-            android:text="Email : abdullah272056@gmail.com"
+            android:text="Email : "
             android:padding="3dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -53,7 +53,7 @@
             android:id="@+id/customerAddressTextViewId"
             android:textColor="#000000"
             android:textSize="20sp"
-            android:text="Address : Ruly, Vairabha, Maheshpur, Jhenaidah"
+            android:text="Address : "
             android:padding="3dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -81,9 +81,9 @@
             tools:ignore="MissingConstraints"
          >
             <LinearLayout
-    android:orientation="horizontal"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -171,7 +171,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-   
+
         </LinearLayout>
     </ScrollView>
 

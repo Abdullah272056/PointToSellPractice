@@ -2,21 +2,35 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_margin="5dp"
-    android:background="#FFE6E1"
+    android:weightSum="6"
+    android:gravity="center"
+    android:background="@drawable/background"
+    android:id="@+id/inVoiceItemId"
     >
-
+    <TextView
+        android:id="@+id/invoiceItemSerialTextViewId"
+        android:gravity="center"
+        android:text="00"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
     <LinearLayout
-        android:id="@+id/inVoiceItemId"
+        android:layout_margin="2.5dp"
+        android:background="@drawable/back"
+        android:layout_weight="5"
+        android:gravity="center"
         android:orientation="horizontal"
-        android:weightSum="1"
-        android:layout_width="match_parent"
+        android:weightSum="6"
+        android:layout_width="0dp"
         android:layout_height="wrap_content">
+
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_weight=".7"
+            android:layout_weight="4"
             android:layout_width="0dp"
             android:layout_height="wrap_content">
             <TextView
@@ -42,7 +56,7 @@
             android:text="00"
             android:textColor="#38711A"
             android:textSize="28sp"
-            android:layout_weight=".3"
+            android:layout_weight="2"
             android:layout_gravity="center"
             android:gravity="center"
             android:layout_width="0dp"
