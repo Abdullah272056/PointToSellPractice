@@ -1,8 +1,11 @@
 package com.example.pointtosellpractice;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,8 +14,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.example.pointtosellpractice.customer.pay_due.DuePayDataResponse;
 import com.example.pointtosellpractice.customer.pay_due.PayData;
+import com.example.pointtosellpractice.customer.single_customer.SingleCustomerDuePayCustomAdapter;
+import com.example.pointtosellpractice.customer.single_customer.SingleCustomerGetResponse;
+import com.example.pointtosellpractice.customer.single_customer.SingleCustomerInformation;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -23,7 +33,7 @@ public class CustomerDetailsActivity extends AppCompatActivity {
     ProgressBar pauDueProgressBar;
 
     TextView cNameTextView,cPhoneTextView,cEmailTextView,cAddressTextView;
-    TextView dueTextView;
+    TextView dueTextView,allTimeSellTextView;
 
     EditText duePayAmountEditText;
     Button payDueButton;
@@ -43,6 +53,7 @@ public class CustomerDetailsActivity extends AppCompatActivity {
         cEmailTextView=findViewById(R.id.customerEmailTextViewId);
         cAddressTextView=findViewById(R.id.customerAddressTextViewId);
         dueTextView=findViewById(R.id.dueTextViewId);
+        allTimeSellTextView=findViewById(R.id.allTimeSellTextViewId);
         //button finding
         payDueButton=findViewById(R.id.payDueButtonId);
         duePayHistoryButton=findViewById(R.id.duePayHistoryButtonId);
@@ -58,13 +69,13 @@ public class CustomerDetailsActivity extends AppCompatActivity {
 //        cPhoneTextView.setText("Phone :  "+getIntent().getStringExtra("cPhone"));
 //        cEmailTextView.setText("Email :  "+getIntent().getStringExtra("cEmail"));
 //        cAddressTextView.setText("Address :  "+getIntent().getStringExtra("cAddress"));
-        dueTextView.setText("Due :  "+getIntent().getStringExtra("cDue"));
+        //dueTextView.setText("Due :  "+getIntent().getStringExtra("cDue"));
         customer_id=getIntent().getStringExtra("customerId");
         token= getIntent().getStringExtra("token");
 
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
 
-
+        customerInformation();
         duePayHistoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,8 +99,6 @@ public class CustomerDetailsActivity extends AppCompatActivity {
                 intent.putExtra("token",token);
                 intent.putExtra("customerId",customer_id);
                 startActivity(intent);
-                // add code
-
                 }
         });
 
@@ -103,7 +112,7 @@ public class CustomerDetailsActivity extends AppCompatActivity {
             duePayAmountEditText.setError("Enter  password");
             duePayAmountEditText.requestFocus();
             return;
-        }if(Integer.parseInt(duePayAmount)>Integer.parseInt(getIntent().getStringExtra("cDue"))){
+        }if(Integer.parseInt(duePayAmount)>Integer.parseInt(dueTextView.getText().toString())){
             duePayAmountEditText.setError("You send more amount than due");
             duePayAmountEditText.requestFocus();
             return;
@@ -124,6 +133,7 @@ public class CustomerDetailsActivity extends AppCompatActivity {
                             //assert duePayDataResponse != null;
                             pauDueProgressBar.setVisibility(View.INVISIBLE);
                             payDueButton.setVisibility(View.VISIBLE);
+                            customerInformation();
                         }else {
                             Toast.makeText(CustomerDetailsActivity.this,response.body().getMsg() , Toast.LENGTH_SHORT).show();
 
@@ -142,5 +152,29 @@ public class CustomerDetailsActivity extends AppCompatActivity {
 
 
 
+    public void customerInformation(){
+        apiInterface.getSingleCustomerInformation("Bearer "+token,customer_id)
+                .enqueue(new Callback<SingleCustomerGetResponse>() {
+                    @Override
+                    public void onResponse(Call<SingleCustomerGetResponse> call, Response<SingleCustomerGetResponse> response) {
+                        SingleCustomerGetResponse singleCustomerGetResponse=response.body();
 
+                        if (singleCustomerGetResponse.getSuccess()==true){
+
+                            dueTextView.setText(String.valueOf(response.body().getSingleCustomerInformation().getDue()));
+                            allTimeSellTextView.setText(String.valueOf(response.body().getSingleCustomerInformation().getAllTimeSellAmount()));
+
+                            cNameTextView.setText("Name :  "+String.valueOf(response.body().getSingleCustomerInformation().getName()));
+                            cPhoneTextView.setText("Phone :  "+String.valueOf(response.body().getSingleCustomerInformation().getPhone()));
+                             cEmailTextView.setText("Email :  "+String.valueOf(response.body().getSingleCustomerInformation().getEmail()));
+                            cAddressTextView.setText("Address :  "+String.valueOf(response.body().getSingleCustomerInformation().getAddress()));
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<SingleCustomerGetResponse> call, Throwable t) {
+                        //pauDueHistoryProgressBar.setVisibility(View.INVISIBLE);
+                    }
+                });
+    }
 }

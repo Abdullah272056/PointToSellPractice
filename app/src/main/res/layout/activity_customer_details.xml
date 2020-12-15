@@ -80,24 +80,57 @@
             android:padding="10dp"
             tools:ignore="MissingConstraints"
          >
+            <LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:paddingLeft="5dp"
+        android:text="All Time Sell : ৳"
+        android:textColor="#000000"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/allTimeSellTextViewId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:text="00"
+        android:textColor="#000000"
+        android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/allTimeSellTextViewId"
+</LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="All Time Sell : 300 Taka"
-                android:textColor="#000000"
-                android:textSize="20sp" />
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingLeft="5dp"
+                    android:text="Due : ৳"
+                    android:textColor="#FA0000"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/dueTextViewId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="00"
+                    android:textColor="#F42525"
+                    android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/dueTextViewId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="Due : 250 Taka"
-                android:textColor="#F42525"
-                android:textSize="20sp" />
+            </LinearLayout>
+
+
+
 
             <EditText
                 android:id="@+id/duePayAmountEditTextId"
