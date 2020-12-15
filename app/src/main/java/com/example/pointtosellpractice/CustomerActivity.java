@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.pointtosellpractice.customer.AddCustomerResponse;
 import com.example.pointtosellpractice.customer.CustomerCustomAdapter;
 import com.example.pointtosellpractice.customer.CustomerData;
 import com.example.pointtosellpractice.customer.AddCustomerData;
@@ -174,19 +175,25 @@ public class CustomerActivity extends AppCompatActivity {
                 }
                     progressBar.setVisibility(View.VISIBLE);
                 apiInterface.addCustomerInformation("Bearer "+token,customerData).enqueue(
-                        new Callback<AddCustomerData>() {
+                        new Callback<AddCustomerResponse>() {
                             @Override
-                            public void onResponse(Call<AddCustomerData> call, Response<AddCustomerData> response) {
-                                AddCustomerData addCustomerResponse=response.body();
+                            public void onResponse(Call<AddCustomerResponse> call, Response<AddCustomerResponse> response) {
+                                AddCustomerResponse addCustomerResponse=response.body();
+                                if (addCustomerResponse.getSuccess()==true){
+                                    Toast.makeText(CustomerActivity.this, "add successful", Toast.LENGTH_SHORT).show();
 
-                                    Toast.makeText(CustomerActivity.this, "success", Toast.LENGTH_SHORT).show();
+                                }else {
+                                    Toast.makeText(CustomerActivity.this, String.valueOf(addCustomerResponse.getMsg()), Toast.LENGTH_SHORT).show();
+
+                                }
+
                                 alertDialog.dismiss();
                                 progressBar.setVisibility(View.GONE);
                                 getAllCustomer();
 
                             }
                             @Override
-                            public void onFailure(Call<AddCustomerData> call, Throwable t) {
+                            public void onFailure(Call<AddCustomerResponse> call, Throwable t) {
                                 Toast.makeText(CustomerActivity.this, "fail:  "+t.getMessage().toString(), Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.GONE);
 
