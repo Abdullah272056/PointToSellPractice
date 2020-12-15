@@ -248,19 +248,24 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
                 progressBar.setVisibility(View.VISIBLE);
 
                 apiInterface.updateCustomerData("Bearer "+token,customerInformationList.get(position).getId().toString(),customerData)
-                        .enqueue(new Callback<AddCustomerData>(){
+                        .enqueue(new Callback<AddCustomerResponse>(){
                             @Override
-                            public void onResponse(Call<AddCustomerData> call, Response<AddCustomerData> response) {
-                              Toast.makeText(context, "success", Toast.LENGTH_SHORT).show();
+                            public void onResponse(Call<AddCustomerResponse> call, Response<AddCustomerResponse> response) {
+                                AddCustomerResponse addCustomerResponse=response.body();
+                                if (addCustomerResponse.getSuccess()==true){
+                                    Toast.makeText(context, "Update successful", Toast.LENGTH_SHORT).show();
+
+                                }else {
+                                    Toast.makeText(context, String.valueOf(addCustomerResponse.getMsg()), Toast.LENGTH_SHORT).show();
+                                }
                                 alertDialog.dismiss();
                                 ((CustomerActivity)context).getAllCustomer();
                                 progressBar.setVisibility(View.GONE);
                             }
                             @Override
-                            public void onFailure(Call<AddCustomerData> call, Throwable t) {
-                                Log.e("aq",t.getMessage());
+                            public void onFailure(Call<AddCustomerResponse> call, Throwable t) {
                                 progressBar.setVisibility(View.GONE);
-                                Toast.makeText(context, "fail", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "fail:  "+t.getMessage().toString(), Toast.LENGTH_SHORT).show();
                             }
                         });
             }

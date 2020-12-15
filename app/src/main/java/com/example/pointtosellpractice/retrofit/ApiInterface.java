@@ -65,7 +65,7 @@ public interface ApiInterface {
     Call<CustomerInformationDataResponse> getAllCustomerInformation(@Header("Authorization") String authorization1);
     //customer Data Edit
     @PUT("api/customer/{id}")
-    Call<AddCustomerData> updateCustomerData(@Header("Authorization") String authorization2, @Path("id") String id, @Body CustomerData customerData);
+    Call<AddCustomerResponse> updateCustomerData(@Header("Authorization") String authorization2, @Path("id") String id, @Body CustomerData customerData);
     //delete customer
       @DELETE("api/customer/{id}")
       Call<CustomerDeleteResponse> deleteCustomer(@Header("Authorization") String authorization,@Path("id") String id);
