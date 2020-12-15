@@ -75,9 +75,6 @@ public class CustomerActivity extends AppCompatActivity {
         apiInterface.getAllCustomerInformation("Bearer "+token).enqueue(new Callback<CustomerInformationDataResponse>() {
             @Override
             public void onResponse(Call<CustomerInformationDataResponse> call, Response<CustomerInformationDataResponse> response) {
-                Toast.makeText(CustomerActivity.this, "Success", Toast.LENGTH_SHORT).show();
-
-
                 CustomerInformationDataResponse customerInformationDataResponse=response.body();
 
                 if (customerInformationDataResponse.getSuccess()==true){

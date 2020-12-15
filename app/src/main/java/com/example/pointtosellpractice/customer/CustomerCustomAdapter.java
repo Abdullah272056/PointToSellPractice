@@ -77,7 +77,6 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
             @Override
             public void onClick(View v) {
 
-                Intent intent1=new Intent(context, CustomerDetailsActivity.class);
                 Intent intent=new Intent(context, CustomerAllInfoActivity.class);
                 intent.putExtra("cName",customerInformationList.get(position).getName());
                 intent.putExtra("cPhone",customerInformationList.get(position).getPhone());
@@ -147,14 +146,10 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
                         @Override
                         public void onResponse(Call<CustomerDeleteResponse> call, Response<CustomerDeleteResponse> response) {
                             CustomerDeleteResponse customerDeleteResponse=response.body();
-                              //Toast.makeText(context, customerDeleteResponse.getMsg().toString(), Toast.LENGTH_SHORT).show();
-                            Toast.makeText(context, "success delete", Toast.LENGTH_SHORT).show();
-//                            if (customerDeleteResponse.getSuccess().equals(true)){
-//                                Toast.makeText(context, "success delete", Toast.LENGTH_SHORT).show();
-//                            }else {
-//
-//                                Toast.makeText(context, String.valueOf(customerDeleteResponse.getMsg()), Toast.LENGTH_SHORT).show();
-//                            }
+                            if (response.body().getSuccess()==true){
+                                Toast.makeText(context, "success delete", Toast.LENGTH_SHORT).show();
+                            }
+
                             ((CustomerActivity)context).getAllCustomer();
                         }
 
