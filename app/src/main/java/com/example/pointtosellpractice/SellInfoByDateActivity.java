@@ -3,8 +3,10 @@ package com.example.pointtosellpractice;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
+import com.example.pointtosellpractice.model_class.invoice.GetSellInfoByDayResponse;
 import com.example.pointtosellpractice.model_class.invoice.single_invoice.SingleInvoiceGetResponse;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
@@ -23,6 +25,7 @@ String token;
         //receive data
         token= getIntent().getStringExtra("token");
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
+
 
     }
 }

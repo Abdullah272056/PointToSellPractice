@@ -16,6 +16,7 @@ import com.example.pointtosellpractice.model_class.RegistrationData;
 import com.example.pointtosellpractice.model_class.LogInData;
 import com.example.pointtosellpractice.model_class.RegistrationResponse;
 import com.example.pointtosellpractice.model_class.invoice.GetAllSellInfoResponse;
+import com.example.pointtosellpractice.model_class.invoice.GetSellInfoByDayResponse;
 import com.example.pointtosellpractice.model_class.invoice.get_all_invoice.InVoiceResponse;
 import com.example.pointtosellpractice.model_class.invoice.single_invoice.SingleInvoiceGetResponse;
 import com.example.pointtosellpractice.model_class.owner_all_information.OwnerDataWithResponse;
@@ -31,6 +32,7 @@ import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ApiInterface {
 
@@ -99,8 +101,9 @@ public interface ApiInterface {
     Call<SingleInvoiceGetResponse> getSingleInvoiceInformation(@Header("Authorization") String authorization, @Path("id") String id);
 
     // Get sale info by date
-    @GET("/api/invoice/sale/day?day={day}")
-    Call<SingleInvoiceGetResponse> getSellInfoByDay(@Header("Authorization") String authorization, @Path("day") String day);
+    // http://mern-pos.herokuapp.com/api/invoice/sale/day?day=0
+    @GET("/api/invoice/sale/day")
+    Call<GetSellInfoByDayResponse> getSellInfoByDay(@Header("Authorization") String authorization, @Query("day") String day);
 
 
 
