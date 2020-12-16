@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.pointtosellpractice.model_class.invoice.GetSellInfoByDayResponse;
@@ -17,10 +19,17 @@ import retrofit2.Response;
 public class SellInfoByDayActivity extends AppCompatActivity {
 String token;
     ApiInterface apiInterface;
+
+    Button sellInfoByDayOkButton;
+    EditText sellInfoByDayEditText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sell_info_by_day);
+        //finding view
+        sellInfoByDayOkButton=findViewById(R.id.sellInfoByDayOkButtonId);
+        sellInfoByDayEditText=findViewById(R.id.sellInfoByDayEditTextId);
+
         //receive data
         token= getIntent().getStringExtra("token");
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
