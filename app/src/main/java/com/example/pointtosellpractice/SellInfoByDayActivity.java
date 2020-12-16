@@ -71,6 +71,16 @@ public class SellInfoByDayActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<GetSellInfoByDayResponse> call, Response<GetSellInfoByDayResponse> response) {
                 if (response.body().getSuccess()==true){
+//                    TextView sellProductTextView,saleAmountTextView,profitTxtView,
+//                            currentCashTextView,dueTextView,inVoiceTextView,productCostTextView;
+                    sellProductTextView.setText(String.valueOf(response.body().getGetSellInfoByDays().getTotalSoldProduct()));
+                    saleAmountTextView.setText(String.valueOf(response.body().getGetSellInfoByDays().getTotalSaleAmount()));
+                    profitTxtView.setText(String.valueOf(response.body().getGetSellInfoByDays().getTotalProfit()));
+                    currentCashTextView.setText(String.valueOf(response.body().getGetSellInfoByDays().getCurrentCash()));
+                    dueTextView.setText(String.valueOf(response.body().getGetSellInfoByDays().getTotalDue()));
+                    inVoiceTextView.setText(String.valueOf(response.body().getGetSellInfoByDays().getTotalSoldInvoice()));
+                    productCostTextView.setText(String.valueOf(response.body().getGetSellInfoByDays().getTotalProductCost()));
+
                     Toast.makeText(SellInfoByDayActivity.this, String.valueOf(response.body().getGetSellInfoByDays().getTotalSoldProduct()), Toast.LENGTH_SHORT).show();
                 }
             }
