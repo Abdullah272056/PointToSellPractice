@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pointtosellpractice.model_class.invoice.GetSellInfoByDayResponse;
@@ -23,6 +24,8 @@ String token;
 
     Button sellInfoByDayOkButton;
     EditText sellInfoByDayEditText;
+    TextView sellProductTextView,saleAmountTextView,profitTxtView,
+            currentCashTextView,dueTextView,inVoiceTextView,productCostTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,13 +33,21 @@ String token;
         //finding view
         sellInfoByDayOkButton=findViewById(R.id.sellInfoByDayOkButtonId);
         sellInfoByDayEditText=findViewById(R.id.sellInfoByDayEditTextId);
+        //finding textView
+        sellProductTextView=findViewById(R.id.sellProductTextViewId);
+        saleAmountTextView=findViewById(R.id.saleAmountTextViewId);
+        profitTxtView=findViewById(R.id.profitTxtViewId);
+        currentCashTextView=findViewById(R.id.currentCashTextViewId);
+        dueTextView=findViewById(R.id.dueTextViewId);
+        inVoiceTextView=findViewById(R.id.inVoiceTextViewId);
+        productCostTextView=findViewById(R.id.productCostTextViewId);
 
         //receive data
         token= getIntent().getStringExtra("token");
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
         getSellInfoByDate();
 
-        
+
 
 
     }
