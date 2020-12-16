@@ -3,6 +3,7 @@ package com.example.pointtosellpractice;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -61,7 +62,9 @@ public class OthersInformation extends AppCompatActivity {
             public void onClick(View v) {
                 //add code
 
-
+                Intent intent =new Intent(OthersInformation.this,SellInfoByDateActivity.class);
+                intent.putExtra("token",token);
+                startActivity(intent);
             }
         });
 
