@@ -1,6 +1,5 @@
 package com.example.pointtosellpractice;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.pointtosellpractice.customer.CustomerCountResponse;
 import com.example.pointtosellpractice.model_class.invoice.GetAllSellInfoResponse;
@@ -62,7 +60,7 @@ public class OthersInformation extends AppCompatActivity {
             public void onClick(View v) {
                 //add code
 
-                Intent intent =new Intent(OthersInformation.this,SellInfoByDateActivity.class);
+                Intent intent =new Intent(OthersInformation.this, SellInfoByDayActivity.class);
                 intent.putExtra("token",token);
                 startActivity(intent);
             }

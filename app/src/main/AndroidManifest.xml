@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".SellInfoByDateActivity"></activity>
+        <activity android:name=".SellInfoByDayActivity"></activity>
         <activity android:name=".OthersInformation" />
         <activity android:name=".CustomerAllInfoActivity" />
         <activity android:name=".SellDetailsActivity" />
