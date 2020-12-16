@@ -106,34 +106,26 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         apiInterface.logInData(logInData).enqueue(new Callback<LogInResponse>() {
             @Override
             public void onResponse(Call<LogInResponse> call, Response<LogInResponse> response) {
-                if (response.isSuccessful()){
-                    // receive response body
+
                     LogInResponse logInResponse=response.body();
                     if (logInResponse.getSuccess()==true){
                         Intent intent=new Intent(LoginActivity.this,HomePage.class);
                         intent.putExtra("token",logInResponse.getToken());
                         startActivity(intent);
-                        logInProgressBar.setVisibility(View.GONE);
                     }
-
-                    Toast.makeText(LoginActivity.this, "success", Toast.LENGTH_SHORT).show();
-                    Log.e("TAG", "success");
-                    Log.e("res\n",logInResponse.getToken());
-
-                }
                 else {
                     Toast.makeText(LoginActivity.this, "password can not match", Toast.LENGTH_SHORT).show();
                     signInPasswordEditText.setError("password can not match");
                     signInPasswordEditText.requestFocus();
-                    logInProgressBar.setVisibility(View.GONE);
 
-                }
+                    }
+                logInProgressBar.setVisibility(View.GONE);
 
             }
 
             @Override
             public void onFailure(Call<LogInResponse> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, "fail", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "login fail ! Try again", Toast.LENGTH_SHORT).show();
                 Log.e("lee",t.getMessage());
                 logInProgressBar.setVisibility(View.GONE);
 
