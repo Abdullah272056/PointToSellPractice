@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ public class OthersInformation extends AppCompatActivity {
             totalDueAmountTextView,totalProfitTextView;
     TextView totalProductCostTextView,totalProductStockTextView,totalProductTypeTextView,extraInfoTextView;
     TextView customerCountTextView;
+    Button sellInfoByDateButton;
 
     ApiInterface apiInterface;
     String token;
@@ -44,6 +46,8 @@ public class OthersInformation extends AppCompatActivity {
         totalProductCostTextView=findViewById(R.id.totalProductCostTextViewId);
         totalProductStockTextView=findViewById(R.id.totalProductStockTextViewId);
         totalProductTypeTextView=findViewById(R.id.totalProductTypeTextViewId);
+        // button finding
+        sellInfoByDateButton=findViewById(R.id.sellInfoByDateButtonId);
 
         customerTextView=findViewById(R.id.customerTextViewId);
         productTextView=findViewById(R.id.productTextViewId);

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".OthersInformation">
-        <LinearLayout
+    <LinearLayout
     android:weightSum="2"
     android:orientation="horizontal"
     android:layout_width="match_parent"
@@ -324,6 +324,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent">
             <Button
+                android:id="@+id/sellInfoByDateButtonId"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
