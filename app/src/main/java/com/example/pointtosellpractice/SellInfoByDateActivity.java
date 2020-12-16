@@ -25,7 +25,29 @@ String token;
         //receive data
         token= getIntent().getStringExtra("token");
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
+        getSellInfoByDate();
+
+    }
+
+    public void getSellInfoByDate(){
+        apiInterface.getSellInfoByDay("Bearer "+token,"4").enqueue(new Callback<GetSellInfoByDayResponse>() {
+            @Override
+            public void onResponse(Call<GetSellInfoByDayResponse> call, Response<GetSellInfoByDayResponse> response) {
+
+                if (response.body().getSuccess()==true){
+                    Toast.makeText(SellInfoByDateActivity.this, "sssss", Toast.LENGTH_SHORT).show();
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<GetSellInfoByDayResponse> call, Throwable t) {
 
 
+                Toast.makeText(SellInfoByDateActivity.this, String.valueOf(t.getMessage()), Toast.LENGTH_SHORT).show();
+                Log.e("uyt",String.valueOf(t.getMessage()));
+            }
+        });
     }
 }
