@@ -17,7 +17,7 @@
             android:textSize="20sp"
             android:padding="10dp"
             android:textAlignment="center"
-            android:text="Sell info by days"
+            android:text="Sell info by last days"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <LinearLayout

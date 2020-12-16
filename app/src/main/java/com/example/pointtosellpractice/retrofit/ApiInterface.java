@@ -2,6 +2,8 @@ package com.example.pointtosellpractice.retrofit;
 
 
 
+import android.content.Intent;
+
 import com.example.pointtosellpractice.customer.AddCustomerResponse;
 import com.example.pointtosellpractice.customer.CustomerCountResponse;
 import com.example.pointtosellpractice.customer.CustomerData;
@@ -17,6 +19,7 @@ import com.example.pointtosellpractice.model_class.LogInData;
 import com.example.pointtosellpractice.model_class.RegistrationResponse;
 import com.example.pointtosellpractice.model_class.invoice.GetAllSellInfoResponse;
 import com.example.pointtosellpractice.model_class.invoice.GetSellInfoByDayResponse;
+import com.example.pointtosellpractice.model_class.invoice.GetSellInfoByDays;
 import com.example.pointtosellpractice.model_class.invoice.get_all_invoice.InVoiceResponse;
 import com.example.pointtosellpractice.model_class.invoice.single_invoice.SingleInvoiceGetResponse;
 import com.example.pointtosellpractice.model_class.owner_all_information.OwnerDataWithResponse;
@@ -103,7 +106,7 @@ public interface ApiInterface {
     // Get sale info by date
     // http://mern-pos.herokuapp.com/api/invoice/sale/day?day=0
     @GET("/api/invoice/sale/day")
-    Call<GetSellInfoByDayResponse> getSellInfoByDay(@Header("Authorization") String authorization, @Query("day") String day);
+    Call<GetSellInfoByDayResponse> getSellInfoByDay(@Header("Authorization") String authorization, @Query("day") Integer dayInt);
 
 
 

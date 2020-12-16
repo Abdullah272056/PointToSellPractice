@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pointtosellpractice.model_class.invoice.GetSellInfoByDayResponse;
+import com.example.pointtosellpractice.model_class.invoice.GetSellInfoByDays;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 
@@ -67,27 +68,33 @@ public class SellInfoByDayActivity extends AppCompatActivity {
             return;
         }
 
-        apiInterface.getSellInfoByDay("Bearer "+token,day).enqueue(new Callback<GetSellInfoByDayResponse>() {
+        apiInterface.getSellInfoByDay("Bearer "+token,Integer.valueOf(day)).enqueue(new Callback<GetSellInfoByDayResponse>() {
             @Override
             public void onResponse(Call<GetSellInfoByDayResponse> call, Response<GetSellInfoByDayResponse> response) {
                 if (response.body().getSuccess()==true){
-//                    TextView sellProductTextView,saleAmountTextView,profitTxtView,
-//                            currentCashTextView,dueTextView,inVoiceTextView,productCostTextView;
-                    sellProductTextView.setText(String.valueOf(response.body().getGetSellInfoByDays().getTotalSoldProduct()));
-                    saleAmountTextView.setText(String.valueOf(response.body().getGetSellInfoByDays().getTotalSaleAmount()));
-                    profitTxtView.setText(String.valueOf(response.body().getGetSellInfoByDays().getTotalProfit()));
-                    currentCashTextView.setText(String.valueOf(response.body().getGetSellInfoByDays().getCurrentCash()));
-                    dueTextView.setText(String.valueOf(response.body().getGetSellInfoByDays().getTotalDue()));
-                    inVoiceTextView.setText(String.valueOf(response.body().getGetSellInfoByDays().getTotalSoldInvoice()));
-                    productCostTextView.setText(String.valueOf(response.body().getGetSellInfoByDays().getTotalProductCost()));
+                    GetSellInfoByDays getSellInfoByDays= response.body().getGetSellInfoByDays();
+//                    
+                    sellProductTextView.setText(String.valueOf(getSellInfoByDays.getTotalSoldProduct()));
+                    saleAmountTextView.setText(String.valueOf(getSellInfoByDays.getTotalSaleAmount()));
+                    profitTxtView.setText(String.valueOf(getSellInfoByDays.getTotalProfit()));
+                    currentCashTextView.setText(String.valueOf(getSellInfoByDays.getCurrentCash()));
+                    dueTextView.setText(String.valueOf(getSellInfoByDays.getTotalDue()));
+                    inVoiceTextView.setText(String.valueOf(getSellInfoByDays.getTotalSoldInvoice()));
+                    productCostTextView.setText(String.valueOf(getSellInfoByDays.getTotalProductCost()));
 
                     Toast.makeText(SellInfoByDayActivity.this, String.valueOf(response.body().getGetSellInfoByDays().getTotalSoldProduct()), Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
             public void onFailure(Call<GetSellInfoByDayResponse> call, Throwable t) {
-                Toast.makeText(SellInfoByDayActivity.this, String.valueOf(t.getMessage()), Toast.LENGTH_SHORT).show();
-                Log.e("uyt",String.valueOf(t.getMessage()));
+
+                sellProductTextView.setText("00");
+                saleAmountTextView.setText("00");
+                profitTxtView.setText("00");
+                currentCashTextView.setText("00");
+                dueTextView.setText("00");
+                inVoiceTextView.setText("00");
+                productCostTextView.setText("00");
             }
         });
     }

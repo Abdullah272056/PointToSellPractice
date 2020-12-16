@@ -92,4 +92,18 @@ public class GetSellInfoByDays {
     public void setCurrentCash(Integer currentCash) {
         this.currentCash = currentCash;
     }
+
+    public GetSellInfoByDays() {
+    }
+
+    public GetSellInfoByDays(String id, Integer totalSaleAmount, Integer totalSoldProduct, Integer totalSoldInvoice, Integer totalProductCost, Integer totalDue, Integer totalProfit, Integer currentCash) {
+        this.id = id;
+        this.totalSaleAmount = totalSaleAmount;
+        this.totalSoldProduct = totalSoldProduct;
+        this.totalSoldInvoice = totalSoldInvoice;
+        this.totalProductCost = totalProductCost;
+        this.totalDue = totalDue;
+        this.totalProfit = totalProfit;
+        this.currentCash = currentCash;
+    }
 }
