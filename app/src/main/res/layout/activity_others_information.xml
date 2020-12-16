@@ -307,4 +307,35 @@
     </LinearLayout>
 
 
+
+
+    <LinearLayout
+        android:weightSum="1"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            android:background="@drawable/background"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <Button
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:textAlignment="center"
+                android:text="Click Sell info By data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
 </LinearLayout>
