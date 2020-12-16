@@ -99,7 +99,7 @@ public interface ApiInterface {
     Call<SingleInvoiceGetResponse> getSingleInvoiceInformation(@Header("Authorization") String authorization, @Path("id") String id);
 
     // Get sale info by date
-    @GET("/api/invoice/sale/{day}")
+    @GET("/api/invoice/sale/day?day={day}")
     Call<SingleInvoiceGetResponse> getSellInfoByDay(@Header("Authorization") String authorization, @Path("day") String day);
 
 
