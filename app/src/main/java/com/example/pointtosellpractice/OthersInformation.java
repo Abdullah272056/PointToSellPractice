@@ -56,7 +56,12 @@ public class OthersInformation extends AppCompatActivity {
         //receive user token
         token= getIntent().getStringExtra("token");
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
-
+        sellInfoByDateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //add code
+            }
+        });
 
         getCustomerCount();
         getAllSellInfo();
