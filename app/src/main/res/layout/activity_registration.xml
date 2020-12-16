@@ -27,6 +27,7 @@
                 android:layout_height="wrap_content"/>
 
             <EditText
+                android:drawableRight="@drawable/ic_baseline_person_24"
                 android:padding="10dp"
                 android:background="#DAD3D3"
                 android:id="@+id/signUpCompanyOwnerEditTextId"
@@ -51,6 +52,7 @@
 
 
             <EditText
+                android:drawableRight="@drawable/ic_baseline_phone_24"
                 android:padding="10dp"
                 android:background="#DAD3D3"
                 android:id="@+id/signUpPhoneEditTextId"
