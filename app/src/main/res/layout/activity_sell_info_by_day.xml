@@ -52,13 +52,235 @@
                 android:layout_height="wrap_content"/>
         </LinearLayout>
 
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_marginTop="10dp"
-            android:id="@+id/sellInfoByDayRecyclerViewId"
+
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="wrap_content">
 
+        <LinearLayout
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="Sale Product :"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/sellProductTextViewId"
+                android:textAlignment="center"
+                android:text="00"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+        <View
+            android:layout_marginRight="3dp"
+            android:layout_marginLeft="3dp"
+            android:background="#111"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="Sale Amount :"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/saleAmountTextViewId"
+                android:textAlignment="center"
+                android:text="00"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+        <View
+            android:layout_marginRight="3dp"
+            android:layout_marginLeft="3dp"
+            android:background="#111"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="Profit :"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/profitTxtViewId"
+                android:textAlignment="center"
+                android:text="00"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+        <View
+            android:layout_marginRight="3dp"
+            android:layout_marginLeft="3dp"
+            android:background="#111"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="Current Cash :"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/currentCashTextViewId"
+                android:textAlignment="center"
+                android:text="00"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+        <View
+            android:layout_marginRight="3dp"
+            android:layout_marginLeft="3dp"
+            android:background="#111"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="Due :"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/dueTextViewId"
+                android:textAlignment="center"
+                android:text="00"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+        <View
+            android:layout_marginRight="3dp"
+            android:layout_marginLeft="3dp"
+            android:background="#111"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="Invoice :"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/inVoiceTextViewId"
+                android:textAlignment="center"
+                android:text="00"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+        <View
+            android:layout_marginRight="3dp"
+            android:layout_marginLeft="3dp"
+            android:background="#111"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="Product Cost :"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/productCostTextViewId"
+                android:textAlignment="center"
+                android:text="00"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+        <View
+            android:layout_marginRight="3dp"
+            android:layout_marginLeft="3dp"
+            android:background="#111"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        </LinearLayout>
+        </ScrollView>
     </LinearLayout>
     <ProgressBar
         android:layout_marginBottom="120dp"

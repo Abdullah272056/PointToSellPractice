@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -35,6 +36,9 @@ String token;
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
         getSellInfoByDate();
 
+        
+
+
     }
 
     public void getSellInfoByDate(){
@@ -42,7 +46,7 @@ String token;
             @Override
             public void onResponse(Call<GetSellInfoByDayResponse> call, Response<GetSellInfoByDayResponse> response) {
                 if (response.body().getSuccess()==true){
-                    Toast.makeText(SellInfoByDayActivity.this, "sssss", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SellInfoByDayActivity.this, String.valueOf(response.body().getGetSellInfoByDays().getTotalSoldProduct()), Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
