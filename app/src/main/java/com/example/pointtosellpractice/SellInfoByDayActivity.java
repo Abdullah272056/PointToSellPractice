@@ -3,6 +3,7 @@ package com.example.pointtosellpractice;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,8 +20,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SellInfoByDayActivity extends AppCompatActivity {
-String token;
+    String token;
     ApiInterface apiInterface;
+    String day;
 
     Button sellInfoByDayOkButton;
     EditText sellInfoByDayEditText;
@@ -58,7 +60,14 @@ String token;
     }
 
     public void getSellInfoByDate(){
-        apiInterface.getSellInfoByDay("Bearer "+token,"4").enqueue(new Callback<GetSellInfoByDayResponse>() {
+        day =sellInfoByDayEditText.getText().toString();
+        if (TextUtils.isEmpty(day)){
+            sellInfoByDayEditText.setError("Enter a value");
+            sellInfoByDayEditText.requestFocus();
+            return;
+        }
+
+        apiInterface.getSellInfoByDay("Bearer "+token,day).enqueue(new Callback<GetSellInfoByDayResponse>() {
             @Override
             public void onResponse(Call<GetSellInfoByDayResponse> call, Response<GetSellInfoByDayResponse> response) {
                 if (response.body().getSuccess()==true){
