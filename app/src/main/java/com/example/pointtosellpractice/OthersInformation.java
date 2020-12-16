@@ -60,6 +60,8 @@ public class OthersInformation extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //add code
+
+
             }
         });
 
