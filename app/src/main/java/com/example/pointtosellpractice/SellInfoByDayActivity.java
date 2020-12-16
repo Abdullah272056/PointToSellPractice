@@ -45,8 +45,13 @@ String token;
         //receive data
         token= getIntent().getStringExtra("token");
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
-        getSellInfoByDate();
 
+        sellInfoByDayOkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSellInfoByDate();
+            }
+        });
 
 
 
