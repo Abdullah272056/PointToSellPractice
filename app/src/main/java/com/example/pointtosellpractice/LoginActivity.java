@@ -9,6 +9,7 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -31,6 +32,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     ProgressBar logInProgressBar;
 
     ApiInterface apiInterface;
+    CheckBox rememberCheckBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +46,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         signUpTextView=findViewById(R.id.signUpTextViewId);
         resetPasswordTextView=findViewById(R.id.resetPasswordTextViewId);
         logInProgressBar=findViewById(R.id.signInProgressBarId);
-
+        rememberCheckBox=findViewById(R.id.rememberCheckBoxId);
         // listener set
         signInButton.setOnClickListener(this);
         signUpTextView.setOnClickListener(this);
