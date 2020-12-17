@@ -260,7 +260,7 @@
                   android:background="@drawable/background"
                   android:gravity="center"
                   android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                  android:text="Extra"
+                  android:text="More"
                   android:layout_margin="5dp"
                   android:layout_weight="1"
                   android:layout_width="0dp"

@@ -24,6 +24,8 @@
         android:id="@+id/signInEmailEditTextId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+
     <EditText
         android:drawableRight="@drawable/ic_baseline_lock_24"
         android:layout_marginTop="30dp"
@@ -34,6 +36,18 @@
         android:textSize="20sp"
         android:padding="10dp"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <CheckBox
+        android:id="@+id/rememberCheckBoxId"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:buttonTint="#ffffff"
+        android:text="Remember me ?"
+        android:textColor="#ffffff"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_gravity="end"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <Button
         android:id="@+id/signInButtonId"
