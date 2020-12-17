@@ -63,9 +63,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String emailValue= sharePref.loadRememberEmail(LoginActivity.this);
         String passwordValue= sharePref.loadRememberPassword(LoginActivity.this);
         if (!emailValue.isEmpty() && !passwordValue.isEmpty()){
-            signInEmailEditText.setText(emailValue);
-            signInPasswordEditText.setText(passwordValue);
-                 signIn();
+            signInEmailEditText.setText(String.valueOf(emailValue));
+            signInPasswordEditText.setText(String.valueOf(passwordValue));
+            signIn();
         }
         else {
             // Toast.makeText(this, "empty", Toast.LENGTH_SHORT).show();

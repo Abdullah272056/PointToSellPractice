@@ -42,13 +42,13 @@ public class HomePage extends AppCompatActivity {
     TextView totalSaleAmountTextView,totalSoldProductQuantityTextView,totalSoldInvoiceTextView,
             totalDueAmountTextView,totalProfitTextView;
     TextView totalProductCostTextView,totalProductStockTextView,totalProductTypeTextView,extraInfoTextView;
-
+    SharePref sharePref;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         linearLayout=findViewById(R.id.mainLayoutId);
-
+        sharePref=new SharePref();
         //finding textView
         customerCountTextView=findViewById(R.id.customerCountId);
         totalSaleAmountTextView=findViewById(R.id.totalSaleAmountTextViewId);
@@ -162,6 +162,13 @@ public class HomePage extends AppCompatActivity {
                 Intent intent7=new Intent(HomePage.this,Product.class);
                 intent7.putExtra("token",token);
                 startActivity(intent7);
+                break;
+                case R.id.logOutId:
+                    sharePref.rememberData(HomePage.this,"","");
+                    Intent intent8=new Intent(HomePage.this,LoginActivity.class);
+                intent8.putExtra("token",token);
+                startActivity(intent8);
+                    finish();
                 break;
 
         }
