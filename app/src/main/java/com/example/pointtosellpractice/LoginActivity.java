@@ -103,6 +103,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             signInPasswordEditText.requestFocus();
             return;
         }
+//            sharePref=new SharePref();
+//        if (rememberCheckBox.isChecked()){
+//            sharePref.rememberData(LoginActivity.this,signInEmail,signInPassword);
+//             }
 
         LogInData logInData       =new LogInData(signInEmail,signInPassword);
         logInProgressBar.setVisibility(View.VISIBLE);
@@ -111,18 +115,39 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onResponse(Call<LogInResponse> call, Response<LogInResponse> response) {
 
+                if (response.isSuccessful()){
+                    // receive response body
                     LogInResponse logInResponse=response.body();
                     if (logInResponse.getSuccess()==true){
                         Intent intent=new Intent(LoginActivity.this,HomePage.class);
-                        intent.putExtra("token",logInResponse.getToken());
+                        intent.putExtra("token",response.body().getToken());
                         startActivity(intent);
                     }
+                    Toast.makeText(LoginActivity.this, "success", Toast.LENGTH_SHORT).show();
+                    Log.e("TAG", "success");
+                    Log.e("res",logInResponse.getToken());
+
+                }
+
                 else {
                     Toast.makeText(LoginActivity.this, "password can not match", Toast.LENGTH_SHORT).show();
                     signInPasswordEditText.setError("password can not match");
                     signInPasswordEditText.requestFocus();
-
-                    }
+                }
+                   // LogInResponse logInResponse=response.body();
+//                assert response.body() != null;
+//                if (!response.body().getSuccess()){
+//                        Toast.makeText(LoginActivity.this, "ssss", Toast.LENGTH_SHORT).show();
+//                        Intent intent=new Intent(LoginActivity.this,HomePage.class);
+//                        intent.putExtra("token",response.body().getToken());
+//                        startActivity(intent);
+//                    }
+//                else {
+//                    Toast.makeText(LoginActivity.this, "password can not match", Toast.LENGTH_SHORT).show();
+//                    signInPasswordEditText.setError("password can not match");
+//                    signInPasswordEditText.requestFocus();
+//
+//                    }
                 logInProgressBar.setVisibility(View.GONE);
 
             }
