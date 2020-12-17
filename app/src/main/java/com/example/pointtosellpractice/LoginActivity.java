@@ -138,6 +138,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         Intent intent=new Intent(LoginActivity.this,HomePage.class);
                         intent.putExtra("token",response.body().getToken());
                         startActivity(intent);
+                        finish();
                     }
                     Log.e("res",logInResponse.getToken());
 
