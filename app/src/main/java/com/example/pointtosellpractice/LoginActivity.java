@@ -34,6 +34,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     ApiInterface apiInterface;
     CheckBox rememberCheckBox;
 
+
+    SharePref sharePref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
