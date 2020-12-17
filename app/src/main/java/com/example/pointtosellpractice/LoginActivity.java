@@ -58,7 +58,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
 
 
-       
+        // remember data retrieve and checking
+        sharePref=new SharePref();
+        String emailValue= sharePref.loadRememberEmail(LoginActivity.this);
+        String passwordValue= sharePref.loadRememberPassword(LoginActivity.this);
+        if (!emailValue.isEmpty() && !passwordValue.isEmpty()){
+            signInEmailEditText.setText(emailValue);
+            signInPasswordEditText.setText(passwordValue);
+                 signIn();
+        }
+        else {
+            // Toast.makeText(this, "empty", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
