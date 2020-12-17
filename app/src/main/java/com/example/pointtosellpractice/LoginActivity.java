@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     ApiInterface apiInterface;
     CheckBox rememberCheckBox;
-
+    String signInEmail,signInPassword;
 
     SharePref sharePref;
     @Override
@@ -58,6 +58,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
 
 
+       
+
     }
 
     @Override
@@ -80,8 +82,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void signIn() {
-        String signInEmail= signInEmailEditText.getText().toString().trim();
-        String signInPassword= signInPasswordEditText.getText().toString().trim();
+
+         signInEmail= signInEmailEditText.getText().toString().trim();
+         signInPassword= signInPasswordEditText.getText().toString().trim();
         if (TextUtils.isEmpty(signInEmail)){
             signInEmailEditText.setError("Enter your email");
             signInEmailEditText.requestFocus();
@@ -103,10 +106,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             signInPasswordEditText.requestFocus();
             return;
         }
-//            sharePref=new SharePref();
-//        if (rememberCheckBox.isChecked()){
-//            sharePref.rememberData(LoginActivity.this,signInEmail,signInPassword);
-//             }
+
 
         LogInData logInData       =new LogInData(signInEmail,signInPassword);
         logInProgressBar.setVisibility(View.VISIBLE);
@@ -119,12 +119,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     // receive response body
                     LogInResponse logInResponse=response.body();
                     if (logInResponse.getSuccess()==true){
+                        sharePref=new SharePref();
+                        if (rememberCheckBox.isChecked()){
+                            sharePref.rememberData(LoginActivity.this,signInEmail,signInPassword);
+                            Toast.makeText(LoginActivity.this, "success", Toast.LENGTH_SHORT).show();
+                        }
                         Intent intent=new Intent(LoginActivity.this,HomePage.class);
                         intent.putExtra("token",response.body().getToken());
                         startActivity(intent);
                     }
-                    Toast.makeText(LoginActivity.this, "success", Toast.LENGTH_SHORT).show();
-                    Log.e("TAG", "success");
                     Log.e("res",logInResponse.getToken());
 
                 }
