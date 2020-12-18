@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -149,20 +150,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     signInPasswordEditText.setError("password can not match");
                     signInPasswordEditText.requestFocus();
                 }
-                   // LogInResponse logInResponse=response.body();
-//                assert response.body() != null;
-//                if (!response.body().getSuccess()){
-//                        Toast.makeText(LoginActivity.this, "ssss", Toast.LENGTH_SHORT).show();
-//                        Intent intent=new Intent(LoginActivity.this,HomePage.class);
-//                        intent.putExtra("token",response.body().getToken());
-//                        startActivity(intent);
-//                    }
-//                else {
-//                    Toast.makeText(LoginActivity.this, "password can not match", Toast.LENGTH_SHORT).show();
-//                    signInPasswordEditText.setError("password can not match");
-//                    signInPasswordEditText.requestFocus();
-//
-//                    }
+                  
                 logInProgressBar.setVisibility(View.GONE);
 
             }
@@ -178,4 +166,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
     }
+
+
 }
