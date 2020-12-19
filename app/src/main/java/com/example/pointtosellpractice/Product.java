@@ -51,6 +51,8 @@ public class Product extends AppCompatActivity {
             @Override
             public void onResponse(Call<GetProductDataResponse> call, Response<GetProductDataResponse> response) {
                 GetProductDataResponse getProductDataResponse=response.body();
+if (response.isSuccessful()){
+
 
                 if (getProductDataResponse.getSuccess()==true){
                     getProductDataList=new ArrayList<>();
@@ -64,7 +66,10 @@ public class Product extends AppCompatActivity {
             }
                 productProgressBar.setVisibility(View.GONE);
             }
-
+                else {
+                    Toast.makeText(Product.this, "some problem", Toast.LENGTH_SHORT).show();
+                }
+            }
             @Override
             public void onFailure(Call<GetProductDataResponse> call, Throwable t) {
 
