@@ -204,15 +204,21 @@ public class HomePage extends AppCompatActivity {
         apiInterface.getCustomerCount("Bearer "+token).enqueue(new Callback<CustomerCountResponse>() {
             @Override
             public void onResponse(Call<CustomerCountResponse> call, Response<CustomerCountResponse> response) {
-                Log.e("count","success");
-                CustomerCountResponse customerCountResponse=response.body();
-                customerCount=customerCountResponse.getCustomerCount().toString();
-                customerCountTextView.setText(customerCount);
+               if (response.isSuccessful()){
+                   Log.e("count","success");
+                   CustomerCountResponse customerCountResponse=response.body();
+                   customerCount=customerCountResponse.getCustomerCount().toString();
+                   customerCountTextView.setText(customerCount);
+               }else {
+                   Toast.makeText(HomePage.this, "fail", Toast.LENGTH_SHORT).show();
+               }
+
             }
 
             @Override
             public void onFailure(Call<CustomerCountResponse> call, Throwable t) {
-                Log.e("count","success");
+                Toast.makeText(HomePage.this, "fail", Toast.LENGTH_SHORT).show();
+
             }
         });
     }
