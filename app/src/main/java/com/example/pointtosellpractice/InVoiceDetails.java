@@ -125,8 +125,9 @@ public class InVoiceDetails extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<SingleInvoiceGetResponse> call, Throwable t) {
-                Toast.makeText(InVoiceDetails.this, "failed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(InVoiceDetails.this, String.valueOf(t.getMessage()), Toast.LENGTH_LONG).show();
                 invoiceDetailsProgressBar.setVisibility(View.INVISIBLE);
+                Log.e("tsd",String.valueOf(t.getMessage()));
             }
         });
 

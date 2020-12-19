@@ -141,7 +141,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         startActivity(intent);
                         finish();
                     }
-                    Log.e("res",logInResponse.getToken());
+                    Log.e("res",logInResponse.getToken().toString());
 
                 }
 
@@ -150,7 +150,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     signInPasswordEditText.setError("password can not match");
                     signInPasswordEditText.requestFocus();
                 }
-                  
+
                 logInProgressBar.setVisibility(View.GONE);
 
             }
