@@ -159,4 +159,16 @@ public class GetProductData {
     public void setV(Integer v) {
         this.v = v;
     }
+
+
+    public GetProductData(Integer price, Integer sellingPrice, Integer stock, Integer quantity, String id, String name, String unit) {
+        this.price = price;
+        this.sellingPrice = sellingPrice;
+        this.stock = stock;
+        this.quantity = quantity;
+        this.id = id;
+        this.name = name;
+        this.unit = unit;
+    }
+
 }

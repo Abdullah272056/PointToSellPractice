@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pointtosellpractice.create_invoice.CustomerCustomAdapter;
+import com.example.pointtosellpractice.create_invoice.ProductCustomAdapter2;
 import com.example.pointtosellpractice.create_invoice.ProductCustomAdapter3;
 import com.example.pointtosellpractice.customer.CustomerInformationData;
 import com.example.pointtosellpractice.customer.CustomerInformationDataResponse;
@@ -32,7 +34,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CreateInVoice_Activity extends AppCompatActivity implements
-        CustomerCustomAdapter.OnContactClickListener1,ProductCustomAdapter3.OnContactClickListener {
+        CustomerCustomAdapter.OnContactClickListener1,ProductCustomAdapter3.OnContactClickListener,ProductCustomAdapter2.OnContactClickListener3 {
     int changeStatus=0;
 
     TextView nameTextView,phoneTextView,addressTextView,oldDueTextView,customerIdTextView;
@@ -46,7 +48,7 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
     ApiInterface apiInterface;
     String token;
 //    List<SetProductData> setProductDataList;
-//    List<GetProductData> newList=new ArrayList<>();
+    List<GetProductData> newList=new ArrayList<>();
 //
     List<CustomerInformationData> customerInformationDataList;
     List<GetProductData> getProductDataList;
@@ -56,11 +58,11 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
     RecyclerView productRecyclerView;
     ListView listView;
     ProductCustomAdapter3.OnContactClickListener onContactClickListener;
-//    ProductCustomAdapter2.OnContactClickListener3 onContactClickListener3;
+   ProductCustomAdapter2.OnContactClickListener3 onContactClickListener3;
     CustomerCustomAdapter.OnContactClickListener1 onContactClickListener1;
 
    ProductCustomAdapter3 productCustomAdapter;
-//    ProductCustomAdapter2 productCustomAdapter2;
+      ProductCustomAdapter2 productCustomAdapter2;
    CustomerCustomAdapter customerCustomAdapter;
     AlertDialog alertDialog;
 
@@ -71,7 +73,7 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
         setContentView(R.layout.activity_in_create_voice_);
            onContactClickListener=this;
            onContactClickListener1=this;
-//       onContactClickListener3=this;
+           onContactClickListener3=this;
 
 
         inVoiceButton=findViewById(R.id.inVoiceButtonId);
@@ -163,7 +165,6 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
             public void onResponse(Call<GetProductDataResponse> call, Response<GetProductDataResponse> response) {
                 GetProductDataResponse getProductDataResponse=response.body();
                 if (response.isSuccessful()){
-
                     if (getProductDataResponse.getSuccess()==true){
                         getProductDataList=new ArrayList<>();
                         getProductDataList.addAll(response.body().getProducts());
@@ -212,6 +213,27 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
 
     @Override
     public void onContactClick(int position) {
+        //getAllProduct();
+        Toast.makeText(this, String.valueOf(getProductDataList.get(position).getName()), Toast.LENGTH_SHORT).show();
+        //newList.add(getProductDataList.get(position));
+
+        newList.add(new GetProductData(getProductDataList.get(position).getPrice(),
+                getProductDataList.get(position).getSellingPrice(),
+                getProductDataList.get(position).getStock(),
+                1,getProductDataList.get(position).getId(),
+                getProductDataList.get(position).getName(),
+                getProductDataList.get(position).getUnit()));
+
+
+        productCustomAdapter2 = new ProductCustomAdapter2(CreateInVoice_Activity.this,token,newList, onContactClickListener3);
+        selectRecyclerView.setLayoutManager(new LinearLayoutManager(CreateInVoice_Activity.this));
+        selectRecyclerView.setAdapter(productCustomAdapter2);
+        Log.e("size",String.valueOf(newList.size()));
+        alertDialog.dismiss();
+    }
+
+    @Override
+    public void onContactClick3(int position) {
 
     }
 }
