@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.pointtosellpractice.create_invoice.CustomerCustomAdapter;
 import com.example.pointtosellpractice.customer.CustomerInformationData;
 import com.example.pointtosellpractice.customer.CustomerInformationDataResponse;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
@@ -26,7 +27,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CreateInVoice_Activity extends AppCompatActivity {
+public class CreateInVoice_Activity extends AppCompatActivity implements
+        CustomerCustomAdapter.OnContactClickListener1 {
     int changeStatus=0;
 
     TextView nameTextView,phoneTextView,addressTextView,oldDueTextView,customerIdTextView;
@@ -51,11 +53,11 @@ public class CreateInVoice_Activity extends AppCompatActivity {
     ListView listView;
 //    ProductCustomAdapter.OnContactClickListener onContactClickListener;
 //    ProductCustomAdapter2.OnContactClickListener3 onContactClickListener3;
-//    CustomerCustomAdapter.OnContactClickListener1 onContactClickListener1;
+    CustomerCustomAdapter.OnContactClickListener1 onContactClickListener1;
 
 //    ProductCustomAdapter productCustomAdapter;
 //    ProductCustomAdapter2 productCustomAdapter2;
-//    CustomerCustomAdapter customerCustomAdapter;
+   CustomerCustomAdapter customerCustomAdapter;
     AlertDialog alertDialog;
 
     RecyclerView selectRecyclerView;
@@ -63,6 +65,10 @@ public class CreateInVoice_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_in_create_voice_);
+//        onContactClickListener=this;
+        onContactClickListener1=this;
+//        onContactClickListener3=this;
+
 
         inVoiceButton=findViewById(R.id.inVoiceButtonId);
         selectCustomerButton=findViewById(R.id.selectCustomerButtonId);
@@ -106,7 +112,7 @@ public class CreateInVoice_Activity extends AppCompatActivity {
                         customerInformationDataList=new ArrayList<>();
                         customerInformationDataList.addAll(response.body().getCustomerInformation());
                         if (customerInformationDataList.size ()>0){
-                            //addCustomerInformation(customerInformationDataList);
+                            addCustomerInformation(customerInformationDataList);
                             Toast.makeText(CreateInVoice_Activity.this, String.valueOf(customerInformationDataList.size()), Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -123,5 +129,22 @@ public class CreateInVoice_Activity extends AppCompatActivity {
     }
 
 
-    
+    private void addCustomerInformation(List<CustomerInformationData> customerInformationDataList1){
+        AlertDialog.Builder builder     =new AlertDialog.Builder(CreateInVoice_Activity.this);
+        LayoutInflater layoutInflater   =LayoutInflater.from(CreateInVoice_Activity.this);
+        View view                       =layoutInflater.inflate(R.layout.select_customer,null);
+        builder.setView(view);
+        alertDialog   = builder.create();
+        productRecyclerView=view.findViewById(R.id.productRecyclerViewId);
+
+        customerCustomAdapter = new CustomerCustomAdapter(CreateInVoice_Activity.this,token,customerInformationDataList1,onContactClickListener1);
+        productRecyclerView.setLayoutManager(new LinearLayoutManager(CreateInVoice_Activity.this));
+        productRecyclerView.setAdapter(customerCustomAdapter);
+        alertDialog.show();
+    }
+
+    @Override
+    public void onContactClick1(int position) {
+
+    }
 }
