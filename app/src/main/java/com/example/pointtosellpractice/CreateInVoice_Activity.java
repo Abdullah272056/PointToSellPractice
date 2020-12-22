@@ -19,8 +19,11 @@ import android.widget.Toast;
 import com.example.pointtosellpractice.create_invoice.CustomerCustomAdapter;
 import com.example.pointtosellpractice.create_invoice.ProductCustomAdapter2;
 import com.example.pointtosellpractice.create_invoice.ProductCustomAdapter3;
+import com.example.pointtosellpractice.create_invoice.SetInVoiceResponse;
+import com.example.pointtosellpractice.create_invoice.SetProductData;
 import com.example.pointtosellpractice.customer.CustomerInformationData;
 import com.example.pointtosellpractice.customer.CustomerInformationDataResponse;
+import com.example.pointtosellpractice.model_class.owner_all_information.OwnerDataWithResponse;
 import com.example.pointtosellpractice.model_class.product.GetProductData;
 import com.example.pointtosellpractice.model_class.product.GetProductDataResponse;
 import com.example.pointtosellpractice.product.ProductCustomAdapter;
@@ -48,13 +51,13 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
 
     ApiInterface apiInterface;
     String token;
-   // List<SetProductData> setProductDataList;
+    List<SetProductData> setProductDataList;
     List<GetProductData> newList=new ArrayList<>();
 
     List<CustomerInformationData> customerInformationDataList;
     List<GetProductData> getProductDataList;
 
-   //SetInVoiceResponse setInVoiceResponse;
+   SetInVoiceResponse setInVoiceResponse;
     Button inVoiceButton,product,selectCustomerButton;
     RecyclerView productRecyclerView;
     ListView listView;
@@ -100,6 +103,20 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
 
         //receive user token
         token= getIntent().getStringExtra("token");
+
+        inVoiceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (changeStatus==1){
+                    Toast.makeText(CreateInVoice_Activity.this, "Ready", Toast.LENGTH_SHORT).show();
+                    setInVoice();
+                }else {
+                    Toast.makeText(CreateInVoice_Activity.this, "before click calculate button", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
 
         selectCustomerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -191,49 +208,49 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
     }
 
 
-//    public void  setInVoice(){
-//        customerId= customerIdTextView.getText().toString().trim();
-//        if (TextUtils.isEmpty(customerId)){
-//            nameTextView.setError("Enter your email");
-//            nameTextView.requestFocus();
-//            return;
-//        }
-////        name= nameTextView.getText().toString().trim();
-////        phone= phoneTextView.getText().toString().trim();
-//
-//
-//        int  totalProductAmount= Integer.parseInt(grandTotalTextView.getText().toString());
-//        int  discount= Integer.parseInt(discountTextView.getText().toString());
-//        int payAmount=0;
-//
-//        if (!TextUtils.isEmpty(payAmountEditText.getText().toString())){
-//            payAmount= Integer.parseInt(payAmountEditText.getText().toString());
-//        }
-//
-//        setProductDataList=new ArrayList<>();
-//
-//        int sz=newList.size();
-//        for (int i=0;sz-1>=i;i++){
-//            setProductDataList.add(new SetProductData(newList.get(i).getId(),newList.get(i).getQuantity()));
-//        }
-//        setInVoiceResponse=new SetInVoiceResponse(customerId,payAmount,
-//                totalProductAmount,discount, setProductDataList);
-//        apiInterface.getInvoiceResponse("Bearer "+token,setInVoiceResponse).enqueue(new Callback<OwnerDataWithResponse>() {
-//            @Override
-//            public void onResponse(Call<OwnerDataWithResponse> call, Response<OwnerDataWithResponse> response) {
-//                Toast.makeText(CreateInVoice_Activity.this, "sssssssss", Toast.LENGTH_SHORT).show();
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<OwnerDataWithResponse> call, Throwable t) {
-//                Toast.makeText(CreateInVoice_Activity.this, String.valueOf(t.getMessage()), Toast.LENGTH_SHORT).show();
-//                Log.e("getInvoice", String.valueOf(t.getMessage()));
-//
-//            }
-//        });
-//
-//    }
+    public void  setInVoice(){
+        customerId= customerIdTextView.getText().toString().trim();
+        if (TextUtils.isEmpty(customerId)){
+            nameTextView.setError("Enter your email");
+            nameTextView.requestFocus();
+            return;
+        }
+//        name= nameTextView.getText().toString().trim();
+//        phone= phoneTextView.getText().toString().trim();
+
+
+        int  totalProductAmount= Integer.parseInt(grandTotalTextView.getText().toString());
+        int  discount= Integer.parseInt(discountTextView.getText().toString());
+        int payAmount=0;
+
+        if (!TextUtils.isEmpty(payAmountEditText.getText().toString())){
+            payAmount= Integer.parseInt(payAmountEditText.getText().toString());
+        }
+
+        setProductDataList=new ArrayList<>();
+
+        int sz=newList.size();
+        for (int i=0;sz-1>=i;i++){
+            setProductDataList.add(new SetProductData(newList.get(i).getId(),newList.get(i).getQuantity()));
+        }
+        setInVoiceResponse=new SetInVoiceResponse(customerId,payAmount,
+                totalProductAmount,discount, setProductDataList);
+        apiInterface.getInvoiceResponse("Bearer "+token,setInVoiceResponse).enqueue(new Callback<OwnerDataWithResponse>() {
+            @Override
+            public void onResponse(Call<OwnerDataWithResponse> call, Response<OwnerDataWithResponse> response) {
+                Toast.makeText(CreateInVoice_Activity.this, "sssssssss", Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onFailure(Call<OwnerDataWithResponse> call, Throwable t) {
+                Toast.makeText(CreateInVoice_Activity.this, String.valueOf(t.getMessage()), Toast.LENGTH_SHORT).show();
+                Log.e("getInvoice", String.valueOf(t.getMessage()));
+
+            }
+        });
+
+    }
 
 
 // get All customer
