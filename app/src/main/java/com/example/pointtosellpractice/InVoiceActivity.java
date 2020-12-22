@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.example.pointtosellpractice.model_class.invoice.get_all_invoice.InVoi
 import com.example.pointtosellpractice.model_class.invoice.get_all_invoice.Invoice;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +32,7 @@ public class InVoiceActivity extends AppCompatActivity{
     InvoiceCustomAdapter invoiceCustomAdapter;
     RecyclerView invoiceRecyclerView;
     ProgressBar invoiceProgressBar;
+    FloatingActionButton addInvoiceButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +40,20 @@ public class InVoiceActivity extends AppCompatActivity{
         setContentView(R.layout.activity_in_voice);
         invoiceRecyclerView=findViewById(R.id.invoiceRecyclerViewId);
         invoiceProgressBar=findViewById(R.id.invoiceProgressBarId);
+        addInvoiceButton=findViewById(R.id.addInvoiceButtonId);
+
+
+
         token= getIntent().getStringExtra("token");
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
         getAllSellInfo();
+        addInvoiceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(InVoiceActivity.this, "clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     // getting  Get all invoice
