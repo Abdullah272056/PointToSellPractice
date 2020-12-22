@@ -116,7 +116,17 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
             }
         });
 
-       
+        subCountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int discount=Integer.parseInt(discountTextView.getText().toString());
+                if (discount>0){
+                    discount--;
+                }
+                discountTextView.setText(String.valueOf(discount));
+                changeStatus=0;
+            }
+        });
 
         addCountButton.setOnClickListener(new View.OnClickListener() {
             @Override
