@@ -50,7 +50,7 @@ public class InVoiceActivity extends AppCompatActivity{
         addInvoiceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(InVoiceActivity.this,InVoiceCreate_Activity.class);
+                Intent intent=new Intent(InVoiceActivity.this, CreateInVoice_Activity.class);
                 intent.putExtra("token",token);
                 startActivity(intent);
                 Toast.makeText(InVoiceActivity.this, "clicked", Toast.LENGTH_SHORT).show();

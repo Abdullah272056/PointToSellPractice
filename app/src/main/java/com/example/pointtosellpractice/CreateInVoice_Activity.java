@@ -5,18 +5,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.pointtosellpractice.customer.CustomerInformationData;
+import com.example.pointtosellpractice.customer.CustomerInformationDataResponse;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class InVoiceCreate_Activity extends AppCompatActivity {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class CreateInVoice_Activity extends AppCompatActivity {
     int changeStatus=0;
 
     TextView nameTextView,phoneTextView,addressTextView,oldDueTextView,customerIdTextView;
@@ -32,7 +40,7 @@ public class InVoiceCreate_Activity extends AppCompatActivity {
 //    List<SetProductData> setProductDataList;
 //    List<GetProductData> newList=new ArrayList<>();
 //
-//    List<CustomerInformationData> customerInformationDataList;
+    List<CustomerInformationData> customerInformationDataList;
 //    List<GetProductData> getProductDataList;
 //
 //    SetInVoiceResponse setInVoiceResponse;
@@ -52,7 +60,7 @@ public class InVoiceCreate_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_in_voice_create_);
+        setContentView(R.layout.activity_in_create_voice_);
 
         inVoiceButton=findViewById(R.id.inVoiceButtonId);
         selectCustomerButton=findViewById(R.id.selectCustomerButtonId);
@@ -78,6 +86,37 @@ public class InVoiceCreate_Activity extends AppCompatActivity {
         //receive user token
         token= getIntent().getStringExtra("token");
 
+        selectCustomerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getAllCustomerInformation();
+            }
+        });
 
+    }
+// get All customer
+    public  void getAllCustomerInformation(){
+        apiInterface.getAllCustomerInformation("Bearer "+token).enqueue(new Callback<CustomerInformationDataResponse>() {
+            @Override
+            public void onResponse(Call<CustomerInformationDataResponse> call, Response<CustomerInformationDataResponse> response) {
+                if (response.isSuccessful()){
+                    if (response.body().getSuccess()==true){
+                        customerInformationDataList=new ArrayList<>();
+                        customerInformationDataList.addAll(response.body().getCustomerInformation());
+                        if (customerInformationDataList.size ()>0){
+                            //addCustomerInformation(customerInformationDataList);
+                            Toast.makeText(CreateInVoice_Activity.this, String.valueOf(customerInformationDataList.size()), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }else {
+                    Toast.makeText(CreateInVoice_Activity.this, "Server Error", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+            @Override
+            public void onFailure(Call<CustomerInformationDataResponse> call, Throwable t) {
+                Toast.makeText(CreateInVoice_Activity.this, "fail Customer", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
