@@ -68,7 +68,7 @@ public class ProductCustomAdapter2 extends RecyclerView.Adapter<ProductCustomAda
         holder.subQuantityTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                if (productDataList.get(position).getQuantity()>2){
+                if (productDataList.get(position).getQuantity()>1){
                     productDataList.set(position,new GetProductData(productDataList.get(position).getPrice(),
                             productDataList.get(position).getSellingPrice(),
                             productDataList.get(position).getStock(),
