@@ -51,8 +51,7 @@ public class Product extends AppCompatActivity {
             @Override
             public void onResponse(Call<GetProductDataResponse> call, Response<GetProductDataResponse> response) {
                 GetProductDataResponse getProductDataResponse=response.body();
-if (response.isSuccessful()){
-
+        if (response.isSuccessful()){
 
                 if (getProductDataResponse.getSuccess()==true){
                     getProductDataList=new ArrayList<>();

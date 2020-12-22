@@ -108,7 +108,7 @@ public interface ApiInterface {
 
     ////// select_customer//////
     // get al select_customer
-    @GET("api/select_customer")
+    @GET("api/product")
     Call<GetProductDataResponse> getAllProduct(@Header("Authorization") String authorization);
 
     //delete select_customer

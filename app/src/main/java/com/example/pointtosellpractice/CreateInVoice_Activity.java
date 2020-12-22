@@ -19,6 +19,7 @@ import com.example.pointtosellpractice.customer.CustomerInformationData;
 import com.example.pointtosellpractice.customer.CustomerInformationDataResponse;
 import com.example.pointtosellpractice.model_class.product.GetProductData;
 import com.example.pointtosellpractice.model_class.product.GetProductDataResponse;
+import com.example.pointtosellpractice.product.ProductCustomAdapter;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 
@@ -155,33 +156,32 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
     }
 
 
-
-    // product
     public void getAllProduct() {
-        apiInterface.getAllProduct("Bearer "+token).
-                enqueue(new Callback<GetProductDataResponse>() {
-                    @Override
-                    public void onResponse(Call<GetProductDataResponse> call, Response<GetProductDataResponse> response) {
+        apiInterface.getAllProduct("Bearer "+token).enqueue(new Callback<GetProductDataResponse>() {
+            @Override
+            public void onResponse(Call<GetProductDataResponse> call, Response<GetProductDataResponse> response) {
+                GetProductDataResponse getProductDataResponse=response.body();
+                if (response.isSuccessful()){
 
-                        if (response.isSuccessful()){
-                            if (response.body().getSuccess()==true){
-                                getProductDataList=new ArrayList<>();
-                                getProductDataList.addAll(response.body().getProducts());
-                                if (getProductDataList.size ()>0){
-                                   // addProductInformation(getProductDataList);
-                                    // Toast.makeText(MainActivity.this, String.valueOf(getProductDataList.size()), Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        }else {
-                            Toast.makeText(CreateInVoice_Activity.this, "server error", Toast.LENGTH_SHORT).show();
+                    if (getProductDataResponse.getSuccess()==true){
+                        getProductDataList=new ArrayList<>();
+                        getProductDataList.addAll(response.body().getProducts());
+                        Toast.makeText(CreateInVoice_Activity.this, String.valueOf(getProductDataList.size()), Toast.LENGTH_SHORT).show();
+                        if (getProductDataList.size ()>0){
+//                             addProductInformation(getProductDataList);
                         }
                     }
-                    @Override
-                    public void onFailure(Call<GetProductDataResponse> call, Throwable t) {
-                    }
-                });
-
+                }
+                else {
+                    Toast.makeText(CreateInVoice_Activity.this, "some problem", Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<GetProductDataResponse> call, Throwable t) {
+            }
+        });
     }
+
 
 
     @Override
