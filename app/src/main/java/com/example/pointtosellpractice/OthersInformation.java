@@ -117,7 +117,7 @@ public class OthersInformation extends AppCompatActivity {
     }
 
 
-    // Get all product info
+    // Get all select_customer info
     private void getAllProductInfo(){
         apiInterface.getAllProductInfo("Bearer "+token).enqueue(new Callback<GetAllProductInfoDataResponse>() {
             @Override

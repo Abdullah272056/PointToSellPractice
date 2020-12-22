@@ -2,9 +2,11 @@ package com.example.pointtosellpractice;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -119,4 +121,7 @@ public class CreateInVoice_Activity extends AppCompatActivity {
             }
         });
     }
+
+
+    
 }

@@ -106,17 +106,17 @@ public interface ApiInterface {
 
 
 
-    ////// product//////
-    // get al product
-    @GET("api/product")
+    ////// select_customer//////
+    // get al select_customer
+    @GET("api/select_customer")
     Call<GetProductDataResponse> getAllProduct(@Header("Authorization") String authorization);
 
-    //delete product
-    @DELETE("api/product/{id}")
+    //delete select_customer
+    @DELETE("api/select_customer/{id}")
     Call<DeleteProductDataResponse> deleteProduct(@Header("Authorization") String authorization, @Path("id") String id);
 
-    // Get all product info
-    @GET("api/product/info")
+    // Get all select_customer info
+    @GET("api/select_customer/info")
     Call<GetAllProductInfoDataResponse> getAllProductInfo(@Header("Authorization") String authorization);
 
 

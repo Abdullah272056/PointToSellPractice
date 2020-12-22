@@ -10,7 +10,7 @@ public class DeleteProductDataResponse {
     @SerializedName("msg")
     @Expose
     private String msg;
-    @SerializedName("product")
+    @SerializedName("select_customer")
     @Expose
     private GetProductData getProductData;
 

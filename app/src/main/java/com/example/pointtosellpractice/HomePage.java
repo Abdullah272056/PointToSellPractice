@@ -117,7 +117,7 @@ public class HomePage extends AppCompatActivity {
         // call GetAllSellInfo for getting total customer count
         getAllSellInfo();
 
-        // Get all product info
+        // Get all select_customer info
         getAllProductInfo();
 
        // call navigationDrawer for getting navigation drawer
@@ -233,7 +233,7 @@ public class HomePage extends AppCompatActivity {
                 assert getAllSellInfoResponse != null;
                 Log.e("totalSaleAmount",getAllSellInfoResponse.getGetAllSellInfoData().getTotalSaleAmount().toString());
                 totalSaleAmountTextView.setText(getAllSellInfoResponse.getGetAllSellInfoData().getTotalSaleAmount().toString());
-                totalSoldProductQuantityTextView.setText("Total product sale "+getAllSellInfoResponse.getGetAllSellInfoData().getTotalSoldProductQuantity().toString());
+                totalSoldProductQuantityTextView.setText("Total select_customer sale "+getAllSellInfoResponse.getGetAllSellInfoData().getTotalSoldProductQuantity().toString());
                 totalSoldInvoiceTextView.setText("Total invoice "+getAllSellInfoResponse.getGetAllSellInfoData().getTotalSoldInvoice().toString());
                 totalDueAmountTextView.setText(getAllSellInfoResponse.getGetAllSellInfoData().getTotalDueAmount().toString());
                 totalProfitTextView.setText(getAllSellInfoResponse.getGetAllSellInfoData().getTotalProfit().toString());
@@ -249,7 +249,7 @@ public class HomePage extends AppCompatActivity {
     }
 
 
-    // Get all product info
+    // Get all select_customer info
     private void getAllProductInfo(){
         apiInterface.getAllProductInfo("Bearer "+token).enqueue(new Callback<GetAllProductInfoDataResponse>() {
             @Override
@@ -257,7 +257,7 @@ public class HomePage extends AppCompatActivity {
 
                 GetAllProductInfoDataResponse getAllProductInfoDataResponse=response.body();
                 totalProductCostTextView.setText(getAllProductInfoDataResponse.getGetAllProductInfoData().getTotalProductCost().toString());
-                totalProductStockTextView.setText("Total product stock "+getAllProductInfoDataResponse.getGetAllProductInfoData().getTotalProduct().toString());
+                totalProductStockTextView.setText("Total select_customer stock "+getAllProductInfoDataResponse.getGetAllProductInfoData().getTotalProduct().toString());
                 totalProductTypeTextView.setText("Product type "+getAllProductInfoDataResponse.getGetAllProductInfoData().getTotalProductType().toString());
             }
             @Override
