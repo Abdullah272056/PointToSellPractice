@@ -101,6 +101,16 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
             }
         });
 
+
+        product.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeStatus=0;
+               // getAllProduct();
+            }
+        });
+
+
     }
 // get All customer
     public  void getAllCustomerInformation(){
