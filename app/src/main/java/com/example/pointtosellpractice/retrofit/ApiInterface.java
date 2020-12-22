@@ -102,6 +102,8 @@ public interface ApiInterface {
     @GET("/api/invoice/sale/day")
     Call<GetSellInfoByDayResponse> getSellInfoByDay(@Header("Authorization") String authorization, @Query("day") Integer dayInt);
 
+//  @POST("/api/invoice")
+//  Call<OwnerDataWithResponse> getInvoiceResponse(@Header("Authorization") String authorization, @Body SetInVoiceResponse setInVoiceResponse);
 
 
 
