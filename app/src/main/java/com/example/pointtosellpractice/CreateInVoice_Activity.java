@@ -17,6 +17,8 @@ import android.widget.Toast;
 import com.example.pointtosellpractice.create_invoice.CustomerCustomAdapter;
 import com.example.pointtosellpractice.customer.CustomerInformationData;
 import com.example.pointtosellpractice.customer.CustomerInformationDataResponse;
+import com.example.pointtosellpractice.model_class.product.GetProductData;
+import com.example.pointtosellpractice.model_class.product.GetProductDataResponse;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 
@@ -45,8 +47,8 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
 //    List<GetProductData> newList=new ArrayList<>();
 //
     List<CustomerInformationData> customerInformationDataList;
-//    List<GetProductData> getProductDataList;
-//
+    List<GetProductData> getProductDataList;
+
 //    SetInVoiceResponse setInVoiceResponse;
     Button inVoiceButton,product,selectCustomerButton;
     RecyclerView productRecyclerView;
@@ -106,7 +108,7 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
             @Override
             public void onClick(View v) {
                 changeStatus=0;
-               // getAllProduct();
+                getAllProduct();
             }
         });
 
@@ -138,7 +140,6 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
         });
     }
 
-
     private void addCustomerInformation(List<CustomerInformationData> customerInformationDataList1){
         AlertDialog.Builder builder     =new AlertDialog.Builder(CreateInVoice_Activity.this);
         LayoutInflater layoutInflater   =LayoutInflater.from(CreateInVoice_Activity.this);
@@ -152,6 +153,36 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
         productRecyclerView.setAdapter(customerCustomAdapter);
         alertDialog.show();
     }
+
+
+
+    // product
+    public void getAllProduct() {
+        apiInterface.getAllProduct("Bearer "+token).
+                enqueue(new Callback<GetProductDataResponse>() {
+                    @Override
+                    public void onResponse(Call<GetProductDataResponse> call, Response<GetProductDataResponse> response) {
+
+                        if (response.isSuccessful()){
+                            if (response.body().getSuccess()==true){
+                                getProductDataList=new ArrayList<>();
+                                getProductDataList.addAll(response.body().getProducts());
+                                if (getProductDataList.size ()>0){
+                                   // addProductInformation(getProductDataList);
+                                    // Toast.makeText(MainActivity.this, String.valueOf(getProductDataList.size()), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }else {
+                            Toast.makeText(CreateInVoice_Activity.this, "server error", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<GetProductDataResponse> call, Throwable t) {
+                    }
+                });
+
+    }
+
 
     @Override
     public void onContactClick1(int position) {
