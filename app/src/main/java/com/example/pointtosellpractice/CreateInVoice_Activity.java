@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pointtosellpractice.create_invoice.CustomerCustomAdapter;
+import com.example.pointtosellpractice.create_invoice.ProductCustomAdapter3;
 import com.example.pointtosellpractice.customer.CustomerInformationData;
 import com.example.pointtosellpractice.customer.CustomerInformationDataResponse;
 import com.example.pointtosellpractice.model_class.product.GetProductData;
@@ -31,7 +32,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CreateInVoice_Activity extends AppCompatActivity implements
-        CustomerCustomAdapter.OnContactClickListener1 {
+        CustomerCustomAdapter.OnContactClickListener1,ProductCustomAdapter3.OnContactClickListener {
     int changeStatus=0;
 
     TextView nameTextView,phoneTextView,addressTextView,oldDueTextView,customerIdTextView;
@@ -54,11 +55,11 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
     Button inVoiceButton,product,selectCustomerButton;
     RecyclerView productRecyclerView;
     ListView listView;
-//    ProductCustomAdapter.OnContactClickListener onContactClickListener;
+    ProductCustomAdapter3.OnContactClickListener onContactClickListener;
 //    ProductCustomAdapter2.OnContactClickListener3 onContactClickListener3;
     CustomerCustomAdapter.OnContactClickListener1 onContactClickListener1;
 
-//    ProductCustomAdapter productCustomAdapter;
+   ProductCustomAdapter3 productCustomAdapter;
 //    ProductCustomAdapter2 productCustomAdapter2;
    CustomerCustomAdapter customerCustomAdapter;
     AlertDialog alertDialog;
@@ -68,9 +69,9 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_in_create_voice_);
-//        onContactClickListener=this;
-        onContactClickListener1=this;
-//        onContactClickListener3=this;
+           onContactClickListener=this;
+           onContactClickListener1=this;
+//       onContactClickListener3=this;
 
 
         inVoiceButton=findViewById(R.id.inVoiceButtonId);
@@ -168,7 +169,7 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
                         getProductDataList.addAll(response.body().getProducts());
                         Toast.makeText(CreateInVoice_Activity.this, String.valueOf(getProductDataList.size()), Toast.LENGTH_SHORT).show();
                         if (getProductDataList.size ()>0){
-//                             addProductInformation(getProductDataList);
+                             addProductInformation(getProductDataList);
                         }
                     }
                 }
@@ -182,7 +183,20 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
         });
     }
 
-    
+    private void addProductInformation( List<GetProductData> getProductDataList){
+        AlertDialog.Builder builder     =new AlertDialog.Builder(CreateInVoice_Activity.this);
+        LayoutInflater layoutInflater   =LayoutInflater.from(CreateInVoice_Activity.this);
+        View view                       =layoutInflater.inflate(R.layout.product,null);
+        builder.setView(view);
+        alertDialog   = builder.create();
+
+        productRecyclerView=view.findViewById(R.id.productRecyclerViewId);
+        productCustomAdapter = new ProductCustomAdapter3(CreateInVoice_Activity.this,token,getProductDataList,onContactClickListener);
+        productRecyclerView.setLayoutManager(new LinearLayoutManager(CreateInVoice_Activity.this));
+        productRecyclerView.setAdapter(productCustomAdapter);
+
+        alertDialog.show();
+    }
 
 
 
@@ -194,5 +208,10 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
         oldDueTextView.setText(String.valueOf(customerInformationDataList.get(position).getDue()));
         customerIdTextView.setText(String.valueOf(customerInformationDataList.get(position).getId()));
         alertDialog.dismiss();
+    }
+
+    @Override
+    public void onContactClick(int position) {
+
     }
 }
