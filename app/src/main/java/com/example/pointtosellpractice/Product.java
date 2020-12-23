@@ -65,8 +65,6 @@ public class Product extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_LOCATION = 99 ;
     private static final int CAPTURE_REQUEST_CODE = 0;
     private static final int SELECT_REQUEST_CODE = 1;
-    private Button captureImage,selectImage;
-    private ImageView imageView;
    // private OurRetrofitClient ourRetrofitClient;
     private ProgressDialog progressDialog;
     Button imageUploadButton;
@@ -150,7 +148,15 @@ public class Product extends AppCompatActivity {
         productSelectImageView=view.findViewById(R.id.productSelectImageViewId);
         uploadProductButton=view.findViewById(R.id.uploadProductButtonId);
 
-
+        productSelectImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(CheckPermission()) {
+                    Intent capture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(capture, CAPTURE_REQUEST_CODE);
+                }
+            }
+        });
 
         alertDialog.show();
 
