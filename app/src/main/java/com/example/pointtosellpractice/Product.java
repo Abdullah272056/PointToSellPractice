@@ -223,9 +223,7 @@ public class Product extends AppCompatActivity {
                 if (productSelectImageView.getDrawable()==null){
                     Toast.makeText(Product.this, "select image", Toast.LENGTH_SHORT).show();
                     return;
-                    //your code for stopping uploading here!
                 }
-              // String productName,productRegularPrice,productSellingPrice,productStock,productDescription,piece;
 
                  ImageUpload(imageUri,productName,productRegularPrice,productSellingPrice,piece,productStock,productDescription);
 
@@ -284,7 +282,6 @@ public class Product extends AppCompatActivity {
                              String productPiece,String productStock,String productDescription) {
 
 
-
         progressDialog.show();
 
         String path= getImagePath(imgUri);
@@ -305,17 +302,19 @@ public class Product extends AppCompatActivity {
                 enqueue(new Callback<ProductDataResponse>() {
                     @Override
                     public void onResponse(Call<ProductDataResponse> call, Response<ProductDataResponse> response) {
-                        Log.e("eroor",new Gson().toJson(response.body()));
+                       // Log.e("eroor",new Gson().toJson(response.body()));
                         if (response.isSuccessful()){
-                            Toast.makeText(Product.this, "success", Toast.LENGTH_SHORT).show();
-//                ProductDataResponse customerInformationDataResponse=response.body();
-//                assert customerInformationDataResponse != null;
-//                if (customerInformationDataResponse.getSuccess()){
-//                    Log.e("asd","ssss");
-//                }else {
-//                    Log.e("asd","ffff");
-//
-//                }
+
+                            if (response.body().getSuccess()==true){
+                                Toast.makeText(Product.this, "success", Toast.LENGTH_SHORT).show();
+
+                                Log.e("asd","ssss");
+                            }else {
+                                Toast.makeText(Product.this, "server error", Toast.LENGTH_SHORT).show();
+
+                                Log.e("asd","ffff");
+
+                            }
                         }else {
                             Log.e("ent",String.valueOf(response.message()));
                             Toast.makeText(Product.this, String.valueOf(response.message()), Toast.LENGTH_SHORT).show();
