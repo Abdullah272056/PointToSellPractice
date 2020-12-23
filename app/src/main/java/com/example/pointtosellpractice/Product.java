@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -30,6 +32,7 @@ import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +53,22 @@ public class Product extends AppCompatActivity {
     TextView pieceTextView;
     ImageView productSelectImageView;
     Button uploadProductButton;
+
+
+    private static final int MY_PERMISSIONS_REQUEST_LOCATION = 99 ;
+    private static final int CAPTURE_REQUEST_CODE = 0;
+    private static final int SELECT_REQUEST_CODE = 1;
+    private Button captureImage,selectImage;
+    private ImageView imageView;
+   // private OurRetrofitClient ourRetrofitClient;
+    private ProgressDialog progressDialog;
+    Button imageUploadButton;
+
+    File file;
+    Uri imageUri;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
