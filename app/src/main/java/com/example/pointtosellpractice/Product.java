@@ -38,15 +38,20 @@ import com.example.pointtosellpractice.customer.CustomerInformationDataResponse;
 import com.example.pointtosellpractice.model_class.product.GetProductData;
 import com.example.pointtosellpractice.model_class.product.GetProductDataResponse;
 import com.example.pointtosellpractice.product.ProductCustomAdapter;
+import com.example.pointtosellpractice.product.create_product.ProductDataResponse;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.gson.Gson;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -87,6 +92,9 @@ public class Product extends AppCompatActivity {
         productRecyclerView=findViewById(R.id.productRecyclerViewId);
         productProgressBar=findViewById(R.id.productProgressBarId);
         addProductButton=findViewById(R.id.addProductButtonId);
+
+        progressDialog = new ProgressDialog(Product.this);
+        progressDialog.setMessage("Image Upload....");
 
         //alert dialog view show
 
@@ -166,6 +174,14 @@ public class Product extends AppCompatActivity {
             }
         });
 
+        uploadProductButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                ImageUpload(imageUri);
+            }
+        });
+
         alertDialog.show();
 
     }
@@ -212,7 +228,56 @@ public class Product extends AppCompatActivity {
 
     }
 
+    private void ImageUpload(Uri imgUri) {
 
+        progressDialog.show();
+
+        String path= getImagePath(imgUri);
+        file = new File(path);
+        MultipartBody.Part imageFile = null;
+
+        RequestBody requestFile = RequestBody.create(MediaType.parse("image/*"), file);
+        imageFile = MultipartBody.Part.createFormData("image", file.getName(), requestFile);
+
+        RequestBody name = RequestBody.create(MediaType.parse("multipart/form-data"), "laptop");
+        RequestBody price = RequestBody.create(MediaType.parse("multipart/form-data"), "1200");
+        RequestBody sellingPrice = RequestBody.create(MediaType.parse("multipart/form-data"), "1000");
+        RequestBody unit = RequestBody.create(MediaType.parse("multipart/form-data"), "piece");
+        RequestBody stock = RequestBody.create(MediaType.parse("multipart/form-data"), "12");
+        RequestBody description = RequestBody.create(MediaType.parse("multipart/form-data"), "product description laptop");
+
+        apiInterface.uploadImage("Bearer "+token,imageFile,name,price,sellingPrice,unit,stock,description).
+                enqueue(new Callback<ProductDataResponse>() {
+                    @Override
+                    public void onResponse(Call<ProductDataResponse> call, Response<ProductDataResponse> response) {
+                        Log.e("eroor",new Gson().toJson(response.body()));
+                        if (response.isSuccessful()){
+                            Toast.makeText(Product.this, "success", Toast.LENGTH_SHORT).show();
+//                ProductDataResponse customerInformationDataResponse=response.body();
+//                assert customerInformationDataResponse != null;
+//                if (customerInformationDataResponse.getSuccess()){
+//                    Log.e("asd","ssss");
+//                }else {
+//                    Log.e("asd","ffff");
+//
+//                }
+                        }else {
+                            Log.e("ent",String.valueOf(response.message()));
+                            Toast.makeText(Product.this, String.valueOf(response.message()), Toast.LENGTH_SHORT).show();
+
+                        }
+                        progressDialog.dismiss();
+
+                    }
+                    @Override
+                    public void onFailure(Call<ProductDataResponse> call, Throwable t) {
+                        Toast.makeText(Product.this, "Failed to Upload", Toast.LENGTH_SHORT).show();
+                        Log.e("asd",t.getMessage());
+                       progressDialog.dismiss();
+                    }
+                });
+
+    }
 
     public boolean CheckPermission() {
         if (ContextCompat.checkSelfPermission(Product.this,
