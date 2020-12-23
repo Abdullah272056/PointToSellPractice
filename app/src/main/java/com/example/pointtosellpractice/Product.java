@@ -57,6 +57,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Product extends AppCompatActivity {
+    String productName,productRegularPrice,productSellingPrice,productStock,productDescription,piece;
+
     List<GetProductData> getProductDataList;
     String token;
     ApiInterface apiInterface;
@@ -79,7 +81,7 @@ public class Product extends AppCompatActivity {
     Button imageUploadButton;
 
     File file;
-    Uri imageUri;
+    Uri imageUri=null;
 
 
 
@@ -108,6 +110,7 @@ public class Product extends AppCompatActivity {
         addProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 createProduct();
             }
         });
@@ -174,11 +177,55 @@ public class Product extends AppCompatActivity {
             }
         });
 
-        uploadProductButton.setOnClickListener(new View.OnClickListener() {
+
+
+        uploadProductButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
 
-                ImageUpload(imageUri);
+                productName=productNameEditText.getText().toString();
+                productRegularPrice=productRegularPriceEditText.getText().toString();
+                productSellingPrice=productSellingPriceEditText.getText().toString();
+                productStock=productStockEditText.getText().toString();
+                productDescription=productDescriptionEditText.getText().toString();
+                piece=pieceTextView.getText().toString();
+
+                if (TextUtils.isEmpty(productName)){
+                    productNameEditText.setError("Enter your password");
+                    productNameEditText.requestFocus();
+                    return;
+                }
+                if (TextUtils.isEmpty(productRegularPrice)){
+                    productRegularPriceEditText.setError("Enter your password");
+                    productRegularPriceEditText.requestFocus();
+                    return;
+                }
+                if (TextUtils.isEmpty(productSellingPrice)){
+                    productSellingPriceEditText.setError("Enter your password");
+                    productSellingPriceEditText.requestFocus();
+                    return;
+                }
+                if (TextUtils.isEmpty(productStock)){
+                    productStockEditText.setError("Enter your password");
+                    productStockEditText.requestFocus();
+                    return;
+                }
+                if (TextUtils.isEmpty(productDescription)){
+                    productDescriptionEditText.setError("Enter your password");
+                    productDescriptionEditText.requestFocus();
+                    return;
+                }
+                if (TextUtils.isEmpty(piece)){
+                    pieceTextView.setError("Enter your password");
+                    pieceTextView.requestFocus();
+                    return;
+                }
+              // String productName,productRegularPrice,productSellingPrice,productStock,productDescription,piece;
+
+                 ImageUpload(imageUri,productName,productRegularPrice,productSellingPrice,piece,productStock,productDescription);
+
+
+
             }
         });
 
@@ -228,7 +275,10 @@ public class Product extends AppCompatActivity {
 
     }
 
-    private void ImageUpload(Uri imgUri) {
+    private void ImageUpload(Uri imgUri,String productName,String productRegularPrice,String productSellingPrice,
+                             String productPiece,String productStock,String productDescription) {
+
+
 
         progressDialog.show();
 
@@ -239,12 +289,12 @@ public class Product extends AppCompatActivity {
         RequestBody requestFile = RequestBody.create(MediaType.parse("image/*"), file);
         imageFile = MultipartBody.Part.createFormData("image", file.getName(), requestFile);
 
-        RequestBody name = RequestBody.create(MediaType.parse("multipart/form-data"), "laptop");
-        RequestBody price = RequestBody.create(MediaType.parse("multipart/form-data"), "1200");
-        RequestBody sellingPrice = RequestBody.create(MediaType.parse("multipart/form-data"), "1000");
-        RequestBody unit = RequestBody.create(MediaType.parse("multipart/form-data"), "piece");
-        RequestBody stock = RequestBody.create(MediaType.parse("multipart/form-data"), "12");
-        RequestBody description = RequestBody.create(MediaType.parse("multipart/form-data"), "product description laptop");
+        RequestBody name = RequestBody.create(MediaType.parse("multipart/form-data"), productName);
+        RequestBody price = RequestBody.create(MediaType.parse("multipart/form-data"), productRegularPrice);
+        RequestBody sellingPrice = RequestBody.create(MediaType.parse("multipart/form-data"), productSellingPrice);
+        RequestBody unit = RequestBody.create(MediaType.parse("multipart/form-data"), productPiece);
+        RequestBody stock = RequestBody.create(MediaType.parse("multipart/form-data"), productStock);
+        RequestBody description = RequestBody.create(MediaType.parse("multipart/form-data"), productDescription);
 
         apiInterface.uploadImage("Bearer "+token,imageFile,name,price,sellingPrice,unit,stock,description).
                 enqueue(new Callback<ProductDataResponse>() {
