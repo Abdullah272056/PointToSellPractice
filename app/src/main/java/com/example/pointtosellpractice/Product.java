@@ -56,7 +56,7 @@ public class Product extends AppCompatActivity {
         addProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //createProduct();
             }
         });
 
@@ -95,5 +95,7 @@ public class Product extends AppCompatActivity {
     }
 
 
-  
+
+
+
 }

@@ -1,6 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
+    android:background="#A89F9F"
+    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:id="@+id/productNameEditTextId"
+        android:hint="Enter product name"
+        android:inputType="text"
+        android:background="#FAF8F8"
+        android:layout_margin="5dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/productRegularPriceEditTextId"
+        android:hint="Enter product price"
+        android:inputType="number"
+        android:background="#FAF8F8"
+        android:layout_margin="5dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/productSellingPriceEditTextId"
+        android:hint="Enter product selling price"
+        android:inputType="number"
+        android:background="#FAF8F8"
+        android:layout_margin="5dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/pieceEditTextId"
+        android:hint="piece"
+        android:background="#FAF8F8"
+        android:layout_margin="5dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/productStockEditTextId"
+        android:hint="product stock"
+        android:inputType="text"
+        android:background="#FAF8F8"
+        android:layout_margin="5dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/productDescriptionEditTextId"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:hint="Type something about product"
+        android:background="#FAF8F8"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:background="#DCD8D8"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="select image"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:id="@+id/productSelectImageViewId"
+            android:src="@drawable/ic_baseline_add_24"
+            android:layout_gravity="center"
+            android:background="#DCD8D8"
+            android:layout_width="150dp"
+            android:layout_height="150dp"/>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/uploadButtonId"
+        android:text="Upload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
