@@ -56,7 +56,7 @@ public class Product extends AppCompatActivity {
         addProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //createProduct();
+                createProduct();
             }
         });
 
@@ -94,7 +94,17 @@ public class Product extends AppCompatActivity {
 
     }
 
+    private void createProduct(){
 
+        AlertDialog.Builder builder     =new AlertDialog.Builder(Product.this);
+        LayoutInflater layoutInflater   =LayoutInflater.from(Product.this);
+        View view                       =layoutInflater.inflate(R.layout.create_product,null);
+        builder.setView(view);
+        final AlertDialog alertDialog   = builder.create();
+
+        alertDialog.show();
+
+    }
 
 
 
