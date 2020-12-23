@@ -148,12 +148,14 @@ public class Product extends AppCompatActivity {
         productSelectImageView=view.findViewById(R.id.productSelectImageViewId);
         uploadProductButton=view.findViewById(R.id.uploadProductButtonId);
 
+        
         productSelectImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if(CheckPermission()) {
-                    Intent capture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(capture, CAPTURE_REQUEST_CODE);
+                    Intent select = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(select, SELECT_REQUEST_CODE);
                 }
             }
         });
