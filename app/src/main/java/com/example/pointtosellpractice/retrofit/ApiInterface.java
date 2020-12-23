@@ -127,7 +127,18 @@ public interface ApiInterface {
     @GET("api/select_customer/info")
     Call<GetAllProductInfoDataResponse> getAllProductInfo(@Header("Authorization") String authorization);
 
- 
+  // create Product
+  @Multipart
+  @POST("api/product")
+  Call<ProductDataResponse> uploadImage(@Header("Authorization") String authorization,
+                                        @Part MultipartBody.Part image,
+                                        @Part("name") RequestBody name,
+                                        @Part("price") RequestBody price,
+                                        @Part("sellingPrice") RequestBody sellingPrice,
+                                        @Part("unit") RequestBody unit,
+                                        @Part("stock") RequestBody stock,
+                                        @Part("description") RequestBody description
+  );
 
 
 //    @PUT("api/user/{id}")
