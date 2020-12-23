@@ -22,13 +22,17 @@ import com.example.pointtosellpractice.model_class.product.DeleteProductDataResp
 import com.example.pointtosellpractice.model_class.product.GetAllProductInfoDataResponse;
 import com.example.pointtosellpractice.model_class.product.GetProductDataResponse;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -122,6 +126,7 @@ public interface ApiInterface {
     @GET("api/select_customer/info")
     Call<GetAllProductInfoDataResponse> getAllProductInfo(@Header("Authorization") String authorization);
 
+   
 
 //    @PUT("api/user/{id}")
 //    Call<OurDataSet> updateUser(@Path("id") String id, @Body OurDataSet ourDataSet);
