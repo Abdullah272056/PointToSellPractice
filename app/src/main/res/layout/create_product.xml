@@ -78,9 +78,8 @@
             android:layout_height="wrap_content"/>
         <ImageView
             android:id="@+id/productSelectImageViewId"
-            android:src="@drawable/ic_baseline_add_24"
             android:layout_gravity="center"
-            android:background="#DCD8D8"
+            android:background="@drawable/ic_baseline_add_24"
             android:layout_width="150dp"
             android:layout_height="150dp"/>
 

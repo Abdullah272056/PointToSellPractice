@@ -191,34 +191,39 @@ public class Product extends AppCompatActivity {
                 piece=pieceTextView.getText().toString();
 
                 if (TextUtils.isEmpty(productName)){
-                    productNameEditText.setError("Enter your password");
+                    productNameEditText.setError("Enter product name");
                     productNameEditText.requestFocus();
                     return;
                 }
                 if (TextUtils.isEmpty(productRegularPrice)){
-                    productRegularPriceEditText.setError("Enter your password");
+                    productRegularPriceEditText.setError("Enter product regular price");
                     productRegularPriceEditText.requestFocus();
                     return;
                 }
                 if (TextUtils.isEmpty(productSellingPrice)){
-                    productSellingPriceEditText.setError("Enter your password");
+                    productSellingPriceEditText.setError("Enter product selling price");
                     productSellingPriceEditText.requestFocus();
                     return;
                 }
                 if (TextUtils.isEmpty(productStock)){
-                    productStockEditText.setError("Enter your password");
+                    productStockEditText.setError("Enter product stock");
                     productStockEditText.requestFocus();
                     return;
                 }
                 if (TextUtils.isEmpty(productDescription)){
-                    productDescriptionEditText.setError("Enter your password");
+                    productDescriptionEditText.setError("Enter product description");
                     productDescriptionEditText.requestFocus();
                     return;
                 }
                 if (TextUtils.isEmpty(piece)){
-                    pieceTextView.setError("Enter your password");
+                    pieceTextView.setError("Enter piece");
                     pieceTextView.requestFocus();
                     return;
+                }
+                if (productSelectImageView.getDrawable()==null){
+                    Toast.makeText(Product.this, "select image", Toast.LENGTH_SHORT).show();
+                    return;
+                    //your code for stopping uploading here!
                 }
               // String productName,productRegularPrice,productSellingPrice,productStock,productDescription,piece;
 
