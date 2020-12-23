@@ -18,6 +18,7 @@ import com.example.pointtosellpractice.model_class.product.GetProductDataRespons
 import com.example.pointtosellpractice.product.ProductCustomAdapter;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,7 @@ public class Product extends AppCompatActivity {
     ProductCustomAdapter productCustomAdapter;
     RecyclerView productRecyclerView;
     ProgressBar productProgressBar;
+    FloatingActionButton addProductButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,8 +43,16 @@ public class Product extends AppCompatActivity {
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
         productRecyclerView=findViewById(R.id.productRecyclerViewId);
         productProgressBar=findViewById(R.id.productProgressBarId);
+        addProductButton=findViewById(R.id.addProductButtonId);
 
         getAllProduct();
+
+        addProductButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
     }
 
