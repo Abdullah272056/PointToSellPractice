@@ -1,5 +1,6 @@
 package com.example.pointtosellpractice;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -12,6 +13,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -40,6 +42,7 @@ import com.example.pointtosellpractice.retrofit.RetrofitClient;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -102,6 +105,8 @@ public class Product extends AppCompatActivity {
 
     }
 
+
+
     public void getAllProduct() {
         apiInterface.getAllProduct("Bearer "+token).enqueue(new Callback<GetProductDataResponse>() {
             @Override
@@ -148,7 +153,7 @@ public class Product extends AppCompatActivity {
         productSelectImageView=view.findViewById(R.id.productSelectImageViewId);
         uploadProductButton=view.findViewById(R.id.uploadProductButtonId);
 
-        
+
         productSelectImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -163,6 +168,49 @@ public class Product extends AppCompatActivity {
         alertDialog.show();
 
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode){
+
+            case CAPTURE_REQUEST_CODE:
+
+//                if(resultCode == RESULT_OK){
+//
+//                    Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+//                    imageView.setImageBitmap(bitmap);
+//                    progressDialog.show();
+//                    //ImageUpload(bitmap);
+//
+//                }
+
+
+                break;
+
+            case SELECT_REQUEST_CODE:
+                if(resultCode == RESULT_OK && data!=null
+                        && data.getData()!=null){
+                    try {
+                        imageUri = data.getData();
+                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
+                        productSelectImageView.setImageBitmap(bitmap);
+                        // progressDialog.show();
+                        //ImageUpload(imageUri);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                else {
+                    Toast.makeText(this, "url empty", Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
+
+    }
+
 
 
     public boolean CheckPermission() {
