@@ -21,6 +21,7 @@ import com.example.pointtosellpractice.model_class.owner_all_information.OwnerDa
 import com.example.pointtosellpractice.model_class.product.DeleteProductDataResponse;
 import com.example.pointtosellpractice.model_class.product.GetAllProductInfoDataResponse;
 import com.example.pointtosellpractice.model_class.product.GetProductDataResponse;
+import com.example.pointtosellpractice.product.create_product.ProductDataResponse;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -126,7 +127,8 @@ public interface ApiInterface {
     @GET("api/select_customer/info")
     Call<GetAllProductInfoDataResponse> getAllProductInfo(@Header("Authorization") String authorization);
 
-   
+ 
+
 
 //    @PUT("api/user/{id}")
 //    Call<OurDataSet> updateUser(@Path("id") String id, @Body OurDataSet ourDataSet);
