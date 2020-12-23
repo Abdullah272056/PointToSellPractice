@@ -1,16 +1,22 @@
 package com.example.pointtosellpractice;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.pointtosellpractice.customer.AddCustomerResponse;
 import com.example.pointtosellpractice.customer.CustomerCustomAdapter;
+import com.example.pointtosellpractice.customer.CustomerData;
 import com.example.pointtosellpractice.customer.CustomerInformationData;
 import com.example.pointtosellpractice.customer.CustomerInformationDataResponse;
 import com.example.pointtosellpractice.model_class.product.GetProductData;
@@ -88,4 +94,6 @@ public class Product extends AppCompatActivity {
 
     }
 
+
+  
 }
