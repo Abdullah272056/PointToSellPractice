@@ -35,8 +35,8 @@
         android:padding="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/pieceEditTextId"
+    <EditText
+        android:id="@+id/pieceTextViewId"
         android:hint="piece"
         android:background="#FAF8F8"
         android:layout_margin="5dp"
@@ -88,7 +88,7 @@
 
 
     <Button
-        android:id="@+id/uploadButtonId"
+        android:id="@+id/uploadProductButtonId"
         android:text="Upload"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

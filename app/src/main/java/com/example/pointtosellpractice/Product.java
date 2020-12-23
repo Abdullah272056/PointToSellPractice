@@ -11,7 +11,11 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pointtosellpractice.customer.AddCustomerResponse;
@@ -41,6 +45,11 @@ public class Product extends AppCompatActivity {
     RecyclerView productRecyclerView;
     ProgressBar productProgressBar;
     FloatingActionButton addProductButton;
+    EditText productNameEditText,productRegularPriceEditText,productSellingPriceEditText,
+            productStockEditText,productDescriptionEditText;
+    TextView pieceTextView;
+    ImageView productSelectImageView;
+    Button uploadProductButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +59,9 @@ public class Product extends AppCompatActivity {
         productRecyclerView=findViewById(R.id.productRecyclerViewId);
         productProgressBar=findViewById(R.id.productProgressBarId);
         addProductButton=findViewById(R.id.addProductButtonId);
+
+        //alert dialog view show
+
 
         getAllProduct();
 
@@ -90,17 +102,25 @@ public class Product extends AppCompatActivity {
 
             }
         });
-
-
     }
 
     private void createProduct(){
-
         AlertDialog.Builder builder     =new AlertDialog.Builder(Product.this);
         LayoutInflater layoutInflater   =LayoutInflater.from(Product.this);
         View view                       =layoutInflater.inflate(R.layout.create_product,null);
         builder.setView(view);
         final AlertDialog alertDialog   = builder.create();
+
+        productNameEditText=view.findViewById(R.id.productNameEditTextId);
+        productRegularPriceEditText=view.findViewById(R.id.productRegularPriceEditTextId);
+        productSellingPriceEditText=view.findViewById(R.id.productSellingPriceEditTextId);
+        productStockEditText=view.findViewById(R.id.productStockEditTextId);
+        productDescriptionEditText=view.findViewById(R.id.productDescriptionEditTextId);
+        pieceTextView=view.findViewById(R.id.pieceTextViewId);
+        productSelectImageView=view.findViewById(R.id.productSelectImageViewId);
+        uploadProductButton=view.findViewById(R.id.uploadProductButtonId);
+
+
 
         alertDialog.show();
 
