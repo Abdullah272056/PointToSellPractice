@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -55,12 +56,46 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
                 View view                       =layoutInflater.inflate(R.layout.change_password_page,null);
                 builder.setView(view);
                 final AlertDialog alertDialog   = builder.create();
-//                
+//
                 oldPasswordEditText=view.findViewById(R.id.oldPasswordEditTextId);
                 newPasswordEditText=view.findViewById(R.id.newPasswordEditTextId);
                 confirmPasswordEditText=view.findViewById(R.id.confirmPasswordEditTextId);
                 saveChangePasswordButton=view.findViewById(R.id.saveChangePasswordButtonId);
 
+                saveChangePasswordButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String newPassword=newPasswordEditText.getText().toString();
+                        String confirmPassword=confirmPasswordEditText.getText().toString();
+                        String oldPassword=oldPasswordEditText.getText().toString();
+
+                        if (TextUtils.isEmpty(oldPassword)){
+                            oldPasswordEditText.setError("Enter your old password");
+                            oldPasswordEditText.requestFocus();
+                            return;
+                        }
+
+                        if (TextUtils.isEmpty(newPassword)){
+                            newPasswordEditText.setError("Enter new password");
+                            newPasswordEditText.requestFocus();
+                            return;
+                        }
+                        if (TextUtils.isEmpty(confirmPassword)){
+                            confirmPasswordEditText.setError("Enter confirm password");
+                            confirmPasswordEditText.requestFocus();
+                            return;
+                        }
+                        if (newPassword!=confirmPassword){
+                            confirmPasswordEditText.setError("can not matching confirm password");
+                            confirmPasswordEditText.requestFocus();
+                            return;
+                        }
+
+
+                        
+
+                    }
+                });
 
                 alertDialog.show();
             }
