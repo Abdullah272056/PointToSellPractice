@@ -39,7 +39,7 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
         uploadPictureButton=findViewById(R.id.uploadPictureButtonId);
         changePasswordButton=findViewById(R.id.changePasswordButtonId);
         deleteAccountButton=findViewById(R.id.deleteAccountButtonId);
-        
+
 
 
     }
@@ -49,6 +49,13 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
             public void onResponse(Call<OwnerDataWithResponse> call, Response<OwnerDataWithResponse> response) {
                 if (response.isSuccessful()){
                     if (response.body().getSuccess()==true){
+//                        TextView companyNameTextView,companyEmailTextView,companyPhoneTextView,
+//                                companyAddressTextView, memberSinceTextView;
+                        companyNameTextView.setText(String.valueOf(response.body().getData().getCompanyName()));
+                        companyEmailTextView.setText(String.valueOf(response.body().getData().getEmail()));
+                        companyPhoneTextView.setText(String.valueOf(response.body().getData().getPhone()));
+                        companyAddressTextView.setText(String.valueOf(response.body().getData().getAddress()));
+                        memberSinceTextView.setText(String.valueOf(response.body().getData().getCreatedAt()));
                         Toast.makeText(AboutMeActivity.this, "success", Toast.LENGTH_SHORT).show();
 
                     }else {
