@@ -33,7 +33,7 @@ public class HomePage extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     ApiInterface apiInterface;
-
+    Intent intent;
     String token;
 
     TextView customerCountTextView;
@@ -130,50 +130,51 @@ public class HomePage extends AppCompatActivity {
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId ()){
             case R.id.reportItemIdId:
-                Intent intent=new Intent(HomePage.this,UpComingFeature.class);
+                intent=new Intent(HomePage.this,UpComingFeature.class);
                 startActivity(intent);
                 break;
             case R.id.eCommerceItemIdId:
-                Intent intent1=new Intent(HomePage.this,UpComingFeature.class);
-                startActivity(intent1);
+                intent=new Intent(HomePage.this,UpComingFeature.class);
+                startActivity(intent);
                 break;
             case R.id.currentMonthItemIdId:
-                Intent intent2=new Intent(HomePage.this,UpComingFeature.class);
-                startActivity(intent2);
+                intent=new Intent(HomePage.this,UpComingFeature.class);
+                startActivity(intent);
                 break;
             case R.id.lastQuarterItemIdId:
-                Intent intent3=new Intent(HomePage.this,UpComingFeature.class);
-                startActivity(intent3);
+                intent=new Intent(HomePage.this,UpComingFeature.class);
+                startActivity(intent);
                 break;
             case R.id.yearEndSaleItemId:
-                Intent intent4=new Intent(HomePage.this,UpComingFeature.class);
-                startActivity(intent4);
+                intent=new Intent(HomePage.this,UpComingFeature.class);
+                startActivity(intent);
                 break;
                 case R.id.calculatorItemIdId:
-                Intent intent5=new Intent(HomePage.this,UpComingFeature.class);
-                startActivity(intent5);
+                    intent=new Intent(HomePage.this,UpComingFeature.class);
+                startActivity(intent);
                 break;
             case R.id.invoiceItemId:
-                Intent intent6=new Intent(HomePage.this, InVoiceActivity.class);
-                intent6.putExtra("token",token);
-                startActivity(intent6);
+                intent=new Intent(HomePage.this, InVoiceActivity.class);
+                intent.putExtra("token",token);
+                startActivity(intent);
                 break;
             case R.id.productItemIdId:
-                Intent intent7=new Intent(HomePage.this,Product.class);
-                intent7.putExtra("token",token);
-                startActivity(intent7);
+                intent=new Intent(HomePage.this,Product.class);
+                intent.putExtra("token",token);
+                startActivity(intent);
                 break;
                 case R.id.logOutId:
                     sharePref.rememberData(HomePage.this,"","");
-                    Intent intent8=new Intent(HomePage.this,LoginActivity.class);
-                intent8.putExtra("token",token);
-                startActivity(intent8);
+                    intent=new Intent(HomePage.this,LoginActivity.class);
+                    intent.putExtra("token",token);
+                startActivity(intent);
                     finish();
                 break;
 
             case R.id.dashBoardAllDataItemIdId:
-                Intent intent9=new Intent(HomePage.this,AboutMeActivity.class);
-                startActivity(intent9);
+                intent=new Intent(HomePage.this,AboutMeActivity.class);
+                intent.putExtra("token",token);
+                startActivity(intent);
                 break;
 
         }
