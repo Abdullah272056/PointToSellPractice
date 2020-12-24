@@ -38,12 +38,10 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiInterface {
+  
+  //Call<jetaReponsePaboSetarModelClass>logInData(@Body jetaPathaboSetarModelClass variableName);
 
-//    @GET("api/user/")
-//    Call<AddresResponse> getAddress();
-
-
-/////Authorization////
+  /////Authorization////
   //registration
     @POST("api/auth/register/")
     Call<RegistrationResponse>registrationData(@Body RegistrationData registrationData);
@@ -52,8 +50,6 @@ public interface ApiInterface {
     @POST("api/auth/login/")
     Call<LogInResponse>logInData(@Body LogInData logInData);
 
-    //Call<jetaReponsePaboSetarModelClass>logInData(@Body jetaPathaboSetarModelClass variableName);
-
     //Get Me
     @GET("api/auth/me")
     Call<OwnerDataWithResponse> getUserAllInformation(@Header("Authorization") String authorization);
@@ -61,7 +57,7 @@ public interface ApiInterface {
 
 
     ////customer/////
-   //add customer
+   //add customer | create customer
   @POST("api/customer")
   Call<AddCustomerResponse> addCustomerInformation(@Header("Authorization") String authorization, @Body CustomerData customerData);
   // get allCustomer data
@@ -106,7 +102,7 @@ public interface ApiInterface {
     @GET("/api/invoice/sale/day")
     Call<GetSellInfoByDayResponse> getSellInfoByDay(@Header("Authorization") String authorization, @Query("day") Integer dayInt);
 
-    // create api
+    // create inVoice
   @POST("/api/invoice")
   Call<OwnerDataWithResponse> getInvoiceResponse(@Header("Authorization") String authorization, @Body SetInVoiceResponse setInVoiceResponse);
 
@@ -115,22 +111,17 @@ public interface ApiInterface {
 
 
 
-//have not documentation
+
     //product
     // get al product
     @GET("api/product")
     Call<GetProductDataResponse> getAllProduct(@Header("Authorization") String authorization);
-
     //delete  product
     @DELETE("api/product/{id}")
     Call<DeleteProductDataResponse> deleteProduct(@Header("Authorization") String authorization, @Path("id") String id);
-
-    // Get all select_customer product  info
+    // Get all product info
     @GET("api/product/info")
     Call<GetAllProductInfoDataResponse> getAllProductInfo(@Header("Authorization") String authorization);
-
-
-
   // create Product
   @Multipart
   @POST("api/product")
