@@ -24,6 +24,11 @@ ApiInterface apiInterface;
 TextView companyNameTextView,companyEmailTextView,companyPhoneTextView,
         companyAddressTextView, memberSinceTextView;
 Button uploadPictureButton,changePasswordButton,deleteAccountButton;
+
+
+//dialog box view
+    TextView oldPasswordEditText,newPasswordEditText,confirmPasswordEditText;
+    Button saveChangePasswordButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +55,12 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
                 View view                       =layoutInflater.inflate(R.layout.change_password_page,null);
                 builder.setView(view);
                 final AlertDialog alertDialog   = builder.create();
+//                
+                oldPasswordEditText=view.findViewById(R.id.oldPasswordEditTextId);
+                newPasswordEditText=view.findViewById(R.id.newPasswordEditTextId);
+                confirmPasswordEditText=view.findViewById(R.id.confirmPasswordEditTextId);
+                saveChangePasswordButton=view.findViewById(R.id.saveChangePasswordButtonId);
+
 
                 alertDialog.show();
             }
