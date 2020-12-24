@@ -304,7 +304,6 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
                         getProductDataList=new ArrayList<>();
                         filterProductDataList=new ArrayList<>();
                         getProductDataList.addAll(response.body().getProducts());
-                        Toast.makeText(CreateInVoice_Activity.this, String.valueOf(getProductDataList.size()), Toast.LENGTH_SHORT).show();
                         if (getProductDataList.size ()>0){
 
                             int sz=getProductDataList.size();
@@ -312,12 +311,14 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
                                 int stck=getProductDataList.get(i).getStock();
                                 if (stck>0){
                                     filterProductDataList.add(getProductDataList.get(i));
+                                    Toast.makeText(CreateInVoice_Activity.this, String.valueOf(filterProductDataList.size()), Toast.LENGTH_SHORT).show();
+
                                 }
                             }
 
                              addProductInformation(filterProductDataList);
 
-                            
+
                         }
                     }
                 }
@@ -361,15 +362,15 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
     @Override
     public void onContactClick(int position) {
         //getAllProduct();
-        Toast.makeText(this, String.valueOf(getProductDataList.get(position).getName()), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, String.valueOf(filterProductDataList.get(position).getName()), Toast.LENGTH_SHORT).show();
         //newList.add(getProductDataList.get(position));
 
-        newList.add(new GetProductData(getProductDataList.get(position).getPrice(),
-                getProductDataList.get(position).getSellingPrice(),
-                getProductDataList.get(position).getStock(),
-                1,getProductDataList.get(position).getId(),
-                getProductDataList.get(position).getName(),
-                getProductDataList.get(position).getUnit()));
+        newList.add(new GetProductData(filterProductDataList.get(position).getPrice(),
+                filterProductDataList.get(position).getSellingPrice(),
+                filterProductDataList.get(position).getStock(),
+                1,filterProductDataList.get(position).getId(),
+                filterProductDataList.get(position).getName(),
+                filterProductDataList.get(position).getUnit()));
 
 
         productCustomAdapter2 = new ProductCustomAdapter2(CreateInVoice_Activity.this,token,newList, onContactClickListener3);
