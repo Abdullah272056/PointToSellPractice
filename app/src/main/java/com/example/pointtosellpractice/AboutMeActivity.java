@@ -3,6 +3,8 @@ package com.example.pointtosellpractice;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pointtosellpractice.model_class.owner_all_information.OwnerDataWithResponse;
@@ -16,6 +18,9 @@ import retrofit2.Response;
 public class AboutMeActivity extends AppCompatActivity {
 String token;
 ApiInterface apiInterface;
+TextView companyNameTextView,companyEmailTextView,companyPhoneTextView,
+        companyAddressTextView, memberSinceTextView;
+Button uploadPictureButton,changePasswordButton,deleteAccountButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +29,18 @@ ApiInterface apiInterface;
         token= getIntent().getStringExtra("token");
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
         getUserAllInfo();
+        // textView finding
+        companyNameTextView=findViewById(R.id.companyNameTextViewId);
+        companyEmailTextView=findViewById(R.id.companyEmailTextViewId);
+        companyPhoneTextView=findViewById(R.id.companyPhoneTextViewId);
+        companyAddressTextView=findViewById(R.id.companyAddressTextViewId);
+        memberSinceTextView=findViewById(R.id.memberSinceTextViewId);
+        // button finding
+        uploadPictureButton=findViewById(R.id.uploadPictureButtonId);
+        changePasswordButton=findViewById(R.id.changePasswordButtonId);
+        deleteAccountButton=findViewById(R.id.deleteAccountButtonId);
+        
+
 
     }
     public void getUserAllInfo (){
