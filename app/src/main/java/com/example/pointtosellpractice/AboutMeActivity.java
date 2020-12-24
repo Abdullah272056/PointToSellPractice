@@ -1,8 +1,10 @@
 package com.example.pointtosellpractice;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -43,7 +45,13 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
         changePasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AlertDialog.Builder builder     =new AlertDialog.Builder(AboutMeActivity.this);
+                LayoutInflater layoutInflater   =LayoutInflater.from(AboutMeActivity.this);
+                View view                       =layoutInflater.inflate(R.layout.change_password_page,null);
+                builder.setView(view);
+                final AlertDialog alertDialog   = builder.create();
 
+                alertDialog.show();
             }
         });
 
