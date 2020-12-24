@@ -56,6 +56,7 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
 
     List<CustomerInformationData> customerInformationDataList;
     List<GetProductData> getProductDataList;
+    List<GetProductData> filterProductDataList;
 
    SetInVoiceResponse setInVoiceResponse;
     Button inVoiceButton,product,selectCustomerButton;
@@ -301,10 +302,22 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
                 if (response.isSuccessful()){
                     if (getProductDataResponse.getSuccess()==true){
                         getProductDataList=new ArrayList<>();
+                        filterProductDataList=new ArrayList<>();
                         getProductDataList.addAll(response.body().getProducts());
                         Toast.makeText(CreateInVoice_Activity.this, String.valueOf(getProductDataList.size()), Toast.LENGTH_SHORT).show();
                         if (getProductDataList.size ()>0){
-                             addProductInformation(getProductDataList);
+
+                            int sz=getProductDataList.size();
+                            for (int i=0;sz-1>=i;i++){
+                                int stck=getProductDataList.get(i).getStock();
+                                if (stck>0){
+                                    filterProductDataList.add(getProductDataList.get(i));
+                                }
+                            }
+
+                             addProductInformation(filterProductDataList);
+
+                            
                         }
                     }
                 }
