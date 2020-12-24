@@ -38,7 +38,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiInterface {
-  
+
   //Call<jetaReponsePaboSetarModelClass>logInData(@Body jetaPathaboSetarModelClass variableName);
 
   /////Authorization////
