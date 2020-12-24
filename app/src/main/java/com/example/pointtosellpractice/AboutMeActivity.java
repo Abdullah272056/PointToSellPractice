@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -98,8 +99,6 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
             public void onResponse(Call<OwnerDataWithResponse> call, Response<OwnerDataWithResponse> response) {
                 if (response.isSuccessful()){
                     if (response.body().getSuccess()==true){
-//                        TextView companyNameTextView,companyEmailTextView,companyPhoneTextView,
-//                                companyAddressTextView, memberSinceTextView;
                         companyNameTextView.setText(String.valueOf(response.body().getData().getCompanyName()));
                         companyEmailTextView.setText(String.valueOf(response.body().getData().getEmail()));
                         companyPhoneTextView.setText(String.valueOf(response.body().getData().getPhone()));
@@ -181,5 +180,12 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
                         changePasswordProgressBar.setVisibility(View.INVISIBLE);
                     }
                 });
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent =new Intent(AboutMeActivity.this,HomePage.class);
+        intent.putExtra("token",token);
+        startActivity(intent);
+        finish();
     }
 }

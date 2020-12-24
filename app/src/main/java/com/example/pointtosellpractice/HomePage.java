@@ -151,7 +151,8 @@ public class HomePage extends AppCompatActivity {
                 break;
                 case R.id.calculatorItemIdId:
                     intent=new Intent(HomePage.this,UpComingFeature.class);
-                startActivity(intent);
+                    startActivity(intent);
+                    drawerLayout.closeDrawer(Gravity.LEFT);
                 break;
             case R.id.invoiceItemId:
                 intent=new Intent(HomePage.this, InVoiceActivity.class);
@@ -175,6 +176,8 @@ public class HomePage extends AppCompatActivity {
                 intent=new Intent(HomePage.this,AboutMeActivity.class);
                 intent.putExtra("token",token);
                 startActivity(intent);
+                //drawerLayout.closeDrawer(Gravity.LEFT);
+                finish();
                 break;
 
         }
