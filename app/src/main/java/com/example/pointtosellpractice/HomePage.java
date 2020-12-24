@@ -171,6 +171,11 @@ public class HomePage extends AppCompatActivity {
                     finish();
                 break;
 
+            case R.id.dashBoardAllDataItemIdId:
+                Intent intent9=new Intent(HomePage.this,AboutMeActivity.class);
+                startActivity(intent9);
+                break;
+
         }
         return false;
     }
