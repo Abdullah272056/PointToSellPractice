@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.pointtosellpractice.authorization.ChangePasswordGetResponse;
+import com.example.pointtosellpractice.authorization.ChangePasswordSetResponse;
 import com.example.pointtosellpractice.model_class.owner_all_information.OwnerDataWithResponse;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
@@ -30,6 +32,8 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
 //dialog box view
     TextView oldPasswordEditText,newPasswordEditText,confirmPasswordEditText;
     Button saveChangePasswordButton;
+
+    ChangePasswordSetResponse changePasswordSetResponse;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,14 +89,35 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
                             confirmPasswordEditText.requestFocus();
                             return;
                         }
-                        if (newPassword!=confirmPassword){
+                        if (!newPassword.equals(confirmPassword)){
                             confirmPasswordEditText.setError("can not matching confirm password");
                             confirmPasswordEditText.requestFocus();
                             return;
                         }
 
+                        changePasswordSetResponse=new ChangePasswordSetResponse(oldPassword,newPassword);
+                        apiInterface.changePassword("Bearer "+token,changePasswordSetResponse).
+                                enqueue(new Callback<ChangePasswordGetResponse>() {
+                                    @Override
+                                    public void onResponse(Call<ChangePasswordGetResponse> call, Response<ChangePasswordGetResponse> response) {
+                                        if (response.isSuccessful()){
+                                            if (response.body().getSuccess()==true){
+                                                Toast.makeText(AboutMeActivity.this, "Password changed successfully", Toast.LENGTH_SHORT).show();
+                                            } if (response.body().getSuccess()==false){
+                                                Toast.makeText(AboutMeActivity.this, "Old password does not match", Toast.LENGTH_SHORT).show();
 
+                                            }
+                                        }else {
+                                            Toast.makeText(AboutMeActivity.this, "Old password does not match", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
 
+                                    @Override
+                                    public void onFailure(Call<ChangePasswordGetResponse> call, Throwable t) {
+                                        Toast.makeText(AboutMeActivity.this, "failed ! try again ", Toast.LENGTH_SHORT).show();
+
+                                    }
+                                });
 
                     }
                 });
