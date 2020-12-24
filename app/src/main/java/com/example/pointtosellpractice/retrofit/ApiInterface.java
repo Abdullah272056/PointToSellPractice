@@ -61,7 +61,6 @@ public interface ApiInterface {
 
 
     ////customer/////
-
    //add customer
   @POST("api/customer")
   Call<AddCustomerResponse> addCustomerInformation(@Header("Authorization") String authorization, @Body CustomerData customerData);
@@ -90,7 +89,6 @@ public interface ApiInterface {
 
 
   ///// invoice/////
-
   //GetAllSellInfoResponse
   @GET("api/invoice/sale-info")
   Call<GetAllSellInfoResponse> getAllSellInfo(@Header("Authorization") String authorization);
@@ -108,24 +106,30 @@ public interface ApiInterface {
     @GET("/api/invoice/sale/day")
     Call<GetSellInfoByDayResponse> getSellInfoByDay(@Header("Authorization") String authorization, @Query("day") Integer dayInt);
 
+    // create api
   @POST("/api/invoice")
   Call<OwnerDataWithResponse> getInvoiceResponse(@Header("Authorization") String authorization, @Body SetInVoiceResponse setInVoiceResponse);
 
 
 
 
-    ////// select_customer//////
-    // get al select_customer
+
+
+//have not documentation
+    //product
+    // get al product
     @GET("api/product")
     Call<GetProductDataResponse> getAllProduct(@Header("Authorization") String authorization);
 
-    //delete select_customer
-    @DELETE("api/select_customer/{id}")
+    //delete  product
+    @DELETE("api/product/{id}")
     Call<DeleteProductDataResponse> deleteProduct(@Header("Authorization") String authorization, @Path("id") String id);
 
-    // Get all select_customer info
-    @GET("api/select_customer/info")
+    // Get all select_customer product  info
+    @GET("api/product/info")
     Call<GetAllProductInfoDataResponse> getAllProductInfo(@Header("Authorization") String authorization);
+
+
 
   // create Product
   @Multipart
@@ -139,17 +143,5 @@ public interface ApiInterface {
                                         @Part("stock") RequestBody stock,
                                         @Part("description") RequestBody description
   );
-
-
-//    @PUT("api/user/{id}")
-//    Call<OurDataSet> updateUser(@Path("id") String id, @Body OurDataSet ourDataSet);
-
-
-//    @DELETE("api/user/{id}")
-//    Call<OurDataSet> deleteUser(@Path("id") String id);
-
-
-
-
 
 }

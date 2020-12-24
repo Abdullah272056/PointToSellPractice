@@ -35,6 +35,12 @@
         android:padding="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <Spinner
+        android:id="@+id/spinnerId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
     <EditText
         android:id="@+id/pieceTextViewId"
         android:hint="piece"
@@ -76,12 +82,19 @@
             android:text="select image"
             android:layout_width="150dp"
             android:layout_height="wrap_content"/>
-        <ImageView
-            android:id="@+id/productSelectImageViewId"
-            android:layout_gravity="center"
-            android:background="@drawable/ic_baseline_add_24"
+        <LinearLayout
+            android:background="#E1E0E0"
             android:layout_width="150dp"
-            android:layout_height="150dp"/>
+            android:layout_height="150dp">
+            <ImageView
+                android:id="@+id/productSelectImageViewId"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_baseline_add_24"
+                android:layout_width="150dp"
+                android:layout_height="150dp"/>
+
+        </LinearLayout>
+
 
     </LinearLayout>
 

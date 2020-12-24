@@ -27,6 +27,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -58,7 +59,7 @@ import retrofit2.Response;
 
 public class Product extends AppCompatActivity {
     String productName,productRegularPrice,productSellingPrice,productStock,productDescription,piece;
-
+ Spinner spinner;
     List<GetProductData> getProductDataList;
     String token;
     ApiInterface apiInterface;
@@ -94,6 +95,7 @@ public class Product extends AppCompatActivity {
         productRecyclerView=findViewById(R.id.productRecyclerViewId);
         productProgressBar=findViewById(R.id.productProgressBarId);
         addProductButton=findViewById(R.id.addProductButtonId);
+        spinner=findViewById(R.id.spinnerId);
 
         progressDialog = new ProgressDialog(Product.this);
         progressDialog.setMessage("Image Upload....");
@@ -102,6 +104,8 @@ public class Product extends AppCompatActivity {
 
 
         getAllProduct();
+
+        String[] country = { "India", "USA", "China", "Japan", "Other"};
 
 
 
@@ -280,7 +284,6 @@ public class Product extends AppCompatActivity {
 
     private void ImageUpload(Uri imgUri,String productName,String productRegularPrice,String productSellingPrice,
                              String productPiece,String productStock,String productDescription) {
-
 
         progressDialog.show();
 
