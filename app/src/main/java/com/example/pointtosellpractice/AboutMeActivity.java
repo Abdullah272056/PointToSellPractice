@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +33,7 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
 //dialog box view
     TextView oldPasswordEditText,newPasswordEditText,confirmPasswordEditText;
     Button saveChangePasswordButton;
+    ProgressBar changePasswordProgressBar;
 
     ChangePasswordSetResponse changePasswordSetResponse;
     @Override
@@ -71,11 +73,12 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
         View view                       =layoutInflater.inflate(R.layout.change_password_page,null);
         builder.setView(view);
         final AlertDialog alertDialog   = builder.create();
-//
+
         oldPasswordEditText=view.findViewById(R.id.oldPasswordEditTextId);
         newPasswordEditText=view.findViewById(R.id.newPasswordEditTextId);
         confirmPasswordEditText=view.findViewById(R.id.confirmPasswordEditTextId);
         saveChangePasswordButton=view.findViewById(R.id.saveChangePasswordButtonId);
+        changePasswordProgressBar=view.findViewById(R.id.changePasswordProgressBarId);
 
         saveChangePasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,6 +150,7 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
             confirmPasswordEditText.requestFocus();
             return;
         }
+        changePasswordProgressBar.setVisibility(View.VISIBLE);
 
         changePasswordSetResponse=new ChangePasswordSetResponse(oldPassword,newPassword);
         apiInterface.changePassword("Bearer "+token,changePasswordSetResponse).
@@ -155,12 +159,14 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
                     public void onResponse(Call<ChangePasswordGetResponse> call, Response<ChangePasswordGetResponse> response) {
                         if (response.isSuccessful()){
                             if (response.body().getSuccess()==true){
+                                changePasswordProgressBar.setVisibility(View.INVISIBLE);
                                 Toast.makeText(AboutMeActivity.this, "Password changed successfully", Toast.LENGTH_SHORT).show();
                             } if (response.body().getSuccess()==false){
                                 Toast.makeText(AboutMeActivity.this, "Old password does not match", Toast.LENGTH_SHORT).show();
-
+                                changePasswordProgressBar.setVisibility(View.INVISIBLE);
                             }
                         }else {
+                            changePasswordProgressBar.setVisibility(View.INVISIBLE);
                             Toast.makeText(AboutMeActivity.this, "Old password does not match", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -168,7 +174,7 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
                     @Override
                     public void onFailure(Call<ChangePasswordGetResponse> call, Throwable t) {
                         Toast.makeText(AboutMeActivity.this, "failed ! try again ", Toast.LENGTH_SHORT).show();
-
+                        changePasswordProgressBar.setVisibility(View.INVISIBLE);
                     }
                 });
     }
