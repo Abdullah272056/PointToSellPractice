@@ -55,79 +55,39 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
         changePasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder     =new AlertDialog.Builder(AboutMeActivity.this);
-                LayoutInflater layoutInflater   =LayoutInflater.from(AboutMeActivity.this);
-                View view                       =layoutInflater.inflate(R.layout.change_password_page,null);
-                builder.setView(view);
-                final AlertDialog alertDialog   = builder.create();
-//
-                oldPasswordEditText=view.findViewById(R.id.oldPasswordEditTextId);
-                newPasswordEditText=view.findViewById(R.id.newPasswordEditTextId);
-                confirmPasswordEditText=view.findViewById(R.id.confirmPasswordEditTextId);
-                saveChangePasswordButton=view.findViewById(R.id.saveChangePasswordButtonId);
-
-                saveChangePasswordButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        String newPassword=newPasswordEditText.getText().toString();
-                        String confirmPassword=confirmPasswordEditText.getText().toString();
-                        String oldPassword=oldPasswordEditText.getText().toString();
-
-                        if (TextUtils.isEmpty(oldPassword)){
-                            oldPasswordEditText.setError("Enter your old password");
-                            oldPasswordEditText.requestFocus();
-                            return;
-                        }
-
-                        if (TextUtils.isEmpty(newPassword)){
-                            newPasswordEditText.setError("Enter new password");
-                            newPasswordEditText.requestFocus();
-                            return;
-                        }
-                        if (TextUtils.isEmpty(confirmPassword)){
-                            confirmPasswordEditText.setError("Enter confirm password");
-                            confirmPasswordEditText.requestFocus();
-                            return;
-                        }
-                        if (!newPassword.equals(confirmPassword)){
-                            confirmPasswordEditText.setError("can not matching confirm password");
-                            confirmPasswordEditText.requestFocus();
-                            return;
-                        }
-
-                        changePasswordSetResponse=new ChangePasswordSetResponse(oldPassword,newPassword);
-                        apiInterface.changePassword("Bearer "+token,changePasswordSetResponse).
-                                enqueue(new Callback<ChangePasswordGetResponse>() {
-                                    @Override
-                                    public void onResponse(Call<ChangePasswordGetResponse> call, Response<ChangePasswordGetResponse> response) {
-                                        if (response.isSuccessful()){
-                                            if (response.body().getSuccess()==true){
-                                                Toast.makeText(AboutMeActivity.this, "Password changed successfully", Toast.LENGTH_SHORT).show();
-                                            } if (response.body().getSuccess()==false){
-                                                Toast.makeText(AboutMeActivity.this, "Old password does not match", Toast.LENGTH_SHORT).show();
-
-                                            }
-                                        }else {
-                                            Toast.makeText(AboutMeActivity.this, "Old password does not match", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-
-                                    @Override
-                                    public void onFailure(Call<ChangePasswordGetResponse> call, Throwable t) {
-                                        Toast.makeText(AboutMeActivity.this, "failed ! try again ", Toast.LENGTH_SHORT).show();
-
-                                    }
-                                });
-
-                    }
-                });
-
-                alertDialog.show();
+                changePasswordInputBoxShow();
             }
         });
 
 
     }
+
+
+
+
+    public void  changePasswordInputBoxShow(){
+        AlertDialog.Builder builder     =new AlertDialog.Builder(AboutMeActivity.this);
+        LayoutInflater layoutInflater   =LayoutInflater.from(AboutMeActivity.this);
+        View view                       =layoutInflater.inflate(R.layout.change_password_page,null);
+        builder.setView(view);
+        final AlertDialog alertDialog   = builder.create();
+//
+        oldPasswordEditText=view.findViewById(R.id.oldPasswordEditTextId);
+        newPasswordEditText=view.findViewById(R.id.newPasswordEditTextId);
+        confirmPasswordEditText=view.findViewById(R.id.confirmPasswordEditTextId);
+        saveChangePasswordButton=view.findViewById(R.id.saveChangePasswordButtonId);
+
+        saveChangePasswordButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changePassword();
+
+            }
+        });
+
+        alertDialog.show();
+    }
+
     public void getUserAllInfo (){
         apiInterface.getUserAllInformation("Bearer "+token).enqueue(new Callback<OwnerDataWithResponse>() {
             @Override
@@ -159,5 +119,57 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
 
             }
         });
+    }
+
+    public  void changePassword(){
+        String newPassword=newPasswordEditText.getText().toString();
+        String confirmPassword=confirmPasswordEditText.getText().toString();
+        String oldPassword=oldPasswordEditText.getText().toString();
+
+        if (TextUtils.isEmpty(oldPassword)){
+            oldPasswordEditText.setError("Enter your old password");
+            oldPasswordEditText.requestFocus();
+            return;
+        }
+
+        if (TextUtils.isEmpty(newPassword)){
+            newPasswordEditText.setError("Enter new password");
+            newPasswordEditText.requestFocus();
+            return;
+        }
+        if (TextUtils.isEmpty(confirmPassword)){
+            confirmPasswordEditText.setError("Enter confirm password");
+            confirmPasswordEditText.requestFocus();
+            return;
+        }
+        if (!newPassword.equals(confirmPassword)){
+            confirmPasswordEditText.setError("can not matching confirm password");
+            confirmPasswordEditText.requestFocus();
+            return;
+        }
+
+        changePasswordSetResponse=new ChangePasswordSetResponse(oldPassword,newPassword);
+        apiInterface.changePassword("Bearer "+token,changePasswordSetResponse).
+                enqueue(new Callback<ChangePasswordGetResponse>() {
+                    @Override
+                    public void onResponse(Call<ChangePasswordGetResponse> call, Response<ChangePasswordGetResponse> response) {
+                        if (response.isSuccessful()){
+                            if (response.body().getSuccess()==true){
+                                Toast.makeText(AboutMeActivity.this, "Password changed successfully", Toast.LENGTH_SHORT).show();
+                            } if (response.body().getSuccess()==false){
+                                Toast.makeText(AboutMeActivity.this, "Old password does not match", Toast.LENGTH_SHORT).show();
+
+                            }
+                        }else {
+                            Toast.makeText(AboutMeActivity.this, "Old password does not match", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ChangePasswordGetResponse> call, Throwable t) {
+                        Toast.makeText(AboutMeActivity.this, "failed ! try again ", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
     }
 }
