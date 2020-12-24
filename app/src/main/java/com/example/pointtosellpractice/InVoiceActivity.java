@@ -92,4 +92,12 @@ public class InVoiceActivity extends AppCompatActivity{
         });
 
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent =new Intent(InVoiceActivity.this,HomePage.class);
+        intent.putExtra("token",token);
+        startActivity(intent);
+        finish();
+    }
 }

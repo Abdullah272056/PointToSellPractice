@@ -158,6 +158,7 @@ public class HomePage extends AppCompatActivity {
                 intent=new Intent(HomePage.this, InVoiceActivity.class);
                 intent.putExtra("token",token);
                 startActivity(intent);
+                finish();
                 break;
             case R.id.productItemIdId:
                 intent=new Intent(HomePage.this,Product.class);
