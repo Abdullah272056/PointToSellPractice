@@ -38,7 +38,7 @@
                 android:title="Year-end Sale"/>
 
             <item android:id="@+id/calculatorItemIdId"
-                android:icon="@drawable/ic_baseline_calculator_24"
+                android:icon="@drawable/ic_baseline_calender_24"
                 android:title="Calculator"/>
 
         </menu>
