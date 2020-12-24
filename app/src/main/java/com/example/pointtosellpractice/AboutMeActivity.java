@@ -3,6 +3,7 @@ package com.example.pointtosellpractice;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -161,6 +162,9 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
                             if (response.body().getSuccess()==true){
                                 changePasswordProgressBar.setVisibility(View.INVISIBLE);
                                 Toast.makeText(AboutMeActivity.this, "Password changed successfully", Toast.LENGTH_SHORT).show();
+                                Intent intent =new Intent(AboutMeActivity.this,LoginActivity.class);
+                                startActivity(intent);
+                                finish();
                             } if (response.body().getSuccess()==false){
                                 Toast.makeText(AboutMeActivity.this, "Old password does not match", Toast.LENGTH_SHORT).show();
                                 changePasswordProgressBar.setVisibility(View.INVISIBLE);
