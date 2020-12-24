@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -102,7 +103,7 @@ public class ProductCustomAdapter2 extends RecyclerView.Adapter<ProductCustomAda
         TextView productNameTextView,productSellingPriceTextView,productStockTextView;
         TextView addQuantityTextView,quantityTextView,subQuantityTextView;
         ProductCustomAdapter2.OnContactClickListener3 onContactClickListener;
-        Button itemDeleteButton;
+        ImageView itemDeleteButton;
 
         public MyViewHolder(@NonNull View itemView, ProductCustomAdapter2.OnContactClickListener3 onContactClickListener){
             super(itemView);
