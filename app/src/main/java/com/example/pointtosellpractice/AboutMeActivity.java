@@ -3,6 +3,7 @@ package com.example.pointtosellpractice;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,7 +40,12 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
         uploadPictureButton=findViewById(R.id.uploadPictureButtonId);
         changePasswordButton=findViewById(R.id.changePasswordButtonId);
         deleteAccountButton=findViewById(R.id.deleteAccountButtonId);
+        changePasswordButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
 
 
     }
