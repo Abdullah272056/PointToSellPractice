@@ -55,14 +55,20 @@ public class ProductCustomAdapter2 extends RecyclerView.Adapter<ProductCustomAda
         holder.addQuantityTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                productDataList.set(position,new GetProductData(productDataList.get(position).getPrice(),
-                        productDataList.get(position).getSellingPrice(),
-                        productDataList.get(position).getStock(),
-                        productDataList.get(position).getQuantity()+1,productDataList.get(position).getId(),
-                        productDataList.get(position).getName(),
-                        productDataList.get(position).getUnit()));
+                if (productDataList.get(position).getQuantity()<productDataList.get(position).getStock()){
+                    productDataList.set(position,new GetProductData(productDataList.get(position).getPrice(),
+                            productDataList.get(position).getSellingPrice(),
+                            productDataList.get(position).getStock(),
+                            productDataList.get(position).getQuantity()+1,productDataList.get(position).getId(),
+                            productDataList.get(position).getName(),
+                            productDataList.get(position).getUnit()));
 
-                notifyDataSetChanged();
+                    notifyDataSetChanged();
+                }
+                else {
+                    Toast.makeText(context, "Stock limit", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
         holder.subQuantityTextView.setOnClickListener(new View.OnClickListener() {
