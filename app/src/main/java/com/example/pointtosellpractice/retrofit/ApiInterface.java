@@ -1,5 +1,7 @@
 package com.example.pointtosellpractice.retrofit;
 
+import com.example.pointtosellpractice.authorization.ChangePasswordGetResponse;
+import com.example.pointtosellpractice.authorization.ChangePasswordSetResponse;
 import com.example.pointtosellpractice.create_invoice.SetInVoiceResponse;
 import com.example.pointtosellpractice.customer.AddCustomerResponse;
 import com.example.pointtosellpractice.customer.CustomerCountResponse;
@@ -53,7 +55,13 @@ public interface ApiInterface {
     //Get Me
     @GET("api/auth/me")
     Call<OwnerDataWithResponse> getUserAllInformation(@Header("Authorization") String authorization);
- 
+
+   // change password
+  //http://mern-pos.herokuapp.com/api/auth/change-password
+  @PUT("api/auth/change-password")
+  Call<ChangePasswordGetResponse> changePassword(@Header("Authorization") String authorization, @Body ChangePasswordSetResponse changePasswordSetResponse);
+
+
 
 
 
