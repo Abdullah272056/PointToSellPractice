@@ -171,12 +171,16 @@ public class HomePage extends AppCompatActivity {
                 startActivity(intent);
                     finish();
                 break;
-
+            case R.id.customerItemId:
+                intent=new Intent(HomePage.this,CustomerActivity.class);
+                intent.putExtra("token",token);
+                 startActivity(intent);
+                finish();
+                break;
             case R.id.dashBoardAllDataItemIdId:
                 intent=new Intent(HomePage.this,AboutMeActivity.class);
                 intent.putExtra("token",token);
                 startActivity(intent);
-                //drawerLayout.closeDrawer(Gravity.LEFT);
                 finish();
                 break;
 

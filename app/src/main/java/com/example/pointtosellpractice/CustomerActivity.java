@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
@@ -212,5 +213,11 @@ public class CustomerActivity extends AppCompatActivity {
         alertDialog.show();
 
     }
-
+    @Override
+    public void onBackPressed() {
+        Intent intent =new Intent(CustomerActivity.this,HomePage.class);
+        intent.putExtra("token",token);
+        startActivity(intent);
+        finish();
+    }
 }

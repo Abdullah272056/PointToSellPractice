@@ -7,7 +7,7 @@
     <item android:id="@+id/productItemIdId"
         android:title="Product"
         android:icon="@drawable/ic_baseline_shopping_cart_24"/>
-    <item android:id="@+id/customerItemIdId"
+    <item android:id="@+id/customerItemId"
         android:title="Customer"
         android:icon="@drawable/ic_baseline_person_24"/>
 
