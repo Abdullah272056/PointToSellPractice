@@ -92,7 +92,7 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
                         }
 
 
-                        
+
 
                     }
                 });
