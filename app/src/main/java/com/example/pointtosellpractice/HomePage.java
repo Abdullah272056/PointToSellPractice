@@ -163,12 +163,13 @@ public class HomePage extends AppCompatActivity {
                 intent=new Intent(HomePage.this,Product.class);
                 intent.putExtra("token",token);
                 startActivity(intent);
+                finish();
                 break;
                 case R.id.logOutId:
                     sharePref.rememberData(HomePage.this,"","");
                     intent=new Intent(HomePage.this,LoginActivity.class);
                     intent.putExtra("token",token);
-                startActivity(intent);
+                    startActivity(intent);
                     finish();
                 break;
             case R.id.customerItemId:

@@ -398,4 +398,12 @@ public class Product extends AppCompatActivity {
 
         return path;
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent =new Intent(Product.this,HomePage.class);
+        intent.putExtra("token",token);
+        startActivity(intent);
+        finish();
+    }
 }
