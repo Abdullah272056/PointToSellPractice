@@ -53,7 +53,7 @@ public interface ApiInterface {
     //Get Me
     @GET("api/auth/me")
     Call<OwnerDataWithResponse> getUserAllInformation(@Header("Authorization") String authorization);
-  
+ 
 
 
 
