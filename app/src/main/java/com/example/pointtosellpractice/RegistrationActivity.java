@@ -36,6 +36,7 @@ public class RegistrationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.setTitle("Registration Activity");
         setContentView(R.layout.activity_registration);
         // view finding
         companyNameEditText=findViewById(R.id.signUpCompanyNameEditTextId);

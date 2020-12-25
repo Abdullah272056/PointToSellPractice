@@ -23,6 +23,8 @@ import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.Objects;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -47,6 +49,9 @@ public class HomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+
+
+
         linearLayout=findViewById(R.id.mainLayoutId);
         sharePref=new SharePref();
         //finding textView
