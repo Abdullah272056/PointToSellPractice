@@ -10,6 +10,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,7 +33,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     ApiInterface apiInterface;
 
-
+ProgressBar registrationProgressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +51,7 @@ public class RegistrationActivity extends AppCompatActivity {
         signUpButton=findViewById(R.id.signUpButtonId);
         companyTypeSpinner=findViewById(R.id.businessTypeSpinnerId);
         signInTextView=findViewById(R.id.signInTextViewId);
+        registrationProgressBar=findViewById(R.id.registrationProgressBarId);
 
         //initialize apiInterface
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
@@ -136,7 +138,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
 
 
-
+                registrationProgressBar.setVisibility(View.VISIBLE);
 
                 final RegistrationData registrationData       =new RegistrationData(companyName,companyOwner,email,companyType,
                         aboutCompany,password,address,phone);
@@ -145,20 +147,25 @@ public class RegistrationActivity extends AppCompatActivity {
                     public void onResponse(Call<RegistrationResponse> call, Response<RegistrationResponse> response) {
                         if (response.isSuccessful()){
                             RegistrationResponse registrationResponse=response.body();
-
-                            assert registrationResponse != null;
                             if (registrationResponse.getSuccess()==true){
-                                Toast.makeText(RegistrationActivity.this,registrationResponse.getData() , Toast.LENGTH_LONG).show();
+                                Toast.makeText(RegistrationActivity.this,registrationResponse.getData().toString() , Toast.LENGTH_LONG).show();
+                            }else {
+                                Toast.makeText(RegistrationActivity.this,registrationResponse.getData().toString() , Toast.LENGTH_LONG).show();
                             }
-                            Log.e("TAG", "success" );
+
+                        }else {
+                            Toast.makeText(RegistrationActivity.this,"Try again" , Toast.LENGTH_LONG).show();
 
                         }
+                        registrationProgressBar.setVisibility(View.GONE);
                     }
 
                     @Override
                     public void onFailure(Call<RegistrationResponse> call, Throwable t) {
                         Log.e("wwe",t.getMessage().toString());
                         Toast.makeText(RegistrationActivity.this, "fail", Toast.LENGTH_SHORT).show();
+                        registrationProgressBar.setVisibility(View.GONE);
+
                     }
                 });
 
