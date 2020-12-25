@@ -187,16 +187,21 @@ public class CustomerActivity extends AppCompatActivity {
                         new Callback<AddCustomerResponse>() {
                             @Override
                             public void onResponse(Call<AddCustomerResponse> call, Response<AddCustomerResponse> response) {
-                                AddCustomerResponse addCustomerResponse=response.body();
-                                if (addCustomerResponse.getSuccess()==true){
-                                    Toast.makeText(CustomerActivity.this, "add successful", Toast.LENGTH_SHORT).show();
 
-                                }else {
-                                    Toast.makeText(CustomerActivity.this, String.valueOf(addCustomerResponse.getMsg()), Toast.LENGTH_SHORT).show();
+                               if (response.isSuccessful()){
+                                   AddCustomerResponse addCustomerResponse=response.body();
+                                   if (addCustomerResponse.getSuccess()==true){
+                                       Toast.makeText(CustomerActivity.this, "add successful", Toast.LENGTH_SHORT).show();
+                                       alertDialog.dismiss();
+                                   }else {
+                                       Toast.makeText(CustomerActivity.this, String.valueOf(addCustomerResponse.getMsg()), Toast.LENGTH_SHORT).show();
 
-                                }
+                                   }
+                               }else {
+                                   Toast.makeText(CustomerActivity.this, "failed", Toast.LENGTH_SHORT).show();
 
-                                alertDialog.dismiss();
+                               }
+
                                 progressBar.setVisibility(View.GONE);
                                 getAllCustomer();
 

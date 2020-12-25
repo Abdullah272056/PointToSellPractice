@@ -313,7 +313,8 @@ public class Product extends AppCompatActivity {
 
                             if (response.body().getSuccess()==true){
                                 Toast.makeText(Product.this, "success", Toast.LENGTH_SHORT).show();
-                            }else {
+                                getAllProduct();
+                           }else {
                                 Toast.makeText(Product.this, "server error", Toast.LENGTH_SHORT).show();
 
                             }
