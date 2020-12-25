@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.pointtosellpractice.customer.CustomerCountResponse;
 import com.example.pointtosellpractice.model_class.invoice.GetAllSellInfoResponse;
@@ -99,16 +100,19 @@ public class OthersInformation extends AppCompatActivity {
         apiInterface.getAllSellInfo("Bearer "+token).enqueue(new Callback<GetAllSellInfoResponse>() {
             @Override
             public void onResponse(Call<GetAllSellInfoResponse> call, Response<GetAllSellInfoResponse> response) {
-                GetAllSellInfoResponse getAllSellInfoResponse=response.body();
-                assert getAllSellInfoResponse != null;
-                Log.e("totalSaleAmount",getAllSellInfoResponse.getGetAllSellInfoData().getTotalSaleAmount().toString());
+
+                if (response.isSuccessful()){
+                if (response.body().getSuccess()==true){
+                    GetAllSellInfoResponse getAllSellInfoResponse=response.body();
+                    Log.e("totalSaleAmount",getAllSellInfoResponse.getGetAllSellInfoData().getTotalSaleAmount().toString());
                 totalSaleAmountTextView.setText(getAllSellInfoResponse.getGetAllSellInfoData().getTotalSaleAmount().toString());
                 totalSoldProductQuantityTextView.setText(getAllSellInfoResponse.getGetAllSellInfoData().getTotalSoldProductQuantity().toString());
                 totalSoldInvoiceTextView.setText(getAllSellInfoResponse.getGetAllSellInfoData().getTotalSoldInvoice().toString());
                 totalDueAmountTextView.setText(getAllSellInfoResponse.getGetAllSellInfoData().getTotalDueAmount().toString());
                 totalProfitTextView.setText(getAllSellInfoResponse.getGetAllSellInfoData().getTotalProfit().toString());
             }
-
+                }
+            }
             @Override
             public void onFailure(Call<GetAllSellInfoResponse> call, Throwable t) {
                 Log.e("ts","success");
@@ -124,15 +128,18 @@ public class OthersInformation extends AppCompatActivity {
         apiInterface.getAllProductInfo("Bearer "+token).enqueue(new Callback<GetAllProductInfoDataResponse>() {
             @Override
             public void onResponse(Call<GetAllProductInfoDataResponse> call, Response<GetAllProductInfoDataResponse> response) {
-
-                GetAllProductInfoDataResponse getAllProductInfoDataResponse=response.body();
-                totalProductCostTextView.setText(getAllProductInfoDataResponse.getGetAllProductInfoData().getTotalProductCost().toString());
-                totalProductStockTextView.setText(getAllProductInfoDataResponse.getGetAllProductInfoData().getTotalProduct().toString());
-                totalProductTypeTextView.setText(getAllProductInfoDataResponse.getGetAllProductInfoData().getTotalProductType().toString());
+            if (response.isSuccessful()){
+                if (response.body().getSuccess()==true){
+                    GetAllProductInfoDataResponse getAllProductInfoDataResponse=response.body();
+                    totalProductCostTextView.setText(getAllProductInfoDataResponse.getGetAllProductInfoData().getTotalProductCost().toString());
+                    totalProductStockTextView.setText(getAllProductInfoDataResponse.getGetAllProductInfoData().getTotalProduct().toString());
+                    totalProductTypeTextView.setText(getAllProductInfoDataResponse.getGetAllProductInfoData().getTotalProductType().toString());
+                }
+            }
             }
             @Override
             public void onFailure(Call<GetAllProductInfoDataResponse> call, Throwable t) {
-
+                Toast.makeText(OthersInformation.this, "failed", Toast.LENGTH_SHORT).show();
             }
         });
     }
