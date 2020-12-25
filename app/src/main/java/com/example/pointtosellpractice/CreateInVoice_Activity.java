@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -127,6 +129,27 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
         });
 
 
+        selectRecyclerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeStatus=0;
+            }
+        });
+
+        payAmountEditText.addTextChangedListener(new TextWatcher() {
+
+            public void afterTextChanged(Editable s) {}
+
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                changeStatus=0;
+            }
+        });
+
         product.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -147,51 +170,6 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
             }
         });
 
-
-        calculateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int  payDue=0,due;
-                int discountAmount=0;
-                int subTotal=0;
-                int sz=newList.size();
-                if (sz>0){
-
-                    for (int i=0;sz-1>=i;i++){
-
-                        subTotal=subTotal+(newList.get(i).getSellingPrice()*newList.get(i).getQuantity());
-
-                        // subTotal=subTotal+newList.get(i).getSellingPrice();
-                        // setProductDataList.add(new SetProductData(newList.get(i).getId(),1));
-                    }
-                }
-                int discount=Integer.parseInt(discountTextView.getText().toString());
-
-                if (discount>0){
-                    float dis=(subTotal*discount)/100;
-                    discountAmount= (int) dis;
-                }
-
-                if (!TextUtils.isEmpty(payAmountEditText.getText().toString())){
-                    payDue=Integer.parseInt(payAmountEditText.getText().toString());
-                }
-
-                subTotalTextView.setText(String.valueOf(subTotal));
-                grandTotalTextView.setText(String.valueOf(subTotal-discountAmount));
-                due=(subTotal-discountAmount)-payDue;
-                dueTextView.setText(String.valueOf(due));
-
-                changeStatus=1;
-
-            }
-        });
-
-
-
-
-
-
-
         addCountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -205,6 +183,36 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
         });
 
 
+        calculateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int  payDue=0,due;
+                int discountAmount=0;
+                int subTotal=0;
+                int sz=newList.size();
+                if (sz>0){
+
+                    for (int i=0;sz-1>=i;i++){
+                        subTotal=subTotal+(newList.get(i).getSellingPrice()*newList.get(i).getQuantity());
+                    }
+                }
+                int discount=Integer.parseInt(discountTextView.getText().toString());
+
+                if (discount>0){
+                    float dis=(subTotal*discount)/100;
+                    discountAmount= (int) dis;
+                }
+
+                if (!TextUtils.isEmpty(payAmountEditText.getText().toString())){
+                    payDue=Integer.parseInt(payAmountEditText.getText().toString());
+                }
+                subTotalTextView.setText(String.valueOf(subTotal));
+                grandTotalTextView.setText(String.valueOf(subTotal-discountAmount));
+                due=(subTotal-discountAmount)-payDue;
+                dueTextView.setText(String.valueOf(due));
+                changeStatus=1;
+            }
+        });
 
     }
 
@@ -234,20 +242,48 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
         for (int i=0;sz-1>=i;i++){
             setProductDataList.add(new SetProductData(newList.get(i).getId(),newList.get(i).getQuantity()));
         }
+
+
+
+
+       // int discount=Integer.parseInt(discountTextView.getText().toString());
+
+
+        int TotalAmount=0;
+        int sze=newList.size();
+        int discountAmount=0;
+        if (sze>0){
+
+            for (int i=0;sze-1>=i;i++){
+                TotalAmount=TotalAmount+(newList.get(i).getSellingPrice()*newList.get(i).getQuantity());
+            }
+        }
+        if (discount>0){
+            float dis=(TotalAmount*discount)/100;
+            discountAmount= (int) dis;
+        }
+
+
+
         setInVoiceResponse=new SetInVoiceResponse(customerId,payAmount,
-                totalProductAmount,discount, setProductDataList);
+                (TotalAmount-discountAmount),discount, setProductDataList);
         apiInterface.getInvoiceResponse("Bearer "+token,setInVoiceResponse).enqueue(new Callback<OwnerDataWithResponse>() {
             @Override
             public void onResponse(Call<OwnerDataWithResponse> call, Response<OwnerDataWithResponse> response) {
-                Toast.makeText(CreateInVoice_Activity.this, "sssssssss", Toast.LENGTH_SHORT).show();
-
+                if (response.isSuccessful()){
+                    if (response.body().getSuccess()==true){
+                        Toast.makeText(CreateInVoice_Activity.this, "create success", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(CreateInVoice_Activity.this, "create failed", Toast.LENGTH_SHORT).show();
+                    }
+                }else {
+                    Toast.makeText(CreateInVoice_Activity.this, "create failed", Toast.LENGTH_SHORT).show();
+                }
             }
-
             @Override
             public void onFailure(Call<OwnerDataWithResponse> call, Throwable t) {
                 Toast.makeText(CreateInVoice_Activity.this, String.valueOf(t.getMessage()), Toast.LENGTH_SHORT).show();
                 Log.e("getInvoice", String.valueOf(t.getMessage()));
-
             }
         });
 
@@ -318,7 +354,6 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
                             }
 
                              addProductInformation(filterProductDataList);
-
 
                         }
                     }

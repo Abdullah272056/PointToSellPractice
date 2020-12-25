@@ -53,6 +53,7 @@ public class ProductCustomAdapter2 extends RecyclerView.Adapter<ProductCustomAda
                 notifyDataSetChanged();
             }
         });
+
         holder.addQuantityTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
