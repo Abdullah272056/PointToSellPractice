@@ -142,15 +142,16 @@ public class Product extends AppCompatActivity {
                         productRecyclerView.setAdapter(productCustomAdapter);
                     }
             }
-                productProgressBar.setVisibility(View.GONE);
+
             }
                 else {
                     Toast.makeText(Product.this, "some problem", Toast.LENGTH_SHORT).show();
                 }
+                productProgressBar.setVisibility(View.GONE);
             }
             @Override
             public void onFailure(Call<GetProductDataResponse> call, Throwable t) {
-
+                productProgressBar.setVisibility(View.GONE);
             }
         });
     }
