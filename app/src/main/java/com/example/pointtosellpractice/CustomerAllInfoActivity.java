@@ -16,6 +16,8 @@ public class CustomerAllInfoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.setTitle("Customer all info");
+
         setContentView(R.layout.activity_customer_all_info);
 
         //data receive
