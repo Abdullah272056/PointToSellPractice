@@ -89,6 +89,8 @@ public class Product extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.setTitle("Product List");
+
         setContentView(R.layout.activity_product);
         token= getIntent().getStringExtra("token");
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
