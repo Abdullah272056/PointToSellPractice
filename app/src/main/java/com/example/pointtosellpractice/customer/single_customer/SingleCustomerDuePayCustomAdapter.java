@@ -15,7 +15,10 @@ import com.example.pointtosellpractice.customer.CustomerInformationData;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class SingleCustomerDuePayCustomAdapter extends RecyclerView.Adapter<SingleCustomerDuePayCustomAdapter.MyViewHolder> {
 
@@ -40,8 +43,10 @@ public class SingleCustomerDuePayCustomAdapter extends RecyclerView.Adapter<Sing
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy \nhh:mm a", Locale.forLanguageTag(String.valueOf(singleCustomerDuePayHistoryList.get(position).getDate())));
+        String getDate = df.format(new Date());
 
-        holder.duePayHistoryDateTextView.setText(singleCustomerDuePayHistoryList.get(position).getDate());
+        holder.duePayHistoryDateTextView.setText(getDate);
         holder.duePayHistoryPayAmountTextView.setText(String.valueOf(singleCustomerDuePayHistoryList.get(position).getPayAmount()));
 
     }
