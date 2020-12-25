@@ -17,15 +17,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <Button
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:id="@+id/selectCustomerButtonId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="add customer"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:text="Add customer"
+               />
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
@@ -154,20 +152,21 @@
 
             </LinearLayout>
             <Button
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:layout_marginTop="30dp"
                 android:id="@+id/productId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Product"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:text="Add product"
+                 />
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/selectRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <LinearLayout
+                android:padding="10dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/back"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -177,11 +176,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:textColor="#000000"
+                        android:padding="2dp"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:text="Sub Total: ৳"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
+                        android:textColor="#000000"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:id="@+id/subTotalTextViewId"
                         android:text=""
@@ -193,29 +195,37 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <Button
+                        android:textColor="#000000"
                         android:id="@+id/subCountButtonId"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
                         android:text="-"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <Button
+                        android:textColor="#000000"
                         android:id="@+id/addCountButtonId"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
                         android:text="+"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
+                        android:textColor="#000000"
+                        android:padding="2dp"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:text="Discount: "
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
+                        android:textColor="#000000"
+                        android:padding="2dp"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:text="0"
                         android:id="@+id/discountTextViewId"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
+                        android:padding="2dp"
+                        android:textColor="#000000"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:text="%"
                         android:layout_width="wrap_content"
@@ -226,11 +236,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:textColor="#000000"
+                        android:padding="2dp"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:text="Grand Total: ৳"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
+                        android:textColor="#000000"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:id="@+id/grandTotalTextViewId"
                         android:layout_width="wrap_content"
@@ -242,8 +255,11 @@
                     android:layout_height="wrap_content">
 
                     <EditText
+                       android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
+                        android:background="@drawable/back2"
                         android:id="@+id/payAmountEditTextId"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Pay Amount*"
                         android:inputType="number"
@@ -257,11 +273,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:textColor="#000000"
+                        android:padding="2dp"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:text="Due: ৳ "
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
+                        android:textColor="#000000"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:id="@+id/dueTextViewId"
                         android:layout_width="wrap_content"
@@ -272,6 +291,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <Button
+                        android:textColor="#000000"
+                        android:padding="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="50dp"
+                        android:layout_marginLeft="50dp"
                         android:id="@+id/calculateButtonId"
                         android:text="Calculate"
                         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -281,14 +305,14 @@
 
             </LinearLayout>
             <Button
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#000000"
+                android:padding="12dp"
                 android:id="@+id/inVoiceButtonId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Add invoice"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                />
 
         </LinearLayout>
     </ScrollView>
