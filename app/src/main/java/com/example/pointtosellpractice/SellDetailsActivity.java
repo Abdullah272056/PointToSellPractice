@@ -45,6 +45,8 @@ public class SellDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.setTitle("Sell details");
+
         setContentView(R.layout.activity_sell_details);
         position=getIntent().getIntExtra("position",10);
 
