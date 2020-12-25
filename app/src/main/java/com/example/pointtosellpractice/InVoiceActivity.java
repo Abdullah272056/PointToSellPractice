@@ -37,6 +37,8 @@ public class InVoiceActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.setTitle("InVoice List");
+
         setContentView(R.layout.activity_in_voice);
         invoiceRecyclerView=findViewById(R.id.invoiceRecyclerViewId);
         invoiceProgressBar=findViewById(R.id.invoiceProgressBarId);
