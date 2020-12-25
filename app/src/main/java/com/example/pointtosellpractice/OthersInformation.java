@@ -34,6 +34,8 @@ public class OthersInformation extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.setTitle("More Info");
+
         setContentView(R.layout.activity_others_information);
         //finding textView
         customerCountTextView=findViewById(R.id.customerCountId);
