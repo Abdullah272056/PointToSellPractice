@@ -48,7 +48,7 @@ public class InVoiceActivity extends AppCompatActivity{
 
         token= getIntent().getStringExtra("token");
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
-        getAllSellInfo();
+        getAllInVoice();
         addInvoiceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,7 +63,7 @@ public class InVoiceActivity extends AppCompatActivity{
     }
 
     // getting  Get all invoice
-    private void getAllSellInfo(){
+    private void getAllInVoice(){
 
         apiInterface.getInvoice("Bearer "+token).enqueue(new Callback<InVoiceResponse>() {
             @Override

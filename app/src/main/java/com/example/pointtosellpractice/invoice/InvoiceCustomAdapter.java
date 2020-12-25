@@ -2,6 +2,7 @@ package com.example.pointtosellpractice.invoice;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pointtosellpractice.InVoiceDetails;
@@ -23,7 +25,13 @@ import com.example.pointtosellpractice.model_class.invoice.get_all_invoice.Invoi
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class InvoiceCustomAdapter extends RecyclerView.Adapter<InvoiceCustomAdapter.MyViewHolderInvoice> {
 
@@ -49,12 +57,20 @@ public class InvoiceCustomAdapter extends RecyclerView.Adapter<InvoiceCustomAdap
         return new InvoiceCustomAdapter.MyViewHolderInvoice(view);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull MyViewHolderInvoice holder, final int position){
+
         holder.invoiceItemCustomerNameTextView.setText(invoiceList.get(position).getCustomer().getName());
-        holder.invoiceItemDateTextView.setText(String.valueOf(invoiceList.get(position).getCreatedAt()));
+
+        String string=String.valueOf(invoiceList.get(position).getCreatedAt());
+        SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy \n hh:mm a", Locale.forLanguageTag(string));
+        String time = df.format(new Date());
+
+        holder.invoiceItemDateTextView.setText(String.valueOf(time));
         holder.invoiceItemPayAmountTextView.setText(String.valueOf(invoiceList.get(position).getTotalAmountAfterDiscount()));
         holder.invoiceItemSerialTextView.setText(String.valueOf(position+1));
+
         holder.inVoiceItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

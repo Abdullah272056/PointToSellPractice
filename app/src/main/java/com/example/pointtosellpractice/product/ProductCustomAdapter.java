@@ -85,7 +85,15 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
             public void onClick(View v) {
                 deleteProduct(position);
             }
+        }); // delete button clicked
+        holder.editProductImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "Not available", Toast.LENGTH_SHORT).show();
+            }
         });
+
+
     }
 
     @Override
