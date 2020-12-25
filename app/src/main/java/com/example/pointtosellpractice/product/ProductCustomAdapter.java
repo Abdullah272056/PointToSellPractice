@@ -27,7 +27,10 @@ import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -146,8 +149,16 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
         productSellingPriceTextView.setText(String.valueOf(productDataList.get(position).getSellingPrice()));
         productStockTextView.setText(String.valueOf(productDataList.get(position).getStock()));
         productDescriptionTextView.setText(String.valueOf(productDataList.get(position).getDescription()));
-        productAddDateTextView.setText(String.valueOf(productDataList.get(position).getCreatedAt()));
-        productUpdateDateTextView.setText(String.valueOf(productDataList.get(position).getUpdatedAt()));
+
+      //  String string=String.valueOf(productDataList.get(position).getCreatedAt());
+        SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy \n hh:mm a", Locale.forLanguageTag(String.valueOf(productDataList.get(position).getCreatedAt())));
+        String getCreatedAt = df.format(new Date());
+        productAddDateTextView.setText(String.valueOf(getCreatedAt));
+
+        SimpleDateFormat df1 = new SimpleDateFormat("dd MMM yyyy \n hh:mm a", Locale.forLanguageTag(String.valueOf(productDataList.get(position).getUpdatedAt())));
+        String getUpdatedAt = df.format(new Date());
+        productUpdateDateTextView.setText(String.valueOf(getUpdatedAt));
+
         productUnitTextView.setText(String.valueOf(productDataList.get(position).getUnit()));
 
 
