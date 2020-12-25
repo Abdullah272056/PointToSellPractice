@@ -28,8 +28,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp">
                 <LinearLayout
+                    android:weightSum="5"
                     android:layout_margin="10dp"
-                    android:background="@drawable/background"
+                    android:background="@drawable/btn_back2"
                     android:orientation="vertical"
                     android:layout_width="200dp"
                     android:layout_height="match_parent">
@@ -46,15 +47,15 @@
                     <TextView
                         android:text="00 Taka"
                         android:gravity="center"
-                        android:textColor="#02AF05"
-                        android:textSize="30sp"
+                        android:textColor="#020202"
+                        android:textSize="25sp"
                         android:id="@+id/totalProductCostTextViewId"
                         android:layout_weight="1.5"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"/>
                     <TextView
                         android:gravity="center"
-                        android:textColor="#02877A"
+                        android:textColor="#000000"
                         android:text="Total product stock"
                         android:textSize="17sp"
                         android:id="@+id/totalProductStockTextViewId"
@@ -63,7 +64,7 @@
                         android:layout_height="0dp"/>
                     <TextView
                         android:gravity="center"
-                        android:textColor="#00BCD4"
+                        android:textColor="#000000"
                         android:text="Total product type"
                         android:textSize="17sp"
                         android:id="@+id/totalProductTypeTextViewId"
@@ -76,7 +77,7 @@
                 <LinearLayout
                     android:weightSum="5"
                     android:layout_margin="10dp"
-                    android:background="@drawable/background"
+                    android:background="@drawable/btn_back2"
                     android:orientation="vertical"
                     android:layout_width="200dp"
                     android:layout_height="match_parent">
@@ -92,7 +93,7 @@
                     <TextView
                         android:text="00 Taka"
                         android:gravity="center"
-                        android:textColor="#02AF05"
+                        android:textColor="#000000"
                         android:textSize="30sp"
                         android:id="@+id/totalSaleAmountTextViewId"
                         android:layout_weight="1.5"
@@ -100,7 +101,7 @@
                         android:layout_height="0dp"/>
                     <TextView
                         android:gravity="center"
-                        android:textColor="#02877A"
+                        android:textColor="#000000"
                         android:text="Total product sale 00"
                         android:textSize="17sp"
                         android:id="@+id/totalSoldProductQuantityTextViewId"
@@ -109,7 +110,7 @@
                         android:layout_height="0dp"/>
                     <TextView
                         android:gravity="center"
-                        android:textColor="#00BCD4"
+                        android:textColor="#000000"
                         android:text="Total invoice 00"
                         android:textSize="17sp"
                         android:id="@+id/totalSoldInvoiceTextViewId"
@@ -122,7 +123,7 @@
                 <LinearLayout
                     android:weightSum="5"
                     android:layout_margin="10dp"
-                    android:background="@drawable/background"
+                    android:background="@drawable/btn_back2"
                     android:orientation="vertical"
                     android:layout_width="200dp"
                     android:layout_height="match_parent">
@@ -149,7 +150,7 @@
                 <LinearLayout
                     android:weightSum="5"
                     android:layout_margin="10dp"
-                    android:background="@drawable/background"
+                    android:background="@drawable/btn_back2"
                     android:orientation="vertical"
                     android:layout_width="200dp"
                     android:layout_height="match_parent">
@@ -175,7 +176,7 @@
                 <LinearLayout
                     android:weightSum="5"
                     android:layout_margin="10dp"
-                    android:background="@drawable/background"
+                    android:background="@drawable/btn_back2"
                     android:orientation="vertical"
                     android:layout_width="200dp"
                     android:layout_height="match_parent">
@@ -191,7 +192,7 @@
                     <TextView
                         android:text="00 Taka"
                         android:gravity="center"
-                        android:textColor="#04A119"
+                        android:textColor="#000000"
                         android:textSize="30sp"
                         android:id="@+id/totalProfitTextViewId"
                         android:layout_weight="1.5"
@@ -219,7 +220,7 @@
 
             <TextView
                 android:id="@+id/customerTextViewId"
-                android:background="@drawable/background"
+                android:background="@drawable/btn_back"
                 android:gravity="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:text="Customer"
@@ -234,7 +235,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:background="@drawable/background"
+                android:background="@drawable/btn_back"
                 android:gravity="center"
                 android:text="Product"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
@@ -247,7 +248,7 @@
               android:layout_height="0dp">
               <TextView
                   android:id="@+id/invoiceTextViewId"
-                  android:background="@drawable/background"
+                  android:background="@drawable/btn_back"
                   android:gravity="center"
                   android:textAppearance="@style/TextAppearance.AppCompat.Large"
                   android:text="Invoice"
@@ -257,7 +258,7 @@
                   android:layout_height="match_parent"/>
               <TextView
                   android:id="@+id/extraInfoTextViewId"
-                  android:background="@drawable/background"
+                  android:background="@drawable/btn_back"
                   android:gravity="center"
                   android:textAppearance="@style/TextAppearance.AppCompat.Large"
                   android:text="More"
