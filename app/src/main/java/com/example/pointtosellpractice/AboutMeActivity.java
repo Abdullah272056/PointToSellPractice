@@ -20,6 +20,10 @@ import com.example.pointtosellpractice.model_class.owner_all_information.OwnerDa
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -103,7 +107,11 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
                         companyEmailTextView.setText(String.valueOf(response.body().getData().getEmail()));
                         companyPhoneTextView.setText(String.valueOf(response.body().getData().getPhone()));
                         companyAddressTextView.setText(String.valueOf(response.body().getData().getAddress()));
-                        memberSinceTextView.setText(String.valueOf(response.body().getData().getCreatedAt()));
+
+                        SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy  hh:mm a", Locale.forLanguageTag(String.valueOf(response.body().getData().getCreatedAt())));
+                        String getCreatedAt = df.format(new Date());
+
+                        memberSinceTextView.setText(String.valueOf(getCreatedAt));
                         Toast.makeText(AboutMeActivity.this, "success", Toast.LENGTH_SHORT).show();
 
                     }else {
