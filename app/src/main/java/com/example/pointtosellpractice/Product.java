@@ -58,8 +58,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Product extends AppCompatActivity {
-    String productName,productRegularPrice,productSellingPrice,productStock,productDescription,piece;
- Spinner spinner;
+    String productName,productRegularPrice,productSellingPrice,productStock,productDescription,unitType;
+
+ Spinner unitTypeSpinner;
     List<GetProductData> getProductDataList;
     String token;
     ApiInterface apiInterface;
@@ -97,7 +98,7 @@ public class Product extends AppCompatActivity {
         productRecyclerView=findViewById(R.id.productRecyclerViewId);
         productProgressBar=findViewById(R.id.productProgressBarId);
         addProductButton=findViewById(R.id.addProductButtonId);
-        spinner=findViewById(R.id.spinnerId);
+        unitTypeSpinner=findViewById(R.id.unitTypeSpinnerId);
 
         progressDialog = new ProgressDialog(Product.this);
         progressDialog.setMessage("Image Upload....");
@@ -107,7 +108,6 @@ public class Product extends AppCompatActivity {
 
         getAllProduct();
 
-        String[] country = { "India", "USA", "China", "Japan", "Other"};
 
         addProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -191,7 +191,8 @@ public class Product extends AppCompatActivity {
                 productSellingPrice=productSellingPriceEditText.getText().toString();
                 productStock=productStockEditText.getText().toString();
                 productDescription=productDescriptionEditText.getText().toString();
-                piece=pieceTextView.getText().toString();
+                unitType=unitTypeSpinner.getSelectedItem().toString();
+
 
                 if (TextUtils.isEmpty(productName)){
                     productNameEditText.setError("Enter product name");
@@ -218,11 +219,6 @@ public class Product extends AppCompatActivity {
                     productDescriptionEditText.requestFocus();
                     return;
                 }
-                if (TextUtils.isEmpty(piece)){
-                    pieceTextView.setError("Enter piece");
-                    pieceTextView.requestFocus();
-                    return;
-                }
                 if (productSelectImageView.getDrawable()==null){
                     Toast.makeText(Product.this, "select image", Toast.LENGTH_SHORT).show();
                     return;
@@ -230,7 +226,7 @@ public class Product extends AppCompatActivity {
                 if (imageUri == null){
                     Toast.makeText(Product.this, "image url not found", Toast.LENGTH_SHORT).show();
                 }
-                ImageUpload(imageUri,productName,productRegularPrice,productSellingPrice,piece,productStock,productDescription);
+                ImageUpload(imageUri,productName,productRegularPrice,productSellingPrice,unitType,productStock,productDescription);
 
 
             }
