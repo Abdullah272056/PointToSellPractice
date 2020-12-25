@@ -17,7 +17,10 @@ import com.example.pointtosellpractice.SellDetailsActivity;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class SingleCustomerTotalSellCustomAdapter extends RecyclerView.Adapter<SingleCustomerTotalSellCustomAdapter.MyViewHolder> {
     Context context;
@@ -42,8 +45,11 @@ public class SingleCustomerTotalSellCustomAdapter extends RecyclerView.Adapter<S
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
+        SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy \nhh:mm a", Locale.forLanguageTag(String.valueOf(singleCustomerTotalSellList.get(position).getCreatedAt())));
+        String getCreatedAt = df.format(new Date());
+        holder.dateTextView.setText(String.valueOf(getCreatedAt));
 
-        holder.dateTextView.setText(String.valueOf(singleCustomerTotalSellList.get(position).getCreatedAt()));
+
         holder.totalSellAmountTextView.setText(String.valueOf(singleCustomerTotalSellList.get(position).getTotalAmountAfterDiscount()));
         holder.totalPayAmountTextView.setText(String.valueOf(singleCustomerTotalSellList.get(position).getPayAmount()));
         holder.totalDueAmountTextView.setText(String.valueOf(singleCustomerTotalSellList.get(position).getDue()));

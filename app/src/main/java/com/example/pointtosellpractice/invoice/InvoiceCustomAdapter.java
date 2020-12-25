@@ -64,7 +64,7 @@ public class InvoiceCustomAdapter extends RecyclerView.Adapter<InvoiceCustomAdap
         holder.invoiceItemCustomerNameTextView.setText(invoiceList.get(position).getCustomer().getName());
 
         String string=String.valueOf(invoiceList.get(position).getCreatedAt());
-        SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy \n hh:mm a", Locale.forLanguageTag(string));
+        SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy \nhh:mm a", Locale.forLanguageTag(string));
         String time = df.format(new Date());
 
         holder.invoiceItemDateTextView.setText(String.valueOf(time));

@@ -151,11 +151,11 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
         productDescriptionTextView.setText(String.valueOf(productDataList.get(position).getDescription()));
 
       //  String string=String.valueOf(productDataList.get(position).getCreatedAt());
-        SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy \n hh:mm a", Locale.forLanguageTag(String.valueOf(productDataList.get(position).getCreatedAt())));
+        SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy \nhh:mm a", Locale.forLanguageTag(String.valueOf(productDataList.get(position).getCreatedAt())));
         String getCreatedAt = df.format(new Date());
         productAddDateTextView.setText(String.valueOf(getCreatedAt));
 
-        SimpleDateFormat df1 = new SimpleDateFormat("dd MMM yyyy \n hh:mm a", Locale.forLanguageTag(String.valueOf(productDataList.get(position).getUpdatedAt())));
+        SimpleDateFormat df1 = new SimpleDateFormat("dd MMM yyyy \nhh:mm a", Locale.forLanguageTag(String.valueOf(productDataList.get(position).getUpdatedAt())));
         String getUpdatedAt = df.format(new Date());
         productUpdateDateTextView.setText(String.valueOf(getUpdatedAt));
 
