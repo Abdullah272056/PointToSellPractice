@@ -8,6 +8,14 @@
         <item>Mobile</item>
 
     </array>
+    <array name="unit_type">
+        <item>piece</item>
+        <item>Kg</item>
+        <item>Litter</item>
+        <item>Pack</item>
+
+    </array>
+
     <string name="open">Open</string>
     <string name="closed">Closed</string>
 </resources>
