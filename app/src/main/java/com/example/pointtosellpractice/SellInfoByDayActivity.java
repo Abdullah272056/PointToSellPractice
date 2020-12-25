@@ -34,6 +34,8 @@ public class SellInfoByDayActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.setTitle("Sell info by date ");
+
         setContentView(R.layout.activity_sell_info_by_day);
         //finding progressBar
         sellInfoByDayProgressBar=findViewById(R.id.sellInfoByDayProgressBarId);
