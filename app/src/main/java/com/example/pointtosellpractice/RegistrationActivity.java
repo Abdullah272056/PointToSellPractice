@@ -128,7 +128,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     confirmPasswordEditText.requestFocus();
                     return;
                 }
-                if (password!=confirmPassword){
+                if (!password.equals(confirmPassword)){
                     confirmPasswordEditText.setError("can not matching confirm password");
                     confirmPasswordEditText.requestFocus();
                     return;

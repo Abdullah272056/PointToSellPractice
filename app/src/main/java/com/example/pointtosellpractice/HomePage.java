@@ -249,6 +249,7 @@ public class HomePage extends AppCompatActivity {
         apiInterface.getAllSellInfo("Bearer "+token).enqueue(new Callback<GetAllSellInfoResponse>() {
             @Override
             public void onResponse(Call<GetAllSellInfoResponse> call, Response<GetAllSellInfoResponse> response) {
+                if (response.isSuccessful()){
                 GetAllSellInfoResponse getAllSellInfoResponse=response.body();
                 assert getAllSellInfoResponse != null;
                 Log.e("totalSaleAmount",getAllSellInfoResponse.getGetAllSellInfoData().getTotalSaleAmount().toString());
@@ -257,11 +258,16 @@ public class HomePage extends AppCompatActivity {
                 totalSoldInvoiceTextView.setText("Total invoice "+getAllSellInfoResponse.getGetAllSellInfoData().getTotalSoldInvoice().toString());
                 totalDueAmountTextView.setText(getAllSellInfoResponse.getGetAllSellInfoData().getTotalDueAmount().toString());
                 totalProfitTextView.setText(getAllSellInfoResponse.getGetAllSellInfoData().getTotalProfit().toString());
+                }
+                else {
+                    Toast.makeText(HomePage.this, "", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
             public void onFailure(Call<GetAllSellInfoResponse> call, Throwable t) {
-                Log.e("ts","success");
+                Toast.makeText(HomePage.this, "failed try again", Toast.LENGTH_SHORT).show();
+
 
             }
         });
@@ -274,11 +280,19 @@ public class HomePage extends AppCompatActivity {
         apiInterface.getAllProductInfo("Bearer "+token).enqueue(new Callback<GetAllProductInfoDataResponse>() {
             @Override
             public void onResponse(Call<GetAllProductInfoDataResponse> call, Response<GetAllProductInfoDataResponse> response) {
+                if (response.isSuccessful()){
+                    if (response.body().getSuccess()==true){
+                       // GetAllProductInfoDataResponse getAllProductInfoDataResponse=response.body();
+                        totalProductCostTextView.setText(response.body().getGetAllProductInfoData().getTotalProductCost().toString());
+                        totalProductStockTextView.setText("Total select_customer stock "+response.body().getGetAllProductInfoData().getTotalProduct().toString());
+                        totalProductTypeTextView.setText("Product type "+response.body().getGetAllProductInfoData().getTotalProductType().toString());
+                    }
 
-                GetAllProductInfoDataResponse getAllProductInfoDataResponse=response.body();
-                totalProductCostTextView.setText(getAllProductInfoDataResponse.getGetAllProductInfoData().getTotalProductCost().toString());
-                totalProductStockTextView.setText("Total select_customer stock "+getAllProductInfoDataResponse.getGetAllProductInfoData().getTotalProduct().toString());
-                totalProductTypeTextView.setText("Product type "+getAllProductInfoDataResponse.getGetAllProductInfoData().getTotalProductType().toString());
+
+                }else {
+                    Toast.makeText(HomePage.this, "No data found", Toast.LENGTH_SHORT).show();
+                }
+
             }
             @Override
             public void onFailure(Call<GetAllProductInfoDataResponse> call, Throwable t) {
