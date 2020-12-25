@@ -36,6 +36,7 @@ public class DuePayHistory extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.setTitle("Due Pay History");
         setContentView(R.layout.activity_due_pay_history);
         //receive data
         customer_id= getIntent().getStringExtra("customerId");
