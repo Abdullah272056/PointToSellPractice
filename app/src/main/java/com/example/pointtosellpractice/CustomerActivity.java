@@ -79,6 +79,7 @@ public class CustomerActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<CustomerInformationDataResponse> call, Response<CustomerInformationDataResponse> response) {
                 CustomerInformationDataResponse customerInformationDataResponse=response.body();
+                if (response.isSuccessful()){
 
                 if (customerInformationDataResponse.getSuccess()==true){
                     customerInformationList=new ArrayList<>();
@@ -97,9 +98,14 @@ public class CustomerActivity extends AppCompatActivity {
 //                        Log.e("namec",customerInformationDataList.get(2).getEmail().toString());
 //                        Toast.makeText(CustomerActivity.this, "Ssss", Toast.LENGTH_SHORT).show();
 //                    }
-                    mainProgressBar.setVisibility(View.GONE);
 
                 }
+
+                }
+                else {
+                }
+                mainProgressBar.setVisibility(View.GONE);
+
             }
             @Override
             public void onFailure(Call<CustomerInformationDataResponse> call, Throwable t) {
