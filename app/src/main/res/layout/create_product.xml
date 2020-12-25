@@ -36,9 +36,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <Spinner
-        android:id="@+id/spinnerId"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_margin="5dp"
+        android:background="#FAF8F8"
+        android:padding="5dp"
+        android:entries="@array/unit_type"
+        android:id="@+id/unitTypeSpinnerId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
 
 
     <EditText
