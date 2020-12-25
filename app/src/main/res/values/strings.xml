@@ -10,9 +10,9 @@
     </array>
     <array name="unit_type">
         <item>piece</item>
-        <item>Kg</item>
-        <item>Litter</item>
-        <item>Pack</item>
+        <item>kg</item>
+        <item>litter</item>
+        <item>pack</item>
 
     </array>
 

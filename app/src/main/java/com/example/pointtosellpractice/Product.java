@@ -60,7 +60,7 @@ import retrofit2.Response;
 public class Product extends AppCompatActivity {
     String productName,productRegularPrice,productSellingPrice,productStock,productDescription,unitType;
 
- Spinner unitTypeSpinner;
+    Spinner unitTypeSpinner;
     List<GetProductData> getProductDataList;
     String token;
     ApiInterface apiInterface;
@@ -164,9 +164,10 @@ public class Product extends AppCompatActivity {
         productSellingPriceEditText=view.findViewById(R.id.productSellingPriceEditTextId);
         productStockEditText=view.findViewById(R.id.productStockEditTextId);
         productDescriptionEditText=view.findViewById(R.id.productDescriptionEditTextId);
-        pieceTextView=view.findViewById(R.id.pieceTextViewId);
+
         productSelectImageView=view.findViewById(R.id.productSelectImageViewId);
         uploadProductButton=view.findViewById(R.id.uploadProductButtonId);
+        unitTypeSpinner=view.findViewById(R.id.unitTypeSpinnerId);
 
 
         productSelectImageView.setOnClickListener(new View.OnClickListener() {
