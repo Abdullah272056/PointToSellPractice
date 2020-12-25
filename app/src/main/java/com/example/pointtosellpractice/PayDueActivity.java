@@ -37,6 +37,8 @@ public class PayDueActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.setTitle("Pay Due Activity");
+
         setContentView(R.layout.activity_pay_due);
 
         // textView finding
