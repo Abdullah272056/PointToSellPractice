@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -383,5 +384,13 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
     @Override
     public void onContactClick3(int position) {
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent =new Intent(CreateInVoice_Activity.this,InVoiceActivity.class);
+        intent.putExtra("token",token);
+        startActivity(intent);
+        finish();
     }
 }

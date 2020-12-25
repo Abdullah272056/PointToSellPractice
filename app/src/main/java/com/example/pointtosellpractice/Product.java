@@ -84,8 +84,8 @@ public class Product extends AppCompatActivity {
     File file;
     Uri imageUri=null;
 
-
-
+    AlertDialog.Builder builder;
+     AlertDialog alertDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,10 +108,6 @@ public class Product extends AppCompatActivity {
         getAllProduct();
 
         String[] country = { "India", "USA", "China", "Japan", "Other"};
-
-
-
-
 
         addProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -157,11 +153,11 @@ public class Product extends AppCompatActivity {
     }
 
     private void createProduct(){
-        AlertDialog.Builder builder     =new AlertDialog.Builder(Product.this);
+         builder     =new AlertDialog.Builder(Product.this);
         LayoutInflater layoutInflater   =LayoutInflater.from(Product.this);
         View view                       =layoutInflater.inflate(R.layout.create_product,null);
         builder.setView(view);
-        final AlertDialog alertDialog   = builder.create();
+        alertDialog   = builder.create();
 
         productNameEditText=view.findViewById(R.id.productNameEditTextId);
         productRegularPriceEditText=view.findViewById(R.id.productRegularPriceEditTextId);
@@ -231,14 +227,14 @@ public class Product extends AppCompatActivity {
                     Toast.makeText(Product.this, "select image", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
-                 ImageUpload(imageUri,productName,productRegularPrice,productSellingPrice,piece,productStock,productDescription);
-
+                if (imageUri == null){
+                    Toast.makeText(Product.this, "image url not found", Toast.LENGTH_SHORT).show();
+                }
+                ImageUpload(imageUri,productName,productRegularPrice,productSellingPrice,piece,productStock,productDescription);
 
 
             }
         });
-
         alertDialog.show();
 
     }
@@ -287,52 +283,58 @@ public class Product extends AppCompatActivity {
 
     private void ImageUpload(Uri imgUri,String productName,String productRegularPrice,String productSellingPrice,
                              String productPiece,String productStock,String productDescription) {
+if (imageUri!=null){
+    progressDialog.show();
+    String path= getImagePath(imgUri);
 
-        progressDialog.show();
+    file = new File(path);
+    MultipartBody.Part imageFile = null;
 
-        String path= getImagePath(imgUri);
-        file = new File(path);
-        MultipartBody.Part imageFile = null;
+    RequestBody requestFile = RequestBody.create(MediaType.parse("image/*"), file);
+    imageFile = MultipartBody.Part.createFormData("image", file.getName(), requestFile);
 
-        RequestBody requestFile = RequestBody.create(MediaType.parse("image/*"), file);
-        imageFile = MultipartBody.Part.createFormData("image", file.getName(), requestFile);
+    RequestBody name = RequestBody.create(MediaType.parse("multipart/form-data"), productName);
+    RequestBody price = RequestBody.create(MediaType.parse("multipart/form-data"), productRegularPrice);
+    RequestBody sellingPrice = RequestBody.create(MediaType.parse("multipart/form-data"), productSellingPrice);
+    RequestBody unit = RequestBody.create(MediaType.parse("multipart/form-data"), productPiece);
+    RequestBody stock = RequestBody.create(MediaType.parse("multipart/form-data"), productStock);
+    RequestBody description = RequestBody.create(MediaType.parse("multipart/form-data"), productDescription);
 
-        RequestBody name = RequestBody.create(MediaType.parse("multipart/form-data"), productName);
-        RequestBody price = RequestBody.create(MediaType.parse("multipart/form-data"), productRegularPrice);
-        RequestBody sellingPrice = RequestBody.create(MediaType.parse("multipart/form-data"), productSellingPrice);
-        RequestBody unit = RequestBody.create(MediaType.parse("multipart/form-data"), productPiece);
-        RequestBody stock = RequestBody.create(MediaType.parse("multipart/form-data"), productStock);
-        RequestBody description = RequestBody.create(MediaType.parse("multipart/form-data"), productDescription);
+    apiInterface.uploadImage("Bearer "+token,imageFile,name,price,sellingPrice,unit,stock,description).
+            enqueue(new Callback<ProductDataResponse>() {
+                @Override
+                public void onResponse(Call<ProductDataResponse> call, Response<ProductDataResponse> response) {
+                    // Log.e("eroor",new Gson().toJson(response.body()));
+                    if (response.isSuccessful()){
 
-        apiInterface.uploadImage("Bearer "+token,imageFile,name,price,sellingPrice,unit,stock,description).
-                enqueue(new Callback<ProductDataResponse>() {
-                    @Override
-                    public void onResponse(Call<ProductDataResponse> call, Response<ProductDataResponse> response) {
-                       // Log.e("eroor",new Gson().toJson(response.body()));
-                        if (response.isSuccessful()){
-
-                            if (response.body().getSuccess()==true){
-                                Toast.makeText(Product.this, "success", Toast.LENGTH_SHORT).show();
-                                getAllProduct();
-                           }else {
-                                Toast.makeText(Product.this, "server error", Toast.LENGTH_SHORT).show();
-
-                            }
+                        if (response.body().getSuccess()==true){
+                            Toast.makeText(Product.this, "success", Toast.LENGTH_SHORT).show();
+                            alertDialog.dismiss();
+                            getAllProduct();
                         }else {
-                            Log.e("ent",String.valueOf(response.message()));
-                            Toast.makeText(Product.this, String.valueOf(response.message()), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Product.this, "server error", Toast.LENGTH_SHORT).show();
 
                         }
-                        progressDialog.dismiss();
+                    }else {
+                        Log.e("ent",String.valueOf(response.message()));
+                        Toast.makeText(Product.this, String.valueOf(response.message()), Toast.LENGTH_SHORT).show();
 
                     }
-                    @Override
-                    public void onFailure(Call<ProductDataResponse> call, Throwable t) {
-                        Toast.makeText(Product.this, "Failed to Upload", Toast.LENGTH_SHORT).show();
-                        Log.e("asd",t.getMessage());
-                       progressDialog.dismiss();
-                    }
-                });
+                    progressDialog.dismiss();
+
+                }
+                @Override
+                public void onFailure(Call<ProductDataResponse> call, Throwable t) {
+                    Toast.makeText(Product.this, "Failed to Upload", Toast.LENGTH_SHORT).show();
+                    Log.e("asd",t.getMessage());
+                    progressDialog.dismiss();
+                }
+            });
+
+}
+else {
+    Toast.makeText(this, "uri not found", Toast.LENGTH_SHORT).show();
+}
 
     }
 
@@ -383,7 +385,12 @@ public class Product extends AppCompatActivity {
         }
     }
     public String getImagePath(Uri uri){
-        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+        Cursor cursor = null;
+        if (!uri.equals(null)){
+             cursor = getContentResolver().query(uri, null, null, null, null);
+        }else {
+            Toast.makeText(this, "uri not found", Toast.LENGTH_SHORT).show();
+        }
         cursor.moveToFirst();
         String document_id = cursor.getString(0);
         document_id = document_id.substring(document_id.lastIndexOf(":")+1);

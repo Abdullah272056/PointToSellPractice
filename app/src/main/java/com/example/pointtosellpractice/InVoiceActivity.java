@@ -55,6 +55,7 @@ public class InVoiceActivity extends AppCompatActivity{
                 Intent intent=new Intent(InVoiceActivity.this, CreateInVoice_Activity.class);
                 intent.putExtra("token",token);
                 startActivity(intent);
+                finish();
                 Toast.makeText(InVoiceActivity.this, "clicked", Toast.LENGTH_SHORT).show();
             }
         });
