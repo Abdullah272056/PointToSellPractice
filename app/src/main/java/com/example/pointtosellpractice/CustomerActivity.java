@@ -51,6 +51,8 @@ public class CustomerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        this.setTitle("Customer List");
+
         setContentView(R.layout.activity_customer);
         mainProgressBar=findViewById(R.id.customerProgressBarId);
         mainProgressBar.setVisibility(View.VISIBLE);
