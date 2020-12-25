@@ -68,21 +68,23 @@ public class InVoiceActivity extends AppCompatActivity{
             @Override
             public void onResponse(Call<InVoiceResponse> call, Response<InVoiceResponse> response) {
                 Toast.makeText(InVoiceActivity.this, "success", Toast.LENGTH_SHORT).show();
-                InVoiceResponse inVoiceResponse=response.body();
-                if (inVoiceResponse.getSuccess()==true){
-                    invoiceList=new ArrayList<>();
-                    invoiceList.addAll(response.body().getInvoices());
 
-                    if (invoiceList.size ()>0){
-                        Toast.makeText(InVoiceActivity.this, String.valueOf(invoiceList.size()), Toast.LENGTH_SHORT).show();
-                        Log.e("se",String.valueOf(invoiceList.get(0).getCustomer().getName()));
-                        invoiceCustomAdapter = new InvoiceCustomAdapter(InVoiceActivity.this,token,invoiceList);
-                        invoiceRecyclerView.setLayoutManager(new LinearLayoutManager(InVoiceActivity.this));
-                        invoiceRecyclerView.setAdapter(invoiceCustomAdapter);
+                if (response.isSuccessful()){
+                    if (response.body().getSuccess()==true){
+                        invoiceList=new ArrayList<>();
+                        invoiceList.addAll(response.body().getInvoices());
+
+                        if (invoiceList.size ()>0){
+                            Toast.makeText(InVoiceActivity.this, String.valueOf(invoiceList.size()), Toast.LENGTH_SHORT).show();
+                            Log.e("se",String.valueOf(invoiceList.get(0).getCustomer().getName()));
+                            invoiceCustomAdapter = new InvoiceCustomAdapter(InVoiceActivity.this,token,invoiceList);
+                            invoiceRecyclerView.setLayoutManager(new LinearLayoutManager(InVoiceActivity.this));
+                            invoiceRecyclerView.setAdapter(invoiceCustomAdapter);
+                        }
                     }
-                    invoiceProgressBar.setVisibility(View.GONE);
                 }
 
+                invoiceProgressBar.setVisibility(View.GONE);
 
             }
 

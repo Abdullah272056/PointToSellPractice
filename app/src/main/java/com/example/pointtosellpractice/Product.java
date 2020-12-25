@@ -145,7 +145,7 @@ public class Product extends AppCompatActivity {
 
             }
                 else {
-                    Toast.makeText(Product.this, "some problem", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Product.this, "", Toast.LENGTH_SHORT).show();
                 }
                 productProgressBar.setVisibility(View.GONE);
             }
@@ -313,12 +313,8 @@ public class Product extends AppCompatActivity {
 
                             if (response.body().getSuccess()==true){
                                 Toast.makeText(Product.this, "success", Toast.LENGTH_SHORT).show();
-
-                                Log.e("asd","ssss");
                             }else {
                                 Toast.makeText(Product.this, "server error", Toast.LENGTH_SHORT).show();
-
-                                Log.e("asd","ffff");
 
                             }
                         }else {
