@@ -44,6 +44,8 @@ public class InVoiceDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.setTitle("Invoice Details");
+
         setContentView(R.layout.activity_in_voice_details);
 
         //receive token
