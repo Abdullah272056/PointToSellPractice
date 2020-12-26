@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -17,14 +18,14 @@ public class CustomerAllInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setTitle("Customer all info");
-
         setContentView(R.layout.activity_customer_all_info);
+        // for add back Button in title bar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //data receive
         customer_id=getIntent().getStringExtra("cId");
         token= getIntent().getStringExtra("token");
         cDue= getIntent().getStringExtra("cDue");
-
 
         //textView Finding
         customerNameTextView=findViewById(R.id.customerNameTextViewId);
@@ -32,7 +33,6 @@ public class CustomerAllInfoActivity extends AppCompatActivity {
         customerPayDueTextView=findViewById(R.id.customerPayDueTextViewId);
         customerDuePayHistoryTextView=findViewById(R.id.customerDuePayHistoryTextViewId);
         customerTotalSellTextView=findViewById(R.id.customerTotalSellTextViewId);
-
         customerDataTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,4 +71,17 @@ public class CustomerAllInfoActivity extends AppCompatActivity {
 
 
     }
+
+    // title bar  button clicked
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 }
