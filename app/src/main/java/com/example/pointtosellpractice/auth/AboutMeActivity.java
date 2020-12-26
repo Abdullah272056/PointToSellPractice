@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +19,8 @@ import com.example.pointtosellpractice.HomePage;
 import com.example.pointtosellpractice.R;
 import com.example.pointtosellpractice.auth.change_password.ChangePasswordGetResponse;
 import com.example.pointtosellpractice.auth.change_password.ChangePasswordSetResponse;
+import com.example.pointtosellpractice.auth.delete_user.DeleteUserGetDataResponse;
+import com.example.pointtosellpractice.auth.delete_user.DeleteUserSetDataResponse;
 import com.example.pointtosellpractice.auth.owner_all_information.OwnerDataWithResponse;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
@@ -38,12 +41,15 @@ TextView companyNameTextView,companyEmailTextView,companyPhoneTextView,
 Button uploadPictureButton,changePasswordButton,deleteAccountButton;
 
 
-//dialog box view
+//change password dialog box view
     TextView oldPasswordEditText,newPasswordEditText,confirmPasswordEditText;
     Button saveChangePasswordButton;
     ProgressBar changePasswordProgressBar;
-
     ChangePasswordSetResponse changePasswordSetResponse;
+
+    ///delete password dialog box view
+    Button deleteCancelButton,deleteConfirmButton;
+    EditText passwordEditText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,15 +87,7 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
         deleteAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder     =new AlertDialog.Builder(AboutMeActivity.this);
-                LayoutInflater layoutInflater   =LayoutInflater.from(AboutMeActivity.this);
-                View view                       =layoutInflater.inflate(R.layout.delete_user_dialog_box,null);
-                builder.setView(view);
-                final AlertDialog alertDialog   = builder.create();
-
-                alertDialog.show();
-
-
+                deleteUser();
             }
         });
 
@@ -97,7 +95,63 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
     }
 
 
+public  void  deleteUser(){
+    AlertDialog.Builder builder     =new AlertDialog.Builder(AboutMeActivity.this);
+    LayoutInflater layoutInflater   =LayoutInflater.from(AboutMeActivity.this);
+    View view                       =layoutInflater.inflate(R.layout.delete_user_dialog_box,null);
+    builder.setView(view);
+    final AlertDialog alertDialog   = builder.create();
+    deleteCancelButton=view.findViewById(R.id.deleteCancelButtonId);
+    deleteConfirmButton=view.findViewById(R.id.deleteConfirmButtonId);
+    passwordEditText=view.findViewById(R.id.passwordEditTextId);
+    deleteConfirmButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            String password=passwordEditText.getText().toString();
+            if (TextUtils.isEmpty(password)){
+                passwordEditText.setError("Enter your password");
+                passwordEditText.requestFocus();
+                return;
+            }
+            apiInterface.deleteUser("Bearer "+token,new DeleteUserSetDataResponse(password))
+                    .enqueue(new Callback<DeleteUserGetDataResponse>() {
+                        @Override
+                        public void onResponse(Call<DeleteUserGetDataResponse> call, Response<DeleteUserGetDataResponse> response) {
+                            if (response.isSuccessful()){
+                                if (response.body().getSuccess()==true){
+                                    Toast.makeText(AboutMeActivity.this, "Delete success", Toast.LENGTH_SHORT).show();
+                                    alertDialog.dismiss();
+                                    Intent intent=new Intent(AboutMeActivity.this,RegistrationActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                }else {
+                                    Toast.makeText(AboutMeActivity.this, "Try again", Toast.LENGTH_SHORT).show();
+                                }
+                            }else {
+                                Toast.makeText(AboutMeActivity.this, "Try again", Toast.LENGTH_SHORT).show();
+                            }
+                        }
 
+                        @Override
+                        public void onFailure(Call<DeleteUserGetDataResponse> call, Throwable t) {
+                            Toast.makeText(AboutMeActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+
+        }
+    });
+    deleteCancelButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            alertDialog.dismiss();
+        }
+    });
+
+    alertDialog.show();
+
+
+}
 
     public void  changePasswordInputBoxShow(){
         AlertDialog.Builder builder     =new AlertDialog.Builder(AboutMeActivity.this);

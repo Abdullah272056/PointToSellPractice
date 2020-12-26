@@ -16,4 +16,8 @@ public class DeleteUserSetDataResponse {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public DeleteUserSetDataResponse(String password) {
+        this.password = password;
+    }
 }
