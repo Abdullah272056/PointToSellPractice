@@ -21,7 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AboutMeActivity"></activity>
+        <activity android:name=".AboutMeActivity">
+
+        </activity>
         <activity android:name=".CreateInVoice_Activity" />
         <activity android:name=".SellInfoByDayActivity" />
         <activity android:name=".OthersInformation" />
@@ -29,7 +31,8 @@
         <activity android:name=".SellDetailsActivity" />
         <activity android:name=".SingleCustomerTotalSellActivity" />
         <activity android:name=".DuePayHistory" />
-        <activity android:name=".Product" />
+        <activity android:name=".Product"
+            />
         <activity android:name=".InVoiceDetails" />
         <activity android:name=".InVoiceActivity" />
         <activity android:name=".UpComingFeature" />
