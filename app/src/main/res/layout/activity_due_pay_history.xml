@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".DuePayHistory">
+    tools:context=".customer.DuePayHistory">
     <LinearLayout
         android:background="#CEDDCE"
         android:orientation="vertical"

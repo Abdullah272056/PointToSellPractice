@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pointtosellpractice.R;
-import com.example.pointtosellpractice.SellDetailsActivity;
+import com.example.pointtosellpractice.customer.SellDetailsActivity;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 

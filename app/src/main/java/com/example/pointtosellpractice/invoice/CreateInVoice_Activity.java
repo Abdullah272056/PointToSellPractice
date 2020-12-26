@@ -1,4 +1,4 @@
-package com.example.pointtosellpractice;
+package com.example.pointtosellpractice.invoice;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +20,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.pointtosellpractice.invoice.InVoiceActivity;
+import com.example.pointtosellpractice.R;
 import com.example.pointtosellpractice.invoice.create_invoice.CustomerCustomAdapter;
 import com.example.pointtosellpractice.invoice.create_invoice.ProductCustomAdapter2;
 import com.example.pointtosellpractice.invoice.create_invoice.ProductCustomAdapter3;
@@ -29,8 +29,8 @@ import com.example.pointtosellpractice.invoice.create_invoice.SetProductData;
 import com.example.pointtosellpractice.customer.get_customer.CustomerInformationData;
 import com.example.pointtosellpractice.customer.get_customer.CustomerInformationDataResponse;
 import com.example.pointtosellpractice.auth.owner_all_information.OwnerDataWithResponse;
-import com.example.pointtosellpractice.model_class.product.GetProductData;
-import com.example.pointtosellpractice.model_class.product.GetProductDataResponse;
+import com.example.pointtosellpractice.product.delete_product.GetProductData;
+import com.example.pointtosellpractice.product.get_product.GetProductDataResponse;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 

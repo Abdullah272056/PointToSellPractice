@@ -4,7 +4,7 @@ import com.example.pointtosellpractice.auth.change_password.ChangePasswordGetRes
 import com.example.pointtosellpractice.auth.change_password.ChangePasswordSetResponse;
 import com.example.pointtosellpractice.invoice.create_invoice.SetInVoiceResponse;
 import com.example.pointtosellpractice.customer.create_customer.AddCustomerResponse;
-import com.example.pointtosellpractice.customer.CustomerCountResponse;
+import com.example.pointtosellpractice.customer.get_customer.CustomerCountResponse;
 import com.example.pointtosellpractice.customer.create_customer.CustomerData;
 import com.example.pointtosellpractice.customer.delete_customer.CustomerDeleteResponse;
 import com.example.pointtosellpractice.customer.get_customer.CustomerInformationDataResponse;
@@ -22,7 +22,7 @@ import com.example.pointtosellpractice.invoice.single_invoice.SingleInvoiceGetRe
 import com.example.pointtosellpractice.auth.owner_all_information.OwnerDataWithResponse;
 import com.example.pointtosellpractice.product.delete_product.DeleteProductDataResponse;
 import com.example.pointtosellpractice.product.get_all_product_info.GetAllProductInfoDataResponse;
-import com.example.pointtosellpractice.model_class.product.GetProductDataResponse;
+import com.example.pointtosellpractice.product.get_product.GetProductDataResponse;
 import com.example.pointtosellpractice.product.create_product.ProductDataResponse;
 
 import okhttp3.MultipartBody;

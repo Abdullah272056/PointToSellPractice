@@ -1,4 +1,4 @@
-package com.example.pointtosellpractice;
+package com.example.pointtosellpractice.customer;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.pointtosellpractice.R;
 import com.example.pointtosellpractice.customer.pay_due.DuePayDataResponse;
 import com.example.pointtosellpractice.customer.pay_due.PayData;
 import com.example.pointtosellpractice.customer.single_customer.SingleCustomerGetResponse;

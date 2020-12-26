@@ -22,18 +22,18 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".auth.AboutMeActivity"></activity>
-        <activity android:name=".CreateInVoice_Activity" />
-        <activity android:name=".SellInfoByDayActivity" />
+        <activity android:name=".invoice.CreateInVoice_Activity" />
+        <activity android:name=".customer.SellInfoByDayActivity" />
         <activity android:name=".OthersInformation" />
-        <activity android:name=".CustomerAllInfoActivity" />
-        <activity android:name=".SellDetailsActivity" />
-        <activity android:name=".SingleCustomerTotalSellActivity" />
-        <activity android:name=".DuePayHistory" />
+        <activity android:name=".customer.CustomerAllInfoActivity" />
+        <activity android:name=".customer.SellDetailsActivity" />
+        <activity android:name=".customer.SingleCustomerTotalSellActivity" />
+        <activity android:name=".customer.DuePayHistory" />
         <activity android:name=".product.ProductActivity" />
-        <activity android:name=".InVoiceDetails" />
+        <activity android:name=".invoice.InVoiceDetails" />
         <activity android:name=".invoice.InVoiceActivity" />
         <activity android:name=".UpComingFeature" />
-        <activity android:name=".PayDueActivity" />
+        <activity android:name=".customer.PayDueActivity" />
         <activity android:name=".customer.CustomerActivity" />
         <activity
             android:name=".HomePage"

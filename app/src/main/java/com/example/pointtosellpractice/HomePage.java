@@ -19,7 +19,7 @@ import android.widget.Toast;
 import com.example.pointtosellpractice.auth.AboutMeActivity;
 import com.example.pointtosellpractice.auth.LoginActivity;
 import com.example.pointtosellpractice.customer.CustomerActivity;
-import com.example.pointtosellpractice.customer.CustomerCountResponse;
+import com.example.pointtosellpractice.customer.get_customer.CustomerCountResponse;
 import com.example.pointtosellpractice.invoice.InVoiceActivity;
 import com.example.pointtosellpractice.invoice.get_all_sell_info.GetAllSellInfoResponse;
 import com.example.pointtosellpractice.product.get_all_product_info.GetAllProductInfoDataResponse;

@@ -1,4 +1,4 @@
-package com.example.pointtosellpractice;
+package com.example.pointtosellpractice.customer;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,36 +9,37 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
-import com.example.pointtosellpractice.customer.single_customer.SingleCustomerDuePayCustomAdapter;
-import com.example.pointtosellpractice.customer.single_customer.SingleCustomerDuePayHistory;
+import com.example.pointtosellpractice.R;
 import com.example.pointtosellpractice.customer.single_customer.SingleCustomerGetResponse;
+import com.example.pointtosellpractice.customer.single_customer.SingleCustomerTotalSell;
+import com.example.pointtosellpractice.customer.single_customer.SingleCustomerTotalSellCustomAdapter;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DuePayHistory extends AppCompatActivity {
-        String customer_id,token;
-    SingleCustomerDuePayCustomAdapter singleCustomerDuePayCustomAdapter;
-    List<SingleCustomerDuePayHistory> singleCustomerDuePayHistoryList;
+public class SingleCustomerTotalSellActivity extends AppCompatActivity {
+    String customer_id,token;
 
-    RecyclerView duePayHistoryRecyclerView;
+    SingleCustomerTotalSellCustomAdapter singleCustomerTotalSellCustomAdapter;
+    List<SingleCustomerTotalSell> singleCustomerTotalSellList;
+
+    RecyclerView singleCustomerTotalSellRecyclerView;
     ApiInterface apiInterface;
-    ProgressBar pauDueHistoryProgressBar;
+    ProgressBar singleCustomerTotalSellProgressBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.setTitle("Due Pay History");
-        setContentView(R.layout.activity_due_pay_history);
+        this.setTitle("Single customer total sell");
+        setContentView(R.layout.activity_single_customer_total_sell);
 
         // for add back Button in title bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -47,50 +48,44 @@ public class DuePayHistory extends AppCompatActivity {
         //receive data
         customer_id= getIntent().getStringExtra("customerId");
         token=getIntent().getStringExtra("token");
-
         //recycler view finding
-        duePayHistoryRecyclerView=findViewById(R.id.duePayHistoryRecyclerViewId);
-        //ProgressBar finding
-        pauDueHistoryProgressBar=findViewById(R.id.pauDueHistoryProgressBarId);
+        singleCustomerTotalSellRecyclerView=findViewById(R.id.singleCustomerTotalSellRecyclerViewId);
+        //progressbar finding
+        singleCustomerTotalSellProgressBar=findViewById(R.id.singleCustomerTotalSellProgressBarId);
 
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
-        singleCustomerInformation();
-
+        singleCustomerTotalSell();
     }
 
-    public void singleCustomerInformation(){
+
+    public void singleCustomerTotalSell(){
         apiInterface.getSingleCustomerInformation("Bearer "+token,customer_id)
                 .enqueue(new Callback<SingleCustomerGetResponse>() {
                     @Override
                     public void onResponse(Call<SingleCustomerGetResponse> call, Response<SingleCustomerGetResponse> response) {
                         SingleCustomerGetResponse singleCustomerGetResponse=response.body();
-
+                        singleCustomerTotalSellProgressBar.setVisibility(View.INVISIBLE);
                         if (singleCustomerGetResponse.getSuccess()==true){
-                            pauDueHistoryProgressBar.setVisibility(View.INVISIBLE);
-                            singleCustomerDuePayHistoryList=new ArrayList<>();
-                            singleCustomerDuePayHistoryList.addAll(response.body().getSingleCustomerInformation().getDuePayHistory());
+                            singleCustomerTotalSellList=new ArrayList<>();
+                            singleCustomerTotalSellList.addAll(response.body().getSingleCustomerInformation().getTotalSell());
                             // reverse list inserting
-                            Collections.reverse(singleCustomerDuePayHistoryList);
-                            if (singleCustomerDuePayHistoryList.size()>0){
-                                singleCustomerDuePayCustomAdapter = new SingleCustomerDuePayCustomAdapter(DuePayHistory.this,token,singleCustomerDuePayHistoryList);
-                                duePayHistoryRecyclerView.setLayoutManager(new LinearLayoutManager(DuePayHistory.this));
-                                duePayHistoryRecyclerView.setAdapter(singleCustomerDuePayCustomAdapter);
+                            //Collections.reverse(singleCustomerTotalSellList);
+                            if (singleCustomerTotalSellList.size()>0){
+                                singleCustomerTotalSellCustomAdapter = new SingleCustomerTotalSellCustomAdapter(SingleCustomerTotalSellActivity.this,token,singleCustomerTotalSellList);
+                                singleCustomerTotalSellRecyclerView.setLayoutManager(new LinearLayoutManager(SingleCustomerTotalSellActivity.this));
+                                singleCustomerTotalSellRecyclerView.setAdapter(singleCustomerTotalSellCustomAdapter);
                             }
 
-                            Log.e("asas",String.valueOf(singleCustomerDuePayHistoryList.size()));
+                            Log.e("oooo",String.valueOf(singleCustomerTotalSellList.size()));
                         }
-                        Toast.makeText(DuePayHistory.this, "qqqq", Toast.LENGTH_SHORT).show();
-                        Toast.makeText(DuePayHistory.this, singleCustomerGetResponse.getMsg().toString(), Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onFailure(Call<SingleCustomerGetResponse> call, Throwable t) {
-                        pauDueHistoryProgressBar.setVisibility(View.INVISIBLE);
+                        singleCustomerTotalSellProgressBar.setVisibility(View.INVISIBLE);
                     }
                 });
     }
-
-
 
     // title bar  button clicked
     @Override

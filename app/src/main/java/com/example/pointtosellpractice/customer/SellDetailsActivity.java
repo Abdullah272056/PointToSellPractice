@@ -1,28 +1,25 @@
-package com.example.pointtosellpractice;
+package com.example.pointtosellpractice.customer;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.pointtosellpractice.R;
 import com.example.pointtosellpractice.customer.single_customer.SingleCustomerGetResponse;
 import com.example.pointtosellpractice.customer.single_customer.SingleCustomerProduct;
 import com.example.pointtosellpractice.customer.single_customer.SingleCustomerSellsDetailsCustomAdapter;
 import com.example.pointtosellpractice.customer.single_customer.SingleCustomerTotalSell;
-import com.example.pointtosellpractice.customer.single_customer.SingleCustomerTotalSellCustomAdapter;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import retrofit2.Call;

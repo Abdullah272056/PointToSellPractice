@@ -1,4 +1,4 @@
-package com.example.pointtosellpractice;
+package com.example.pointtosellpractice.customer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.pointtosellpractice.R;
 import com.example.pointtosellpractice.invoice.get_all_sell_info.GetSellInfoByDayResponse;
 import com.example.pointtosellpractice.invoice.get_all_sell_info.GetSellInfoByDays;
 import com.example.pointtosellpractice.retrofit.ApiInterface;

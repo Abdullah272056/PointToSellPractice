@@ -1,4 +1,4 @@
-package com.example.pointtosellpractice.customer;
+package com.example.pointtosellpractice.customer.get_customer;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -21,12 +21,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.pointtosellpractice.CustomerAllInfoActivity;
 import com.example.pointtosellpractice.R;
+import com.example.pointtosellpractice.customer.CustomerActivity;
+import com.example.pointtosellpractice.customer.CustomerAllInfoActivity;
 import com.example.pointtosellpractice.customer.create_customer.AddCustomerResponse;
 import com.example.pointtosellpractice.customer.create_customer.CustomerData;
 import com.example.pointtosellpractice.customer.delete_customer.CustomerDeleteResponse;
-import com.example.pointtosellpractice.customer.get_customer.CustomerInformationData;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 

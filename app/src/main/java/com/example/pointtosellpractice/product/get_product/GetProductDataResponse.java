@@ -1,5 +1,6 @@
-package com.example.pointtosellpractice.model_class.product;
+package com.example.pointtosellpractice.product.get_product;
 
+import com.example.pointtosellpractice.product.delete_product.GetProductData;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

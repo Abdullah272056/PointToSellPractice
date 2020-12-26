@@ -1,4 +1,4 @@
-package com.example.pointtosellpractice.invoice;
+package com.example.pointtosellpractice.invoice.get_invoice;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,9 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.pointtosellpractice.InVoiceDetails;
 import com.example.pointtosellpractice.R;
-import com.example.pointtosellpractice.invoice.get_invoice.Invoice;
+import com.example.pointtosellpractice.invoice.InVoiceDetails;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 

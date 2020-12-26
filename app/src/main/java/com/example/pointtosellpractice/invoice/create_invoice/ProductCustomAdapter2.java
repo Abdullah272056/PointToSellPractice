@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pointtosellpractice.R;
-import com.example.pointtosellpractice.model_class.product.GetProductData;
+import com.example.pointtosellpractice.product.delete_product.GetProductData;
 
 import java.util.List;
 

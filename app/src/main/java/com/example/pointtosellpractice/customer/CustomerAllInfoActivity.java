@@ -1,4 +1,4 @@
-package com.example.pointtosellpractice;
+package com.example.pointtosellpractice.customer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.pointtosellpractice.R;
 
 public class CustomerAllInfoActivity extends AppCompatActivity {
         TextView customerNameTextView,customerDataTextView,customerPayDueTextView,

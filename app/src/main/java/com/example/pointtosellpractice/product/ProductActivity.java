@@ -33,8 +33,8 @@ import android.widget.Toast;
 
 import com.example.pointtosellpractice.HomePage;
 import com.example.pointtosellpractice.R;
-import com.example.pointtosellpractice.model_class.product.GetProductData;
-import com.example.pointtosellpractice.model_class.product.GetProductDataResponse;
+import com.example.pointtosellpractice.product.delete_product.GetProductData;
+import com.example.pointtosellpractice.product.get_product.GetProductDataResponse;
 import com.example.pointtosellpractice.product.create_product.ProductDataResponse;
 import com.example.pointtosellpractice.product.get_product.ProductCustomAdapter;
 import com.example.pointtosellpractice.retrofit.ApiInterface;

@@ -1,4 +1,4 @@
-package com.example.pointtosellpractice;
+package com.example.pointtosellpractice.invoice;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,6 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.pointtosellpractice.R;
 import com.example.pointtosellpractice.invoice.single_invoice.SingleInvoiceCustomAdapter;
 import com.example.pointtosellpractice.invoice.single_invoice.SingleInvoiceData;
 import com.example.pointtosellpractice.invoice.single_invoice.SingleInvoiceGetResponse;

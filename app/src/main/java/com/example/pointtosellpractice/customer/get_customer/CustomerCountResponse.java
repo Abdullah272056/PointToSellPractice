@@ -1,4 +1,4 @@
-package com.example.pointtosellpractice.customer;
+package com.example.pointtosellpractice.customer.get_customer;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
