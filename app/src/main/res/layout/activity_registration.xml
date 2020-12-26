@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:padding="10dp"
     android:background="@drawable/download1"
-    tools:context=".RegistrationActivity">
+    tools:context=".auth.RegistrationActivity">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">

@@ -1,27 +1,27 @@
 package com.example.pointtosellpractice.retrofit;
 
-import com.example.pointtosellpractice.authorization.ChangePasswordGetResponse;
-import com.example.pointtosellpractice.authorization.ChangePasswordSetResponse;
-import com.example.pointtosellpractice.create_invoice.SetInVoiceResponse;
-import com.example.pointtosellpractice.customer.AddCustomerResponse;
+import com.example.pointtosellpractice.auth.change_password.ChangePasswordGetResponse;
+import com.example.pointtosellpractice.auth.change_password.ChangePasswordSetResponse;
+import com.example.pointtosellpractice.invoice.create_invoice.SetInVoiceResponse;
+import com.example.pointtosellpractice.customer.create_customer.AddCustomerResponse;
 import com.example.pointtosellpractice.customer.CustomerCountResponse;
-import com.example.pointtosellpractice.customer.CustomerData;
-import com.example.pointtosellpractice.customer.CustomerDeleteResponse;
-import com.example.pointtosellpractice.customer.CustomerInformationDataResponse;
+import com.example.pointtosellpractice.customer.create_customer.CustomerData;
+import com.example.pointtosellpractice.customer.delete_customer.CustomerDeleteResponse;
+import com.example.pointtosellpractice.customer.get_customer.CustomerInformationDataResponse;
 import com.example.pointtosellpractice.customer.pay_due.DuePayDataResponse;
 import com.example.pointtosellpractice.customer.pay_due.PayData;
 import com.example.pointtosellpractice.customer.single_customer.SingleCustomerGetResponse;
-import com.example.pointtosellpractice.model_class.LogInResponse;
-import com.example.pointtosellpractice.model_class.RegistrationData;
-import com.example.pointtosellpractice.model_class.LogInData;
-import com.example.pointtosellpractice.model_class.RegistrationResponse;
-import com.example.pointtosellpractice.model_class.invoice.GetAllSellInfoResponse;
-import com.example.pointtosellpractice.model_class.invoice.GetSellInfoByDayResponse;
-import com.example.pointtosellpractice.model_class.invoice.get_all_invoice.InVoiceResponse;
-import com.example.pointtosellpractice.model_class.invoice.single_invoice.SingleInvoiceGetResponse;
-import com.example.pointtosellpractice.model_class.owner_all_information.OwnerDataWithResponse;
-import com.example.pointtosellpractice.model_class.product.DeleteProductDataResponse;
-import com.example.pointtosellpractice.model_class.product.GetAllProductInfoDataResponse;
+import com.example.pointtosellpractice.auth.log_in.LogInResponse;
+import com.example.pointtosellpractice.auth.register.RegistrationData;
+import com.example.pointtosellpractice.auth.log_in.LogInData;
+import com.example.pointtosellpractice.auth.register.RegistrationResponse;
+import com.example.pointtosellpractice.invoice.get_all_sell_info.GetAllSellInfoResponse;
+import com.example.pointtosellpractice.invoice.get_all_sell_info.GetSellInfoByDayResponse;
+import com.example.pointtosellpractice.invoice.get_invoice.InVoiceResponse;
+import com.example.pointtosellpractice.invoice.single_invoice.SingleInvoiceGetResponse;
+import com.example.pointtosellpractice.auth.owner_all_information.OwnerDataWithResponse;
+import com.example.pointtosellpractice.product.delete_product.DeleteProductDataResponse;
+import com.example.pointtosellpractice.product.get_all_product_info.GetAllProductInfoDataResponse;
 import com.example.pointtosellpractice.model_class.product.GetProductDataResponse;
 import com.example.pointtosellpractice.product.create_product.ProductDataResponse;
 
@@ -131,7 +131,7 @@ public interface ApiInterface {
     // Get all product info
     @GET("api/product/info")
     Call<GetAllProductInfoDataResponse> getAllProductInfo(@Header("Authorization") String authorization);
-  // create Product
+  // create ProductActivity
   @Multipart
   @POST("api/product")
   Call<ProductDataResponse> uploadImage(@Header("Authorization") String authorization,

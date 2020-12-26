@@ -21,9 +21,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.pointtosellpractice.CustomerActivity;
 import com.example.pointtosellpractice.CustomerAllInfoActivity;
 import com.example.pointtosellpractice.R;
+import com.example.pointtosellpractice.customer.create_customer.AddCustomerResponse;
+import com.example.pointtosellpractice.customer.create_customer.CustomerData;
+import com.example.pointtosellpractice.customer.delete_customer.CustomerDeleteResponse;
+import com.example.pointtosellpractice.customer.get_customer.CustomerInformationData;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 
@@ -144,9 +147,12 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
                     .enqueue(new Callback<CustomerDeleteResponse>() {
                         @Override
                         public void onResponse(Call<CustomerDeleteResponse> call, Response<CustomerDeleteResponse> response) {
-                            CustomerDeleteResponse customerDeleteResponse=response.body();
-                            if (response.body().getSuccess()==true){
-                                Toast.makeText(context, "success delete", Toast.LENGTH_SHORT).show();
+                           // CustomerDeleteResponse customerDeleteResponse=response.body();
+                            if (response.isSuccessful()){
+                                if (response.body().getSuccess()==true){
+                                    Toast.makeText(context, "success delete", Toast.LENGTH_SHORT).show();
+
+                                }
                             }
 
                             ((CustomerActivity)context).getAllCustomer();

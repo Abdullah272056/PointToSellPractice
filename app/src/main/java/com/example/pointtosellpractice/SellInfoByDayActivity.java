@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -13,8 +12,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.pointtosellpractice.model_class.invoice.GetSellInfoByDayResponse;
-import com.example.pointtosellpractice.model_class.invoice.GetSellInfoByDays;
+import com.example.pointtosellpractice.invoice.get_all_sell_info.GetSellInfoByDayResponse;
+import com.example.pointtosellpractice.invoice.get_all_sell_info.GetSellInfoByDays;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 

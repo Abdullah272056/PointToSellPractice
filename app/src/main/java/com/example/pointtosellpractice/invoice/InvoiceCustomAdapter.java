@@ -6,10 +6,7 @@ import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,17 +15,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pointtosellpractice.InVoiceDetails;
 import com.example.pointtosellpractice.R;
-import com.example.pointtosellpractice.customer.CustomerCustomAdapter;
-import com.example.pointtosellpractice.customer.CustomerData;
-import com.example.pointtosellpractice.customer.CustomerInformationData;
-import com.example.pointtosellpractice.model_class.invoice.get_all_invoice.Invoice;
+import com.example.pointtosellpractice.invoice.get_invoice.Invoice;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;

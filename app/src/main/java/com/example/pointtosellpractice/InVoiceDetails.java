@@ -12,12 +12,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.pointtosellpractice.model_class.invoice.get_all_invoice.Invoice;
-import com.example.pointtosellpractice.model_class.invoice.single_invoice.SingleInvoiceCustomAdapter;
-import com.example.pointtosellpractice.model_class.invoice.single_invoice.SingleInvoiceData;
-import com.example.pointtosellpractice.model_class.invoice.single_invoice.SingleInvoiceGetResponse;
-import com.example.pointtosellpractice.model_class.invoice.single_invoice.SingleInvoiceProductData;
-import com.example.pointtosellpractice.model_class.owner_all_information.OwnerDataWithResponse;
+import com.example.pointtosellpractice.invoice.single_invoice.SingleInvoiceCustomAdapter;
+import com.example.pointtosellpractice.invoice.single_invoice.SingleInvoiceData;
+import com.example.pointtosellpractice.invoice.single_invoice.SingleInvoiceGetResponse;
+import com.example.pointtosellpractice.invoice.single_invoice.SingleInvoiceProductData;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 

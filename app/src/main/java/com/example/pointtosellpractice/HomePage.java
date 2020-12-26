@@ -16,14 +16,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.pointtosellpractice.auth.AboutMeActivity;
+import com.example.pointtosellpractice.auth.LoginActivity;
+import com.example.pointtosellpractice.customer.CustomerActivity;
 import com.example.pointtosellpractice.customer.CustomerCountResponse;
-import com.example.pointtosellpractice.model_class.invoice.GetAllSellInfoResponse;
-import com.example.pointtosellpractice.model_class.product.GetAllProductInfoDataResponse;
+import com.example.pointtosellpractice.invoice.InVoiceActivity;
+import com.example.pointtosellpractice.invoice.get_all_sell_info.GetAllSellInfoResponse;
+import com.example.pointtosellpractice.product.get_all_product_info.GetAllProductInfoDataResponse;
+import com.example.pointtosellpractice.product.ProductActivity;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 import com.google.android.material.navigation.NavigationView;
-
-import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -85,7 +88,7 @@ public class HomePage extends AppCompatActivity {
         customerTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Intent intent=new Intent(HomePage.this,CustomerActivity.class);
+               Intent intent=new Intent(HomePage.this, CustomerActivity.class);
                intent.putExtra("token",token);
                startActivity(intent);
             }
@@ -93,7 +96,7 @@ public class HomePage extends AppCompatActivity {
         productTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(HomePage.this,Product.class);
+                Intent intent=new Intent(HomePage.this, ProductActivity.class);
                 intent.putExtra("token",token);
                 startActivity(intent);
             }
@@ -166,14 +169,14 @@ public class HomePage extends AppCompatActivity {
                 finish();
                 break;
             case R.id.productItemIdId:
-                intent=new Intent(HomePage.this,Product.class);
+                intent=new Intent(HomePage.this, ProductActivity.class);
                 intent.putExtra("token",token);
                 startActivity(intent);
                 finish();
                 break;
                 case R.id.logOutId:
                     sharePref.rememberData(HomePage.this,"","");
-                    intent=new Intent(HomePage.this,LoginActivity.class);
+                    intent=new Intent(HomePage.this, LoginActivity.class);
                     intent.putExtra("token",token);
                     startActivity(intent);
                     finish();
@@ -185,7 +188,7 @@ public class HomePage extends AppCompatActivity {
                 finish();
                 break;
             case R.id.dashBoardAllDataItemIdId:
-                intent=new Intent(HomePage.this,AboutMeActivity.class);
+                intent=new Intent(HomePage.this, AboutMeActivity.class);
                 intent.putExtra("token",token);
                 startActivity(intent);
                 finish();
@@ -284,8 +287,8 @@ public class HomePage extends AppCompatActivity {
                     if (response.body().getSuccess()==true){
                        // GetAllProductInfoDataResponse getAllProductInfoDataResponse=response.body();
                         totalProductCostTextView.setText(response.body().getGetAllProductInfoData().getTotalProductCost().toString());
-                        totalProductStockTextView.setText("Product in stock "+response.body().getGetAllProductInfoData().getTotalProduct().toString());
-                        totalProductTypeTextView.setText("Product type "+response.body().getGetAllProductInfoData().getTotalProductType().toString());
+                        totalProductStockTextView.setText("ProductActivity in stock "+response.body().getGetAllProductInfoData().getTotalProduct().toString());
+                        totalProductTypeTextView.setText("ProductActivity type "+response.body().getGetAllProductInfoData().getTotalProductType().toString());
                     }
 
 

@@ -12,8 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pointtosellpractice.customer.CustomerCountResponse;
-import com.example.pointtosellpractice.model_class.invoice.GetAllSellInfoResponse;
-import com.example.pointtosellpractice.model_class.product.GetAllProductInfoDataResponse;
+import com.example.pointtosellpractice.invoice.get_all_sell_info.GetAllSellInfoResponse;
+import com.example.pointtosellpractice.product.get_all_product_info.GetAllProductInfoDataResponse;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 
