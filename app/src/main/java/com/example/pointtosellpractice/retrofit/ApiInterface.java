@@ -2,6 +2,8 @@ package com.example.pointtosellpractice.retrofit;
 
 import com.example.pointtosellpractice.auth.change_password.ChangePasswordGetResponse;
 import com.example.pointtosellpractice.auth.change_password.ChangePasswordSetResponse;
+import com.example.pointtosellpractice.auth.delete_user.DeleteUserGetDataResponse;
+import com.example.pointtosellpractice.auth.delete_user.DeleteUserSetDataResponse;
 import com.example.pointtosellpractice.invoice.create_invoice.SetInVoiceResponse;
 import com.example.pointtosellpractice.customer.create_customer.AddCustomerResponse;
 import com.example.pointtosellpractice.customer.get_customer.CustomerCountResponse;
@@ -61,6 +63,9 @@ public interface ApiInterface {
   @PUT("api/auth/change-password")
   Call<ChangePasswordGetResponse> changePassword(@Header("Authorization") String authorization, @Body ChangePasswordSetResponse changePasswordSetResponse);
 
+  //delete user
+  @POST("api/auth/delete")
+  Call<DeleteUserGetDataResponse> deleteUser(@Header("Authorization") String authorization, @Body DeleteUserSetDataResponse deleteUserSetDataResponse);
 
 
 
