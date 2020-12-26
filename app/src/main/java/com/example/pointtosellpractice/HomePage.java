@@ -91,6 +91,7 @@ public class HomePage extends AppCompatActivity {
                Intent intent=new Intent(HomePage.this, CustomerActivity.class);
                intent.putExtra("token",token);
                startActivity(intent);
+                finish();
             }
         });
         productTextView.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +100,7 @@ public class HomePage extends AppCompatActivity {
                 Intent intent=new Intent(HomePage.this, ProductActivity.class);
                 intent.putExtra("token",token);
                 startActivity(intent);
+                finish();
             }
         });
         invoiceTextView.setOnClickListener(new View.OnClickListener() {
@@ -107,6 +109,7 @@ public class HomePage extends AppCompatActivity {
                 Intent intent=new Intent(HomePage.this, InVoiceActivity.class);
                 intent.putExtra("token",token);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -116,6 +119,7 @@ public class HomePage extends AppCompatActivity {
                 Intent intent=new Intent(HomePage.this, OthersInformation.class);
                 intent.putExtra("token",token);
                 startActivity(intent);
+
             }
         });
 
