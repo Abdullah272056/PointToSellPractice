@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -38,8 +39,10 @@ public class InVoiceActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setTitle("InVoice List");
-
         setContentView(R.layout.activity_in_voice);
+        // for add back Button in title bar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         invoiceRecyclerView=findViewById(R.id.invoiceRecyclerViewId);
         invoiceProgressBar=findViewById(R.id.invoiceProgressBarId);
         addInvoiceButton=findViewById(R.id.addInvoiceButtonId);
@@ -104,5 +107,16 @@ public class InVoiceActivity extends AppCompatActivity{
         intent.putExtra("token",token);
         startActivity(intent);
         finish();
+    }
+    // title bar  button clicked
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
