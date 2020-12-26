@@ -16,7 +16,7 @@
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
             android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:text="Are you want to delete you account?"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -29,6 +29,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <EditText
+            android:id="@+id/passwordEditTextId"
+            android:layout_margin="10dp"
             android:hint="Enter your password"
             android:background="@drawable/back2"
             android:inputType="textPassword"
@@ -36,16 +38,44 @@
             android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+<LinearLayout
+    android:weightSum="2"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <Button
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:id="@+id/deleteCancelButtonId"
+        android:layout_marginTop="30dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="Cancel"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1"
+        android:id="@+id/deleteConfirmButtonId"
+        android:layout_marginTop="30dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="Delete"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
 
-        <Button
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:text="Delete comfirm"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+</LinearLayout>
+
+
+
 
 
     </LinearLayout>

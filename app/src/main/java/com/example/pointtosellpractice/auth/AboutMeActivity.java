@@ -81,6 +81,15 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
         deleteAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AlertDialog.Builder builder     =new AlertDialog.Builder(AboutMeActivity.this);
+                LayoutInflater layoutInflater   =LayoutInflater.from(AboutMeActivity.this);
+                View view                       =layoutInflater.inflate(R.layout.delete_user_dialog_box,null);
+                builder.setView(view);
+                final AlertDialog alertDialog   = builder.create();
+
+                alertDialog.show();
+
+
             }
         });
 
