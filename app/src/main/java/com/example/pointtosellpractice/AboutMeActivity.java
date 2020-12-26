@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -46,6 +47,9 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_me);
+        // for add back Button in title bar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         //receive user token
         token= getIntent().getStringExtra("token");
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
@@ -202,5 +206,18 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
         intent.putExtra("token",token);
         startActivity(intent);
         finish();
+    }
+
+
+    // title bar  button clicked
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
