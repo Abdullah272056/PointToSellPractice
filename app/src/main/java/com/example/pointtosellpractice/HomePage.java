@@ -250,7 +250,6 @@ public class HomePage extends AppCompatActivity {
         });
     }
 
-
     // getting  Get all sale info
     private void getAllSellInfo() {
         apiInterface.getAllSellInfo("Bearer "+token).enqueue(new Callback<GetAllSellInfoResponse>() {
@@ -275,7 +274,6 @@ public class HomePage extends AppCompatActivity {
             public void onFailure(Call<GetAllSellInfoResponse> call, Throwable t) {
                 Toast.makeText(HomePage.this, "failed try again", Toast.LENGTH_SHORT).show();
 
-
             }
         });
 
@@ -291,11 +289,9 @@ public class HomePage extends AppCompatActivity {
                     if (response.body().getSuccess()==true){
                        // GetAllProductInfoDataResponse getAllProductInfoDataResponse=response.body();
                         totalProductCostTextView.setText(response.body().getGetAllProductInfoData().getTotalProductCost().toString());
-                        totalProductStockTextView.setText("ProductActivity in stock "+response.body().getGetAllProductInfoData().getTotalProduct().toString());
-                        totalProductTypeTextView.setText("ProductActivity type "+response.body().getGetAllProductInfoData().getTotalProductType().toString());
+                        totalProductStockTextView.setText("Product in stock "+response.body().getGetAllProductInfoData().getTotalProduct().toString());
+                        totalProductTypeTextView.setText("Product type "+response.body().getGetAllProductInfoData().getTotalProductType().toString());
                     }
-
-
                 }else {
                     Toast.makeText(HomePage.this, "No data found", Toast.LENGTH_SHORT).show();
                 }

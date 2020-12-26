@@ -57,7 +57,7 @@
     <EditText
         android:id="@+id/productStockEditTextId"
         android:hint="product stock"
-        android:inputType="text"
+        android:inputType="number"
         android:background="#FAF8F8"
         android:layout_margin="5dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
