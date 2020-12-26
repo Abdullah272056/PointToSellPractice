@@ -78,6 +78,11 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
                 Toast.makeText(AboutMeActivity.this, "Sorry! It is not available now !", Toast.LENGTH_SHORT).show();
             }
         });
+        deleteAccountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
 
 
     }
