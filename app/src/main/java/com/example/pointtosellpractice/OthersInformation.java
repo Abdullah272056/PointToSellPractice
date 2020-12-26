@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -36,8 +37,10 @@ public class OthersInformation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setTitle("More Info");
-
         setContentView(R.layout.activity_others_information);
+        // for add back Button in title bar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         //finding textView
         customerCountTextView=findViewById(R.id.customerCountId);
         totalSaleAmountTextView=findViewById(R.id.totalSaleAmountTextViewId);
@@ -143,5 +146,15 @@ public class OthersInformation extends AppCompatActivity {
             }
         });
     }
-
+    // title bar  button clicked
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }
