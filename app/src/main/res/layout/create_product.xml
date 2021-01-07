@@ -91,6 +91,7 @@
             android:layout_width="150dp"
             android:layout_height="150dp">
             <ImageView
+                android:scaleType="centerCrop"
                 android:id="@+id/productSelectImageViewId"
                 android:layout_gravity="center"
                 android:background="@drawable/ic_baseline_add_24"

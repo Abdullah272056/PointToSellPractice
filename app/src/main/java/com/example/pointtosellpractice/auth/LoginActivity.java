@@ -53,6 +53,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         resetPasswordTextView=findViewById(R.id.resetPasswordTextViewId);
         logInProgressBar=findViewById(R.id.signInProgressBarId);
         rememberCheckBox=findViewById(R.id.rememberCheckBoxId);
+
         // listener set
         signInButton.setOnClickListener(this);
         signUpTextView.setOnClickListener(this);
@@ -66,6 +67,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         sharePref=new SharePref();
         String emailValue= sharePref.loadRememberEmail(LoginActivity.this);
         String passwordValue= sharePref.loadRememberPassword(LoginActivity.this);
+
         if (!emailValue.isEmpty() && !passwordValue.isEmpty()){
             signInEmailEditText.setText(String.valueOf(emailValue));
             signInPasswordEditText.setText(String.valueOf(passwordValue));
@@ -130,10 +132,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onResponse(Call<LogInResponse> call, Response<LogInResponse> response) {
 
-                if (response.isSuccessful()){
-                    // receive response body
-                    LogInResponse logInResponse=response.body();
-                    if (logInResponse.getSuccess()==true){
+                if (response.code()==200){
+                    if (response.body().getSuccess()==true){
+
                         sharePref=new SharePref();
                         if (rememberCheckBox.isChecked()){
                             sharePref.rememberData(LoginActivity.this,signInEmail,signInPassword);
@@ -143,15 +144,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         intent.putExtra("token",response.body().getToken());
                         startActivity(intent);
                         finish();
+
                     }
-                    Log.e("res",logInResponse.getToken().toString());
+                    Log.e("res",response.body().getToken().toString());
+                }
+               else if (response.code()==404){
+                    signInEmailEditText.setError("User not registered");
+                    signInEmailEditText.requestFocus();
+                    Toast.makeText(LoginActivity.this, "User not found", Toast.LENGTH_SHORT).show();
 
                 }
-
-                else {
-                    Toast.makeText(LoginActivity.this, "password can not match", Toast.LENGTH_SHORT).show();
-                    signInPasswordEditText.setError("password can not match");
+               else if (response.code()==400){
+                    Toast.makeText(LoginActivity.this, "password incorrect", Toast.LENGTH_SHORT).show();
+                    signInPasswordEditText.setError("incorrect password");
                     signInPasswordEditText.requestFocus();
+                }else {
+                    Toast.makeText(LoginActivity.this, "Some error! try again", Toast.LENGTH_SHORT).show();
+
                 }
 
                 logInProgressBar.setVisibility(View.GONE);

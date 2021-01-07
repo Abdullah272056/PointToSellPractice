@@ -25,6 +25,7 @@
                 android:layout_weight=".7">
 
                 <ImageView
+                    android:scaleType="centerCrop"
                     android:padding="5dp"
                     android:background="#8F8D8D"
                     android:src="@drawable/loading"
