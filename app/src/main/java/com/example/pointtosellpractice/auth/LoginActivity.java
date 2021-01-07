@@ -160,7 +160,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     signInPasswordEditText.requestFocus();
                 }else {
                     Toast.makeText(LoginActivity.this, "Some error! try again", Toast.LENGTH_SHORT).show();
-
                 }
 
                 logInProgressBar.setVisibility(View.GONE);

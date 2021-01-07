@@ -146,25 +146,26 @@ ProgressBar registrationProgressBar;
                 apiInterface.registrationData(registrationData).enqueue(new Callback<RegistrationResponse>() {
                     @Override
                     public void onResponse(Call<RegistrationResponse> call, Response<RegistrationResponse> response) {
-                        if (response.isSuccessful()){
-                            RegistrationResponse registrationResponse=response.body();
-                            if (registrationResponse.getSuccess()==true){
-                                Toast.makeText(RegistrationActivity.this,registrationResponse.getData().toString() , Toast.LENGTH_LONG).show();
-                            }else {
-                                Toast.makeText(RegistrationActivity.this,registrationResponse.getData().toString() , Toast.LENGTH_LONG).show();
+
+                            if (response.code()==200){
+                                Toast.makeText(RegistrationActivity.this,"Please check your email abdullah272056@gmail.com to complete signup process in order to use the application", Toast.LENGTH_LONG).show();
                             }
-
-                        }else {
-                            Toast.makeText(RegistrationActivity.this,"Try again" , Toast.LENGTH_LONG).show();
-
-                        }
+                            else if (response.code()==500){
+                                Toast.makeText(RegistrationActivity.this,"email can not valid" , Toast.LENGTH_LONG).show();
+                            }else if(response.code()==400){
+                                Toast.makeText(RegistrationActivity.this,"Email already Exits" , Toast.LENGTH_LONG).show();
+                            }
+                            else  {
+                                Toast.makeText(RegistrationActivity.this,"try again", Toast.LENGTH_LONG).show();
+                            }
+                            
                         registrationProgressBar.setVisibility(View.GONE);
                     }
 
                     @Override
                     public void onFailure(Call<RegistrationResponse> call, Throwable t) {
                         Log.e("wwe",t.getMessage().toString());
-                        Toast.makeText(RegistrationActivity.this, "fail", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegistrationActivity.this, "failed ! try again", Toast.LENGTH_SHORT).show();
                         registrationProgressBar.setVisibility(View.GONE);
 
                     }
