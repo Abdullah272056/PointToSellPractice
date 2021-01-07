@@ -117,17 +117,21 @@ public  void  deleteUser(){
                     .enqueue(new Callback<DeleteUserGetDataResponse>() {
                         @Override
                         public void onResponse(Call<DeleteUserGetDataResponse> call, Response<DeleteUserGetDataResponse> response) {
-                            if (response.isSuccessful()){
-                                if (response.body().getSuccess()==true){
-                                    Toast.makeText(AboutMeActivity.this, "Delete success", Toast.LENGTH_SHORT).show();
-                                    alertDialog.dismiss();
-                                    Intent intent=new Intent(AboutMeActivity.this,RegistrationActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                }else {
-                                    Toast.makeText(AboutMeActivity.this, "Try again", Toast.LENGTH_SHORT).show();
-                                }
-                            }else {
+                           if (response.code()==200){
+                               Toast.makeText(AboutMeActivity.this, "Delete success", Toast.LENGTH_SHORT).show();
+                               alertDialog.dismiss();
+                               Intent intent=new Intent(AboutMeActivity.this,RegistrationActivity.class);
+                               startActivity(intent);
+                               finish();
+                           }else if (response.code()==400){
+                               passwordEditText.setError("incorrect password");
+                               passwordEditText.requestFocus();
+                              // Toast.makeText(AboutMeActivity.this, "incorrect password", Toast.LENGTH_SHORT).show();
+
+                           }else if (response.code()==500){
+                               Toast.makeText(AboutMeActivity.this, "Cannot read property 'email' of null", Toast.LENGTH_SHORT).show();
+                           }
+                           else {
                                 Toast.makeText(AboutMeActivity.this, "Try again", Toast.LENGTH_SHORT).show();
                             }
                         }

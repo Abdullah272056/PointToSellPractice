@@ -158,7 +158,7 @@ ProgressBar registrationProgressBar;
                             else  {
                                 Toast.makeText(RegistrationActivity.this,"try again", Toast.LENGTH_LONG).show();
                             }
-                            
+
                         registrationProgressBar.setVisibility(View.GONE);
                     }
 
