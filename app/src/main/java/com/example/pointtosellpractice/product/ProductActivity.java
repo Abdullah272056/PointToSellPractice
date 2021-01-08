@@ -100,7 +100,7 @@ public class ProductActivity extends AppCompatActivity {
         unitTypeSpinner=findViewById(R.id.unitTypeSpinnerId);
 
         progressDialog = new ProgressDialog(ProductActivity.this);
-        progressDialog.setMessage("Image Upload....");
+        progressDialog.setMessage("Product Upload....");
 
         //alert dialog view show
 
@@ -124,24 +124,9 @@ public class ProductActivity extends AppCompatActivity {
         apiInterface.getAllProduct("Bearer "+token).enqueue(new Callback<GetProductDataResponse>() {
             @Override
             public void onResponse(Call<GetProductDataResponse> call, Response<GetProductDataResponse> response) {
-                GetProductDataResponse getProductDataResponse=response.body();
-        if (response.isSuccessful()){
+              
+               
 
-                if (getProductDataResponse.getSuccess()==true){
-                    getProductDataList=new ArrayList<>();
-                    getProductDataList.addAll(response.body().getProducts());
-                    Toast.makeText(ProductActivity.this, String.valueOf(getProductDataList.size()), Toast.LENGTH_SHORT).show();
-                    if (getProductDataList.size ()>0){
-                        productCustomAdapter = new ProductCustomAdapter(ProductActivity.this,token,getProductDataList);
-                        productRecyclerView.setLayoutManager(new LinearLayoutManager(ProductActivity.this));
-                        productRecyclerView.setAdapter(productCustomAdapter);
-                    }
-            }
-
-            }
-                else {
-                    Toast.makeText(ProductActivity.this, "", Toast.LENGTH_SHORT).show();
-                }
                 productProgressBar.setVisibility(View.GONE);
             }
             @Override
@@ -297,7 +282,7 @@ if (imageUri!=null){
     RequestBody description = RequestBody.create(MediaType.parse("multipart/form-data"), productDescription);
 
     apiInterface.uploadImage("Bearer "+token,imageFile,name,price,sellingPrice,unit,stock,description).
-            enqueue(new Callback<ProductDataResponse>() {
+            enqueue(new Callback<ProductDataResponse>(){
                 @Override
                 public void onResponse(Call<ProductDataResponse> call, Response<ProductDataResponse> response) {
                     if (response.code()==201){
