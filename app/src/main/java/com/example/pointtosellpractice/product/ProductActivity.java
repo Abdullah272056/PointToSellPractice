@@ -286,7 +286,7 @@ if (imageUri!=null){
     file = new File(path);
     MultipartBody.Part imageFile = null;
 
-    RequestBody requestFile = RequestBody.create(MediaType.parse("image/*"), file);
+    final RequestBody requestFile = RequestBody.create(MediaType.parse("image/*"), file);
     imageFile = MultipartBody.Part.createFormData("image", file.getName(), requestFile);
 
     RequestBody name = RequestBody.create(MediaType.parse("multipart/form-data"), productName);
@@ -300,22 +300,8 @@ if (imageUri!=null){
             enqueue(new Callback<ProductDataResponse>() {
                 @Override
                 public void onResponse(Call<ProductDataResponse> call, Response<ProductDataResponse> response) {
-                    // Log.e("eroor",new Gson().toJson(response.body()));
-                    if (response.isSuccessful()){
+                      
 
-                        if (response.body().getSuccess()==true){
-                            Toast.makeText(ProductActivity.this, "success", Toast.LENGTH_SHORT).show();
-                            alertDialog.dismiss();
-                            getAllProduct();
-                        }else {
-                            Toast.makeText(ProductActivity.this, "server error", Toast.LENGTH_SHORT).show();
-
-                        }
-                    }else {
-                        Log.e("ent",String.valueOf(response.message()));
-                        Toast.makeText(ProductActivity.this, String.valueOf(response.message()), Toast.LENGTH_SHORT).show();
-
-                    }
                     progressDialog.dismiss();
 
                 }

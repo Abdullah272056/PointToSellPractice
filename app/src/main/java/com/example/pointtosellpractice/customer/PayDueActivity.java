@@ -136,7 +136,7 @@ public class PayDueActivity extends AppCompatActivity {
                            cEmailTextView.setText("Email :  "+String.valueOf(response.body().getSingleCustomerInformation().getEmail()));
                            cAddressTextView.setText("Address :  "+String.valueOf(response.body().getSingleCustomerInformation().getAddress()));
                        }else {
-                           
+
                        }
 
                     }
