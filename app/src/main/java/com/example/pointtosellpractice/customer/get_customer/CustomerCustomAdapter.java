@@ -98,7 +98,7 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
         holder.editImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addCustomerInformation(position);
+                updateCustomerInformation(position);
 
             }
         });
@@ -179,7 +179,7 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
     alert.show();
 }
 
-    private void addCustomerInformation(final int position){
+    private void updateCustomerInformation(final int position){
 
         AlertDialog.Builder builder     =new AlertDialog.Builder(context);
         LayoutInflater layoutInflater   =LayoutInflater.from(context);
@@ -259,13 +259,9 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
                         .enqueue(new Callback<AddCustomerResponse>(){
                             @Override
                             public void onResponse(Call<AddCustomerResponse> call, Response<AddCustomerResponse> response) {
-                                AddCustomerResponse addCustomerResponse=response.body();
-                                if (addCustomerResponse.getSuccess()==true){
-                                    Toast.makeText(context, "Update successful", Toast.LENGTH_SHORT).show();
 
-                                }else {
-                                    Toast.makeText(context, String.valueOf(addCustomerResponse.getMsg()), Toast.LENGTH_SHORT).show();
-                                }
+                               
+
                                 alertDialog.dismiss();
                                 ((CustomerActivity)context).getAllCustomer();
                                 progressBar.setVisibility(View.GONE);
