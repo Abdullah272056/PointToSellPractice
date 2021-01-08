@@ -96,6 +96,12 @@ public class PayDueActivity extends AppCompatActivity {
                 .enqueue(new Callback<DuePayDataResponse>() {
                     @Override
                     public void onResponse(Call<DuePayDataResponse> call, Response<DuePayDataResponse> response) {
+
+//
+//                       if (response.code()==404){
+//                           Toast.makeText(PayDueActivity.this, "You send more amount than due", Toast.LENGTH_SHORT).show();
+//                       }else if (response)
+
                         assert response.body() != null;
                         if (response.body().getSuccess()){
                             Toast.makeText(PayDueActivity.this,response.body().getMsg() , Toast.LENGTH_SHORT).show();

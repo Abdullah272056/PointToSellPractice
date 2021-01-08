@@ -264,13 +264,13 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
                                     Toast.makeText(context, "Update successful", Toast.LENGTH_SHORT).show();
                                 }
                                 else if (response.code()==401){
-                                    Toast.makeText(context, "You are not authorized to access this route", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, "You are not authorized to access this route", Toast.LENGTH_LONG).show();
                                 }
                                 else if(response.code()==400){
-                                    Toast.makeText(context, "safe phone number", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, "safe phone number", Toast.LENGTH_LONG).show();
                                 }
                                 else {
-                                    Toast.makeText(context, "failed try again", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, "failed try again", Toast.LENGTH_LONG).show();
                                 }
 
                                 alertDialog.dismiss();
