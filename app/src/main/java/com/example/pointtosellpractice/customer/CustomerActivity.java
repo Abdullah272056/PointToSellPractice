@@ -182,7 +182,15 @@ public class CustomerActivity extends AppCompatActivity {
                         new Callback<AddCustomerResponse>() {
                             @Override
                             public void onResponse(Call<AddCustomerResponse> call, Response<AddCustomerResponse> response) {
-                                
+
+                                if (response.code()==201){
+                                    Toast.makeText(CustomerActivity.this, "add successful", Toast.LENGTH_SHORT).show();
+                                    alertDialog.dismiss();
+                                }else if (response.code()==400){
+                                    Toast.makeText(CustomerActivity.this, "safe phone number", Toast.LENGTH_SHORT).show();
+                                }else {
+                                    Toast.makeText(CustomerActivity.this, "failed", Toast.LENGTH_SHORT).show();
+                                }
                                 progressBar.setVisibility(View.GONE);
                                 getAllCustomer();
 
