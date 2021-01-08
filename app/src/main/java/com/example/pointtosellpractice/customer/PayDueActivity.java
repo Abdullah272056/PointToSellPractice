@@ -39,7 +39,7 @@ public class PayDueActivity extends AppCompatActivity {
     PayData payData;
     DuePayDataResponse duePayDataResponse;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         this.setTitle("Pay Due Activity");
         setContentView(R.layout.activity_pay_due);
@@ -81,7 +81,7 @@ public class PayDueActivity extends AppCompatActivity {
     public void payDue(){
         duePayAmount = duePayAmountEditText.getText().toString();
         if (TextUtils.isEmpty(duePayAmount)){
-            duePayAmountEditText.setError("Enter  password");
+            duePayAmountEditText.setError("Enter  pay amount");
             duePayAmountEditText.requestFocus();
             return;
         }if(Integer.parseInt(duePayAmount)>Integer.parseInt(dueTextView.getText().toString())){
@@ -127,18 +127,18 @@ public class PayDueActivity extends AppCompatActivity {
                 .enqueue(new Callback<SingleCustomerGetResponse>() {
                     @Override
                     public void onResponse(Call<SingleCustomerGetResponse> call, Response<SingleCustomerGetResponse> response) {
-                        SingleCustomerGetResponse singleCustomerGetResponse=response.body();
+                       if (response.code()==200){
+                           dueTextView.setText(String.valueOf(response.body().getSingleCustomerInformation().getDue()));
+                           allTimeSellTextView.setText(String.valueOf(response.body().getSingleCustomerInformation().getAllTimeSellAmount()));
 
-                        if (singleCustomerGetResponse.getSuccess()==true){
+                           cNameTextView.setText("Name :  "+String.valueOf(response.body().getSingleCustomerInformation().getName()));
+                           cPhoneTextView.setText("Phone :  "+String.valueOf(response.body().getSingleCustomerInformation().getPhone()));
+                           cEmailTextView.setText("Email :  "+String.valueOf(response.body().getSingleCustomerInformation().getEmail()));
+                           cAddressTextView.setText("Address :  "+String.valueOf(response.body().getSingleCustomerInformation().getAddress()));
+                       }else {
+                           
+                       }
 
-                            dueTextView.setText(String.valueOf(response.body().getSingleCustomerInformation().getDue()));
-                            allTimeSellTextView.setText(String.valueOf(response.body().getSingleCustomerInformation().getAllTimeSellAmount()));
-
-                            cNameTextView.setText("Name :  "+String.valueOf(response.body().getSingleCustomerInformation().getName()));
-                            cPhoneTextView.setText("Phone :  "+String.valueOf(response.body().getSingleCustomerInformation().getPhone()));
-                             cEmailTextView.setText("Email :  "+String.valueOf(response.body().getSingleCustomerInformation().getEmail()));
-                            cAddressTextView.setText("Address :  "+String.valueOf(response.body().getSingleCustomerInformation().getAddress()));
-                        }
                     }
 
                     @Override
