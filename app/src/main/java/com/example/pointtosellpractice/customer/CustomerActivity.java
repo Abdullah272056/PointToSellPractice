@@ -82,7 +82,22 @@ public class CustomerActivity extends AppCompatActivity {
         apiInterface.getAllCustomerInformation("Bearer "+token).enqueue(new Callback<CustomerInformationDataResponse>() {
             @Override
             public void onResponse(Call<CustomerInformationDataResponse> call, Response<CustomerInformationDataResponse> response) {
-             
+                CustomerInformationDataResponse customerInformationDataResponse=response.body();
+              if (response.code()==500){
+                  Toast.makeText(CustomerActivity.this, "Cannot read property 'id' of null", Toast.LENGTH_SHORT).show();
+              }
+              else if (response.code()==200){
+                  customerInformationList=new ArrayList<>();
+                  customerInformationList.addAll(response.body().getCustomerInformation());
+                  if (customerInformationList.size ()>0){
+                      customerCustomAdapter = new CustomerCustomAdapter(CustomerActivity.this,token,customerInformationList);
+                      customerRecyclerView.setLayoutManager(new LinearLayoutManager(CustomerActivity.this));
+                      customerRecyclerView.setAdapter(customerCustomAdapter);
+                  }
+              }
+              else if (response.code()==404){
+                  Toast.makeText(CustomerActivity.this, "No customer found", Toast.LENGTH_SHORT).show();
+              }
 
                 mainProgressBar.setVisibility(View.GONE);
 
