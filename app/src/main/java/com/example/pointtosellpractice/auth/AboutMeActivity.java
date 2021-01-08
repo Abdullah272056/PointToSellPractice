@@ -249,21 +249,27 @@ public  void  deleteUser(){
                 enqueue(new Callback<ChangePasswordGetResponse>() {
                     @Override
                     public void onResponse(Call<ChangePasswordGetResponse> call, Response<ChangePasswordGetResponse> response) {
-                        if (response.isSuccessful()){
-                            if (response.body().getSuccess()==true){
-                                changePasswordProgressBar.setVisibility(View.INVISIBLE);
-                                Toast.makeText(AboutMeActivity.this, "Password changed successfully", Toast.LENGTH_SHORT).show();
-                                Intent intent =new Intent(AboutMeActivity.this, LoginActivity.class);
-                                startActivity(intent);
-                                finish();
-                            } if (response.body().getSuccess()==false){
-                                Toast.makeText(AboutMeActivity.this, "Old password does not match", Toast.LENGTH_SHORT).show();
-                                changePasswordProgressBar.setVisibility(View.INVISIBLE);
-                            }
-                        }else {
-                            changePasswordProgressBar.setVisibility(View.INVISIBLE);
-                            Toast.makeText(AboutMeActivity.this, "Old password does not match", Toast.LENGTH_SHORT).show();
-                        }
+
+                       if(response.code()==200){
+                           Toast.makeText(AboutMeActivity.this, "Password changed successfully", Toast.LENGTH_SHORT).show();
+                           Toast.makeText(AboutMeActivity.this, "Password changed successfully", Toast.LENGTH_SHORT).show();
+                           Intent intent =new Intent(AboutMeActivity.this, LoginActivity.class);
+                           startActivity(intent);
+                           finish();
+
+                       }else if (response.code()==400){
+                           Toast.makeText(AboutMeActivity.this, "Old password does not match", Toast.LENGTH_SHORT).show();
+                           oldPasswordEditText.setError("old password can not match");
+                           oldPasswordEditText.requestFocus();
+                       }
+                       else if (response.code()==401){
+                           Toast.makeText(AboutMeActivity.this, "Invalid token", Toast.LENGTH_SHORT).show();
+                       }else {
+                           Toast.makeText(AboutMeActivity.this, "Failed !", Toast.LENGTH_SHORT).show();
+                       }
+
+                        changePasswordProgressBar.setVisibility(View.INVISIBLE);
+
                     }
 
                     @Override
