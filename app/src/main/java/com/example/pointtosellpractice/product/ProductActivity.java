@@ -124,8 +124,24 @@ public class ProductActivity extends AppCompatActivity {
         apiInterface.getAllProduct("Bearer "+token).enqueue(new Callback<GetProductDataResponse>() {
             @Override
             public void onResponse(Call<GetProductDataResponse> call, Response<GetProductDataResponse> response) {
-              
-               
+
+                if (response.code()==200){
+                    getProductDataList=new ArrayList<>();
+                    getProductDataList.addAll(response.body().getProducts());
+                    Toast.makeText(ProductActivity.this, String.valueOf(getProductDataList.size()), Toast.LENGTH_SHORT).show();
+
+                        productCustomAdapter = new ProductCustomAdapter(ProductActivity.this,token,getProductDataList);
+                        productRecyclerView.setLayoutManager(new LinearLayoutManager(ProductActivity.this));
+                        productRecyclerView.setAdapter(productCustomAdapter);
+
+                    Toast.makeText(ProductActivity.this, "All product fetched", Toast.LENGTH_SHORT).show();
+                }else if (response.code()==404){
+                    Toast.makeText(ProductActivity.this, "Product not found", Toast.LENGTH_SHORT).show();
+                }
+                else if (response.code()==401){
+                    Toast.makeText(ProductActivity.this, "Invalid token", Toast.LENGTH_SHORT).show();
+                }else {
+                }
 
                 productProgressBar.setVisibility(View.GONE);
             }
