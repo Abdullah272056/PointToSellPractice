@@ -185,14 +185,31 @@ public  void  deleteUser(){
         apiInterface.getUserAllInformation("Bearer "+token).enqueue(new Callback<OwnerDataWithResponse>() {
             @Override
             public void onResponse(Call<OwnerDataWithResponse> call, Response<OwnerDataWithResponse> response) {
-              
+
+               if (response.code()==200){
+                   companyNameTextView.setText(String.valueOf(response.body().getData().getCompanyName()));
+                   companyEmailTextView.setText(String.valueOf(response.body().getData().getEmail()));
+                   companyPhoneTextView.setText(String.valueOf(response.body().getData().getPhone()));
+                   companyAddressTextView.setText(String.valueOf(response.body().getData().getAddress()));
+
+                   SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy  hh:mm a", Locale.forLanguageTag(String.valueOf(response.body().getData().getCreatedAt())));
+                   String getCreatedAt = df.format(new Date());
+
+                   memberSinceTextView.setText(String.valueOf(getCreatedAt));
+                 //  Toast.makeText(AboutMeActivity.this, "success", Toast.LENGTH_SHORT).show();
+               }else if (response.code()==500){
+                   Toast.makeText(AboutMeActivity.this, "invalid user", Toast.LENGTH_SHORT).show();
+               }else {
+                   Toast.makeText(AboutMeActivity.this, "error", Toast.LENGTH_SHORT).show();
+
+               }
 
 
             }
 
             @Override
             public void onFailure(Call<OwnerDataWithResponse> call, Throwable t) {
-                Toast.makeText(AboutMeActivity.this, String.valueOf(t.getMessage()), Toast.LENGTH_SHORT).show();
+                Toast.makeText(AboutMeActivity.this, "failed! try again", Toast.LENGTH_SHORT).show();
 
             }
         });
