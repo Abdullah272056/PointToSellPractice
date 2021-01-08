@@ -98,7 +98,18 @@ public class PayDueActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<DuePayDataResponse> call, Response<DuePayDataResponse> response) {
 
-                      
+                       if (response.code()==404){
+                           Toast.makeText(PayDueActivity.this, "You send more amount than due", Toast.LENGTH_SHORT).show();
+                       }else if (response.code()==200){
+                           customerInformation();
+                           Toast.makeText(PayDueActivity.this, "Due has been updated", Toast.LENGTH_SHORT).show();
+                       }else if (response.code()==401){
+                           Toast.makeText(PayDueActivity.this, "You are not authorized to access this route", Toast.LENGTH_LONG).show();
+                       }else {
+                           Toast.makeText(PayDueActivity.this, "failed", Toast.LENGTH_LONG).show();
+                       }
+                        pauDueProgressBar.setVisibility(View.INVISIBLE);
+                        payDueButton.setVisibility(View.VISIBLE);
                     }
                     @Override
                     public void onFailure(Call<DuePayDataResponse> call, Throwable t) {
