@@ -82,32 +82,8 @@ public class CustomerActivity extends AppCompatActivity {
         apiInterface.getAllCustomerInformation("Bearer "+token).enqueue(new Callback<CustomerInformationDataResponse>() {
             @Override
             public void onResponse(Call<CustomerInformationDataResponse> call, Response<CustomerInformationDataResponse> response) {
-                CustomerInformationDataResponse customerInformationDataResponse=response.body();
-                if (response.isSuccessful()){
+             
 
-                if (customerInformationDataResponse.getSuccess()==true){
-                    customerInformationList=new ArrayList<>();
-                    customerInformationList.addAll(response.body().getCustomerInformation());
-                    if (customerInformationList.size ()>0){
-                        customerCustomAdapter = new CustomerCustomAdapter(CustomerActivity.this,token,customerInformationList);
-                        customerRecyclerView.setLayoutManager(new LinearLayoutManager(CustomerActivity.this));
-                        customerRecyclerView.setAdapter(customerCustomAdapter);
-                    }
-//                    if (TextUtils.isEmpty(customerInformationDataList.get(0).getEmail()) ||
-//                            customerInformationDataList.get(0).getEmail()==null)  {
-//                        Log.e("namec","No Email");
-//                        Toast.makeText(CustomerActivity.this, "Ssss", Toast.LENGTH_SHORT).show();
-//
-//                    }else {
-//                        Log.e("namec",customerInformationDataList.get(2).getEmail().toString());
-//                        Toast.makeText(CustomerActivity.this, "Ssss", Toast.LENGTH_SHORT).show();
-//                    }
-
-                }
-
-                }
-                else {
-                }
                 mainProgressBar.setVisibility(View.GONE);
 
             }

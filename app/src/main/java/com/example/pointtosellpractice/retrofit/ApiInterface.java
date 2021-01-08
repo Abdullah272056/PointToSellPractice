@@ -49,20 +49,16 @@ public interface ApiInterface {
   //registration
     @POST("api/auth/register/")
     Call<RegistrationResponse>registrationData(@Body RegistrationData registrationData);
-
     //signIn
     @POST("api/auth/login/")
     Call<LogInResponse>logInData(@Body LogInData logInData);
-
     //Get Me
     @GET("api/auth/me")
     Call<OwnerDataWithResponse> getUserAllInformation(@Header("Authorization") String authorization);
-
    // change password
   //http://mern-pos.herokuapp.com/api/auth/change-password
   @PUT("api/auth/change-password")
   Call<ChangePasswordGetResponse> changePassword(@Header("Authorization") String authorization, @Body ChangePasswordSetResponse changePasswordSetResponse);
-
   //delete user
   @POST("api/auth/delete")
   Call<DeleteUserGetDataResponse> deleteUser(@Header("Authorization") String authorization, @Body DeleteUserSetDataResponse deleteUserSetDataResponse);
