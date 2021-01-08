@@ -23,7 +23,7 @@ public class AddCustomerData {
     private String name;
     @SerializedName("phone")
     @Expose
-    private Integer phone;
+    private String phone;
     @SerializedName("address")
     @Expose
     private String address;
@@ -83,11 +83,11 @@ public class AddCustomerData {
         this.name = name;
     }
 
-    public Integer getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
