@@ -300,7 +300,15 @@ if (imageUri!=null){
             enqueue(new Callback<ProductDataResponse>() {
                 @Override
                 public void onResponse(Call<ProductDataResponse> call, Response<ProductDataResponse> response) {
-                      
+                    if (response.code()==201){
+                        Toast.makeText(ProductActivity.this, "success", Toast.LENGTH_SHORT).show();
+                        alertDialog.dismiss();
+                        getAllProduct();
+                    }else if (response.code()==500){
+                        Toast.makeText(ProductActivity.this, "File type is not supported", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(ProductActivity.this, "try again", Toast.LENGTH_SHORT).show();
+                    }
 
                     progressDialog.dismiss();
 
