@@ -147,13 +147,8 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
                     .enqueue(new Callback<CustomerDeleteResponse>() {
                         @Override
                         public void onResponse(Call<CustomerDeleteResponse> call, Response<CustomerDeleteResponse> response) {
-                           // CustomerDeleteResponse customerDeleteResponse=response.body();
-                            if (response.isSuccessful()){
-                                if (response.body().getSuccess()==true){
-                                    Toast.makeText(context, "success delete", Toast.LENGTH_SHORT).show();
+                          
 
-                                }
-                            }
 
                             ((CustomerActivity)context).getAllCustomer();
                         }
