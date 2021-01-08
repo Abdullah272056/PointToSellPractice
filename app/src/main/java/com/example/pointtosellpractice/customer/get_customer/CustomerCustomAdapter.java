@@ -147,8 +147,15 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
                     .enqueue(new Callback<CustomerDeleteResponse>() {
                         @Override
                         public void onResponse(Call<CustomerDeleteResponse> call, Response<CustomerDeleteResponse> response) {
-                          
-
+                            if (response.code()==200){
+                                Toast.makeText(context, "Customer deleted successfully", Toast.LENGTH_SHORT).show();
+                            }else if (response.code()==500){
+                                Toast.makeText(context, "customer id not found", Toast.LENGTH_SHORT).show();
+                            }else if (response.code()==401){
+                                Toast.makeText(context, "You are not authorized to access this route", Toast.LENGTH_SHORT).show();
+                            }else {
+                                Toast.makeText(context, "failed", Toast.LENGTH_SHORT).show();
+                            }
 
                             ((CustomerActivity)context).getAllCustomer();
                         }
