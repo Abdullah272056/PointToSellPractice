@@ -3,6 +3,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -149,6 +150,7 @@ public class PayDueActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<SingleCustomerGetResponse> call, Throwable t) {
+                        Log.e("awer",t.getMessage().toString());
                         //pauDueHistoryProgressBar.setVisibility(View.INVISIBLE);
                     }
                 });
