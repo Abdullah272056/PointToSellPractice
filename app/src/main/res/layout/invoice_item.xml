@@ -67,6 +67,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"/>
         <ImageView
+            android:id="@+id/deleteInvoiceImageViewId"
             android:padding="5dp"
             android:src="@drawable/ic_baseline_delete_24"
             android:textColor="#38711A"

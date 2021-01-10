@@ -2,10 +2,12 @@ package com.example.pointtosellpractice.invoice.get_invoice;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -71,6 +73,14 @@ public class InvoiceCustomAdapter extends RecyclerView.Adapter<InvoiceCustomAdap
             }
         });
 
+        holder.deleteInvoiceImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              // write code
+            }
+        });
+
+
     }
 
     @Override
@@ -79,6 +89,7 @@ public class InvoiceCustomAdapter extends RecyclerView.Adapter<InvoiceCustomAdap
     }
 
     public class MyViewHolderInvoice extends RecyclerView.ViewHolder {
+        ImageView deleteInvoiceImageView;
         TextView invoiceItemCustomerNameTextView,invoiceItemDateTextView,
                 invoiceItemPayAmountTextView,invoiceItemSerialTextView;
         LinearLayout inVoiceItem;
@@ -88,6 +99,7 @@ public class InvoiceCustomAdapter extends RecyclerView.Adapter<InvoiceCustomAdap
             invoiceItemDateTextView=itemView.findViewById(R.id.invoiceItemDateTextViewId);
             invoiceItemPayAmountTextView=itemView.findViewById(R.id.invoiceItemTotalAmountTextViewId);
             invoiceItemSerialTextView=itemView.findViewById(R.id.invoiceItemSerialTextViewId);
+            deleteInvoiceImageView=itemView.findViewById(R.id.deleteInvoiceImageViewId);
             inVoiceItem=itemView.findViewById(R.id.inVoiceItemId);
 
         }
