@@ -285,17 +285,8 @@ public class HomePage extends AppCompatActivity {
         apiInterface.getAllProductInfo("Bearer "+token).enqueue(new Callback<GetAllProductInfoDataResponse>() {
             @Override
             public void onResponse(Call<GetAllProductInfoDataResponse> call, Response<GetAllProductInfoDataResponse> response) {
-                if (response.isSuccessful()){
-                    if (response.body().getSuccess()==true){
-                       // GetAllProductInfoDataResponse getAllProductInfoDataResponse=response.body();
-                        totalProductCostTextView.setText(response.body().getGetAllProductInfoData().getTotalProductCost().toString());
-                        totalProductStockTextView.setText("Product in stock "+response.body().getGetAllProductInfoData().getTotalProduct().toString());
-                        totalProductTypeTextView.setText("Product type "+response.body().getGetAllProductInfoData().getTotalProductType().toString());
-                    }
-                }else {
-                    Toast.makeText(HomePage.this, "No data found", Toast.LENGTH_SHORT).show();
-                }
 
+                
             }
             @Override
             public void onFailure(Call<GetAllProductInfoDataResponse> call, Throwable t) {

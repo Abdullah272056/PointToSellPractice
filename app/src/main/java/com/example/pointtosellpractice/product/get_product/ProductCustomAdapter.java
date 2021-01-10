@@ -201,7 +201,7 @@ private  void deleteProduct(final int position){
                             }else {
                                Toast.makeText(context, "try again", Toast.LENGTH_SHORT).show();
                            }
-                            
+
                             ((ProductActivity)context).getAllProduct();
                         }
 
