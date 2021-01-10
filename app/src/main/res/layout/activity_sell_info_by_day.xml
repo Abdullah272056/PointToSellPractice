@@ -26,6 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
+                android:imeOptions="actionDone"
                 android:inputType="number"
                 android:id="@+id/sellInfoByDayEditTextId"
                 android:layout_marginRight="10dp"
