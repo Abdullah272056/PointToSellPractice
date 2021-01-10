@@ -10,13 +10,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pointtosellpractice.R;
+import com.example.pointtosellpractice.customer.CustomerActivity;
+import com.example.pointtosellpractice.invoice.InVoiceActivity;
 import com.example.pointtosellpractice.invoice.InVoiceDetails;
+import com.example.pointtosellpractice.invoice.delete_invoice.DeleteInVoiceGetInVoiceDataResponse;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 
@@ -24,6 +28,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class InvoiceCustomAdapter extends RecyclerView.Adapter<InvoiceCustomAdapter.MyViewHolderInvoice> {
 
@@ -76,6 +84,29 @@ public class InvoiceCustomAdapter extends RecyclerView.Adapter<InvoiceCustomAdap
         holder.deleteInvoiceImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                apiInterface.deleteInVoice("Bearer "+token,invoiceList.get(position).getId()).enqueue(new Callback<DeleteInVoiceGetInVoiceDataResponse>() {
+                    @Override
+                    public void onResponse(Call<DeleteInVoiceGetInVoiceDataResponse> call, Response<DeleteInVoiceGetInVoiceDataResponse> response) {
+                      if (response.code()==200){
+                          Toast.makeText(context, "delete successful", Toast.LENGTH_SHORT).show();
+                      }else if (response.code()==500){
+                          Toast.makeText(context, "internal server error", Toast.LENGTH_SHORT).show();
+                      }
+                      else if (response.code()==401){
+                          Toast.makeText(context, "You are not authorized to access this route", Toast.LENGTH_SHORT).show();
+                      }else {
+                          Toast.makeText(context, "fail", Toast.LENGTH_SHORT).show();
+                      }
+                        ((InVoiceActivity)context).getAllInVoice();
+                    }
+
+                    @Override
+                    public void onFailure(Call<DeleteInVoiceGetInVoiceDataResponse> call, Throwable t) {
+                        Toast.makeText(context, "delete fail", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
               // write code
             }
         });
