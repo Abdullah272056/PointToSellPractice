@@ -15,6 +15,8 @@
         android:layout_width="wrap_content"
         android:layout_height="40dp"/>
     <EditText
+        android:inputType="textEmailAddress"
+        android:imeOptions="actionNext"
         android:drawableRight="@drawable/ic_baseline_email_24"
         android:layout_marginTop="10dp"
         android:background="#DAD3D3"
@@ -27,16 +29,18 @@
 
 
     <EditText
-        android:drawableRight="@drawable/ic_baseline_lock_24"
+        android:imeOptions="actionDone"
+        android:id="@+id/signInPasswordEditTextId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:background="#DAD3D3"
-        android:inputType="textPassword"
-        android:id="@+id/signInPasswordEditTextId"
+        android:drawableRight="@drawable/ic_baseline_lock_24"
         android:hint="enter your password"
-        android:textSize="20sp"
+        android:inputType="textPassword"
         android:padding="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:textSize="20sp" />
+
     <CheckBox
         android:id="@+id/rememberCheckBoxId"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
