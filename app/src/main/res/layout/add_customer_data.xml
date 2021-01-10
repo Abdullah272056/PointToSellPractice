@@ -41,6 +41,8 @@
         android:layout_height="1dp"/>
 
     <EditText
+        android:inputType="text"
+        android:imeOptions="actionNext"
         android:padding="10dp"
         android:background="#F8F1F1"
         android:layout_marginTop="30dp"
@@ -50,6 +52,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <EditText
+
+        android:imeOptions="actionNext"
         android:padding="10dp"
         android:background="#F8F1F1"
         android:layout_marginTop="30dp"
@@ -61,6 +65,8 @@
         android:layout_height="wrap_content"/>
 
     <EditText
+        android:inputType="textEmailAddress"
+        android:imeOptions="actionNext"
         android:padding="10dp"
         android:background="#F8F1F1"
         android:layout_marginTop="30dp"
@@ -71,6 +77,8 @@
         android:layout_height="wrap_content"/>
 
     <EditText
+        android:inputType="text"
+        android:imeOptions="actionDone"
         android:padding="10dp"
         android:background="#F8F1F1"
         android:layout_marginTop="30dp"
