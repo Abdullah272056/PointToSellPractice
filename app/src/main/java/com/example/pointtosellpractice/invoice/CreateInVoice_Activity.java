@@ -120,8 +120,13 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
         inVoiceButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                    Toast.makeText(CreateInVoice_Activity.this, "Ready", Toast.LENGTH_SHORT).show();
-                    setInVoice();
+                   if (changeStatus==1){
+                       Toast.makeText(CreateInVoice_Activity.this, "Ready", Toast.LENGTH_SHORT).show();
+                       setInVoice();
+                   }else {
+                       Toast.makeText(CreateInVoice_Activity.this, "click calculate button", Toast.LENGTH_SHORT).show();
+                   }
+
             }
         });
 
@@ -399,14 +404,15 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
 
     @Override
     public void onContactClick1(int position) {
+        nameTextView.setError(null);
+        nameTextView.requestFocus();
         nameTextView.setText(String.valueOf(customerInformationDataList.get(position).getName()));
         phoneTextView.setText(String.valueOf(customerInformationDataList.get(position).getPhone()));
         addressTextView.setText(String.valueOf(customerInformationDataList.get(position).getAddress()));
         oldDueTextView.setText(String.valueOf(customerInformationDataList.get(position).getDue()));
         customerIdTextView.setText(String.valueOf(customerInformationDataList.get(position).getId()));
         alertDialog.dismiss();
-        nameTextView.setText(null);
-        nameTextView.requestFocus();
+
     }
 
     @Override
