@@ -98,27 +98,21 @@ public interface ApiInterface {
   //GetAllSellInfoResponse
   @GET("api/invoice/sale-info")
   Call<GetAllSellInfoResponse> getAllSellInfo(@Header("Authorization") String authorization);
-
   //get all invoice
     @GET("api/invoice")
     Call<InVoiceResponse> getInvoice(@Header("Authorization") String authorization);
-
     //get single invoice information
     @GET("api/invoice/{id}")
     Call<SingleInvoiceGetResponse> getSingleInvoiceInformation(@Header("Authorization") String authorization, @Path("id") String id);
-
     // Get sale info by date
     // http://mern-pos.herokuapp.com/api/invoice/sale/day?day=0
     @GET("/api/invoice/sale/day")
     Call<GetSellInfoByDayResponse> getSellInfoByDay(@Header("Authorization") String authorization, @Query("day") Integer dayInt);
-
     // create inVoice
   @POST("/api/invoice")
   Call<OwnerDataWithResponse> getInvoiceResponse(@Header("Authorization") String authorization, @Body SetInVoiceResponse setInVoiceResponse);
 
-
-
-
+  
 
 
 
