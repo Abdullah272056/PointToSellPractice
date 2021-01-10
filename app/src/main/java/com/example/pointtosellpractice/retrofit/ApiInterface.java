@@ -112,7 +112,6 @@ public interface ApiInterface {
   @POST("/api/invoice")
   Call<OwnerDataWithResponse> getInvoiceResponse(@Header("Authorization") String authorization, @Body SetInVoiceResponse setInVoiceResponse);
 
- 
 
 
 
