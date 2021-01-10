@@ -124,7 +124,7 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
                     setInVoice();
             }
         });
-        
+
         selectCustomerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -405,6 +405,8 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
         oldDueTextView.setText(String.valueOf(customerInformationDataList.get(position).getDue()));
         customerIdTextView.setText(String.valueOf(customerInformationDataList.get(position).getId()));
         alertDialog.dismiss();
+        nameTextView.setText(null);
+        nameTextView.requestFocus();
     }
 
     @Override
