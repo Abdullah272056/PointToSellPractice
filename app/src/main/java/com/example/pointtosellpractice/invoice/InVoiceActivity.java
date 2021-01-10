@@ -73,7 +73,27 @@ public class InVoiceActivity extends AppCompatActivity{
         apiInterface.getInvoice("Bearer "+token).enqueue(new Callback<InVoiceResponse>() {
             @Override
             public void onResponse(Call<InVoiceResponse> call, Response<InVoiceResponse> response) {
-                
+
+                if (response.code()==200){
+                    invoiceList=new ArrayList<>();
+                    invoiceList.addAll(response.body().getInvoices());
+                    if (invoiceList.size ()>0){
+                        //Toast.makeText(InVoiceActivity.this, String.valueOf(invoiceList.size()), Toast.LENGTH_SHORT).show();
+                        Log.e("se",String.valueOf(invoiceList.get(0).getCustomer().getName()));
+                        invoiceCustomAdapter = new InvoiceCustomAdapter(InVoiceActivity.this,token,invoiceList);
+                        invoiceRecyclerView.setLayoutManager(new LinearLayoutManager(InVoiceActivity.this));
+                        invoiceRecyclerView.setAdapter(invoiceCustomAdapter);
+                    }
+                }else if (response.code()==404){
+                    Toast.makeText(InVoiceActivity.this, "No invoice found", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(InVoiceActivity.this, "", Toast.LENGTH_SHORT).show();
+
+                }
+
+
+
+
 
                 invoiceProgressBar.setVisibility(View.GONE);
 
