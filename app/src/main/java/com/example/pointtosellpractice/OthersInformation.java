@@ -129,21 +129,15 @@ public class OthersInformation extends AppCompatActivity {
 
     // Get all select_customer info
     private void getAllProductInfo(){
+
         apiInterface.getAllProductInfo("Bearer "+token).enqueue(new Callback<GetAllProductInfoDataResponse>() {
             @Override
             public void onResponse(Call<GetAllProductInfoDataResponse> call, Response<GetAllProductInfoDataResponse> response) {
-            if (response.isSuccessful()){
-                if (response.body().getSuccess()==true){
-                    GetAllProductInfoDataResponse getAllProductInfoDataResponse=response.body();
-                    totalProductCostTextView.setText(getAllProductInfoDataResponse.getGetAllProductInfoData().getTotalProductCost().toString());
-                    totalProductStockTextView.setText(getAllProductInfoDataResponse.getGetAllProductInfoData().getTotalProduct().toString());
-                    totalProductTypeTextView.setText(getAllProductInfoDataResponse.getGetAllProductInfoData().getTotalProductType().toString());
-                }
-            }
+               
             }
             @Override
             public void onFailure(Call<GetAllProductInfoDataResponse> call, Throwable t) {
-                Toast.makeText(OthersInformation.this, "failed", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(OthersInformation.this, "failed", Toast.LENGTH_SHORT).show();
             }
         });
     }
