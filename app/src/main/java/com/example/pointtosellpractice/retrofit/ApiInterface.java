@@ -17,6 +17,7 @@ import com.example.pointtosellpractice.auth.log_in.LogInResponse;
 import com.example.pointtosellpractice.auth.register.RegistrationData;
 import com.example.pointtosellpractice.auth.log_in.LogInData;
 import com.example.pointtosellpractice.auth.register.RegistrationResponse;
+import com.example.pointtosellpractice.invoice.delete_invoice.DeleteInVoiceGetInVoiceDataResponse;
 import com.example.pointtosellpractice.invoice.get_all_sell_info.GetAllSellInfoResponse;
 import com.example.pointtosellpractice.invoice.get_all_sell_info.GetSellInfoByDayResponse;
 import com.example.pointtosellpractice.invoice.get_invoice.InVoiceResponse;
@@ -111,6 +112,10 @@ public interface ApiInterface {
     // create inVoice
   @POST("/api/invoice")
   Call<OwnerDataWithResponse> getInvoiceResponse(@Header("Authorization") String authorization, @Body SetInVoiceResponse setInVoiceResponse);
+
+  // delete invoice
+  @DELETE("api/invoice/{id}")
+  Call<DeleteInVoiceGetInVoiceDataResponse> deleteInVoice(@Header("Authorization") String authorization, @Path("id") String id);
 
 
 
