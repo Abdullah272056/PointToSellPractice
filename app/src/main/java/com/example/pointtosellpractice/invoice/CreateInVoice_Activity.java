@@ -20,6 +20,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.pointtosellpractice.HomePage;
 import com.example.pointtosellpractice.R;
 import com.example.pointtosellpractice.customer.CustomerActivity;
 import com.example.pointtosellpractice.invoice.create_invoice.CustomerCustomAdapter;
@@ -283,6 +284,10 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
             public void onResponse(Call<OwnerDataWithResponse> call, Response<OwnerDataWithResponse> response) {
 
               if (response.code()==201){
+                  Intent intent=new Intent(CreateInVoice_Activity.this, InVoiceActivity.class);
+                  intent.putExtra("token",token);
+                  startActivity(intent);
+                  finish();
                   Toast.makeText(CreateInVoice_Activity.this, "create success", Toast.LENGTH_SHORT).show();
               }
               else if (response.code()==500){
