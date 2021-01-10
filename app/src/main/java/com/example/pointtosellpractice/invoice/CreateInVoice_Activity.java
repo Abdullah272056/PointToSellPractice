@@ -29,8 +29,10 @@ import com.example.pointtosellpractice.invoice.create_invoice.SetProductData;
 import com.example.pointtosellpractice.customer.get_customer.CustomerInformationData;
 import com.example.pointtosellpractice.customer.get_customer.CustomerInformationDataResponse;
 import com.example.pointtosellpractice.auth.owner_all_information.OwnerDataWithResponse;
+import com.example.pointtosellpractice.product.ProductActivity;
 import com.example.pointtosellpractice.product.delete_product.GetProductData;
 import com.example.pointtosellpractice.product.get_product.GetProductDataResponse;
+import com.example.pointtosellpractice.product.get_product.ProductCustomAdapter;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 
@@ -113,7 +115,7 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
         //receive user token
         token= getIntent().getStringExtra("token");
 
-        inVoiceButton.setOnClickListener(new View.OnClickListener() {
+        inVoiceButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 if (changeStatus==1){
@@ -340,32 +342,8 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
         apiInterface.getAllProduct("Bearer "+token).enqueue(new Callback<GetProductDataResponse>() {
             @Override
             public void onResponse(Call<GetProductDataResponse> call, Response<GetProductDataResponse> response) {
-                GetProductDataResponse getProductDataResponse=response.body();
-                if (response.isSuccessful()){
-                    if (getProductDataResponse.getSuccess()==true){
-                        getProductDataList=new ArrayList<>();
-                        filterProductDataList=new ArrayList<>();
-                        getProductDataList.addAll(response.body().getProducts());
-                        if (getProductDataList.size ()>0){
 
-                            int sz=getProductDataList.size();
-                            for (int i=0;sz-1>=i;i++){
-                                int stck=getProductDataList.get(i).getStock();
-                                if (stck>0){
-                                    filterProductDataList.add(getProductDataList.get(i));
-                                    Toast.makeText(CreateInVoice_Activity.this, String.valueOf(filterProductDataList.size()), Toast.LENGTH_SHORT).show();
-
-                                }
-                            }
-
-                             addProductInformation(filterProductDataList);
-
-                        }
-                    }
-                }
-                else {
-                    Toast.makeText(CreateInVoice_Activity.this, "some problem", Toast.LENGTH_SHORT).show();
-                }
+              
             }
             @Override
             public void onFailure(Call<GetProductDataResponse> call, Throwable t) {
