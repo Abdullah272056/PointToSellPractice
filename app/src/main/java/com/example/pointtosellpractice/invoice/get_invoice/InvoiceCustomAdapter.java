@@ -1,6 +1,7 @@
 package com.example.pointtosellpractice.invoice.get_invoice;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Build;
@@ -14,10 +15,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pointtosellpractice.R;
 import com.example.pointtosellpractice.customer.CustomerActivity;
+import com.example.pointtosellpractice.customer.delete_customer.CustomerDeleteResponse;
 import com.example.pointtosellpractice.invoice.InVoiceActivity;
 import com.example.pointtosellpractice.invoice.InVoiceDetails;
 import com.example.pointtosellpractice.invoice.delete_invoice.DeleteInVoiceGetInVoiceDataResponse;
@@ -81,33 +84,60 @@ public class InvoiceCustomAdapter extends RecyclerView.Adapter<InvoiceCustomAdap
             }
         });
 
+
+
+
+
         holder.deleteInvoiceImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                apiInterface.deleteInVoice("Bearer "+token,invoiceList.get(position).getId()).enqueue(new Callback<DeleteInVoiceGetInVoiceDataResponse>() {
-                    @Override
-                    public void onResponse(Call<DeleteInVoiceGetInVoiceDataResponse> call, Response<DeleteInVoiceGetInVoiceDataResponse> response) {
-                      if (response.code()==200){
-                          Toast.makeText(context, "delete successful", Toast.LENGTH_SHORT).show();
-                      }else if (response.code()==500){
-                          Toast.makeText(context, "internal server error", Toast.LENGTH_SHORT).show();
-                      }
-                      else if (response.code()==401){
-                          Toast.makeText(context, "You are not authorized to access this route", Toast.LENGTH_SHORT).show();
-                      }else {
-                          Toast.makeText(context, "fail", Toast.LENGTH_SHORT).show();
-                      }
-                        ((InVoiceActivity)context).getAllInVoice();
-                    }
 
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setCancelable(false);
+                builder.setMessage("Do you want to Delete?");
+
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onFailure(Call<DeleteInVoiceGetInVoiceDataResponse> call, Throwable t) {
-                        Toast.makeText(context, "delete fail", Toast.LENGTH_SHORT).show();
+                    public void onClick(DialogInterface dialog, int which) {
+                        apiInterface.deleteInVoice("Bearer "+token,invoiceList.get(position).getId()).enqueue(new Callback<DeleteInVoiceGetInVoiceDataResponse>() {
+                            @Override
+                            public void onResponse(Call<DeleteInVoiceGetInVoiceDataResponse> call, Response<DeleteInVoiceGetInVoiceDataResponse> response) {
+
+
+                                if (response.code()==200){
+                                    Toast.makeText(context, "delete successful", Toast.LENGTH_SHORT).show();
+                                }else if (response.code()==500){
+                                    Toast.makeText(context, "internal server error", Toast.LENGTH_SHORT).show();
+                                }
+                                else if (response.code()==401){
+                                    Toast.makeText(context, "You are not authorized to access this route", Toast.LENGTH_SHORT).show();
+                                }else {
+                                    Toast.makeText(context, "fail", Toast.LENGTH_SHORT).show();
+                                }
+                                ((InVoiceActivity)context).getAllInVoice();
+                            }
+
+                            @Override
+                            public void onFailure(Call<DeleteInVoiceGetInVoiceDataResponse> call, Throwable t) {
+                                Toast.makeText(context, "delete fail", Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
+
 
                     }
                 });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
 
-              // write code
+
+                // write code
             }
         });
 
