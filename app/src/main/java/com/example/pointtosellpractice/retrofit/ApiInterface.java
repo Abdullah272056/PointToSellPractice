@@ -112,11 +112,12 @@ public interface ApiInterface {
   @POST("/api/invoice")
   Call<OwnerDataWithResponse> getInvoiceResponse(@Header("Authorization") String authorization, @Body SetInVoiceResponse setInVoiceResponse);
 
-  
+ 
 
 
 
-    //product
+
+  //product
     // get al product
     @GET("api/product")
     Call<GetProductDataResponse> getAllProduct(@Header("Authorization") String authorization);
