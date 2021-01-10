@@ -128,7 +128,7 @@ public class ProductActivity extends AppCompatActivity {
                 if (response.code()==200){
                     getProductDataList=new ArrayList<>();
                     getProductDataList.addAll(response.body().getProducts());
-                    Toast.makeText(ProductActivity.this, String.valueOf(getProductDataList.size()), Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(ProductActivity.this, String.valueOf(getProductDataList.size()), Toast.LENGTH_SHORT).show();
 
                         productCustomAdapter = new ProductCustomAdapter(ProductActivity.this,token,getProductDataList);
                         productRecyclerView.setLayoutManager(new LinearLayoutManager(ProductActivity.this));
@@ -227,7 +227,7 @@ public class ProductActivity extends AppCompatActivity {
                 if (imageUri == null){
                     Toast.makeText(ProductActivity.this, "image url not found", Toast.LENGTH_SHORT).show();
                 }
-                ImageUpload(imageUri,productName,productRegularPrice,productSellingPrice,unitType,productStock,productDescription);
+                UploadProduct(imageUri,productName,productRegularPrice,productSellingPrice,unitType,productStock,productDescription);
 
 
             }
@@ -278,54 +278,54 @@ public class ProductActivity extends AppCompatActivity {
 
     }
 
-    private void ImageUpload(Uri imgUri,String productName,String productRegularPrice,String productSellingPrice,
+    private void UploadProduct(Uri imgUri,String productName,String productRegularPrice,String productSellingPrice,
                              String productPiece,String productStock,String productDescription) {
-if (imageUri!=null){
-    progressDialog.show();
-    String path= getImagePath(imgUri);
+                    if (imageUri!=null){
+                        progressDialog.show();
+                        String path= getImagePath(imgUri);
 
-    file = new File(path);
-    MultipartBody.Part imageFile = null;
+                        file = new File(path);
+                        MultipartBody.Part imageFile = null;
 
-    final RequestBody requestFile = RequestBody.create(MediaType.parse("image/*"), file);
-    imageFile = MultipartBody.Part.createFormData("image", file.getName(), requestFile);
+                        final RequestBody requestFile = RequestBody.create(MediaType.parse("image/*"), file);
+                        imageFile = MultipartBody.Part.createFormData("image", file.getName(), requestFile);
 
-    RequestBody name = RequestBody.create(MediaType.parse("multipart/form-data"), productName);
-    RequestBody price = RequestBody.create(MediaType.parse("multipart/form-data"), productRegularPrice);
-    RequestBody sellingPrice = RequestBody.create(MediaType.parse("multipart/form-data"), productSellingPrice);
-    RequestBody unit = RequestBody.create(MediaType.parse("multipart/form-data"), productPiece);
-    RequestBody stock = RequestBody.create(MediaType.parse("multipart/form-data"), productStock);
-    RequestBody description = RequestBody.create(MediaType.parse("multipart/form-data"), productDescription);
+                        RequestBody name = RequestBody.create(MediaType.parse("multipart/form-data"), productName);
+                        RequestBody price = RequestBody.create(MediaType.parse("multipart/form-data"), productRegularPrice);
+                        RequestBody sellingPrice = RequestBody.create(MediaType.parse("multipart/form-data"), productSellingPrice);
+                        RequestBody unit = RequestBody.create(MediaType.parse("multipart/form-data"), productPiece);
+                        RequestBody stock = RequestBody.create(MediaType.parse("multipart/form-data"), productStock);
+                        RequestBody description = RequestBody.create(MediaType.parse("multipart/form-data"), productDescription);
 
-    apiInterface.uploadImage("Bearer "+token,imageFile,name,price,sellingPrice,unit,stock,description).
-            enqueue(new Callback<ProductDataResponse>(){
-                @Override
-                public void onResponse(Call<ProductDataResponse> call, Response<ProductDataResponse> response) {
-                    if (response.code()==201){
-                        Toast.makeText(ProductActivity.this, "success", Toast.LENGTH_SHORT).show();
-                        alertDialog.dismiss();
-                        getAllProduct();
-                    }else if (response.code()==500){
-                        Toast.makeText(ProductActivity.this, "File type is not supported", Toast.LENGTH_SHORT).show();
-                    }else {
-                        Toast.makeText(ProductActivity.this, "try again", Toast.LENGTH_SHORT).show();
+                        apiInterface.uploadImage("Bearer "+token,imageFile,name,price,sellingPrice,unit,stock,description).
+                                enqueue(new Callback<ProductDataResponse>(){
+                                    @Override
+                                    public void onResponse(Call<ProductDataResponse> call, Response<ProductDataResponse> response) {
+                                        if (response.code()==201){
+                                            Toast.makeText(ProductActivity.this, "success", Toast.LENGTH_SHORT).show();
+                                            alertDialog.dismiss();
+                                            getAllProduct();
+                                        }else if (response.code()==500){
+                                            Toast.makeText(ProductActivity.this, "File type is not supported", Toast.LENGTH_SHORT).show();
+                                        }else {
+                                            Toast.makeText(ProductActivity.this, "try again", Toast.LENGTH_SHORT).show();
+                                        }
+
+                                        progressDialog.dismiss();
+
+                                    }
+                                    @Override
+                                    public void onFailure(Call<ProductDataResponse> call, Throwable t) {
+                                        Toast.makeText(ProductActivity.this, "Failed to Upload", Toast.LENGTH_SHORT).show();
+                                        Log.e("asd",t.getMessage());
+                                        progressDialog.dismiss();
+                                    }
+                                });
+
                     }
-
-                    progressDialog.dismiss();
-
-                }
-                @Override
-                public void onFailure(Call<ProductDataResponse> call, Throwable t) {
-                    Toast.makeText(ProductActivity.this, "Failed to Upload", Toast.LENGTH_SHORT).show();
-                    Log.e("asd",t.getMessage());
-                    progressDialog.dismiss();
-                }
-            });
-
-}
-else {
-    Toast.makeText(this, "uri not found", Toast.LENGTH_SHORT).show();
-}
+                    else {
+                        Toast.makeText(this, "uri not found", Toast.LENGTH_SHORT).show();
+                    }
 
     }
 

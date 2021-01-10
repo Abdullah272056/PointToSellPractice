@@ -17,6 +17,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pointtosellpractice.R;
+import com.example.pointtosellpractice.customer.CustomerActivity;
 import com.example.pointtosellpractice.product.delete_product.DeleteProductDataResponse;
 import com.example.pointtosellpractice.product.delete_product.GetProductData;
 import com.example.pointtosellpractice.product.ProductActivity;
@@ -84,6 +85,8 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
             @Override
             public void onClick(View v) {
                 deleteProduct(position);
+                notifyDataSetChanged();
+                ((ProductActivity)context).getAllProduct();
             }
         }); // delete button clicked
         holder.editProductImageView.setOnClickListener(new View.OnClickListener() {
@@ -186,7 +189,19 @@ private  void deleteProduct(final int position){
                     .enqueue(new Callback<DeleteProductDataResponse>() {
                         @Override
                         public void onResponse(Call<DeleteProductDataResponse> call, Response<DeleteProductDataResponse> response) {
-                            Toast.makeText(context, "success delete", Toast.LENGTH_SHORT).show();
+                           if (response.code()==200){
+                               Toast.makeText(context, "Product deleted successfully", Toast.LENGTH_SHORT).show();
+                           }
+                            else if (response.code()==404){
+                               Toast.makeText(context, "Not found", Toast.LENGTH_SHORT).show();
+                            }
+                            else if (response.code()==401){
+                               Toast.makeText(context, "You are not authorized to access this route", Toast.LENGTH_SHORT).show();
+
+                            }else {
+                               Toast.makeText(context, "try again", Toast.LENGTH_SHORT).show();
+                           }
+                            
                             ((ProductActivity)context).getAllProduct();
                         }
 
