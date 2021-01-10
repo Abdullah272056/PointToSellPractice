@@ -231,6 +231,9 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
             nameTextView.setError("Enter your email");
             nameTextView.requestFocus();
             return;
+        }if (newList.size()<=0){
+            Toast.makeText(this, "please select add product", Toast.LENGTH_SHORT).show();
+            return;
         }
 //        name= nameTextView.getText().toString().trim();
 //        phone= phoneTextView.getText().toString().trim();
