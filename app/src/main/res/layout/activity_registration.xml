@@ -18,6 +18,8 @@
             android:layout_height="match_parent">
 
             <EditText
+                android:imeOptions="actionNext"
+                android:inputType="text"
                 android:padding="10dp"
                 android:background="#DAD3D3"
                 android:id="@+id/signUpCompanyNameEditTextId"
@@ -28,6 +30,8 @@
                 android:layout_height="wrap_content"/>
 
             <EditText
+                android:inputType="text"
+                android:imeOptions="actionNext"
                 android:drawableRight="@drawable/ic_baseline_person_24"
                 android:padding="10dp"
                 android:background="#DAD3D3"
@@ -40,6 +44,8 @@
 
 
             <EditText
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
                 android:drawableRight="@drawable/ic_baseline_email_24"
                 android:padding="10dp"
                 android:background="#DAD3D3"
@@ -53,6 +59,8 @@
 
 
             <EditText
+                android:inputType="phone"
+                android:imeOptions="actionNext"
                 android:drawableRight="@drawable/ic_baseline_phone_24"
                 android:padding="10dp"
                 android:background="#DAD3D3"
@@ -65,6 +73,7 @@
 
 
             <EditText
+
                 android:padding="10dp"
                 android:background="#DAD3D3"
                 android:id="@+id/signUpAddressEditTextId"
@@ -79,6 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <Spinner
+
                    android:padding="10dp"
                     android:textSize="20sp"
                     android:entries="@array/business_type"
@@ -100,6 +110,7 @@
                 android:layout_height="wrap_content"/>
 
             <EditText
+                android:imeOptions="actionNext"
                 android:drawableRight="@drawable/ic_baseline_lock_24"
                 android:padding="10dp"
                 android:background="#DAD3D3"
@@ -112,6 +123,7 @@
                 android:layout_height="wrap_content"/>
 
             <EditText
+                android:imeOptions="actionDone"
                 android:drawableRight="@drawable/ic_baseline_lock_24"
                 android:padding="10dp"
                 android:background="#DAD3D3"
