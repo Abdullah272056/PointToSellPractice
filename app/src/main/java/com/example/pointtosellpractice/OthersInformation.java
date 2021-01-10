@@ -133,7 +133,21 @@ public class OthersInformation extends AppCompatActivity {
         apiInterface.getAllProductInfo("Bearer "+token).enqueue(new Callback<GetAllProductInfoDataResponse>() {
             @Override
             public void onResponse(Call<GetAllProductInfoDataResponse> call, Response<GetAllProductInfoDataResponse> response) {
-               
+                if (response.code()==200){
+                    GetAllProductInfoDataResponse getAllProductInfoDataResponse=response.body();
+                    totalProductCostTextView.setText(getAllProductInfoDataResponse.getGetAllProductInfoData().getTotalProductCost().toString());
+                    totalProductStockTextView.setText(getAllProductInfoDataResponse.getGetAllProductInfoData().getTotalProduct().toString());
+                    totalProductTypeTextView.setText(getAllProductInfoDataResponse.getGetAllProductInfoData().getTotalProductType().toString());
+
+                }
+                else if (response.code()==401){
+                    //Toast.makeText(HomePage.this, "Invalid token", Toast.LENGTH_SHORT).show();
+                }else if (response.code()==404){
+                    //Toast.makeText(HomePage.this, "No information found", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    //Toast.makeText(HomePage.this, "Invalid token", Toast.LENGTH_SHORT).show();
+                }
             }
             @Override
             public void onFailure(Call<GetAllProductInfoDataResponse> call, Throwable t) {
