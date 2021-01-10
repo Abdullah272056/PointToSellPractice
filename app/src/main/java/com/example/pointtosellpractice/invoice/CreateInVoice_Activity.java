@@ -278,15 +278,17 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
         apiInterface.getInvoiceResponse("Bearer "+token,setInVoiceResponse).enqueue(new Callback<OwnerDataWithResponse>() {
             @Override
             public void onResponse(Call<OwnerDataWithResponse> call, Response<OwnerDataWithResponse> response) {
-                if (response.isSuccessful()){
-                    if (response.body().getSuccess()==true){
-                        Toast.makeText(CreateInVoice_Activity.this, "create success", Toast.LENGTH_SHORT).show();
-                    }else {
-                        Toast.makeText(CreateInVoice_Activity.this, "create failed", Toast.LENGTH_SHORT).show();
-                    }
-                }else {
-                    Toast.makeText(CreateInVoice_Activity.this, "create failed", Toast.LENGTH_SHORT).show();
-                }
+
+              if (response.code()==201){
+                  Toast.makeText(CreateInVoice_Activity.this, "create success", Toast.LENGTH_SHORT).show();
+              }
+              else if (response.code()==500){
+                  Toast.makeText(CreateInVoice_Activity.this, "internal server error", Toast.LENGTH_SHORT).show();
+              }
+              else{
+                  Toast.makeText(CreateInVoice_Activity.this, "create failed", Toast.LENGTH_SHORT).show();
+              }
+
             }
             @Override
             public void onFailure(Call<OwnerDataWithResponse> call, Throwable t) {
