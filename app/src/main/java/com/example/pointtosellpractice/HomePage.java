@@ -286,7 +286,21 @@ public class HomePage extends AppCompatActivity {
             @Override
             public void onResponse(Call<GetAllProductInfoDataResponse> call, Response<GetAllProductInfoDataResponse> response) {
 
-                
+                if (response.code()==200){
+                        totalProductCostTextView.setText(response.body().getGetAllProductInfoData().getTotalProductCost().toString());
+                        totalProductStockTextView.setText("Product in stock "+response.body().getGetAllProductInfoData().getTotalProduct().toString());
+                        totalProductTypeTextView.setText("Product type "+response.body().getGetAllProductInfoData().getTotalProductType().toString());
+
+                }
+                else if (response.code()==401){
+                    //Toast.makeText(HomePage.this, "Invalid token", Toast.LENGTH_SHORT).show();
+                }else if (response.code()==404){
+                    //Toast.makeText(HomePage.this, "No information found", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    //Toast.makeText(HomePage.this, "Invalid token", Toast.LENGTH_SHORT).show();
+                }
+
             }
             @Override
             public void onFailure(Call<GetAllProductInfoDataResponse> call, Throwable t) {
