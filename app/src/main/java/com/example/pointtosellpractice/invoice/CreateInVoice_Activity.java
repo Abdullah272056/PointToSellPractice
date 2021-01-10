@@ -120,28 +120,15 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
         inVoiceButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if (changeStatus==1){
                     Toast.makeText(CreateInVoice_Activity.this, "Ready", Toast.LENGTH_SHORT).show();
                     setInVoice();
-                }else {
-                    Toast.makeText(CreateInVoice_Activity.this, "before click calculate button", Toast.LENGTH_SHORT).show();
-                }
             }
         });
-
-
+        
         selectCustomerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getAllCustomerInformation();
-            }
-        });
-
-
-        selectRecyclerView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                changeStatus=0;
             }
         });
 
