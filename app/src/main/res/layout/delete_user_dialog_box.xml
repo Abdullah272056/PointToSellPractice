@@ -30,6 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <EditText
+            android:imeOptions="actionDone"
             android:id="@+id/passwordEditTextId"
             android:layout_margin="10dp"
             android:hint="Enter your password"
