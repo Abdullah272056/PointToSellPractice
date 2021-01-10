@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pointtosellpractice.R;
+import com.example.pointtosellpractice.customer.CustomerActivity;
 import com.example.pointtosellpractice.invoice.create_invoice.CustomerCustomAdapter;
 import com.example.pointtosellpractice.invoice.create_invoice.ProductCustomAdapter2;
 import com.example.pointtosellpractice.invoice.create_invoice.ProductCustomAdapter3;
@@ -302,17 +303,23 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
         apiInterface.getAllCustomerInformation("Bearer "+token).enqueue(new Callback<CustomerInformationDataResponse>() {
             @Override
             public void onResponse(Call<CustomerInformationDataResponse> call, Response<CustomerInformationDataResponse> response) {
-                if (response.isSuccessful()){
-                    if (response.body().getSuccess()==true){
-                        customerInformationDataList=new ArrayList<>();
-                        customerInformationDataList.addAll(response.body().getCustomerInformation());
-                        if (customerInformationDataList.size ()>0){
-                            addCustomerInformation(customerInformationDataList);
-                            Toast.makeText(CreateInVoice_Activity.this, String.valueOf(customerInformationDataList.size()), Toast.LENGTH_SHORT).show();
-                        }
+
+
+                if (response.code()==500){
+                    Toast.makeText(CreateInVoice_Activity.this, "Cannot read property 'id' of null", Toast.LENGTH_SHORT).show();
+                }
+                else if (response.code()==200){
+                    customerInformationDataList=new ArrayList<>();
+                    customerInformationDataList.addAll(response.body().getCustomerInformation());
+                    if (customerInformationDataList.size ()>0){
+                        addCustomerInformation(customerInformationDataList);
+                        Toast.makeText(CreateInVoice_Activity.this, String.valueOf(customerInformationDataList.size()), Toast.LENGTH_SHORT).show();
                     }
+                }
+                else if (response.code()==404){
+                    Toast.makeText(CreateInVoice_Activity.this, "No customer found", Toast.LENGTH_SHORT).show();
                 }else {
-                    Toast.makeText(CreateInVoice_Activity.this, "Server Error", Toast.LENGTH_SHORT).show();
+
                 }
 
             }
@@ -343,7 +350,32 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
             @Override
             public void onResponse(Call<GetProductDataResponse> call, Response<GetProductDataResponse> response) {
 
-              
+                if (response.code()==200){
+                    getProductDataList=new ArrayList<>();
+                    filterProductDataList=new ArrayList<>();
+                    getProductDataList.addAll(response.body().getProducts());
+                    if (getProductDataList.size ()>0){
+
+                        int sz=getProductDataList.size();
+                        for (int i=0;sz-1>=i;i++){
+                            int stck=getProductDataList.get(i).getStock();
+                            if (stck>0){
+                                filterProductDataList.add(getProductDataList.get(i));
+                                Toast.makeText(CreateInVoice_Activity.this, String.valueOf(filterProductDataList.size()), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        addProductInformation(filterProductDataList);
+                    }
+
+                    Toast.makeText(CreateInVoice_Activity.this, "All product fetched", Toast.LENGTH_SHORT).show();
+                }else if (response.code()==404){
+                    Toast.makeText(CreateInVoice_Activity.this, "Product not found", Toast.LENGTH_SHORT).show();
+                }
+                else if (response.code()==401){
+                    Toast.makeText(CreateInVoice_Activity.this, "Invalid token", Toast.LENGTH_SHORT).show();
+                }else {
+                }
+
             }
             @Override
             public void onFailure(Call<GetProductDataResponse> call, Throwable t) {

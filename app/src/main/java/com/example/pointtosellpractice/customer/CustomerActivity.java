@@ -97,6 +97,8 @@ public class CustomerActivity extends AppCompatActivity {
               }
               else if (response.code()==404){
                   Toast.makeText(CustomerActivity.this, "No customer found", Toast.LENGTH_SHORT).show();
+              }else {
+
               }
 
                 mainProgressBar.setVisibility(View.GONE);
