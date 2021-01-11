@@ -126,7 +126,6 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
                    }else {
                        Toast.makeText(CreateInVoice_Activity.this, "click calculate button", Toast.LENGTH_SHORT).show();
                    }
-
             }
         });
 
@@ -268,13 +267,11 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
         }
 
 
-
         setInVoiceResponse=new SetInVoiceResponse(customerId,payAmount,
                 (TotalAmount-discountAmount),discount, setProductDataList);
         apiInterface.getInvoiceResponse("Bearer "+token,setInVoiceResponse).enqueue(new Callback<OwnerDataWithResponse>() {
             @Override
             public void onResponse(Call<OwnerDataWithResponse> call, Response<OwnerDataWithResponse> response) {
-
               if (response.code()==201){
                   Intent intent=new Intent(CreateInVoice_Activity.this, InVoiceActivity.class);
                   intent.putExtra("token",token);
@@ -288,7 +285,6 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
               else{
                   Toast.makeText(CreateInVoice_Activity.this, "create failed", Toast.LENGTH_SHORT).show();
               }
-
             }
             @Override
             public void onFailure(Call<OwnerDataWithResponse> call, Throwable t) {
@@ -369,7 +365,7 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
                         addProductInformation(filterProductDataList);
                     }
 
-                    Toast.makeText(CreateInVoice_Activity.this, "All product fetched", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(CreateInVoice_Activity.this, "All product fetched", Toast.LENGTH_SHORT).show();
                 }else if (response.code()==404){
                     Toast.makeText(CreateInVoice_Activity.this, "Product not found", Toast.LENGTH_SHORT).show();
                 }
@@ -401,7 +397,7 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
     }
 
 
-
+//customer
     @Override
     public void onContactClick1(int position) {
         nameTextView.setError(null);
@@ -415,18 +411,39 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
 
     }
 
+
+        //product
     @Override
     public void onContactClick(int position) {
         //getAllProduct();
-        Toast.makeText(this, String.valueOf(filterProductDataList.get(position).getName()), Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, String.valueOf(filterProductDataList.get(position).getName()), Toast.LENGTH_SHORT).show();
         //newList.add(getProductDataList.get(position));
 
-        newList.add(new GetProductData(filterProductDataList.get(position).getPrice(),
-                filterProductDataList.get(position).getSellingPrice(),
-                filterProductDataList.get(position).getStock(),
-                1,filterProductDataList.get(position).getId(),
-                filterProductDataList.get(position).getName(),
-                filterProductDataList.get(position).getUnit()));
+        int sSize= newList.size();
+        if (sSize>0){
+        for (int i=0;sSize-1>=i;i++){
+            String id=newList.get(i).getId();
+            if (id.equals(filterProductDataList.get(position).getId())){
+                Toast.makeText(CreateInVoice_Activity.this, "already selected", Toast.LENGTH_SHORT).show();
+                alertDialog.dismiss();
+                return;
+            }
+            newList.add(new GetProductData(filterProductDataList.get(position).getPrice(),
+                    filterProductDataList.get(position).getSellingPrice(),
+                    filterProductDataList.get(position).getStock(),
+                    1,filterProductDataList.get(position).getId(),
+                    filterProductDataList.get(position).getName(),
+                    filterProductDataList.get(position).getUnit()));
+        }
+        }else {
+
+            newList.add(new GetProductData(filterProductDataList.get(position).getPrice(),
+                    filterProductDataList.get(position).getSellingPrice(),
+                    filterProductDataList.get(position).getStock(),
+                    1,filterProductDataList.get(position).getId(),
+                    filterProductDataList.get(position).getName(),
+                    filterProductDataList.get(position).getUnit()));
+        }
 
 
         productCustomAdapter2 = new ProductCustomAdapter2(CreateInVoice_Activity.this,token,newList, onContactClickListener3);
