@@ -47,7 +47,7 @@ public interface ApiInterface {
   //Call<jetaReponsePaboSetarModelClass>logInData(@Body jetaPathaboSetarModelClass variableName);
 
   /////Authorization////
-  //registration
+  // registration
     @POST("api/auth/register/")
     Call<RegistrationResponse>registrationData(@Body RegistrationData registrationData);
     //signIn
