@@ -85,7 +85,7 @@ public class CustomerActivity extends AppCompatActivity {
                 CustomerInformationDataResponse customerInformationDataResponse=response.body();
               if (response.code()==500){
                   Toast.makeText(CustomerActivity.this, "Cannot read property 'id' of null", Toast.LENGTH_SHORT).show();
-              }
+              }         
               else if (response.code()==200){
                   customerInformationList=new ArrayList<>();
                   customerInformationList.addAll(response.body().getCustomerInformation());
