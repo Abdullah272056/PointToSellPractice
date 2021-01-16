@@ -26,6 +26,7 @@ import com.example.pointtosellpractice.product.get_all_product_info.GetAllProduc
 import com.example.pointtosellpractice.product.ProductActivity;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 import retrofit2.Call;
@@ -33,6 +34,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HomePage extends AppCompatActivity {
+    BottomNavigationView bottomNavigationView;
+
     Toolbar toolbar;
     LinearLayout linearLayout;
     DrawerLayout drawerLayout;
@@ -53,6 +56,7 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
+        bottomNavigationView=findViewById(R.id.bottomBarId);
 
 
         linearLayout=findViewById(R.id.mainLayoutId);
@@ -84,6 +88,42 @@ public class HomePage extends AppCompatActivity {
         }
 
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
+
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                if (item.getItemId()==R.id.homeItemId){
+
+                    Toast.makeText(HomePage.this, "", Toast.LENGTH_SHORT).show();
+                }
+                if (item.getItemId()==R.id.customerItemId){
+                    Intent intent=new Intent(HomePage.this, CustomerActivity.class);
+                    intent.putExtra("token",token);
+                    startActivity(intent);
+                    finish();
+                }
+                if (item.getItemId()==R.id.productItemId){
+                    Intent intent=new Intent(HomePage.this, ProductActivity.class);
+                    intent.putExtra("token",token);
+                    startActivity(intent);
+                    finish();
+                } if (item.getItemId()==R.id.invoiceItemId){
+                    Intent intent=new Intent(HomePage.this, InVoiceActivity.class);
+                    intent.putExtra("token",token);
+                    startActivity(intent);
+                    finish();
+                }
+                if (item.getItemId()==R.id.othersItemId){
+                    Intent intent=new Intent(HomePage.this, OthersInformation.class);
+                    intent.putExtra("token",token);
+                    startActivity(intent);
+                }
+
+                return true;
+            }
+        });
 
         customerTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,6 +159,7 @@ public class HomePage extends AppCompatActivity {
                 Intent intent=new Intent(HomePage.this, OthersInformation.class);
                 intent.putExtra("token",token);
                 startActivity(intent);
+                finish();
 
             }
         });
