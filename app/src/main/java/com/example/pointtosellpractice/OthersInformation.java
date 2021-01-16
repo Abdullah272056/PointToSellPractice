@@ -23,7 +23,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class OthersInformation extends AppCompatActivity {
-    TextView customerTextView,productTextView,invoiceTextView;
+
     TextView totalSaleAmountTextView,totalSoldProductQuantityTextView,totalSoldInvoiceTextView,
             totalDueAmountTextView,totalProfitTextView;
     TextView totalProductCostTextView,totalProductStockTextView,totalProductTypeTextView,extraInfoTextView;
@@ -55,10 +55,7 @@ public class OthersInformation extends AppCompatActivity {
         // button finding
         sellInfoByDateButton=findViewById(R.id.sellInfoByDateButtonId);
 
-        customerTextView=findViewById(R.id.customerTextViewId);
-        productTextView=findViewById(R.id.productTextViewId);
-        invoiceTextView=findViewById(R.id.invoiceTextViewId);
-        extraInfoTextView=findViewById(R.id.extraInfoTextViewId);
+
         //receive user token
         token= getIntent().getStringExtra("token");
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);

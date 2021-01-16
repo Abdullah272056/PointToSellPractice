@@ -46,10 +46,10 @@ public class HomePage extends AppCompatActivity {
 
     TextView customerCountTextView;
     String customerCount;
-    TextView customerTextView,productTextView,invoiceTextView;
+
     TextView totalSaleAmountTextView,totalSoldProductQuantityTextView,totalSoldInvoiceTextView,
             totalDueAmountTextView,totalProfitTextView;
-    TextView totalProductCostTextView,totalProductStockTextView,totalProductTypeTextView,extraInfoTextView;
+    TextView totalProductCostTextView,totalProductStockTextView,totalProductTypeTextView;
     SharePref sharePref;
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -71,11 +71,6 @@ public class HomePage extends AppCompatActivity {
         totalProductCostTextView=findViewById(R.id.totalProductCostTextViewId);
         totalProductStockTextView=findViewById(R.id.totalProductStockTextViewId);
         totalProductTypeTextView=findViewById(R.id.totalProductTypeTextViewId);
-
-        customerTextView=findViewById(R.id.customerTextViewId);
-        productTextView=findViewById(R.id.productTextViewId);
-        invoiceTextView=findViewById(R.id.invoiceTextViewId);
-        extraInfoTextView=findViewById(R.id.extraInfoTextViewId);
 
         toolbar=findViewById (R.id.toolbarId);
         drawerLayout=findViewById (R.id.drawerLayoutId);
@@ -122,45 +117,6 @@ public class HomePage extends AppCompatActivity {
                 }
 
                 return true;
-            }
-        });
-
-        customerTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               Intent intent=new Intent(HomePage.this, CustomerActivity.class);
-               intent.putExtra("token",token);
-               startActivity(intent);
-                finish();
-            }
-        });
-        productTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(HomePage.this, ProductActivity.class);
-                intent.putExtra("token",token);
-                startActivity(intent);
-                finish();
-            }
-        });
-        invoiceTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(HomePage.this, InVoiceActivity.class);
-                intent.putExtra("token",token);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        extraInfoTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(HomePage.this, OthersInformation.class);
-                intent.putExtra("token",token);
-                startActivity(intent);
-                finish();
-
             }
         });
 
