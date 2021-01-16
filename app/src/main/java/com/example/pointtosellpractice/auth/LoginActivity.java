@@ -173,7 +173,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 logInProgressBar.setVisibility(View.GONE);
 
             }
+
+
         });
 
+
     }
+
+
 }

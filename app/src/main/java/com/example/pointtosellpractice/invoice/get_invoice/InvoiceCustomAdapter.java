@@ -91,11 +91,9 @@ public class InvoiceCustomAdapter extends RecyclerView.Adapter<InvoiceCustomAdap
         holder.deleteInvoiceImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setCancelable(false);
                 builder.setMessage("Do you want to Delete?");
-
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -123,8 +121,6 @@ public class InvoiceCustomAdapter extends RecyclerView.Adapter<InvoiceCustomAdap
 
                             }
                         });
-
-
                     }
                 });
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -135,8 +131,6 @@ public class InvoiceCustomAdapter extends RecyclerView.Adapter<InvoiceCustomAdap
                 });
                 AlertDialog alert = builder.create();
                 alert.show();
-
-
                 // write code
             }
         });

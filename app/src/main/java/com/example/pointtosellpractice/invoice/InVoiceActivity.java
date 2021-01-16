@@ -55,6 +55,7 @@ public class InVoiceActivity extends AppCompatActivity{
 
 
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
+
         getAllInVoice();
         addInvoiceButton.setOnClickListener(new View.OnClickListener() {
             @Override

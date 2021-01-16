@@ -112,7 +112,6 @@ public class ProductActivity extends AppCompatActivity {
         addProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 createProduct();
             }
         });
@@ -376,6 +375,7 @@ public class ProductActivity extends AppCompatActivity {
 
         }
     }
+
     public String getImagePath(Uri uri){
         Cursor cursor = null;
         if (!uri.equals(null)){
@@ -397,6 +397,8 @@ public class ProductActivity extends AppCompatActivity {
 
         return path;
     }
+
+
 
     @Override
     public void onBackPressed() {
