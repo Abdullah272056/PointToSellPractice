@@ -39,7 +39,7 @@ public class CustomerActivity extends AppCompatActivity {
     RecyclerView customerRecyclerView;
     FloatingActionButton addCustomerButton;
 
-   // List<CustomerInformationData> customerInformationDataList;
+
     List<CustomerInformationData> customerInformationList;
     String token;
 
@@ -217,6 +217,10 @@ public class CustomerActivity extends AppCompatActivity {
         alertDialog.show();
 
     }
+
+
+
+
     @Override
     public void onBackPressed() {
         Intent intent =new Intent(CustomerActivity.this, HomePage.class);

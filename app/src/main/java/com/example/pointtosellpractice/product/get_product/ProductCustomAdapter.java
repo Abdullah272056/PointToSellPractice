@@ -88,7 +88,9 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
                 notifyDataSetChanged();
                 ((ProductActivity)context).getAllProduct();
             }
-        }); // delete button clicked
+        });
+
+        // edit button clicked
         holder.editProductImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

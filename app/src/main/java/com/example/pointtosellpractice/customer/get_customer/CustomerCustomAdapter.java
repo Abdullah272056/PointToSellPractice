@@ -102,6 +102,8 @@ public class CustomerCustomAdapter extends RecyclerView.Adapter<CustomerCustomAd
 
             }
         });
+
+
         holder.deleteImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -8,6 +8,7 @@
     android:layout_margin="5dp"
     android:gravity="center"
     android:id="@+id/customerItemId"
+
     >
     <TextView
         android:textAppearance="@style/TextAppearance.AppCompat.Large"

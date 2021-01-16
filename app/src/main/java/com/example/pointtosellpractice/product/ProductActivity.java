@@ -94,6 +94,7 @@ public class ProductActivity extends AppCompatActivity {
         setContentView(R.layout.activity_product);
         token= getIntent().getStringExtra("token");
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
+
         productRecyclerView=findViewById(R.id.productRecyclerViewId);
         productProgressBar=findViewById(R.id.productProgressBarId);
         addProductButton=findViewById(R.id.addProductButtonId);
