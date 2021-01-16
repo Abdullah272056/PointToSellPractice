@@ -257,8 +257,8 @@ public class HomePage extends AppCompatActivity {
                 assert getAllSellInfoResponse != null;
                 Log.e("totalSaleAmount",getAllSellInfoResponse.getGetAllSellInfoData().getTotalSaleAmount().toString());
                 totalSaleAmountTextView.setText(getAllSellInfoResponse.getGetAllSellInfoData().getTotalSaleAmount().toString());
-                totalSoldProductQuantityTextView.setText("Total product sale "+getAllSellInfoResponse.getGetAllSellInfoData().getTotalSoldProductQuantity().toString());
-                totalSoldInvoiceTextView.setText("Total invoice "+getAllSellInfoResponse.getGetAllSellInfoData().getTotalSoldInvoice().toString());
+                totalSoldProductQuantityTextView.setText(getAllSellInfoResponse.getGetAllSellInfoData().getTotalSoldProductQuantity().toString());
+                totalSoldInvoiceTextView.setText(getAllSellInfoResponse.getGetAllSellInfoData().getTotalSoldInvoice().toString());
                 totalDueAmountTextView.setText(getAllSellInfoResponse.getGetAllSellInfoData().getTotalDueAmount().toString());
                 totalProfitTextView.setText(getAllSellInfoResponse.getGetAllSellInfoData().getTotalProfit().toString());
                 }
@@ -285,8 +285,8 @@ public class HomePage extends AppCompatActivity {
 
                 if (response.code()==200){
                         totalProductCostTextView.setText(response.body().getGetAllProductInfoData().getTotalProductCost().toString());
-                        totalProductStockTextView.setText("Product in stock "+response.body().getGetAllProductInfoData().getTotalProduct().toString());
-                        totalProductTypeTextView.setText("Product type "+response.body().getGetAllProductInfoData().getTotalProductType().toString());
+                        totalProductStockTextView.setText(response.body().getGetAllProductInfoData().getTotalProduct().toString());
+                        totalProductTypeTextView.setText(response.body().getGetAllProductInfoData().getTotalProductType().toString());
 
                 }
                 else if (response.code()==401){
