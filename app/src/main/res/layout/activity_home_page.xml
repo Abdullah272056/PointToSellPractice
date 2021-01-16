@@ -9,270 +9,284 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context=".HomePage">
-
-    <LinearLayout
-
-        android:id="@+id/mainLayoutId"
-        android:orientation="vertical"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <include layout="@layout/my_toolbar"
-            android:id="@+id/toolbarId"
-            />
-
-        <HorizontalScrollView
+        <LinearLayout
+            android:layout_above="@+id/bottomBarId"
+            android:id="@+id/mainLayoutId"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:orientation="horizontal"
+            android:layout_height="match_parent">
+
+            <include layout="@layout/my_toolbar"
+                android:id="@+id/toolbarId"
+                />
+
+            <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="200dp">
+                android:layout_height="wrap_content">
                 <LinearLayout
-                    android:weightSum="5"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/bck1"
-                    android:orientation="vertical"
-                    android:layout_width="200dp"
-                    android:layout_height="match_parent">
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp">
+                    <LinearLayout
+                        android:weightSum="5"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/bck1"
+                        android:orientation="vertical"
+                        android:layout_width="200dp"
+                        android:layout_height="match_parent">
 
-                    <TextView
-                        android:gravity="center"
-                        android:textColor="#000000"
-                        android:textSize="20sp"
-                        android:textAlignment="center"
-                        android:text="Total Product Cost"
-                        android:layout_weight="1.5"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"/>
-                    <TextView
-                        android:text="00 Taka"
-                        android:gravity="center"
-                        android:textColor="#020202"
-                        android:textSize="25sp"
-                        android:id="@+id/totalProductCostTextViewId"
-                        android:layout_weight="1.5"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"/>
-                    <TextView
-                        android:gravity="center"
-                        android:textColor="#000000"
-                        android:text="Total product stock"
-                        android:textSize="17sp"
-                        android:id="@+id/totalProductStockTextViewId"
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"/>
-                    <TextView
-                        android:gravity="center"
-                        android:textColor="#000000"
-                        android:text="Total product type"
-                        android:textSize="17sp"
-                        android:id="@+id/totalProductTypeTextViewId"
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"/>
+                        <TextView
+                            android:gravity="center"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textAlignment="center"
+                            android:text="Total Product Cost"
+                            android:layout_weight="1.5"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"/>
+                        <TextView
+                            android:text="00 Taka"
+                            android:gravity="center"
+                            android:textColor="#020202"
+                            android:textSize="25sp"
+                            android:id="@+id/totalProductCostTextViewId"
+                            android:layout_weight="1.5"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"/>
+                        <TextView
+                            android:gravity="center"
+                            android:textColor="#000000"
+                            android:text="Total product stock"
+                            android:textSize="17sp"
+                            android:id="@+id/totalProductStockTextViewId"
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"/>
+                        <TextView
+                            android:gravity="center"
+                            android:textColor="#000000"
+                            android:text="Total product type"
+                            android:textSize="17sp"
+                            android:id="@+id/totalProductTypeTextViewId"
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"/>
 
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:weightSum="5"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/bck1"
+                        android:orientation="vertical"
+                        android:layout_width="200dp"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:gravity="center"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textAlignment="center"
+                            android:text="Total Sell Amount"
+                            android:layout_weight="1.5"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"/>
+                        <TextView
+                            android:text="00 Taka"
+                            android:gravity="center"
+                            android:textColor="#000000"
+                            android:textSize="30sp"
+                            android:id="@+id/totalSaleAmountTextViewId"
+                            android:layout_weight="1.5"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"/>
+                        <TextView
+                            android:gravity="center"
+                            android:textColor="#000000"
+                            android:text="Total product sale 00"
+                            android:textSize="17sp"
+                            android:id="@+id/totalSoldProductQuantityTextViewId"
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"/>
+                        <TextView
+                            android:gravity="center"
+                            android:textColor="#000000"
+                            android:text="Total invoice 00"
+                            android:textSize="17sp"
+                            android:id="@+id/totalSoldInvoiceTextViewId"
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"/>
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:weightSum="5"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/bck1"
+                        android:orientation="vertical"
+                        android:layout_width="200dp"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_weight="1.5"
+                            android:gravity="center"
+                            android:textColor="#000000"
+                            android:textAlignment="center"
+                            android:textSize="20sp"
+                            android:text="Total Customer"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"/>
+                        <TextView
+                            android:layout_weight="1.5"
+                            android:textColor="#3F51B5"
+                            android:id="@+id/customerCountId"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textSize="30sp"
+                            android:text="4"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:weightSum="5"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/bck1"
+                        android:orientation="vertical"
+                        android:layout_width="200dp"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:gravity="center"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textAlignment="center"
+                            android:text="Total Due Amount"
+                            android:layout_weight="1.5"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"/>
+                        <TextView
+                            android:text="00 Taka"
+                            android:gravity="center"
+                            android:textColor="#AF0000"
+                            android:textSize="30sp"
+                            android:id="@+id/totalDueAmountTextViewId"
+                            android:layout_weight="1.5"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:weightSum="5"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/bck1"
+                        android:orientation="vertical"
+                        android:layout_width="200dp"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:gravity="center"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textAlignment="center"
+                            android:text="Total Profit Amount"
+                            android:layout_weight="1.5"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"/>
+                        <TextView
+                            android:text="00 Taka"
+                            android:gravity="center"
+                            android:textColor="#000000"
+                            android:textSize="30sp"
+                            android:id="@+id/totalProfitTextViewId"
+                            android:layout_weight="1.5"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"/>
+                    </LinearLayout>
 
                 </LinearLayout>
-                <LinearLayout
-                    android:weightSum="5"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/bck1"
-                    android:orientation="vertical"
-                    android:layout_width="200dp"
-                    android:layout_height="match_parent">
-                    <TextView
-                        android:gravity="center"
-                        android:textColor="#000000"
-                        android:textSize="20sp"
-                        android:textAlignment="center"
-                        android:text="Total Sell Amount"
-                        android:layout_weight="1.5"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"/>
-                    <TextView
-                        android:text="00 Taka"
-                        android:gravity="center"
-                        android:textColor="#000000"
-                        android:textSize="30sp"
-                        android:id="@+id/totalSaleAmountTextViewId"
-                        android:layout_weight="1.5"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"/>
-                    <TextView
-                        android:gravity="center"
-                        android:textColor="#000000"
-                        android:text="Total product sale 00"
-                        android:textSize="17sp"
-                        android:id="@+id/totalSoldProductQuantityTextViewId"
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"/>
-                    <TextView
-                        android:gravity="center"
-                        android:textColor="#000000"
-                        android:text="Total invoice 00"
-                        android:textSize="17sp"
-                        android:id="@+id/totalSoldInvoiceTextViewId"
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"/>
+            </HorizontalScrollView>
 
 
+            <LinearLayout
+                android:layout_margin="5dp"
+                android:weightSum="2"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:weightSum="2"
+                    android:orientation="horizontal"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp">
+
+                    <TextView
+                        android:id="@+id/customerTextViewId"
+                        android:background="@drawable/images1"
+                        android:gravity="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:text="Customer"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"/>
+
+                    <TextView
+                        android:id="@+id/productTextViewId"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/images1"
+                        android:gravity="center"
+                        android:text="Product"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
                 </LinearLayout>
                 <LinearLayout
-                    android:weightSum="5"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/bck1"
-                    android:orientation="vertical"
-                    android:layout_width="200dp"
-                    android:layout_height="match_parent">
+                    android:weightSum="2"
+                    android:orientation="horizontal"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp">
                     <TextView
-                        android:layout_weight="1.5"
+                        android:id="@+id/invoiceTextViewId"
+                        android:background="@drawable/images1"
                         android:gravity="center"
-                        android:textColor="#000000"
-                        android:textAlignment="center"
-                        android:textSize="20sp"
-                        android:text="Total Customer"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"/>
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:text="Invoice"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"/>
                     <TextView
-                        android:layout_weight="1.5"
-                        android:textColor="#3F51B5"
-                        android:id="@+id/customerCountId"
+                        android:id="@+id/extraInfoTextViewId"
+                        android:background="@drawable/images1"
                         android:gravity="center"
-                        android:textAlignment="center"
-                        android:textSize="30sp"
-                        android:text="4"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:weightSum="5"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/bck1"
-                    android:orientation="vertical"
-                    android:layout_width="200dp"
-                    android:layout_height="match_parent">
-                    <TextView
-                        android:gravity="center"
-                        android:textColor="#000000"
-                        android:textSize="20sp"
-                        android:textAlignment="center"
-                        android:text="Total Due Amount"
-                        android:layout_weight="1.5"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"/>
-                    <TextView
-                        android:text="00 Taka"
-                        android:gravity="center"
-                        android:textColor="#AF0000"
-                        android:textSize="30sp"
-                        android:id="@+id/totalDueAmountTextViewId"
-                        android:layout_weight="1.5"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:weightSum="5"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/bck1"
-                    android:orientation="vertical"
-                    android:layout_width="200dp"
-                    android:layout_height="match_parent">
-                    <TextView
-                        android:gravity="center"
-                        android:textColor="#000000"
-                        android:textSize="20sp"
-                        android:textAlignment="center"
-                        android:text="Total Profit Amount"
-                        android:layout_weight="1.5"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"/>
-                    <TextView
-                        android:text="00 Taka"
-                        android:gravity="center"
-                        android:textColor="#000000"
-                        android:textSize="30sp"
-                        android:id="@+id/totalProfitTextViewId"
-                        android:layout_weight="1.5"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"/>
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:text="More"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"/>
                 </LinearLayout>
 
             </LinearLayout>
-        </HorizontalScrollView>
 
 
-      <LinearLayout
-          android:layout_margin="5dp"
-          android:weightSum="2"
-          android:orientation="vertical"
-          android:gravity="center"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent">
-        <LinearLayout
-            android:weightSum="2"
-            android:orientation="horizontal"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp">
-
-            <TextView
-                android:id="@+id/customerTextViewId"
-                android:background="@drawable/images1"
-                android:gravity="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:text="Customer"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"/>
-
-            <TextView
-                android:id="@+id/productTextViewId"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/images1"
-                android:gravity="center"
-                android:text="Product"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
         </LinearLayout>
-          <LinearLayout
-              android:weightSum="2"
-              android:orientation="horizontal"
-              android:layout_weight="1"
-              android:layout_width="match_parent"
-              android:layout_height="0dp">
-              <TextView
-                  android:id="@+id/invoiceTextViewId"
-                  android:background="@drawable/images1"
-                  android:gravity="center"
-                  android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                  android:text="Invoice"
-                  android:layout_margin="5dp"
-                  android:layout_weight="1"
-                  android:layout_width="0dp"
-                  android:layout_height="match_parent"/>
-              <TextView
-                  android:id="@+id/extraInfoTextViewId"
-                  android:background="@drawable/images1"
-                  android:gravity="center"
-                  android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                  android:text="More"
-                  android:layout_margin="5dp"
-                  android:layout_weight="1"
-                  android:layout_width="0dp"
-                  android:layout_height="match_parent"/>
-          </LinearLayout>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/bottom_navigation_menu"
+            android:layout_alignParentBottom="true"
+            android:background="#B28EF3"
+            android:id="@+id/bottomBarId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-      </LinearLayout>
+    </RelativeLayout>
 
 
-    </LinearLayout>
     <com.google.android.material.navigation.NavigationView
         app:itemIconTint="#0B0B0B"
         app:itemTextColor="#040303"
