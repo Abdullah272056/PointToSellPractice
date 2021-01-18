@@ -26,8 +26,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DuePayHistory extends AppCompatActivity {
-        String customer_id,token;
+public class DuePayHistory extends AppCompatActivity{
+    String customer_id,token;
     SingleCustomerDuePayCustomAdapter singleCustomerDuePayCustomAdapter;
     List<SingleCustomerDuePayHistory> singleCustomerDuePayHistoryList;
 
@@ -55,34 +55,43 @@ public class DuePayHistory extends AppCompatActivity {
         pauDueHistoryProgressBar=findViewById(R.id.pauDueHistoryProgressBarId);
 
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
-        singleCustomerInformation();
+
+
+        singleCustomerDuePayHistory();
 
     }
 
-    public void singleCustomerInformation(){
+    public void singleCustomerDuePayHistory(){
         apiInterface.getSingleCustomerInformation("Bearer "+token,customer_id)
                 .enqueue(new Callback<SingleCustomerGetResponse>() {
                     @Override
                     public void onResponse(Call<SingleCustomerGetResponse> call, Response<SingleCustomerGetResponse> response) {
-                        SingleCustomerGetResponse singleCustomerGetResponse=response.body();
 
-                        if (singleCustomerGetResponse.getSuccess()==true){
-                            pauDueHistoryProgressBar.setVisibility(View.INVISIBLE);
-                            singleCustomerDuePayHistoryList=new ArrayList<>();
-                            singleCustomerDuePayHistoryList.addAll(response.body().getSingleCustomerInformation().getDuePayHistory());
-                            // reverse list inserting
-                            Collections.reverse(singleCustomerDuePayHistoryList);
-                            if (singleCustomerDuePayHistoryList.size()>0){
-                                singleCustomerDuePayCustomAdapter = new SingleCustomerDuePayCustomAdapter(DuePayHistory.this,token,singleCustomerDuePayHistoryList);
-                                duePayHistoryRecyclerView.setLayoutManager(new LinearLayoutManager(DuePayHistory.this));
-                                duePayHistoryRecyclerView.setAdapter(singleCustomerDuePayCustomAdapter);
+                            if (response.code()==404){
+                                Toast.makeText(DuePayHistory.this, "No customer found", Toast.LENGTH_SHORT).show();
+                            }else if (response.code()==500){
+                                Toast.makeText(DuePayHistory.this, "internal server error", Toast.LENGTH_SHORT).show();
+                            }else if (response.code()==200){
+                                SingleCustomerGetResponse singleCustomerGetResponse=response.body();
+                                pauDueHistoryProgressBar.setVisibility(View.INVISIBLE);
+                                singleCustomerDuePayHistoryList=new ArrayList<>();
+                                singleCustomerDuePayHistoryList.addAll(response.body().getSingleCustomerInformation().getDuePayHistory());
+                                // reverse list inserting
+                                Collections.reverse(singleCustomerDuePayHistoryList);
+                                if (singleCustomerDuePayHistoryList.size()>0){
+
+                                        Toast.makeText(DuePayHistory.this, singleCustomerGetResponse.getMsg().toString(), Toast.LENGTH_SHORT).show();
+                                        singleCustomerDuePayCustomAdapter = new SingleCustomerDuePayCustomAdapter(DuePayHistory.this,token,singleCustomerDuePayHistoryList);
+                                        duePayHistoryRecyclerView.setLayoutManager(new LinearLayoutManager(DuePayHistory.this));
+                                        duePayHistoryRecyclerView.setAdapter(singleCustomerDuePayCustomAdapter);
+                                    }
                             }
+                            else {
 
-                            Log.e("asas",String.valueOf(singleCustomerDuePayHistoryList.size()));
+                            }
+                            pauDueHistoryProgressBar.setVisibility(View.INVISIBLE);
                         }
-                        Toast.makeText(DuePayHistory.this, "qqqq", Toast.LENGTH_SHORT).show();
-                        Toast.makeText(DuePayHistory.this, singleCustomerGetResponse.getMsg().toString(), Toast.LENGTH_SHORT).show();
-                    }
+
 
                     @Override
                     public void onFailure(Call<SingleCustomerGetResponse> call, Throwable t) {
