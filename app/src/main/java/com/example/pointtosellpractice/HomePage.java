@@ -58,7 +58,6 @@ public class HomePage extends AppCompatActivity {
 
         bottomNavigationView=findViewById(R.id.bottomBarId);
 
-
         linearLayout=findViewById(R.id.mainLayoutId);
         sharePref=new SharePref();
         //finding textView
@@ -88,7 +87,6 @@ public class HomePage extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
                 if (item.getItemId()==R.id.homeItemId){
 
                     Toast.makeText(HomePage.this, "", Toast.LENGTH_SHORT).show();
@@ -130,7 +128,7 @@ public class HomePage extends AppCompatActivity {
         getAllProductInfo();
 
        // call navigationDrawer for getting navigation drawer
-      navigationDrawer();
+         navigationDrawer();
 
 
 
@@ -199,6 +197,9 @@ public class HomePage extends AppCompatActivity {
         return false;
     }
 });
+
+
+
     }
 
 
