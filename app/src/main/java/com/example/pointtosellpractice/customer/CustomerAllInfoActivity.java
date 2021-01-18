@@ -60,6 +60,8 @@ public class CustomerAllInfoActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
         customerTotalSellTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

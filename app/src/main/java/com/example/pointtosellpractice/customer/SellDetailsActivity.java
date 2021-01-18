@@ -49,7 +49,8 @@ public class SellDetailsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         position=getIntent().getIntExtra("position",10);
-
+        customer_id= getIntent().getStringExtra("customerId");
+        token=getIntent().getStringExtra("token");
         //textView finding
         productTotalPriceTextView=findViewById(R.id.productTotalPriceTextViewId);
         totalAmountAfterDiscountTextView=findViewById(R.id.totalAmountAfterDiscountTextViewId);
@@ -61,8 +62,7 @@ public class SellDetailsActivity extends AppCompatActivity {
         sellDetailsRecyclerView=findViewById(R.id.sellDetailsRecyclerViewId);
         //progressbar finding
         sellDetailsProgressBar=findViewById(R.id.sellDetailsProgressBarId);
-        customer_id= getIntent().getStringExtra("customerId");
-        token=getIntent().getStringExtra("token");
+
         apiInterface = RetrofitClient.getRetrofit("http://mern-pos.herokuapp.com/").create(ApiInterface.class);
 
         singleCustomerTotalSell();
@@ -124,5 +124,6 @@ public class SellDetailsActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
 
 }
