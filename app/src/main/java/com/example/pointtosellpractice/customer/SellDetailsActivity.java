@@ -10,12 +10,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.pointtosellpractice.R;
 import com.example.pointtosellpractice.customer.single_customer.SingleCustomerGetResponse;
 import com.example.pointtosellpractice.customer.single_customer.SingleCustomerProduct;
 import com.example.pointtosellpractice.customer.single_customer.SingleCustomerSellsDetailsCustomAdapter;
 import com.example.pointtosellpractice.customer.single_customer.SingleCustomerTotalSell;
+import com.example.pointtosellpractice.customer.single_customer.SingleCustomerTotalSellCustomAdapter;
 import com.example.pointtosellpractice.retrofit.ApiInterface;
 import com.example.pointtosellpractice.retrofit.RetrofitClient;
 
@@ -73,9 +75,11 @@ public class SellDetailsActivity extends AppCompatActivity {
                 .enqueue(new Callback<SingleCustomerGetResponse>() {
                     @Override
                     public void onResponse(Call<SingleCustomerGetResponse> call, Response<SingleCustomerGetResponse> response) {
-                        SingleCustomerGetResponse singleCustomerGetResponse=response.body();
-                        sellDetailsProgressBar.setVisibility(View.INVISIBLE);
-                        if (singleCustomerGetResponse.getSuccess()==true){
+                        if (response.code()==404){
+                            Toast.makeText(SellDetailsActivity.this, "No customer found", Toast.LENGTH_SHORT).show();
+                        }else if (response.code()==500){
+                            Toast.makeText(SellDetailsActivity.this, "internal server error", Toast.LENGTH_SHORT).show();
+                        }else if (response.code()==200){
                             singleCustomerTotalSellList=new ArrayList<>();
                             singleCustomerProductList=new ArrayList<>();
 
@@ -98,11 +102,16 @@ public class SellDetailsActivity extends AppCompatActivity {
                                     sub=sub+(singleCustomerProductList.get(i).getSellingPrice()*singleCustomerProductList.get(i).getQuantity());
                                     Log.e("svs",String.valueOf(sub));
                                 }
-                                 productTotalPriceTextView.setText(String.valueOf(sub));
+                                productTotalPriceTextView.setText(String.valueOf(sub));
 
                             }
 
                         }
+                        else {
+
+                        }
+                        sellDetailsProgressBar.setVisibility(View.INVISIBLE);
+
                     }
 
                     @Override

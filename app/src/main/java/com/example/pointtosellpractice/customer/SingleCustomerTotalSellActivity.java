@@ -84,8 +84,9 @@ public class SingleCustomerTotalSellActivity extends AppCompatActivity {
 
                             }
                             singleCustomerTotalSellProgressBar.setVisibility(View.INVISIBLE);
-                        }
 
+
+                        }
 
 
                     @Override
