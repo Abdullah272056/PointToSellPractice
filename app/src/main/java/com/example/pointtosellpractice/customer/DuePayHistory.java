@@ -79,7 +79,6 @@ public class DuePayHistory extends AppCompatActivity{
                                 // reverse list inserting
                                 Collections.reverse(singleCustomerDuePayHistoryList);
                                 if (singleCustomerDuePayHistoryList.size()>0){
-
                                         Toast.makeText(DuePayHistory.this, singleCustomerGetResponse.getMsg().toString(), Toast.LENGTH_SHORT).show();
                                         singleCustomerDuePayCustomAdapter = new SingleCustomerDuePayCustomAdapter(DuePayHistory.this,token,singleCustomerDuePayHistoryList);
                                         duePayHistoryRecyclerView.setLayoutManager(new LinearLayoutManager(DuePayHistory.this));

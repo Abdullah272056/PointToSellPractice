@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.pointtosellpractice.R;
 import com.example.pointtosellpractice.customer.single_customer.SingleCustomerGetResponse;
@@ -63,22 +64,29 @@ public class SingleCustomerTotalSellActivity extends AppCompatActivity {
                 .enqueue(new Callback<SingleCustomerGetResponse>() {
                     @Override
                     public void onResponse(Call<SingleCustomerGetResponse> call, Response<SingleCustomerGetResponse> response) {
-                        SingleCustomerGetResponse singleCustomerGetResponse=response.body();
-                        singleCustomerTotalSellProgressBar.setVisibility(View.INVISIBLE);
-                        if (singleCustomerGetResponse.getSuccess()==true){
-                            singleCustomerTotalSellList=new ArrayList<>();
-                            singleCustomerTotalSellList.addAll(response.body().getSingleCustomerInformation().getTotalSell());
-                            // reverse list inserting
-                            //Collections.reverse(singleCustomerTotalSellList);
-                            if (singleCustomerTotalSellList.size()>0){
-                                singleCustomerTotalSellCustomAdapter = new SingleCustomerTotalSellCustomAdapter(SingleCustomerTotalSellActivity.this,token,singleCustomerTotalSellList);
-                                singleCustomerTotalSellRecyclerView.setLayoutManager(new LinearLayoutManager(SingleCustomerTotalSellActivity.this));
-                                singleCustomerTotalSellRecyclerView.setAdapter(singleCustomerTotalSellCustomAdapter);
-                            }
 
-                            Log.e("oooo",String.valueOf(singleCustomerTotalSellList.size()));
+                            if (response.code()==404){
+                                Toast.makeText(SingleCustomerTotalSellActivity.this, "No customer found", Toast.LENGTH_SHORT).show();
+                            }else if (response.code()==500){
+                                Toast.makeText(SingleCustomerTotalSellActivity.this, "internal server error", Toast.LENGTH_SHORT).show();
+                            }else if (response.code()==200){
+                                singleCustomerTotalSellList=new ArrayList<>();
+                                singleCustomerTotalSellList.addAll(response.body().getSingleCustomerInformation().getTotalSell());
+                                // reverse list inserting
+                                //Collections.reverse(singleCustomerTotalSellList);
+                                if (singleCustomerTotalSellList.size()>0){
+                                            singleCustomerTotalSellCustomAdapter = new SingleCustomerTotalSellCustomAdapter(SingleCustomerTotalSellActivity.this, token, singleCustomerTotalSellList);
+                                            singleCustomerTotalSellRecyclerView.setLayoutManager(new LinearLayoutManager(SingleCustomerTotalSellActivity.this));
+                                            singleCustomerTotalSellRecyclerView.setAdapter(singleCustomerTotalSellCustomAdapter);
+                                       }
+                            }
+                            else {
+
+                            }
+                            singleCustomerTotalSellProgressBar.setVisibility(View.INVISIBLE);
                         }
-                    }
+
+
 
                     @Override
                     public void onFailure(Call<SingleCustomerGetResponse> call, Throwable t) {
