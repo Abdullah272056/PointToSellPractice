@@ -71,6 +71,8 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
         uploadPictureButton=findViewById(R.id.uploadPictureButtonId);
         changePasswordButton=findViewById(R.id.changePasswordButtonId);
         deleteAccountButton=findViewById(R.id.deleteAccountButtonId);
+
+
         changePasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,6 +86,7 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
                 Toast.makeText(AboutMeActivity.this, "Sorry! It is not available now !", Toast.LENGTH_SHORT).show();
             }
         });
+
         deleteAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,7 +98,7 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
     }
 
 
-public  void  deleteUser(){
+    public  void  deleteUser(){
     AlertDialog.Builder builder     =new AlertDialog.Builder(AboutMeActivity.this);
     LayoutInflater layoutInflater   =LayoutInflater.from(AboutMeActivity.this);
     View view                       =layoutInflater.inflate(R.layout.delete_user_dialog_box,null);
@@ -201,10 +204,7 @@ public  void  deleteUser(){
                    Toast.makeText(AboutMeActivity.this, "invalid user", Toast.LENGTH_SHORT).show();
                }else {
                    Toast.makeText(AboutMeActivity.this, "error", Toast.LENGTH_SHORT).show();
-
                }
-
-
             }
 
             @Override
@@ -278,6 +278,8 @@ public  void  deleteUser(){
                     }
                 });
     }
+
+
     @Override
     public void onBackPressed() {
         Intent intent =new Intent(AboutMeActivity.this, HomePage.class);

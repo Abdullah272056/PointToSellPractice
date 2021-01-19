@@ -9,6 +9,8 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context=".HomePage">
+
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"

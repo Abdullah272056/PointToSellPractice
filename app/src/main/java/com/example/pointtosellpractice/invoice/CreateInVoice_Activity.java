@@ -116,7 +116,9 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
 
         //receive user token
         token= getIntent().getStringExtra("token");
+//////////////
 
+        // create invoice button click
         inVoiceButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -129,6 +131,7 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
             }
         });
 
+        // selected customer button click
         selectCustomerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,6 +139,7 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
             }
         });
 
+        // text change listener add
         payAmountEditText.addTextChangedListener(new TextWatcher() {
 
             public void afterTextChanged(Editable s) {}
@@ -150,6 +154,8 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
             }
         });
 
+
+        //selected product button click
         product.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -158,6 +164,8 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
             }
         });
 
+
+        // percent decrement button
         subCountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -170,6 +178,7 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
             }
         });
 
+        // percent increment button
         addCountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -397,7 +406,7 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
     }
 
 
-//customer
+    //customer
     @Override
     public void onContactClick1(int position) {
         nameTextView.setError(null);
@@ -412,7 +421,7 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
     }
 
 
-        //product
+    //product
     @Override
     public void onContactClick(int position) {
         //getAllProduct();

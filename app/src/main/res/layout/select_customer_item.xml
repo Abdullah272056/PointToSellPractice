@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+
     android:paddingLeft="10dp"
     android:layout_margin="5dp"
     android:background="#A3A5A6"
