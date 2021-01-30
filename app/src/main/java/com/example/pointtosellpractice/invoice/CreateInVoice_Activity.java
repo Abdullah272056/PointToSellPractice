@@ -128,7 +128,7 @@ public class CreateInVoice_Activity extends AppCompatActivity implements
                    }else {
                        Toast.makeText(CreateInVoice_Activity.this, "click calculate button", Toast.LENGTH_SHORT).show();
                    }
-                   
+
             }
         });
 
