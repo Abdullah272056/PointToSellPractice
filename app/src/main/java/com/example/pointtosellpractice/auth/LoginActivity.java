@@ -77,6 +77,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             // Toast.makeText(this, "empty", Toast.LENGTH_SHORT).show();
         }
 
+
+
+
     }
 
     @Override

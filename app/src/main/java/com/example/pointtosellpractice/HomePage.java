@@ -35,11 +35,13 @@ import retrofit2.Response;
 
 public class HomePage extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
-
     Toolbar toolbar;
-    LinearLayout linearLayout;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+
+    LinearLayout linearLayout;
+
+
     ApiInterface apiInterface;
     Intent intent;
     String token;
@@ -278,7 +280,6 @@ public class HomePage extends AppCompatActivity {
         });
 
     }
-
 
     // Get all select_customer info
     private void getAllProductInfo(){

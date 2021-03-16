@@ -54,6 +54,7 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_me);
+
         // for add back Button in title bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -291,7 +292,7 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
 
     // title bar  button clicked
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
@@ -300,4 +301,6 @@ Button uploadPictureButton,changePasswordButton,deleteAccountButton;
                 return super.onOptionsItemSelected(item);
         }
     }
+
+
 }
