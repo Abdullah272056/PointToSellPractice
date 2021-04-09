@@ -112,7 +112,8 @@ public class ProductActivity extends AppCompatActivity {
         addProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createProduct();
+                Toast.makeText(ProductActivity.this, "UpComing", Toast.LENGTH_SHORT).show();
+               // createProduct();
             }
         });
 
